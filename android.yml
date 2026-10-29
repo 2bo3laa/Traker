@@ -1,0 +1,47 @@
+name: Build APK
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, master]
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Arrange files
+        run: |
+          mkdir -p www assets
+          mv index.html www/index.html
+          if [ -f adhan.mp3 ]; then cp adhan.mp3 www/adhan.mp3; fi
+          mv icon-only.png icon-foreground.png icon-background.png splash.png splash-dark.png assets/
+      - name: Fetch Quran text
+        run: |
+          curl -fsSL --retry 3 -o www/quran.json https://cdn.jsdelivr.net/npm/quran-json@3.1.2/dist/quran.json
+          python3 - <<'PY'
+          import json
+          d = json.load(open('www/quran.json', encoding='utf-8'))
+          a = d if isinstance(d, list) else (d.get('chapters') or list(d.values()))
+          n = sum(len(c['verses']) for c in a)
+          assert len(a) == 114 and n == 6236, (len(a), n)
+          print('Quran OK:', n, 'verses')
+          PY
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+      - run: npm install
+      - run: npx cap add android
+      - run: npx capacitor-assets generate --android
+      - run: npx cap sync android
+      - name: Launcher icons and notifications patch
+        run: |
+          python3 -c "import PIL" || python3 -m pip install --break-system-packages pillow
+          python3 patch-android.py
+      - run: chmod +x android/gradlew && cd android && ./gradlew assembleDebug
+      - uses: actions/upload-artifact@v4
+        with:
+          name: habit-tracker-apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk

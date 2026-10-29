@@ -1,0 +1,6 @@
+{
+  "appId": "com.ahmed.habittracker",
+  "appName": "جدولي",
+  "webDir": "www",
+  "android": { "allowMixedContent": false }
+}
