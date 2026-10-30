@@ -4170,6 +4170,24 @@ function yearT(){
 }
 
 /* ---------- wizard ---------- */
+const hKey=h=>PR.includes(h.name)?"p:"+h.name:h.name==="جيم 💪"?"gym":h.name==="الشغل 💼"?"work":"c:"+h.name;
+const missingPR=()=>PR.filter(p=>!S.habits.some(h=>h.name===p));
+const hasKey=k=>S.habits.some(h=>hKey(h)===k);
+function insertHabit(h){
+  S.ord=Array.isArray(S.ord)?S.ord:[];
+  S.habits.forEach(x=>{const kk=hKey(x);if(!S.ord.includes(kk))S.ord.push(kk)});
+  const k=hKey(h);
+  if(!S.ord.includes(k)){
+    const i=PR.indexOf(h.name);
+    if(i>=0){
+      let nx=-1;for(let j=i+1;j<PR.length&&nx<0;j++)nx=S.ord.indexOf("p:"+PR[j]);
+      if(nx>=0)S.ord.splice(nx,0,k);
+      else{let pv=-1;for(let j=i-1;j>=0&&pv<0;j--)pv=S.ord.indexOf("p:"+PR[j]);pv>=0?S.ord.splice(pv+1,0,k):S.ord.push(k)}
+    }else S.ord.push(k);
+  }
+  const r=S.ord.indexOf(k),at=S.habits.findIndex(x=>S.ord.indexOf(hKey(x))>r);
+  at<0?S.habits.push(h):S.habits.splice(at,0,h);
+}
 let W=null;
 function openW(){W={cat:null};drawW();$("modal").classList.add("on")}
 function closeW(){$("modal").classList.remove("on");W=null}
@@ -4177,12 +4195,12 @@ const chipsD=(sel)=>`<div class="chips">${ORDER.map(d=>`<button class="chip ${se
 function drawW(){
   const sh=$("sheet");
   if(!W.cat){
-    sh.innerHTML=`<h2>إيه اللي عايز تضيفه؟</h2><p>اختار النوع وأنا هجهزلك الباقي.</p><div class="cats">${CATS.map(([k,e,n])=>`<button class="cat" data-c="${k}"><b>${e}</b>${n}</button>`).join("")}</div>`;
+    sh.innerHTML=`<h2>إيه اللي عايز تضيفه؟</h2><p>اختار النوع وأنا هجهزلك الباقي.</p><div class="cats">${CATS.map(([k,e,n])=>{const full=(k==="prayer"&&!missingPR().length)||(k==="gym"&&hasKey("gym"))||(k==="work"&&hasKey("work"));return `<button class="cat" data-c="${k}"${full?' style="opacity:.5"':""}><b>${e}</b>${n}${full?"<small style=\"display:block;font-size:11px;margin-top:2px\">✓ موجود</small>":""}</button>`}).join("")}</div>`;
     return;
   }
   let h=`<button class="back" data-back="1">← رجوع</button>`,c=W.cat;
   if(c==="prayer"){
-    h+=`<h2>الصلوات 🕌</h2><p>هضيف الصلوات الخمسة كل يوم. تقدر تشيل اللي مش عايزه.</p><div class="chips">${PR.map(p=>`<button class="chip ${W.pr.has(p)?"on":""}" data-p="${p}">${p}</button>`).join("")}</div>`;
+    const mp=missingPR();h+=`<h2>الصلوات 🕌</h2><p>${mp.length===PR.length?"هضيف الصلوات الخمسة كل يوم. تقدر تشيل اللي مش عايزه.":"دي الصلوات الناقصة من جدولك. هترجع كل واحدة في مكانها."}</p><div class="chips">${mp.map(p=>`<button class="chip ${W.pr.has(p)?"on":""}" data-p="${p}">${p}</button>`).join("")}</div>`;
   }else if(c==="gym"){
     h+=`<h2>الجيم 💪</h2><p>كام يوم تمرين في الأسبوع؟</p><div class="step"><button data-n="-1">−</button><b>${W.n}</b><button data-n="1">+</button><span>أيام تمرين</span></div>
     <div class="q">أو حدد الأيام بنفسك</div>${chipsD(W.days)}<div class="note">${W.days.size} تمرين • ${7-W.days.size} أيام راحة</div>`;
@@ -4202,7 +4220,7 @@ function drawW(){
 }
 function pick(c){
   const all=new Set([0,1,2,3,4,5,6]);
-  W={cat:c,days:all,pr:new Set(PR),n:3,name:c==="read"?"قراءة":"",t1:"09:00",t2:"17:00"};
+  W={cat:c,days:all,pr:new Set(missingPR()),n:3,name:c==="read"?"قراءة":"",t1:"09:00",t2:"17:00"};
   if(c==="gym")W.days=new Set(GYM[3]);
   if(c==="work")W.days=new Set([0,1,2,3,4]);
   if(c==="course")W.days=new Set([6,1]),W.t1="18:00";
@@ -4213,7 +4231,7 @@ function addW(){
   if($("nm"))W.name=$("nm").value.trim();
   if($("t1"))W.t1=$("t1").value;if($("t2"))W.t2=$("t2").value;
   let add=[];
-  if(c==="prayer"){if(!W.pr.size)return err("اختار صلاة واحدة على الأقل");PR.filter(p=>W.pr.has(p)).forEach(p=>add.push({name:p,sub:"",days:[0,1,2,3,4,5,6]}))}
+  if(c==="prayer"){if(!W.pr.size)return err("اختار صلاة واحدة على الأقل");missingPR().filter(p=>W.pr.has(p)).forEach(p=>add.push({name:p,sub:"",days:[0,1,2,3,4,5,6]}))}
   else{
     if(!D.length)return err("اختار يوم واحد على الأقل");
     if((c==="course"||c==="custom"||c==="read")&&!W.name)return err("اكتب الاسم الأول");
@@ -4223,7 +4241,7 @@ function addW(){
     if(c==="read"||c==="custom")add.push({name:W.name,sub:"",days:D});
   }
   if(!S.start)S.start=st;
-  add.forEach(a=>S.habits.push({id:id(),start:st,...a}));
+  add.forEach(a=>insertHabit({id:id(),start:st,...a}));
   idx=findIdx(view);
   save();closeW();render();
 }
@@ -4236,7 +4254,7 @@ document.addEventListener("click",e=>{
   if(D.k){const was=S.done[D.k];was?delete S.done[D.k]:S.done[D.k]=1;S.late=S.late||{};const kp=D.k.split("|"),hh=S.habits.find(x=>x.id===kp[1]);let lateNow=0;if(was)delete S.late[D.k];else if(hh&&prayLate(hh,kp[0])){S.late[D.k]=1;lateNow=1}trimLate();save();render();schedSoon();if(lateNow)toast("بارك الله فيك! حاول في المرة القادمة أن تصلّيها في وقتها 🤍");else if(!was&&page==="today"){const[a,b]=dayStat(today0());if(b&&a===b){burst();toast(MILE[streak()]||rnd(pool("done")))}else if(a===1)toast(rnd(pool("mid")))}}
   else if(D.v){view=D.v;idx=findIdx(view);render()}
   else if(D.del){if(pend===D.del){S.habits=S.habits.filter(h=>h.id!==D.del);pend=null;if(!S.habits.length){S.start=null;idx=0}save()}else pend=D.del;render()}
-  else if(D.c)pick(D.c);
+  else if(D.c){if((D.c==="prayer"&&!missingPR().length)||(D.c==="gym"&&hasKey("gym"))||(D.c==="work"&&hasKey("work")))toast("موجود بالفعل في جدولك ✓");else pick(D.c)}
   else if(D.d){const n=+D.d;W.days.has(n)?W.days.delete(n):W.days.add(n);if($("nm"))W.name=$("nm").value;if($("t1"))W.t1=$("t1").value;if($("t2"))W.t2=$("t2").value;drawW()}
   else if(D.p){W.pr.has(D.p)?W.pr.delete(D.p):W.pr.add(D.p);drawW()}
   else if(D.n){W.n=Math.min(6,Math.max(1,W.n+(+D.n)));W.days=new Set(GYM[W.n]);drawW()}
