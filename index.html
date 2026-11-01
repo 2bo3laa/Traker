@@ -98,6 +98,15 @@ tr.sum td{border-bottom:0;font-size:10px;color:var(--soft)}
 .fab{position:fixed;left:18px;bottom:calc(86px + env(safe-area-inset-bottom,0px));width:58px;height:58px;border-radius:50%;border:0;background:linear-gradient(135deg,var(--acc),var(--acc2));color:var(--on);font-size:34px;font-weight:700;box-shadow:0 8px 28px color-mix(in srgb,var(--acc) 45%,transparent);z-index:5}
 .modal{position:fixed;inset:0;background:#000a;display:none;align-items:flex-end;justify-content:center;z-index:10}
 .modal.on{display:flex}
+/* polish: press feedback, sheet slide-up, reduced motion */
+.tcard,.chip,.go,.cat,.zk,.fab,.back{transition:transform .12s ease,box-shadow .2s;-webkit-tap-highlight-color:transparent}
+.tcard:active,.chip:active,.go:active,.cat:active,.zk:active,.back:active{transform:scale(.97)}
+.fab:active{transform:scale(.92)}
+.modal.on .sheet{animation:sup .3s cubic-bezier(.2,.8,.2,1)}
+.modal.on{animation:mfade .2s ease}
+@keyframes sup{from{transform:translateY(46px);opacity:.4}}
+@keyframes mfade{from{opacity:0}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 .sheet{width:100%;max-width:480px;max-height:88vh;overflow:auto;background:var(--panel);border-radius:24px 24px 0 0;padding:20px 18px calc(24px + env(safe-area-inset-bottom,0px));border:1px solid var(--line)}
 .sheet h2{margin:0 0 4px;font-size:20px}
 .sheet p{margin:0 0 14px;color:var(--soft);font-size:14px;line-height:1.7}
@@ -186,6 +195,20 @@ tr.sum td{border-bottom:0;font-size:10px;color:var(--soft)}
 <nav class="bar" id="bar"><button data-pg="today"><b>🏠</b>اليوم</button><button data-pg="table"><b>🗓️</b>الجدول</button><button data-pg="paper"><b>📝</b>ورقتي</button><button data-pg="stats"><b>📊</b>إحصائياتي</button><button data-pg="deen"><b>🕌</b>ذكر</button><button data-pg="gym"><b>💪</b>تمرين</button><button data-pg="pray"><b>🧭</b>مواقيت</button></nav>
 <div class="modal" id="modal"><div class="sheet" id="sheet"></div></div>
 
+<script>
+/* error log: keeps the last 30 errors so a crash can be diagnosed later */
+(function(){
+  const add=m=>{try{const a=JSON.parse(localStorage.getItem("hb_err")||"[]");a.push(new Date().toISOString().slice(0,19)+" "+m);localStorage.setItem("hb_err",JSON.stringify(a.slice(-30)))}catch(e){}};
+  window.addEventListener("error",e=>add((e.message||"error")+" @"+(e.lineno||"")+":"+(e.colno||"")));
+  window.addEventListener("unhandledrejection",e=>add("promise: "+((e.reason&&e.reason.message)||e.reason)));
+  window.copyErr=function(){
+    let t="";try{t=(JSON.parse(localStorage.getItem("hb_err")||"[]")).join("\n")}catch(e){}
+    t=t||"لا توجد أخطاء ✅";
+    const done=()=>{try{toast("تم نسخ سجل الأخطاء")}catch(e){}};
+    if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(done,()=>alert(t));else alert(t);
+  };
+})();
+</script>
 <script>
 /* ===== LANGUAGES & TRANSLATIONS =====
    To add a language: add it to LANGS and add a PACK.xx block (Arabic text = key).
@@ -4043,7 +4066,7 @@ const THEMES={dawn:["فجر","#140b1f","#ffb547","#ff6b6b"],gold:["ذهبي فخ
 const LIGHT=["cream","mint","sky","lav","pink","snow","spring"];
 function setTheme(id){TH=id;document.documentElement.dataset.t=id;setTimeout(()=>{try{wdSave()}catch(e){}},300);try{localStorage.setItem("hb_theme",id)}catch(e){}if(W&&W.theme)drawT()}
 function openT(){W={theme:1};drawT();$("modal").classList.add("on")}
-function drawT(){$("sheet").innerHTML=`<h2>الإعدادات ⚙️</h2><p>اختار شكل التطبيق، والتغيير بيحصل فوراً.</p><div class="cats">${Object.entries(THEMES).map(([k,[n,bg,a,b]])=>`<button class="cat th" data-th="${k}" style="background:${bg};border-color:${TH===k?a:"transparent"}"><i style="background:linear-gradient(135deg,${a},${b})"></i><span style="color:${LIGHT.includes(k)?"#3a2330":"#fff"}">${n}${TH===k?" ✓":""}</span></button>`).join("")}</div>${setHTML()}`}
+function drawT(){$("sheet").innerHTML=`<h2>الإعدادات ⚙️</h2><p>اختار شكل التطبيق، والتغيير بيحصل فوراً.</p><div class="cats">${Object.entries(THEMES).map(([k,[n,bg,a,b]])=>`<button class="cat th" data-th="${k}" style="background:${bg};border-color:${TH===k?a:"transparent"}"><i style="background:linear-gradient(135deg,${a},${b})"></i><span style="color:${LIGHT.includes(k)?"#3a2330":"#fff"}">${n}${TH===k?" ✓":""}</span></button>`).join("")}</div>${setHTML()}<div style="text-align:center;margin-top:14px"><button class="chip" onclick="copyErr()">نسخ سجل الأخطاء</button></div>`}
 
 const iso=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
 const active=(h,d)=>h.days.includes(d.getDay())&&iso(d)>=h.start;
@@ -4240,6 +4263,7 @@ function wlAct(a){
 setInterval(()=>{if(page==="today"&&!editing&&document.querySelector("[data-wlrun]")&&!(W&&W.wl))renderToday()},30000);
 
 /* ---------- weekly paper ---------- */
+const buzz=ms=>{try{navigator.vibrate&&navigator.vibrate(ms)}catch(e){}};
 function wpEnsure(){S.wp=S.wp||{};S.wp.goals=S.wp.goals||{};S.wp.weeks=S.wp.weeks||{};return S.wp}
 const wpKey=off=>{const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()-((d.getDay()+1)%7)+7*off);return iso(d)};
 let WPV={wk:0};
@@ -4354,6 +4378,7 @@ document.addEventListener("click",e=>{
   const t=e.target.closest("[data-k],[data-v],[data-del],[data-c],[data-d],[data-p],[data-n],[data-back],[data-add],[data-th],[data-pg],[data-bk],[data-lg],[data-mo],[data-ic],[data-nt],[data-dn],[data-pn],[data-wn],[data-ob],[data-gl],[data-wl],[data-wm],[data-wp]");
   if(!t)return;
   const D=t.dataset;
+  if(D.k||D.wl||(D.wp&&D.wp.indexOf("t:")===0))buzz(12);
   if(D.k){const was=S.done[D.k];was?delete S.done[D.k]:S.done[D.k]=1;S.late=S.late||{};const kp=D.k.split("|"),hh=S.habits.find(x=>x.id===kp[1]);let lateNow=0;if(was)delete S.late[D.k];else if(hh&&prayLate(hh,kp[0])){S.late[D.k]=1;lateNow=1}trimLate();save();render();schedSoon();if(lateNow)toast("بارك الله فيك! حاول في المرة القادمة أن تصلّيها في وقتها 🤍");else if(!was&&page==="today"){const[a,b]=dayStat(today0());if(b&&a===b){burst();toast(MILE[streak()]||rnd(pool("done")))}else if(a===1)toast(rnd(pool("mid")))}}
   else if(D.v){view=D.v;idx=findIdx(view);render()}
   else if(D.del){if(pend===D.del){S.habits=S.habits.filter(h=>h.id!==D.del);pend=null;if(!S.habits.length){S.start=null;idx=0}save()}else pend=D.del;render()}
@@ -4626,7 +4651,7 @@ function renderDeen(){
   $("quote").textContent="ألا بذكر الله تطمئن القلوب";
   const T=[["az","🌅 الأذكار"],["qr","📖 القرآن"],["ts","📿 التسبيح"]];
   $("main").innerHTML=`<div class="deen"><div class="chips" style="margin-bottom:14px">${T.map(([k,t])=>`<button class="chip ${DV.tab===k?"on":""}" data-dn="tab:${k}">${t}</button>`).join("")}</div>${DV.tab==="az"?azHTML():DV.tab==="qr"?qrHTML():tsHTML()}</div>`;
-  if(!QD&&(DV.tab==="qr"||DV.tab==="az"))qLoad().then(r=>{if(page==="deen"&&(r||DV.qerr))renderDeen()});
+  if(!QD&&!DV.qerr&&(DV.tab==="qr"||DV.tab==="az"))qLoad().then(r=>{if(page==="deen"&&(r||DV.qerr))renderDeen()});
 }
 function deenAct(s){
   const[k,a,b]=s.split(":"),d=dn();
