@@ -4084,15 +4084,15 @@ function renderToday(){
   $("quote").textContent=TR("{0}، {1}",S.name?TR("{0} يا {1}",TR(g),S.name):TR(g),TR(b?(p===100?"خلصت يومك. فخور بيك 🔥":"كل خطوة بتفرق"):"النهارده يوم راحة 🌿"));
   let H=`<div class="ring">${ringSVG(p)}<div class="c"><strong>${p}%</strong><span>${a} من ${b} النهارده</span></div></div><div class="badges"><div>🔥 ${streak()} يوم متتالي</div></div>${msgCard(p,t)}`;
   const list=S.habits.filter(x=>active(x,t));
-  H+=list.length?list.map(x=>{const k=iso(t)+"|"+x.id,on=S.done[k];return `<button class="tcard ${on?"on":""}${on&&LT(k)?" late":""}" ${editing?"":`data-k="${k}"`}><span class="ck">${on?"✓":""}</span><span class="tx">${esc(x.name)}${x.sub?`<small>${esc(x.sub)}</small>`:""}${on&&LT(k)?`<small class="lt">صُلّيت بعد وقتها</small>`:""}</span>${del(x)}</button>`}).join(""):`<div class="empty">مفيش حاجة مجدولة النهارده، استمتع بيومك 🌿</div>`;
-  H+=`<div class="sec">آخر 7 أيام</div><div class="strip">`+Array.from({length:7},(_,i)=>{const d=addDays(t,i-6),[x,y]=dayStat(d);return `<div><i style="--p:${y?pct(x,y):0}"></i>${DS[d.getDay()]}</div>`}).join("")+`</div>`;
+  H+=list.length?list.map(x=>{const k=iso(t)+"|"+x.id,on=S.done[k];if(x.log){const st=wlStatus();return `<div class="tcard ${on?"on":""}"${st.open?' data-wlrun="1"':""}><span class="ck">${on?"✓":""}</span><span class="tx">${esc(x.name)}<small>${st.txt}</small></span>${editing?del(x):`<button class="chip" data-wl="${st.open?"out":"in"}" style="background:var(--panel);color:var(--ink);font-weight:700">${st.open?"⏹ انصراف":"▶ حضور"}</button>`}</div>`}return `<button class="tcard ${on?"on":""}${on&&LT(k)?" late":""}" ${editing?"":`data-k="${k}"`}><span class="ck">${on?"✓":""}</span><span class="tx">${esc(x.name)}${x.sub?`<small>${esc(x.sub)}</small>`:""}${on&&LT(k)?`<small class="lt">صُلّيت بعد وقتها</small>`:""}</span>${del(x)}</button>`}).join(""):`<div class="empty">مفيش حاجة مجدولة النهارده، استمتع بيومك 🌿</div>`;
+  H+=wlCard()+wpCard()+`<div class="sec">آخر 7 أيام</div><div class="strip">`+Array.from({length:7},(_,i)=>{const d=addDays(t,i-6),[x,y]=dayStat(d);return `<div><i style="--p:${y?pct(x,y):0}"></i>${DS[d.getDay()]}</div>`}).join("")+`</div>`;
   $("main").innerHTML=H;
 }
 function renderStats(){
   const ds=span(startD(),addDays(today0(),1));let A=0,B=0,best=0,run=0;
   ds.forEach(d=>{const[a,b]=dayStat(d);A+=a;B+=b;if(b){if(a===b){run++;best=Math.max(best,run)}else run=0}});
   $("quote").textContent="أرقامك بتحكي رحلتك";
-  $("main").innerHTML=`<div class="cards3"><div><strong>${pct(A,B)}%</strong>الإنجاز الكلي</div><div><strong>${best}</strong>أفضل سلسلة</div><div><strong>${A}</strong>مرة إنجاز</div></div><div class="sec">آخر 14 يوم</div><div class="bars">${ds.slice(-14).map(d=>{const[a,b]=dayStat(d);return `<div style="height:${b?Math.max(pct(a,b),3):3}%"></div>`}).join("")}</div><div class="sec">كل عادة</div>${S.habits.map(h=>{const[a,b]=count(h,ds),p=pct(a,b);return `<div class="hb">${esc(h.name)}<span>${p}%</span><u><i style="width:${p}%"></i></u></div>`}).join("")}`;
+  $("main").innerHTML=wlCard()+`<div class="cards3"><div><strong>${pct(A,B)}%</strong>الإنجاز الكلي</div><div><strong>${best}</strong>أفضل سلسلة</div><div><strong>${A}</strong>مرة إنجاز</div></div><div class="sec">آخر 14 يوم</div><div class="bars">${ds.slice(-14).map(d=>{const[a,b]=dayStat(d);return `<div style="height:${b?Math.max(pct(a,b),3):3}%"></div>`}).join("")}</div><div class="sec">كل عادة</div>${S.habits.map(h=>{const[a,b]=count(h,ds),p=pct(a,b);return `<div class="hb">${esc(h.name)}<span>${p}%</span><u><i style="width:${p}%"></i></u></div>`}).join("")}`;
 }
 function burst(){const E=["✨","🔥","🎉","⭐","💛"];for(let i=0;i<22;i++){const s=document.createElement("span");s.className="fx";s.textContent=E[i%5];s.style.setProperty("--x",(Math.random()*320-160)+"px");s.style.setProperty("--y",(-40-Math.random()*300)+"px");s.style.setProperty("--r",(Math.random()*360)+"deg");document.body.appendChild(s);setTimeout(()=>s.remove(),1500)}}
 function setHTML(){return `<div class="q">اللغة</div><div class="chips">${Object.entries(LN).map(([k,n])=>`<button class="chip ${LANG===k?"on":""}" data-lg="${k}">${n}</button>`).join("")}</div><div class="q">اسمك</div><input class="inp" id="nm2" value="${esc(S.name||"")}" placeholder="اكتب اسمك"><div class="q">سنّك (اختياري)</div><input class="inp" id="age2" type="number" inputmode="numeric" min="5" max="99" value="${S.age||""}" placeholder="مثال: 25"><div class="note" style="color:var(--soft)">نستخدمه فقط لاختيار رسائل وتنبيهات تناسبك، وتبقى بياناتك على جهازك.</div><div class="q">ما الذي بدأت من أجله؟</div><div class="chips">${goalChips()}</div><input class="inp" id="why2" style="margin-top:10px" value="${esc(S.why||"")}" placeholder="بكلماتك أنت (اختياري)"><div class="q">نسخة احتياطية لبياناتك</div><div class="chips"><button class="chip" data-bk="file">💾 حفظ ملف نسخة احتياطية</button><button class="chip" data-bk="load">📂 استرجاع من ملف</button><button class="chip" data-bk="copy">نسخ كنص</button><button class="chip" data-bk="paste">استرجاع من نص</button></div><div class="note" id="bkm"></div><input type="file" id="bkf" accept=".json,application/json,text/plain" style="display:none"><textarea class="inp" id="bkb" rows="4" style="display:none;margin-top:8px"></textarea><button class="chip" id="bkapply" data-bk="apply" style="display:none;margin-top:8px">تطبيق</button>${ntHTML()}${pnHTML()}<div id="icsec">${icHTML()}</div>`}
@@ -4169,6 +4169,110 @@ function yearT(){
   return t+`</table>`;
 }
 
+/* ---------- work log ---------- */
+const hm=ms=>{const d=new Date(ms);return String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0")};
+const fdur=ms=>{const m=Math.round(Math.max(0,ms)/60000);return Math.floor(m/60)+":"+String(m%60).padStart(2,"0")};
+const dOf=k=>new Date(k+"T00:00:00");
+const hasLog=()=>S.habits.some(h=>h.log);
+function wlStartDay(){const n=Math.round(+S.wlStart);return n>=1&&n<=28?n:1}
+function wlPer(d){const st=wlStartDay();let y=d.getFullYear(),m=d.getMonth();if(d.getDate()<st){m--;if(m<0){m=11;y--}}return new Date(y,m,st)}
+function wlPerEnd(a){const st=wlStartDay();return st===1?new Date(a.getFullYear(),a.getMonth()+1,0):new Date(a.getFullYear(),a.getMonth()+1,st-1)}
+function wlSessMs(x){if(x.o!=null)return Math.max(0,x.o-x.i);return Date.now()-x.i<16*36e5?Date.now()-x.i:0}
+function wlDayMs(k){return((S.wl||{})[k]||[]).reduce((a,x)=>a+wlSessMs(x),0)}
+function wlFindOpen(){const ks=Object.keys(S.wl||{}).sort().reverse();for(const k of ks){const a=S.wl[k];for(let j=a.length-1;j>=0;j--)if(a[j].o==null)return{k,s:a[j]}}return null}
+function wlPeriods(){
+  const m={};
+  Object.keys(S.wl||{}).forEach(k=>{if(!(S.wl[k]||[]).length)return;const p=iso(wlPer(dOf(k)));const o=m[p]||(m[p]={ms:0,days:0,keys:[]});const x=wlDayMs(k);o.ms+=x;if(x>0)o.days++;o.keys.push(k)});
+  const cur=iso(wlPer(today0()));if(!m[cur])m[cur]={ms:0,days:0,keys:[]};
+  return m;
+}
+function wlStatus(){
+  const t=iso(today0()),o=wlFindOpen(),tot=wlDayMs(t);
+  if(o)return{open:1,txt:`دخلت ${hm(o.s.i)}${o.k!==t?" ("+fmt(dOf(o.k))+")":""} • مرّ ${fdur(Date.now()-o.s.i)} س`};
+  return{open:0,txt:tot>0?`إجمالي النهارده ${fdur(tot)} س`:"لسه ماتبصمتش"};
+}
+function wlCard(){
+  if(!hasLog())return "";
+  const P=wlPeriods(),k=iso(wlPer(today0())),a=dOf(k);
+  return `<button class="tcard" data-wl="hist"><span class="tx">⏱ ساعات الشغل<small>${fmt(a)} – ${fmt(wlPerEnd(a))}</small></span><b>${fdur(P[k].ms)} س</b></button>`;
+}
+function openWL(){W={wl:1,open:null};drawW();$("modal").classList.add("on")}
+function drawWL(){
+  const sh=$("sheet"),P=wlPeriods(),cur=iso(wlPer(today0())),ca=dOf(cur);
+  const lbl=k=>{const a=dOf(k);return fmt(a)+" – "+fmt(wlPerEnd(a))};
+  let h=`<h2>سجل الشغل 💼</h2><p>ساعات شغلك لكل شهر شغل.</p><div class="q">شهر الشغل بيبدأ يوم</div><div class="row"><input class="inp" id="wls" type="number" inputmode="numeric" min="1" max="28" value="${wlStartDay()}" style="max-width:100px"><div class="note" style="margin:0">الفترة الحالية: ${lbl(cur)}</div></div><div class="sec">الشهور</div>`;
+  h+=Object.keys(P).sort().reverse().map(k=>{
+    const p=P[k],o=W.open===k;
+    let r=`<button class="tcard ${k===cur?"on":""}" data-wl="p:${k}"><span class="tx">${lbl(k)}<small>${p.days} يوم شغل${k===cur?" • الحالي":""}</small></span><b>${fdur(p.ms)} س</b></button>`;
+    if(o)r+=p.keys.sort().reverse().map(dk=>{
+      const ss=S.wl[dk];
+      return `<div class="note" style="color:var(--ink);margin:6px 4px 0"><b>${fmt(dOf(dk))}</b> — ${fdur(wlDayMs(dk))} س</div>`+ss.map((x,j)=>`<div class="row" style="gap:8px;margin:2px 8px;font-size:14px"><span>${hm(x.i)} ← ${x.o!=null?hm(x.o):"⚠ بدون انصراف"}</span><i data-wl="x:${dk}:${j}" style="margin-inline-start:auto;font-style:normal;cursor:pointer;padding:4px 8px">🗑</i></div>`).join("");
+    }).join("")+`<div style="height:8px"></div>`;
+    return r;
+  }).join("");
+  h+=`<div class="q">إضافة يدوية (لو نسيت تبصم)</div><input class="inp" type="date" id="wld" value="${iso(today0())}"><div class="row" style="margin-top:8px"><input class="inp" type="time" id="wli" value="09:00"><span>إلى</span><input class="inp" type="time" id="wlo" value="17:00"></div><div class="err" id="err"></div><button class="go" data-wl="add" style="margin-top:12px">إضافة</button>`;
+  sh.innerHTML=h;
+}
+function wlAct(a){
+  S.wl=S.wl||{};
+  const dk=iso(today0()),now=Date.now(),err=m=>{const e=$("err");if(e)e.textContent=m};
+  if(a==="in"){
+    if(wlFindOpen()){toast("عندك بصمة حضور مفتوحة، اعمل انصراف الأول");render();return}
+    (S.wl[dk]=S.wl[dk]||[]).push({i:now,o:null});save();render();toast("تم تسجيل الحضور ✅");
+  }else if(a==="out"){
+    const o=wlFindOpen();if(!o)return;
+    o.s.o=now;const hh=S.habits.find(x=>x.log);if(hh)S.done[o.k+"|"+hh.id]=1;
+    save();render();toast("تم الانصراف • إجمالي اليوم "+fdur(wlDayMs(o.k))+" س");
+  }else if(a==="hist"){openWL()}
+  else if(a.indexOf("p:")===0){const k=a.slice(2);W.open=W.open===k?null:k;drawWL()}
+  else if(a.indexOf("x:")===0){const[,k,j]=a.split(":");if(S.wl[k]){S.wl[k].splice(+j,1);if(!S.wl[k].length)delete S.wl[k]}save();drawWL();render()}
+  else if(a==="add"){
+    const d=$("wld").value,t1=$("wli").value,t2=$("wlo").value;
+    if(!d||!t1||!t2)return err("اكمل التاريخ والوقت");
+    const i=new Date(d+"T"+t1).getTime();let o=new Date(d+"T"+t2).getTime();
+    if(isNaN(i)||isNaN(o))return err("الوقت غير صحيح");
+    if(o<=i)o+=864e5;
+    (S.wl[d]=S.wl[d]||[]).push({i,o});S.wl[d].sort((x,y)=>x.i-y.i);
+    const hh=S.habits.find(x=>x.log);if(hh)S.done[d+"|"+hh.id]=1;
+    save();drawWL();render();
+  }
+}
+setInterval(()=>{if(page==="today"&&!editing&&document.querySelector("[data-wlrun]")&&!(W&&W.wl))renderToday()},30000);
+
+/* ---------- weekly paper ---------- */
+function wpEnsure(){S.wp=S.wp||{};S.wp.goals=S.wp.goals||{};S.wp.weeks=S.wp.weeks||{};return S.wp}
+const wpKey=off=>{const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()-((d.getDay()+1)%7)+7*off);return iso(d)};
+function wpCard(){
+  const P=S.wp||{},L=(P.weeks||{})[wpKey(0)]||[],n=L.length,d=L.filter(x=>x.d).length;
+  const has=Object.values(P.goals||{}).some(v=>v)||P.dump;
+  return `<button class="tcard" data-wp="open"><span class="tx">📝 ورقة الأسبوع<small>${n?`${d} من ${n} خطوات خلصت هذا الأسبوع`:has?"ضيف خطوات أسبوعك":"اكتب أهدافك وخطة أسبوعك"}</small></span><b>›</b></button>`;
+}
+function drawWP(){
+  const P=wpEnsure(),G=P.goals,k=wpKey(W.wk),L=P.weeks[k]||[],a=dOf(k),b=addDays(a,6);
+  const f=(id,e,n,ph)=>`<div class="q">${e} ${n}</div><input class="inp" id="wpg_${id}" value="${esc(G[id]||"")}" placeholder="${ph}">`;
+  $("sheet").innerHTML=`<h2>ورقة الأسبوع 📝</h2><p>فرّغ دماغك على الورقة، وحدّد عايز تكون فين، وابدأ بخطوة.</p><div class="q" style="font-size:17px">عايز تكون فين؟</div>`
+  +f("body","💪","جسمك","مثال: أنزل لـ 75 كيلو وأجري 5 كم")+f("study","📚","دراستك","مثال: أخلص الكورس وأدخل الامتحان")+f("work","💼","شغلك","مثال: ترقية أو شغل جديد")
+  +`<div class="q">اكتب كل اللي في دماغك</div><textarea class="inp" id="wpd" rows="4" placeholder="أي حاجة شاغلة بالك…">${esc(P.dump||"")}</textarea>
+  <div class="q">خطة الأسبوع</div><div class="chips"><button class="chip ${W.wk===0?"on":""}" data-wp="w:0">هذا الأسبوع</button><button class="chip ${W.wk===1?"on":""}" data-wp="w:1">الأسبوع الجاي</button></div><div class="note" style="color:var(--soft)">${fmt(a)} – ${fmt(b)}</div>`
+  +L.map((x,j)=>`<div class="row" style="gap:8px;margin-top:8px"><button class="chip ${x.d?"on":""}" data-wp="t:${j}" style="flex:none">${x.d?"✓":"○"}</button><span style="flex:1;${x.d?"text-decoration:line-through;opacity:.6":""}">${esc(x.t)}</span><i data-wp="x:${j}" style="font-style:normal;cursor:pointer;padding:4px 8px;color:#ff6b8a">✕</i></div>`).join("")
+  +`<div class="row" style="margin-top:10px"><input class="inp" id="wpnew" placeholder="خطوة جديدة"><button class="chip on" data-wp="add" style="flex:none;font-size:18px;padding:6px 16px">+</button></div>`;
+}
+function wpAct(a){
+  const P=wpEnsure();
+  if(a==="open"){W={wp:1,wk:0};drawW();$("modal").classList.add("on");return}
+  if(!W||!W.wp)return;
+  if(a.indexOf("w:")===0){W.wk=+a.slice(2);drawWP();return}
+  const k=wpKey(W.wk),L=P.weeks[k]=P.weeks[k]||[];
+  if(a==="add"){
+    const i=$("wpnew"),v=i.value.trim();if(!v)return;
+    L.push({t:v,d:0});
+    Object.keys(P.weeks).sort().slice(0,-12).forEach(x=>delete P.weeks[x]);
+    save();drawWP();render();const n=$("wpnew");if(n)n.focus();
+  }else if(a.indexOf("t:")===0){const j=+a.slice(2);if(L[j])L[j].d=L[j].d?0:1;save();drawWP();render()}
+  else if(a.indexOf("x:")===0){L.splice(+a.slice(2),1);save();drawWP();render()}
+}
+document.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.id==="wpnew"){e.preventDefault();wpAct("add")}});
+
 /* ---------- wizard ---------- */
 const hKey=h=>PR.includes(h.name)?"p:"+h.name:h.name==="جيم 💪"?"gym":h.name==="الشغل 💼"?"work":"c:"+h.name;
 const missingPR=()=>PR.filter(p=>!S.habits.some(h=>h.name===p));
@@ -4193,6 +4297,8 @@ function openW(){W={cat:null};drawW();$("modal").classList.add("on")}
 function closeW(){$("modal").classList.remove("on");W=null}
 const chipsD=(sel)=>`<div class="chips">${ORDER.map(d=>`<button class="chip ${sel.has(d)?"on":""}" data-d="${d}">${DN[d]}</button>`).join("")}</div>`;
 function drawW(){
+  if(W.wl)return drawWL();
+  if(W.wp)return drawWP();
   const sh=$("sheet");
   if(!W.cat){
     sh.innerHTML=`<h2>إيه اللي عايز تضيفه؟</h2><p>اختار النوع وأنا هجهزلك الباقي.</p><div class="cats">${CATS.map(([k,e,n])=>{const full=(k==="prayer"&&!missingPR().length)||(k==="gym"&&hasKey("gym"))||(k==="work"&&hasKey("work"));return `<button class="cat" data-c="${k}"${full?' style="opacity:.5"':""}><b>${e}</b>${n}${full?"<small style=\"display:block;font-size:11px;margin-top:2px\">✓ موجود</small>":""}</button>`}).join("")}</div>`;
@@ -4205,9 +4311,12 @@ function drawW(){
     h+=`<h2>الجيم 💪</h2><p>كام يوم تمرين في الأسبوع؟</p><div class="step"><button data-n="-1">−</button><b>${W.n}</b><button data-n="1">+</button><span>أيام تمرين</span></div>
     <div class="q">أو حدد الأيام بنفسك</div>${chipsD(W.days)}<div class="note">${W.days.size} تمرين • ${7-W.days.size} أيام راحة</div>`;
   }else if(c==="work"){
-    h+=`<h2>الشغل 💼</h2><p>إيه أيام الشغل ومواعيده؟</p><div class="q">أيام الشغل</div>${chipsD(W.days)}
-    <div class="note">${W.days.size} أيام شغل • ${7-W.days.size} إجازة</div>
-    <div class="q">المواعيد</div><div class="row"><input class="inp" type="time" id="t1" value="${esc(W.t1)}"><span>إلى</span><input class="inp" type="time" id="t2" value="${esc(W.t2)}"></div>`;
+    const lg=W.wm==="log";
+    h+=`<h2>الشغل 💼</h2><p>إيه أيام الشغل؟ وتحب تسجّل إزاي؟</p><div class="q">نظام الشغل</div><div class="chips"><button class="chip ${lg?"":"on"}" data-wm="fixed">معاد ثابت</button><button class="chip ${lg?"on":""}" data-wm="log">بصمة حضور وانصراف</button></div>
+    <div class="q">أيام الشغل</div>${chipsD(W.days)}
+    <div class="note">${W.days.size} أيام شغل • ${7-W.days.size} إجازة</div>`
+    +(lg?`<div class="note" style="color:var(--soft)">هتبصم حضور وانصراف من الصفحة الرئيسية، ونحسبلك ساعات كل يوم وكل شهر.</div><div class="q">شهر الشغل بيبدأ يوم</div><input class="inp" id="wls0" type="number" inputmode="numeric" min="1" max="28" value="${esc(String(W.wls))}" style="max-width:120px">`
+    :`<div class="q">المواعيد</div><div class="row"><input class="inp" type="time" id="t1" value="${esc(W.t1)}"><span>إلى</span><input class="inp" type="time" id="t2" value="${esc(W.t2)}"></div>`);
   }else if(c==="course"){
     h+=`<h2>الكورس 🎓</h2><p>اسم الكورس وميعاده؟</p><div class="q">اسم الكورس</div><input class="inp" id="nm" value="${esc(W.name)}" placeholder="مثال: Network+">
     <div class="q">أيام الكورس</div>${chipsD(W.days)}<div class="q">الميعاد</div><input class="inp" type="time" id="t1" value="${esc(W.t1)}">`;
@@ -4220,7 +4329,7 @@ function drawW(){
 }
 function pick(c){
   const all=new Set([0,1,2,3,4,5,6]);
-  W={cat:c,days:all,pr:new Set(missingPR()),n:3,name:c==="read"?"قراءة":"",t1:"09:00",t2:"17:00"};
+  W={cat:c,wm:"fixed",wls:S.wlStart||1,days:all,pr:new Set(missingPR()),n:3,name:c==="read"?"قراءة":"",t1:"09:00",t2:"17:00"};
   if(c==="gym")W.days=new Set(GYM[3]);
   if(c==="work")W.days=new Set([0,1,2,3,4]);
   if(c==="course")W.days=new Set([6,1]),W.t1="18:00";
@@ -4229,14 +4338,14 @@ function pick(c){
 function addW(){
   const id=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6),st=iso(new Date()),c=W.cat,D=[...W.days],err=m=>{$("err").textContent=m};
   if($("nm"))W.name=$("nm").value.trim();
-  if($("t1"))W.t1=$("t1").value;if($("t2"))W.t2=$("t2").value;
+  if($("t1"))W.t1=$("t1").value;if($("t2"))W.t2=$("t2").value;if($("wls0"))W.wls=$("wls0").value;
   let add=[];
   if(c==="prayer"){if(!W.pr.size)return err("اختار صلاة واحدة على الأقل");missingPR().filter(p=>W.pr.has(p)).forEach(p=>add.push({name:p,sub:"",days:[0,1,2,3,4,5,6]}))}
   else{
     if(!D.length)return err("اختار يوم واحد على الأقل");
     if((c==="course"||c==="custom"||c==="read")&&!W.name)return err("اكتب الاسم الأول");
     if(c==="gym")add.push({name:"جيم 💪",sub:`${D.length} تمرين • ${7-D.length} راحة`,days:D});
-    if(c==="work")add.push({name:"الشغل 💼",sub:`${esc(W.t1)} – ${esc(W.t2)}`,days:D});
+    if(c==="work"){if(W.wm==="log"){add.push({name:"الشغل 💼",sub:"بصمة حضور وانصراف",days:D,log:true});const n=Math.round(+W.wls);S.wlStart=n>=1&&n<=28?n:1}else add.push({name:"الشغل 💼",sub:`${esc(W.t1)} – ${esc(W.t2)}`,days:D})}
     if(c==="course")add.push({name:W.name+" 🎓",sub:W.t1,days:D});
     if(c==="read"||c==="custom")add.push({name:W.name,sub:"",days:D});
   }
@@ -4248,7 +4357,7 @@ function addW(){
 
 /* ---------- events ---------- */
 document.addEventListener("click",e=>{
-  const t=e.target.closest("[data-k],[data-v],[data-del],[data-c],[data-d],[data-p],[data-n],[data-back],[data-add],[data-th],[data-pg],[data-bk],[data-lg],[data-mo],[data-ic],[data-nt],[data-dn],[data-pn],[data-wn],[data-ob],[data-gl]");
+  const t=e.target.closest("[data-k],[data-v],[data-del],[data-c],[data-d],[data-p],[data-n],[data-back],[data-add],[data-th],[data-pg],[data-bk],[data-lg],[data-mo],[data-ic],[data-nt],[data-dn],[data-pn],[data-wn],[data-ob],[data-gl],[data-wl],[data-wm],[data-wp]");
   if(!t)return;
   const D=t.dataset;
   if(D.k){const was=S.done[D.k];was?delete S.done[D.k]:S.done[D.k]=1;S.late=S.late||{};const kp=D.k.split("|"),hh=S.habits.find(x=>x.id===kp[1]);let lateNow=0;if(was)delete S.late[D.k];else if(hh&&prayLate(hh,kp[0])){S.late[D.k]=1;lateNow=1}trimLate();save();render();schedSoon();if(lateNow)toast("بارك الله فيك! حاول في المرة القادمة أن تصلّيها في وقتها 🤍");else if(!was&&page==="today"){const[a,b]=dayStat(today0());if(b&&a===b){burst();toast(MILE[streak()]||rnd(pool("done")))}else if(a===1)toast(rnd(pool("mid")))}}
@@ -4259,6 +4368,9 @@ document.addEventListener("click",e=>{
   else if(D.p){W.pr.has(D.p)?W.pr.delete(D.p):W.pr.add(D.p);drawW()}
   else if(D.n){W.n=Math.min(6,Math.max(1,W.n+(+D.n)));W.days=new Set(GYM[W.n]);drawW()}
   else if(D.back){W={cat:null};drawW()}
+  else if(D.wm){if($("t1"))W.t1=$("t1").value;if($("t2"))W.t2=$("t2").value;if($("wls0"))W.wls=$("wls0").value;W.wm=D.wm;drawW()}
+  else if(D.wl)wlAct(D.wl);
+  else if(D.wp)wpAct(D.wp);
   else if(D.add)addW();
   else if(D.th)setTheme(D.th);
   else if(D.pg){page=D.pg;render()}
@@ -4275,7 +4387,9 @@ document.addEventListener("click",e=>{
 });
 $("modal").addEventListener("click",e=>{if(e.target.id==="modal"&&!(W&&W.ob))closeW()});
 $("fab").onclick=openW;$("thm").onclick=openT;
-document.addEventListener("input",e=>{if(e.target.id==="nm2"){S.name=e.target.value.trim();save()}
+document.addEventListener("change",e=>{if(e.target.id==="wls"){const n=Math.round(+e.target.value);S.wlStart=n>=1&&n<=28?n:1;save();if(W&&W.wl)drawWL();render()}});
+document.addEventListener("input",e=>{const id=e.target.id||"";if(id.indexOf("wpg_")===0){wpEnsure().goals[id.slice(4)]=e.target.value;save()}else if(id==="wpd"){wpEnsure().dump=e.target.value;save()}
+  if(e.target.id==="nm2"){S.name=e.target.value.trim();save()}
   if(e.target.id==="ntt"){const[h,m]=e.target.value.split(":").map(Number);if(h>=0&&h<24&&m>=0&&m<60){S.notif=Object.assign({on:false,h:20,m:0},S.notif||{},{h,m});save();schedSoon()}}});
 $("edit").onclick=e=>{e.stopPropagation();if(editing){editing=false;pend=null;render();return}const m=$("emenu");m.style.display=m.style.display==="none"?"block":"none"};
 $("emedit").onclick=()=>{$("emenu").style.display="none";editing=true;pend=null;render()};
