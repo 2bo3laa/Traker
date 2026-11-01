@@ -119,7 +119,7 @@ tr.sum td{border-bottom:0;font-size:10px;color:var(--soft)}
 .back{background:none;border:0;color:var(--soft);font-size:14px;margin-bottom:6px;padding:0}
 .err{color:#ff6b8a;font-size:13px;min-height:18px;margin-top:8px}
 .bar{position:fixed;left:0;right:0;bottom:0;display:flex;background:color-mix(in srgb,var(--panel) 92%,transparent);backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px));z-index:6}
-.bar button{flex:1;border:0;background:none;color:var(--soft);font-size:12px;font-weight:700;padding:4px 0}
+.bar button{flex:1;min-width:0;border:0;background:none;color:var(--soft);font-size:11px;font-weight:700;padding:4px 0;white-space:nowrap}
 .bar button b{display:block;font-size:22px;font-weight:400}
 .bar button.on{color:var(--acc)}
 .ring{position:relative;width:190px;height:190px;margin:10px auto 6px}
@@ -183,7 +183,7 @@ tr.sum td{border-bottom:0;font-size:10px;color:var(--soft)}
 <div class="stat" id="stat"></div>
 <div id="main"></div>
 <button class="fab" id="fab" aria-label="إضافة">+</button>
-<nav class="bar" id="bar"><button data-pg="today"><b>🏠</b>اليوم</button><button data-pg="table"><b>🗓️</b>الجدول</button><button data-pg="stats"><b>📊</b>إحصائياتي</button><button data-pg="deen"><b>🕌</b>ذكر</button><button data-pg="gym"><b>💪</b>تمرين</button><button data-pg="pray"><b>🧭</b>مواقيت</button></nav>
+<nav class="bar" id="bar"><button data-pg="today"><b>🏠</b>اليوم</button><button data-pg="table"><b>🗓️</b>الجدول</button><button data-pg="paper"><b>📝</b>ورقتي</button><button data-pg="stats"><b>📊</b>إحصائياتي</button><button data-pg="deen"><b>🕌</b>ذكر</button><button data-pg="gym"><b>💪</b>تمرين</button><button data-pg="pray"><b>🧭</b>مواقيت</button></nav>
 <div class="modal" id="modal"><div class="sheet" id="sheet"></div></div>
 
 <script>
@@ -4085,7 +4085,7 @@ function renderToday(){
   let H=`<div class="ring">${ringSVG(p)}<div class="c"><strong>${p}%</strong><span>${a} من ${b} النهارده</span></div></div><div class="badges"><div>🔥 ${streak()} يوم متتالي</div></div>${msgCard(p,t)}`;
   const list=S.habits.filter(x=>active(x,t));
   H+=list.length?list.map(x=>{const k=iso(t)+"|"+x.id,on=S.done[k];if(x.log){const st=wlStatus();return `<div class="tcard ${on?"on":""}"${st.open?' data-wlrun="1"':""}><span class="ck">${on?"✓":""}</span><span class="tx">${esc(x.name)}<small>${st.txt}</small></span>${editing?del(x):`<button class="chip" data-wl="${st.open?"out":"in"}" style="background:var(--panel);color:var(--ink);font-weight:700">${st.open?"⏹ انصراف":"▶ حضور"}</button>`}</div>`}return `<button class="tcard ${on?"on":""}${on&&LT(k)?" late":""}" ${editing?"":`data-k="${k}"`}><span class="ck">${on?"✓":""}</span><span class="tx">${esc(x.name)}${x.sub?`<small>${esc(x.sub)}</small>`:""}${on&&LT(k)?`<small class="lt">صُلّيت بعد وقتها</small>`:""}</span>${del(x)}</button>`}).join(""):`<div class="empty">مفيش حاجة مجدولة النهارده، استمتع بيومك 🌿</div>`;
-  H+=wlCard()+wpCard()+`<div class="sec">آخر 7 أيام</div><div class="strip">`+Array.from({length:7},(_,i)=>{const d=addDays(t,i-6),[x,y]=dayStat(d);return `<div><i style="--p:${y?pct(x,y):0}"></i>${DS[d.getDay()]}</div>`}).join("")+`</div>`;
+  H+=wlCard()+`<div class="sec">آخر 7 أيام</div><div class="strip">`+Array.from({length:7},(_,i)=>{const d=addDays(t,i-6),[x,y]=dayStat(d);return `<div><i style="--p:${y?pct(x,y):0}"></i>${DS[d.getDay()]}</div>`}).join("")+`</div>`;
   $("main").innerHTML=H;
 }
 function renderStats(){
@@ -4170,7 +4170,7 @@ function yearT(){
 }
 
 /* ---------- work log ---------- */
-const hm=ms=>{const d=new Date(ms);return String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0")};
+const wlHM=ms=>{const d=new Date(ms);return String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0")};
 const fdur=ms=>{const m=Math.round(Math.max(0,ms)/60000);return Math.floor(m/60)+":"+String(m%60).padStart(2,"0")};
 const dOf=k=>new Date(k+"T00:00:00");
 const hasLog=()=>S.habits.some(h=>h.log);
@@ -4188,7 +4188,7 @@ function wlPeriods(){
 }
 function wlStatus(){
   const t=iso(today0()),o=wlFindOpen(),tot=wlDayMs(t);
-  if(o)return{open:1,txt:`دخلت ${hm(o.s.i)}${o.k!==t?" ("+fmt(dOf(o.k))+")":""} • مرّ ${fdur(Date.now()-o.s.i)} س`};
+  if(o)return{open:1,txt:`دخلت ${wlHM(o.s.i)}${o.k!==t?" ("+fmt(dOf(o.k))+")":""} • مرّ ${fdur(Date.now()-o.s.i)} س`};
   return{open:0,txt:tot>0?`إجمالي النهارده ${fdur(tot)} س`:"لسه ماتبصمتش"};
 }
 function wlCard(){
@@ -4206,7 +4206,7 @@ function drawWL(){
     let r=`<button class="tcard ${k===cur?"on":""}" data-wl="p:${k}"><span class="tx">${lbl(k)}<small>${p.days} يوم شغل${k===cur?" • الحالي":""}</small></span><b>${fdur(p.ms)} س</b></button>`;
     if(o)r+=p.keys.sort().reverse().map(dk=>{
       const ss=S.wl[dk];
-      return `<div class="note" style="color:var(--ink);margin:6px 4px 0"><b>${fmt(dOf(dk))}</b> — ${fdur(wlDayMs(dk))} س</div>`+ss.map((x,j)=>`<div class="row" style="gap:8px;margin:2px 8px;font-size:14px"><span>${hm(x.i)} ← ${x.o!=null?hm(x.o):"⚠ بدون انصراف"}</span><i data-wl="x:${dk}:${j}" style="margin-inline-start:auto;font-style:normal;cursor:pointer;padding:4px 8px">🗑</i></div>`).join("");
+      return `<div class="note" style="color:var(--ink);margin:6px 4px 0"><b>${fmt(dOf(dk))}</b> — ${fdur(wlDayMs(dk))} س</div>`+ss.map((x,j)=>`<div class="row" style="gap:8px;margin:2px 8px;font-size:14px"><span>${wlHM(x.i)} ← ${x.o!=null?wlHM(x.o):"⚠ بدون انصراف"}</span><i data-wl="x:${dk}:${j}" style="margin-inline-start:auto;font-style:normal;cursor:pointer;padding:4px 8px">🗑</i></div>`).join("");
     }).join("")+`<div style="height:8px"></div>`;
     return r;
   }).join("");
@@ -4242,34 +4242,29 @@ setInterval(()=>{if(page==="today"&&!editing&&document.querySelector("[data-wlru
 /* ---------- weekly paper ---------- */
 function wpEnsure(){S.wp=S.wp||{};S.wp.goals=S.wp.goals||{};S.wp.weeks=S.wp.weeks||{};return S.wp}
 const wpKey=off=>{const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()-((d.getDay()+1)%7)+7*off);return iso(d)};
-function wpCard(){
-  const P=S.wp||{},L=(P.weeks||{})[wpKey(0)]||[],n=L.length,d=L.filter(x=>x.d).length;
-  const has=Object.values(P.goals||{}).some(v=>v)||P.dump;
-  return `<button class="tcard" data-wp="open"><span class="tx">📝 ورقة الأسبوع<small>${n?`${d} من ${n} خطوات خلصت هذا الأسبوع`:has?"ضيف خطوات أسبوعك":"اكتب أهدافك وخطة أسبوعك"}</small></span><b>›</b></button>`;
-}
-function drawWP(){
-  const P=wpEnsure(),G=P.goals,k=wpKey(W.wk),L=P.weeks[k]||[],a=dOf(k),b=addDays(a,6);
+let WPV={wk:0};
+function renderPaper(){
+  const P=wpEnsure(),G=P.goals,k=wpKey(WPV.wk),L=P.weeks[k]||[],a=dOf(k),b=addDays(a,6),d=L.filter(x=>x.d).length;
+  $("quote").textContent="خطوة واضحة أحسن من نية كبيرة";
   const f=(id,e,n,ph)=>`<div class="q">${e} ${n}</div><input class="inp" id="wpg_${id}" value="${esc(G[id]||"")}" placeholder="${ph}">`;
-  $("sheet").innerHTML=`<h2>ورقة الأسبوع 📝</h2><p>فرّغ دماغك على الورقة، وحدّد عايز تكون فين، وابدأ بخطوة.</p><div class="q" style="font-size:17px">عايز تكون فين؟</div>`
+  $("main").innerHTML=`<div class="paper"><h2 style="margin:4px 2px 4px">ورقة الأسبوع 📝</h2><div class="note" style="color:var(--soft);margin:0 2px 6px">فرّغ دماغك على الورقة، وحدّد عايز تكون فين، وابدأ بخطوة.</div><div class="q" style="font-size:17px">عايز تكون فين؟</div>`
   +f("body","💪","جسمك","مثال: أنزل لـ 75 كيلو وأجري 5 كم")+f("study","📚","دراستك","مثال: أخلص الكورس وأدخل الامتحان")+f("work","💼","شغلك","مثال: ترقية أو شغل جديد")
   +`<div class="q">اكتب كل اللي في دماغك</div><textarea class="inp" id="wpd" rows="4" placeholder="أي حاجة شاغلة بالك…">${esc(P.dump||"")}</textarea>
-  <div class="q">خطة الأسبوع</div><div class="chips"><button class="chip ${W.wk===0?"on":""}" data-wp="w:0">هذا الأسبوع</button><button class="chip ${W.wk===1?"on":""}" data-wp="w:1">الأسبوع الجاي</button></div><div class="note" style="color:var(--soft)">${fmt(a)} – ${fmt(b)}</div>`
+  <div class="q">خطة الأسبوع</div><div class="chips"><button class="chip ${WPV.wk===0?"on":""}" data-wp="w:0">هذا الأسبوع</button><button class="chip ${WPV.wk===1?"on":""}" data-wp="w:1">الأسبوع الجاي</button></div><div class="note" style="color:var(--soft)">${fmt(a)} – ${fmt(b)}${L.length?` • ${d} من ${L.length} خلصت`:""}</div>`
   +L.map((x,j)=>`<div class="row" style="gap:8px;margin-top:8px"><button class="chip ${x.d?"on":""}" data-wp="t:${j}" style="flex:none">${x.d?"✓":"○"}</button><span style="flex:1;${x.d?"text-decoration:line-through;opacity:.6":""}">${esc(x.t)}</span><i data-wp="x:${j}" style="font-style:normal;cursor:pointer;padding:4px 8px;color:#ff6b8a">✕</i></div>`).join("")
-  +`<div class="row" style="margin-top:10px"><input class="inp" id="wpnew" placeholder="خطوة جديدة"><button class="chip on" data-wp="add" style="flex:none;font-size:18px;padding:6px 16px">+</button></div>`;
+  +`<div class="row" style="margin-top:10px"><input class="inp" id="wpnew" placeholder="خطوة جديدة"><button class="chip on" data-wp="add" style="flex:none;font-size:18px;padding:6px 16px">+</button></div><div style="height:90px"></div></div>`;
 }
 function wpAct(a){
   const P=wpEnsure();
-  if(a==="open"){W={wp:1,wk:0};drawW();$("modal").classList.add("on");return}
-  if(!W||!W.wp)return;
-  if(a.indexOf("w:")===0){W.wk=+a.slice(2);drawWP();return}
-  const k=wpKey(W.wk),L=P.weeks[k]=P.weeks[k]||[];
+  if(a.indexOf("w:")===0){WPV.wk=+a.slice(2);renderPaper();return}
+  const k=wpKey(WPV.wk),L=P.weeks[k]=P.weeks[k]||[];
   if(a==="add"){
     const i=$("wpnew"),v=i.value.trim();if(!v)return;
     L.push({t:v,d:0});
     Object.keys(P.weeks).sort().slice(0,-12).forEach(x=>delete P.weeks[x]);
-    save();drawWP();render();const n=$("wpnew");if(n)n.focus();
-  }else if(a.indexOf("t:")===0){const j=+a.slice(2);if(L[j])L[j].d=L[j].d?0:1;save();drawWP();render()}
-  else if(a.indexOf("x:")===0){L.splice(+a.slice(2),1);save();drawWP();render()}
+    save();renderPaper();const n=$("wpnew");if(n)n.focus();
+  }else if(a.indexOf("t:")===0){const j=+a.slice(2);if(L[j])L[j].d=L[j].d?0:1;save();renderPaper()}
+  else if(a.indexOf("x:")===0){L.splice(+a.slice(2),1);save();renderPaper()}
 }
 document.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.id==="wpnew"){e.preventDefault();wpAct("add")}});
 
@@ -4298,7 +4293,6 @@ function closeW(){$("modal").classList.remove("on");W=null}
 const chipsD=(sel)=>`<div class="chips">${ORDER.map(d=>`<button class="chip ${sel.has(d)?"on":""}" data-d="${d}">${DN[d]}</button>`).join("")}</div>`;
 function drawW(){
   if(W.wl)return drawWL();
-  if(W.wp)return drawWP();
   const sh=$("sheet");
   if(!W.cat){
     sh.innerHTML=`<h2>إيه اللي عايز تضيفه؟</h2><p>اختار النوع وأنا هجهزلك الباقي.</p><div class="cats">${CATS.map(([k,e,n])=>{const full=(k==="prayer"&&!missingPR().length)||(k==="gym"&&hasKey("gym"))||(k==="work"&&hasKey("work"));return `<button class="cat" data-c="${k}"${full?' style="opacity:.5"':""}><b>${e}</b>${n}${full?"<small style=\"display:block;font-size:11px;margin-top:2px\">✓ موجود</small>":""}</button>`}).join("")}</div>`;
@@ -5002,10 +4996,10 @@ Object.assign(AZ,{
 /* glue */
 const _render=render;render=function(){
   sync();
-  if(page==="gym"||page==="pray"){
+  if(page==="gym"||page==="pray"||page==="paper"){
     document.querySelectorAll("#bar button").forEach(b=>b.classList.toggle("on",b.dataset.pg===page));
     $("tabs").style.display="none";document.querySelector(".nav").style.display="none";$("stat").style.display="none";$("edit").style.display="none";$("fab").style.display="none";
-    return page==="gym"?renderGym():renderPray();
+    return page==="gym"?renderGym():page==="paper"?renderPaper():renderPray();
   }
   _render();
 };
