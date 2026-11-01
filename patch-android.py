@@ -186,6 +186,8 @@ public class MainActivity extends BridgeActivity {{
     man = patch_widgets.apply(app, pkg, man)
     import patch_adhan
     man = patch_adhan.apply(app, pkg, man)
+    import patch_widget_previews
+    man = patch_widget_previews.apply(app, pkg, man)
 
     fetch_pages(app)
 
