@@ -88,15 +88,42 @@ async def run(browser, locale, width):
     await pg.click("#emedit")
     check("edit mode via the three-dots menu", await ev("editing") is True)
     await pg.click("#edit")
-    for tab in ("table", "stats", "deen", "gym", "pray", "today"):
+    for tab in ("table", "paper", "gym", "more", "today"):
         await pg.click(f'#bar [data-pg="{tab}"]')
+    for sub in ("stats", "deen", "pray"):
+        await pg.click('#bar [data-pg="more"]'); await pg.click(f'#main [data-pg="{sub}"]')
+        check(f"more > {sub} opens and keeps 'More' highlighted", await ev("document.querySelector('#bar button.on').dataset.pg") == "more")
+    await pg.click('#bar [data-pg="today"]')
+
+    # --- nutrition planner
+    await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="food"]')
+    await pg.click('[data-nu="goal:lose"]'); await pg.click('[data-nu="bud:low"]'); await pg.click('[data-nu="fp:liver"]'); await pg.click('[data-nu="fp:liver"]')
+    await pg.fill('[data-nu-in="age"]', "28"); await pg.fill('[data-nu-in="h"]', "175"); await pg.fill('[data-nu-in="w"]', "85"); await pg.fill('[data-nu-in="tw"]', "75")
+    await pg.click('[data-nu="make"]')
+    kcal = await ev("nuCalc(S.nu).t")
+    check("calorie target is sensible for a 85kg man losing weight", 1800 <= kcal <= 2500, str(kcal))
+    check("plan shows 3 meals each with alternatives", await ev("document.querySelectorAll('#main [data-nu^=\"eat:\"]').length") == 3
+          and await ev("document.querySelectorAll('#main [data-nu^=\"alt:\"]').length") >= 6)
+    check("liver disliked -> never offered", await ev("Object.values(nuPlan(S.nu,nuCalc(S.nu))).every(x=>x.opts.every(o=>!/كبدة/.test(o.name)))"))
+    check("low budget keeps meals cheap", await ev("Object.values(nuPlan(S.nu,nuCalc(S.nu))).every(x=>x.opts[0].cost<=2)"))
+    check("each meal lands near its calorie share", await ev("(()=>{const c=nuCalc(S.nu),p=nuPlan(S.nu,c);const t=Object.values(p).reduce((a,x)=>a+x.opts[0].kcal,0);return Math.abs(t-c.t)/c.t<0.12})()"))
+    await pg.click('[data-nu="shuffle"]'); await pg.click('[data-nu="habit"]')
+    for sl in ("b", "l", "d"):
+        await pg.click(f'[data-nu="eat:{sl}"]')
+    check("eating every meal ticks the food habit", await ev("S.habits.filter(h=>h.name==='الأكل الصحي 🥗').every(h=>S.done[iso(new Date())+'|'+h.id])") and await ev("S.habits.some(h=>h.name==='الأكل الصحي 🥗')"))
+    await pg.click('[data-nu="edit"]'); await pg.click('[data-nu="health"]'); await pg.click('[data-nu="make"]')
+    check("health condition blocks the plan", "دكتور" in await ev("document.getElementById('main').innerText"))
+    await ev("S.nu.health=0;S.nu.age=15;save();renderFood()")
+    check("minors are blocked", "18" in await ev("document.getElementById('main').innerText"))
+    await ev("S.nu.age=28;save()")
+    await pg.click('#bar [data-pg="today"]')
     await pg.click("#thm")
     check("settings sheet opens", await ev("document.getElementById('modal').classList.contains('on')"))
     await ev("closeW()")
 
     # --- data survives a reload
     await pg.reload(); await pg.wait_for_timeout(500)
-    check("data persists after reload", await ev("S.habits.length") == 7 and await ev("S.name") == "Ahmed")
+    check("data persists after reload", await ev("S.habits.length") == 8 and await ev("S.name") == "Ahmed")
     check("no onboarding after reload", not await ev("document.getElementById('modal').classList.contains('on')"))
 
     check("no page errors", not errs, "; ".join(errs[:3]))

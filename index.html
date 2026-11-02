@@ -5081,14 +5081,16 @@ Object.assign(AZ,{
     {x:"اللَّهُمَّ رَحْمَتَكَ أَرْجُو فَلَا تَكِلْنِي إِلَى نَفْسِي طَرْفَةَ عَيْنٍ، وَأَصْلِحْ لِي شَأْنِي كُلَّهُ، لَا إِلَهَ إِلَّا أَنْتَ",n:1}]}
 });
 /* glue */
+const MORE=["more","stats","food","deen","pray"];
 const _render=render;render=function(){
   sync();
-  if(page==="gym"||page==="pray"||page==="paper"){
-    document.querySelectorAll("#bar button").forEach(b=>b.classList.toggle("on",b.dataset.pg===page));
+  const hl=()=>document.querySelectorAll("#bar button").forEach(b=>b.classList.toggle("on",b.dataset.pg===(MORE.includes(page)?"more":page)));
+  if(page==="gym"||page==="pray"||page==="paper"||page==="more"||page==="food"){
+    hl();
     $("tabs").style.display="none";document.querySelector(".nav").style.display="none";$("stat").style.display="none";$("edit").style.display="none";$("fab").style.display="none";
-    return page==="gym"?renderGym():page==="paper"?renderPaper():renderPray();
+    return page==="gym"?renderGym():page==="paper"?renderPaper():page==="more"?renderMore():page==="food"?renderFood():renderPray();
   }
-  _render();
+  _render();hl();
 };
 document.addEventListener("click",e=>{
   const t=e.target.closest("[data-x]");if(!t)return;const[k,a]=t.dataset.x.split(":");
@@ -5125,6 +5127,162 @@ document.addEventListener("click",e=>{
 });
 render();
 if(!S.name||!S.name.trim())openOB();
+</script>
+<script>
+/* ===== more menu + nutrition (meal plan) ===== */
+const NU_F={fool:["فول مدمس",110,7.6,19,.4],egg:["بيض",155,13,1.1,11],bread:["عيش بلدي",270,9,55,1.5],rice:["رز مطبوخ",130,2.7,28,.3],pasta:["مكرونة مسلوقة",158,5.8,31,.9],potato:["بطاطس مسلوقة",87,1.9,20,.1],lentil:["عدس مطبوخ",116,9,20,.4],chick:["حمص مطبوخ",164,8.9,27,2.6],chbr:["فراخ صدور مشوية",165,31,0,3.6],chth:["فراخ أفخاذ مشوية (من غير جلد)",190,26,0,9],beef:["لحمة قليلة الدهن",230,27,0,13],liver:["كبدة",165,26,4,4.5],fish:["سمك بلطي مشوي",128,26,0,2.7],tuna:["تونة (ماء)",116,26,0,1],qar:["جبنة قريش",98,11,3.4,4.3],wch:["جبنة بيضاء",250,14,3,20],yog:["زبادي",61,3.5,4.7,3.3],milk:["لبن",61,3.2,4.8,3.3],oats:["شوفان",389,17,66,7],veg:["خضار مطبوخ",35,1.5,7,.3],salad:["سلطة",20,1,4,.2],oil:["زيت",884,0,0,100],banana:["موز",89,1.1,23,.3],apple:["تفاح",52,.3,14,.2],orange:["برتقال",47,.9,12,.1],dates:["تمر",277,1.8,75,.2],pnut:["فول سوداني",567,26,16,49],tahini:["طحينة",595,17,21,54]};
+const NU_G={chbr:"chicken",chth:"chicken",beef:"beef",fish:"fish",liver:"liver",tuna:"tuna",egg:"egg",fool:"fool",lentil:"legume",chick:"legume",qar:"dairy",wch:"dairy",yog:"dairy",milk:"dairy",oats:"oats"};
+const NU_GN={chicken:"فراخ",beef:"لحمة",fish:"سمك",liver:"كبدة",tuna:"تونة",egg:"بيض",fool:"فول",legume:"عدس وحمص",dairy:"ألبان",oats:"شوفان"};
+/* meals: [name, cost 1-3, [food, grams, fixed?]] */
+const NU_M={
+ b:[["فول بالزيت وبيضة",1,[["fool",200],["bread",80],["egg",50],["salad",100,1],["oil",5,1]]],
+    ["بيض وقريش وعيش",2,[["egg",100],["qar",100],["bread",60],["salad",100,1]]],
+    ["شوفان بالحليب والموز",2,[["oats",50],["milk",200],["banana",100],["pnut",15]]],
+    ["زبادي بالشوفان والتمر",2,[["yog",200],["oats",30],["dates",30],["pnut",15]]],
+    ["فول بالطحينة",1,[["fool",200],["tahini",15,1],["bread",80],["salad",100,1]]],
+    ["جبنة بيضاء وبيض",1,[["wch",50],["egg",100],["bread",70],["salad",100,1]]]],
+ l:[["فراخ مشوية ورز وخضار",3,[["chbr",150],["rice",180],["veg",150,1],["salad",100,1],["oil",8,1]]],
+    ["فراخ أفخاذ وبطاطس",2,[["chth",150],["potato",200],["salad",100,1],["veg",100,1]]],
+    ["عدس ورز وسلطة",1,[["lentil",200],["rice",150],["salad",100,1],["oil",5,1]]],
+    ["سمك مشوي ورز",3,[["fish",180],["rice",180],["salad",100,1],["oil",8,1]]],
+    ["لحمة ومكرونة وخضار",3,[["beef",120],["pasta",180],["veg",150,1],["salad",100,1]]],
+    ["تونة ومكرونة",2,[["tuna",120],["pasta",180],["veg",150,1],["oil",8,1]]],
+    ["حمص ورز وسلطة",1,[["chick",180],["rice",150],["salad",100,1]]],
+    ["كبدة وعيش وسلطة",2,[["liver",150],["bread",80],["salad",150,1],["oil",5,1]]]],
+ d:[["زبادي وقريش وخيار",2,[["yog",200],["qar",100],["bread",50],["salad",150,1]]],
+    ["سلطة تونة وعيش",2,[["tuna",100],["bread",70],["salad",200,1],["oil",8,1]]],
+    ["أومليت بالخضار وعيش",1,[["egg",150],["veg",100,1],["bread",60],["oil",5,1]]],
+    ["فراخ مشوية وبطاطس وسلطة",3,[["chbr",120],["potato",150],["salad",150,1]]],
+    ["شوربة عدس وعيش",1,[["lentil",200],["bread",60],["salad",100,1]]],
+    ["فول وبيضة",1,[["fool",150],["egg",50],["bread",60],["salad",100,1]]]],
+ s:[["موزة وفول سوداني",1,[["banana",120],["pnut",15]]],
+    ["زبادي وتمر",1,[["yog",150],["dates",20]]],
+    ["تفاحة وقريش",2,[["apple",150],["qar",80]]],
+    ["برتقالة وبيضة",1,[["orange",150],["egg",50]]],
+    ["شوفان بالحليب",1,[["oats",30],["milk",150]]]]
+};
+const NU_SLOT={b:"🌅 الفطار",l:"🍽️ الغداء",d:"🌙 العشاء",s:"🍎 سناك"};
+const NU_ACT=[["1.2","قاعد"],["1.375","نشاط خفيف"],["1.55","نشاط متوسط"],["1.725","نشيط جدًا"]];
+const nuS=()=>{const n=S.nu=(S.nu&&typeof S.nu==="object")?S.nu:{};n.sex=n.sex||"m";n.act=n.act||"1.375";n.goal=n.goal||"keep";n.bud=n.bud||"mid";n.meals=n.meals||3;n.fp=n.fp||{};n.sel=n.sel||{};n.eaten=n.eaten||{};n.seed=n.seed||0;return n};
+function nuCalc(n){
+  const w=+n.w,h=+n.h,a=+n.age;
+  if(!(w>25&&w<300&&h>120&&h<230&&a>=5&&a<=100))return null;
+  const bmr=10*w+6.25*h-5*a+(n.sex==="m"?5:-161),tdee=bmr*(+n.act);
+  const bmi=w/((h/100)*(h/100));
+  let t=n.goal==="lose"?tdee-500:n.goal==="gain"?tdee+300:tdee;
+  const floor=n.sex==="m"?1500:1200;if(n.goal==="lose")t=Math.max(t,floor);
+  t=Math.round(t/10)*10;
+  const p=Math.round(Math.min(w*(n.goal==="lose"?2:1.8),t*.35/4)),f=Math.round(t*.25/9),c=Math.round((t-p*4-f*9)/4);
+  const rate=(t-tdee)*7/7700;
+  const tw=+n.tw;let weeks=null;if(tw>0&&rate!==0&&((tw<w&&rate<0)||(tw>w&&rate>0)))weeks=Math.ceil(Math.abs(tw-w)/Math.abs(rate));
+  return{bmr:Math.round(bmr),tdee:Math.round(tdee),t,p,f,c,bmi,rate,weeks};
+}
+function nuPool(slot,n){
+  const bud=n.bud==="low"?1:n.bud==="mid"?2:3;
+  const ok=m=>!m[2].some(([f])=>{const g=NU_G[f];return g&&n.fp[g]===-1});
+  let L=NU_M[slot].filter(ok);
+  let sub=L.filter(m=>m[1]<=bud);if(sub.length<3)sub=L.filter(m=>m[1]<=bud+1);if(sub.length<2)sub=L;
+  const like=m=>m[2].reduce((a,[f])=>a+((NU_G[f]&&n.fp[NU_G[f]]===1)?1:0),0);
+  sub=sub.map((m,i)=>[m,i]).sort((x,y)=>like(y[0])-like(x[0])||x[1]-y[1]).map(x=>x[0]);
+  return sub;
+}
+function nuMeal(m,target){
+  const mac=items=>items.reduce((a,[f,g])=>{const d=NU_F[f],k=g/100;return[a[0]+d[1]*k,a[1]+d[2]*k,a[2]+d[3]*k,a[3]+d[4]*k]},[0,0,0,0]);
+  const base=m[2].filter(i=>!i[2]),fix=m[2].filter(i=>i[2]);
+  const kb=mac(base)[0],kf=mac(fix)[0];
+  let k=kb>0?(target-kf)/kb:1;k=Math.max(.5,Math.min(2.5,k));
+  const items=m[2].map(([f,g,x])=>{let v=x?g:g*k;v=f==="egg"?Math.max(50,Math.round(v/50)*50):Math.max(5,Math.round(v/5)*5);return[f,v,x]});
+  const t=mac(items);
+  return{name:m[0],cost:m[1],items,kcal:Math.round(t[0]),p:Math.round(t[1])};
+}
+function nuPlan(n,c){
+  const sh=n.meals===4?{b:.25,l:.35,d:.25,s:.15}:{b:.30,l:.40,d:.30};
+  const out={};
+  Object.keys(sh).forEach(sl=>{
+    const pool=nuPool(sl,n),len=pool.length||1,base=((n.sel[sl]||0)+(n.seed||0))%len;
+    out[sl]={opts:[0,1,2].filter(i=>i<len).map(i=>nuMeal(pool[(base+i)%len],c.t*sh[sl]))};
+  });
+  return out;
+}
+const nuFmt=([f,g])=>{const d=NU_F[f];return f==="egg"?`${d[0]} ${g/50===1?"بيضة":g/50===2?"بيضتين":Math.round(g/50)+" بيضات"}`:`${d[0]} ${g}ج`};
+const nuDay=()=>iso(new Date());
+function nuBlock(msg){return `<div class="deen"><h2 style="margin:6px 2px">🥗 الأكل</h2><div class="note" style="color:var(--ink);line-height:1.9">${msg}</div><button class="go" data-nu="edit">عدّل بياناتك</button></div>`}
+function renderMore(){
+  $("quote").textContent="كل اللي محتاجه في مكان واحد";
+  const c=(pg,e,t,s)=>`<button class="cat" data-pg="${pg}" style="padding:18px 8px"><b style="font-size:30px;display:block;margin-bottom:6px">${e}</b>${t}<small style="display:block;font-size:11px;font-weight:600;opacity:.7;margin-top:3px">${s}</small></button>`;
+  $("main").innerHTML=`<div class="deen" style="padding-bottom:90px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">${c("stats","📊","إحصائياتي","تقدّمك وأرقامك")}${c("food","🥗","الأكل","نظام غذائي بالبدائل")}${c("deen","🕌","ذكر وقرآن","أذكار ومصحف")}${c("pray","🧭","مواقيت وقبلة","الصلاة والتقويم")}<button class="cat" onclick="$('thm').click()" style="padding:18px 8px"><b style="font-size:30px;display:block;margin-bottom:6px">⚙️</b>الإعدادات<small style="display:block;font-size:11px;font-weight:600;opacity:.7;margin-top:3px">الشكل والنسخ الاحتياطي</small></button></div></div>`;
+}
+function renderFood(){
+  const n=nuS();$("quote").textContent="كُل صح من غير ما تتقيّد بحاجة";
+  if(!n.ok||n.edit)return renderFoodSetup(n);
+  if(n.health)return $("main").innerHTML=nuBlock("لأنك ذكرت حالة صحية خاصة (مرض مزمن أو حمل/رضاعة)، مش هقدر أحدد لك نظام غذائي مناسب. الأحسن تاخد خطة من دكتور أو أخصائي تغذية.");
+  if(+n.age<18)return $("main").innerHTML=nuBlock("الأنظمة الغذائية للأقل من 18 سنة لازم تكون بإشراف دكتور أو أخصائي تغذية، عشان الجسم لسه بينمو.");
+  const c=nuCalc(n);if(!c)return renderFoodSetup(n);
+  if(n.goal==="lose"&&c.bmi<18.5)return $("main").innerHTML=nuBlock("وزنك أصلًا قليل بالنسبة لطولك، فمش مناسب تنزّل أكتر. اختار تثبيت أو زيادة، أو استشر أخصائي تغذية.");
+  const plan=nuPlan(n,c),slots=Object.keys(plan),dk=nuDay(),E=n.eaten[dk]||{};
+  let eaten=0,prot=0;
+  const cards=slots.map(sl=>{
+    const o=plan[sl].opts,m=o[0],done=!!E[sl];if(done){eaten+=m.kcal;prot+=m.p}
+    const alts=o.slice(1).map((a,i)=>`<button class="chip" data-nu="alt:${sl}:${i+1}" style="font-size:12px">${esc(a.name)} • ${a.kcal}</button>`).join("");
+    return `<div class="tcard ${done?"on":""}" style="display:block;margin-bottom:12px"><div style="display:flex;align-items:center;gap:8px"><b style="flex:1">${NU_SLOT[sl]}</b><small>${"💰".repeat(m.cost)}</small><button class="chip ${done?"on":""}" data-nu="eat:${sl}" style="flex:none">${done?"✓ أكلتها":"أكلتها؟"}</button></div><div style="margin-top:6px;font-weight:700">${esc(m.name)} <small style="opacity:.75">• ${m.kcal} سعر • ${m.p}ج بروتين</small></div><div style="margin-top:6px;font-size:13px;opacity:.85;line-height:1.9">${m.items.map(i=>esc(nuFmt(i))).join(" + ")}</div>${alts?`<div style="margin-top:8px;font-size:12px;opacity:.7">بدائل بنفس القيمة:</div><div class="chips" style="margin-top:4px">${alts}</div>`:""}</div>`;
+  }).join("");
+  const hasH=S.habits.some(h=>h.name==="الأكل الصحي 🥗");
+  const wk=c.weeks?`<br>⏳ الوصول لـ ${n.tw} كجم تقريبًا في ${c.weeks} أسبوع`:"";
+  $("main").innerHTML=`<div class="deen" style="padding-bottom:90px"><h2 style="margin:6px 2px">🥗 خطتك لليوم</h2>
+  <div class="tcard on" style="display:block;margin-bottom:12px"><div style="font-size:26px;font-weight:800">${c.t} <small style="font-size:14px">سعر في اليوم</small></div><div style="font-size:13px;margin-top:4px">بروتين ${c.p}ج • كارب ${c.c}ج • دهون ${c.f}ج${wk}</div><div style="font-size:13px;margin-top:6px">النهارده: ${eaten} من ${c.t} سعر • بروتين ${prot}ج</div></div>
+  ${cards}
+  <div class="chips" style="margin-top:6px"><button class="chip" data-nu="shuffle">🔀 غيّر الخطة</button><button class="chip" data-nu="edit">✏️ بياناتك</button>${hasH?"":'<button class="chip on" data-nu="habit">➕ ضيفها لجدولي</button>'}</div>
+  <div class="note" style="color:var(--soft);line-height:1.8;margin-top:14px">💡 مفيش حاجة إجبارية: اختار أي بديل بنفس القيمة. الأرقام تقريبية، والتكلفة 💰 نسبية لأن الأسعار بتتغيّر. دي خطة عامة مش بديلة عن دكتور أو أخصائي تغذية.</div></div>`;
+}
+function renderFoodSetup(n){
+  const ch=(on,k,t)=>`<button class="chip ${on?"on":""}" data-nu="${k}">${t}</button>`;
+  const inp=(k,ph,v)=>`<input class="inp" data-nu-in="${k}" type="number" inputmode="decimal" placeholder="${ph}" value="${esc(String(v||""))}">`;
+  const fp=Object.entries(NU_GN).map(([g,t])=>{const v=n.fp[g];return `<button class="chip ${v===1?"on":""}" data-nu="fp:${g}" style="${v===-1?"opacity:.6;text-decoration:line-through":""}">${v===1?"👍 ":v===-1?"👎 ":""}${t}</button>`}).join("");
+  $("main").innerHTML=`<div class="deen" style="padding-bottom:90px"><h2 style="margin:6px 2px">🥗 نظامك الغذائي</h2><div class="note" style="color:var(--soft)">اكتب بياناتك وهعملك خطة بالأكل اللي بتحبه وبميزانيتك، ومعاها بدائل لكل وجبة.</div>
+  <div class="q">النوع</div><div class="chips">${ch(n.sex==="m","sex:m","ذكر")}${ch(n.sex==="f","sex:f","أنثى")}</div>
+  <div class="q">السن • الطول (سم) • الوزن (كجم) • الوزن المستهدف</div><div class="row">${inp("age","السن",n.age)}${inp("h","الطول",n.h)}</div><div class="row" style="margin-top:8px">${inp("w","الوزن",n.w)}${inp("tw","المستهدف",n.tw)}</div>
+  <div class="q">نشاطك</div><div class="chips">${NU_ACT.map(([v,t])=>ch(n.act===v,"act:"+v,t)).join("")}</div>
+  <div class="q">هدفك</div><div class="chips">${ch(n.goal==="lose","goal:lose","🔥 تنزيل وزن")}${ch(n.goal==="keep","goal:keep","⚖️ تثبيت")}${ch(n.goal==="gain","goal:gain","💪 زيادة")}</div>
+  <div class="q">ميزانيتك</div><div class="chips">${ch(n.bud==="low","bud:low","💰 اقتصادية")}${ch(n.bud==="mid","bud:mid","💰💰 متوسطة")}${ch(n.bud==="high","bud:high","💰💰💰 مفتوحة")}</div>
+  <div class="q">كام وجبة في اليوم؟</div><div class="chips">${ch(n.meals===3,"meals:3","٣ وجبات")}${ch(n.meals===4,"meals:4","٤ (مع سناك)")}</div>
+  <div class="q">أكلك (دوس: 👍 بحبه ← 👎 مبحبوش ← عادي)</div><div class="chips">${fp}</div>
+  <div class="q">حالة صحية</div><div class="chips">${ch(!!n.health,"health","عندي مرض مزمن أو حامل/مرضعة")}</div>
+  <div class="err" id="nuerr"></div><button class="go" data-nu="make">اعمل خطتي</button></div>`;
+}
+document.addEventListener("input",e=>{const k=e.target.dataset&&e.target.dataset.nuIn;if(k){nuS()[k]=e.target.value;save()}});
+document.addEventListener("click",e=>{
+  const t=e.target.closest("[data-nu]");if(!t)return;
+  const[k,a,b]=t.dataset.nu.split(":"),n=nuS();
+  if(k==="sex"||k==="act"||k==="goal"||k==="bud"){n[k]=a;save();renderFood()}
+  else if(k==="meals"){n.meals=+a;save();renderFood()}
+  else if(k==="fp"){const v=n.fp[a];n.fp[a]=v===1?-1:v===-1?0:1;save();renderFood()}
+  else if(k==="health"){n.health=n.health?0:1;save();renderFood()}
+  else if(k==="make"){
+    const c=nuCalc(n),err=m=>{$("nuerr").textContent=m};
+    if(!n.health&&!c)return err("اكتب السن والطول والوزن صح");
+    n.ok=1;n.edit=0;n.sel={};n.seed=0;save();renderFood();
+  }
+  else if(k==="edit"){n.edit=1;save();renderFood()}
+  else if(k==="shuffle"){n.seed=(n.seed||0)+1;n.sel={};save();renderFood()}
+  else if(k==="alt"){n.sel[a]=((n.sel[a]||0)+(+b))%99;save();renderFood()}
+  else if(k==="eat"){
+    const dk=nuDay(),E=n.eaten[dk]=n.eaten[dk]||{};E[a]=E[a]?0:1;
+    Object.keys(n.eaten).sort().slice(0,-14).forEach(x=>delete n.eaten[x]);
+    const slots=n.meals===4?["b","l","d","s"]:["b","l","d"],h=S.habits.find(z=>z.name==="الأكل الصحي 🥗");
+    if(h){const dkey=dk+"|"+h.id;if(slots.every(s=>E[s]))S.done[dkey]=1;else if(S.done[dkey]&&slots.some(s=>!E[s]))delete S.done[dkey]}
+    save();renderFood();try{buzz(12)}catch(x){}
+  }
+  else if(k==="habit"){
+    if(!S.habits.some(z=>z.name==="الأكل الصحي 🥗")){insertHabit({id:Date.now().toString(36)+Math.random().toString(36).slice(2,6),start:iso(new Date()),name:"الأكل الصحي 🥗",sub:"بيتعلّم لما تخلّص وجبات الخطة",days:[0,1,2,3,4,5,6]});if(!S.start)S.start=iso(new Date());save()}
+    renderFood();toast("اتضافت لجدولك ✓");
+  }
+});
+/* tab bar: five tabs, everything else under "more" */
+(function(){
+  const bar=document.getElementById("bar");
+  bar.innerHTML=[["today","🏠","اليوم"],["table","🗓️","الجدول"],["paper","📝","ورقتي"],["gym","💪","تمرين"],["more","☰","المزيد"]].map(([p,e,t])=>`<button data-pg="${p}"><b>${e}</b>${t}</button>`).join("");
+  try{render()}catch(e){}
+})();
 </script>
 </body>
 </html>
