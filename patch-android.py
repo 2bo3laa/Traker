@@ -176,6 +176,7 @@ public class MainActivity extends BridgeActivity {{
         registerPlugin(IconSwitcherPlugin.class);
         registerPlugin(WidgetBridgePlugin.class);
         registerPlugin(AdhanPlugin.class);
+        registerPlugin(WorkLogPlugin.class);
         super.onCreate(savedInstanceState);
     }}
 }}
@@ -188,6 +189,8 @@ public class MainActivity extends BridgeActivity {{
     man = patch_adhan.apply(app, pkg, man)
     import patch_widget_previews
     man = patch_widget_previews.apply(app, pkg, man)
+    import patch_worklog
+    man = patch_worklog.apply(app, pkg, man)
 
     fetch_pages(app)
 

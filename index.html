@@ -4058,7 +4058,7 @@ const CATS=[["prayer","🕌","صلاة"],["gym","💪","جيم"],["work","💼",
 
 let S={habits:[],done:{}};
 try{S=JSON.parse(localStorage.getItem("hb1"))||S}catch(e){}
-const save=()=>{try{localStorage.setItem("hb1",JSON.stringify(S))}catch(e){}};
+const save=()=>{try{localStorage.setItem("hb1",JSON.stringify(S))}catch(e){}try{wlSync()}catch(e){}};
 let view="month",cur=new Date(),editing=false,pend=null,idx=0,page="today";
 let TH="dawn";try{TH=localStorage.getItem("hb_theme")||TH}catch(e){}
 document.documentElement.dataset.t=TH;
@@ -4219,11 +4219,35 @@ function wlCard(){
   const P=wlPeriods(),k=iso(wlPer(today0())),a=dOf(k);
   return `<button class="tcard" data-wl="hist"><span class="tx">⏱ ساعات الشغل<small>${fmt(a)} – ${fmt(wlPerEnd(a))}</small></span><b>${fdur(P[k].ms)} س</b></button>`;
 }
+let _wls="";
+function wlSync(){
+  const P=NPL("WorkLog");if(!P)return;
+  const o=wlFindOpen();
+  const st={open:!!o,since:o?o.s.i:0,enabled:hasLog()&&S.wlNotif!==0,title:"الشغل 💼",idle:"اضغط ▶ لتسجيل الحضور",running:"شغّال",runningHint:o?"دخلت "+wlHM(o.s.i):"",inLbl:"▶ حضور",outLbl:"⏹ انصراف"};
+  const sig=JSON.stringify(st);if(sig===_wls)return;_wls=sig;
+  try{P.sync(st)}catch(e){}
+}
+async function wlPull(){
+  const P=NPL("WorkLog");if(!P)return;
+  try{
+    const r=await P.pull(),ev=(r&&r.events)||[];
+    if(ev.length){
+      ev.forEach(x=>{
+        if(x.t==="in"){if(!wlFindOpen()){const k=iso(new Date(x.at));S.wl=S.wl||{};(S.wl[k]=S.wl[k]||[]).push({i:x.at,o:null})}}
+        else if(x.t==="out"){const o=wlFindOpen();if(o){o.s.o=x.at;const hh=S.habits.find(z=>z.log);if(hh)S.done[o.k+"|"+hh.id]=1}}
+      });
+      _wls="";save();render();
+    }
+  }catch(e){}
+  _wls="";wlSync();
+}
+document.addEventListener("visibilitychange",()=>{if(!document.hidden)wlPull()});
+setTimeout(wlPull,600);
 function openWL(){W={wl:1,open:null};drawW();$("modal").classList.add("on")}
 function drawWL(){
   const sh=$("sheet"),P=wlPeriods(),cur=iso(wlPer(today0())),ca=dOf(cur);
   const lbl=k=>{const a=dOf(k);return fmt(a)+" – "+fmt(wlPerEnd(a))};
-  let h=`<h2>سجل الشغل 💼</h2><p>ساعات شغلك لكل شهر شغل.</p><div class="q">شهر الشغل بيبدأ يوم</div><div class="row"><input class="inp" id="wls" type="number" inputmode="numeric" min="1" max="28" value="${wlStartDay()}" style="max-width:100px"><div class="note" style="margin:0">الفترة الحالية: ${lbl(cur)}</div></div><div class="sec">الشهور</div>`;
+  let h=`<h2>سجل الشغل 💼</h2><p>ساعات شغلك لكل شهر شغل.</p><div class="q">شهر الشغل بيبدأ يوم</div><div class="row"><input class="inp" id="wls" type="number" inputmode="numeric" min="1" max="28" value="${wlStartDay()}" style="max-width:100px"><div class="note" style="margin:0">الفترة الحالية: ${lbl(cur)}</div></div><div class="chips" style="margin:10px 0 4px"><button class="chip ${S.wlNotif===0?"":"on"}" data-wl="nt">🔔 إشعار البصمة في الستارة</button></div><div class="sec">الشهور</div>`;
   h+=Object.keys(P).sort().reverse().map(k=>{
     const p=P[k],o=W.open===k;
     let r=`<button class="tcard ${k===cur?"on":""}" data-wl="p:${k}"><span class="tx">${lbl(k)}<small>${p.days} يوم شغل${k===cur?" • الحالي":""}</small></span><b>${fdur(p.ms)} س</b></button>`;
@@ -4247,6 +4271,7 @@ function wlAct(a){
     o.s.o=now;const hh=S.habits.find(x=>x.log);if(hh)S.done[o.k+"|"+hh.id]=1;
     save();render();toast("تم الانصراف • إجمالي اليوم "+fdur(wlDayMs(o.k))+" س");
   }else if(a==="hist"){openWL()}
+  else if(a==="nt"){S.wlNotif=S.wlNotif===0?1:0;save();drawWL()}
   else if(a.indexOf("p:")===0){const k=a.slice(2);W.open=W.open===k?null:k;drawWL()}
   else if(a.indexOf("x:")===0){const[,k,j]=a.split(":");if(S.wl[k]){S.wl[k].splice(+j,1);if(!S.wl[k].length)delete S.wl[k]}save();drawWL();render()}
   else if(a==="add"){
@@ -4266,8 +4291,9 @@ setInterval(()=>{if(page==="today"&&!editing&&document.querySelector("[data-wlru
 const buzz=ms=>{try{navigator.vibrate&&navigator.vibrate(ms)}catch(e){}};
 function wpEnsure(){S.wp=S.wp||{};S.wp.goals=S.wp.goals||{};S.wp.weeks=S.wp.weeks||{};return S.wp}
 const wpKey=off=>{const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()-((d.getDay()+1)%7)+7*off);return iso(d)};
-let WPV={wk:0};
+let WPV={wk:0,lk:"none",x:0,w:"",txt:""};
 function renderPaper(){
+  try{wpAuto()}catch(e){}
   const P=wpEnsure(),G=P.goals,k=wpKey(WPV.wk),L=P.weeks[k]||[],a=dOf(k),b=addDays(a,6),d=L.filter(x=>x.d).length;
   $("quote").textContent="خطوة واضحة أحسن من نية كبيرة";
   const f=(id,e,n,ph)=>`<div class="q">${e} ${n}</div><input class="inp" id="wpg_${id}" value="${esc(G[id]||"")}" placeholder="${ph}">`;
@@ -4275,16 +4301,40 @@ function renderPaper(){
   +f("body","💪","جسمك","مثال: أنزل لـ 75 كيلو وأجري 5 كم")+f("study","📚","دراستك","مثال: أخلص الكورس وأدخل الامتحان")+f("work","💼","شغلك","مثال: ترقية أو شغل جديد")
   +`<div class="q">اكتب كل اللي في دماغك</div><textarea class="inp" id="wpd" rows="4" placeholder="أي حاجة شاغلة بالك…">${esc(P.dump||"")}</textarea>
   <div class="q">خطة الأسبوع</div><div class="chips"><button class="chip ${WPV.wk===0?"on":""}" data-wp="w:0">هذا الأسبوع</button><button class="chip ${WPV.wk===1?"on":""}" data-wp="w:1">الأسبوع الجاي</button></div><div class="note" style="color:var(--soft)">${fmt(a)} – ${fmt(b)}${L.length?` • ${d} من ${L.length} خلصت`:""}</div>`
-  +L.map((x,j)=>`<div class="row" style="gap:8px;margin-top:8px"><button class="chip ${x.d?"on":""}" data-wp="t:${j}" style="flex:none">${x.d?"✓":"○"}</button><span style="flex:1;${x.d?"text-decoration:line-through;opacity:.6":""}">${esc(x.t)}</span><i data-wp="x:${j}" style="font-style:normal;cursor:pointer;padding:4px 8px;color:#ff6b8a">✕</i></div>`).join("")
-  +`<div class="row" style="margin-top:10px"><input class="inp" id="wpnew" placeholder="خطوة جديدة"><button class="chip on" data-wp="add" style="flex:none;font-size:18px;padding:6px 16px">+</button></div><div style="height:90px"></div></div>`;
+  +L.map((x,j)=>`<div class="row" style="gap:8px;margin-top:8px"><button class="chip ${x.d?"on":""}" data-wp="t:${j}" style="flex:none">${x.d?"✓":"○"}</button><span style="flex:1;${x.d?"text-decoration:line-through;opacity:.6":""}">${esc(x.t)}${x.lk?`<small style="display:block;opacity:.7;text-decoration:none">🔗 ${x.lk.k==="gym"?"بتتعلّم لما تسجّل تمرين":"كسر "+esc((EX[x.lk.x]||{}).n||"")+" ‏> "+x.lk.w+" كجم"}${x.auto?" • اتعلّمت تلقائي ✓":""}</small>`:""}</span><i data-wp="x:${j}" style="font-style:normal;cursor:pointer;padding:4px 8px;color:#ff6b8a">✕</i></div>`).join("")
+  +`<div class="q" style="margin-top:16px">🔗 اربطها بنشاط (بتتعلّم لوحدها)</div><div class="chips"><button class="chip ${WPV.lk==="none"?"on":""}" data-wp="lk:none">من غير ربط</button><button class="chip ${WPV.lk==="gym"?"on":""}" data-wp="lk:gym">أي تمرين</button><button class="chip ${WPV.lk==="pr"?"on":""}" data-wp="lk:pr">كسر رقم في تمرين</button></div>`
+  +(WPV.lk==="pr"?`<div class="row" style="margin-top:8px"><select class="inp" id="wpx">${EX.filter(e=>e.e!=="w").map(e=>`<option value="${e.i}" ${+WPV.x===e.i?"selected":""}>${esc(e.n)} (${TR(MU[e.m])})</option>`).join("")}</select><input class="inp" id="wpw" type="number" inputmode="decimal" placeholder="أكتر من كام كجم؟" value="${esc(String(WPV.w||""))}" style="max-width:130px"></div>`:"")
+  +`<div class="row" style="margin-top:10px"><input class="inp" id="wpnew" placeholder="خطوة جديدة" value="${esc(WPV.txt||"")}"><button class="chip on" data-wp="add" style="flex:none;font-size:18px;padding:6px 16px">+</button></div><div style="height:90px"></div></div>`;
+}
+function wpAuto(){
+  const P=S.wp;if(!P||!P.weeks)return 0;
+  const L=gy().log;let n=0;
+  Object.keys(P.weeks).forEach(k=>{
+    const a=dOf(k),days=[];for(let i=0;i<7;i++)days.push(iso(addDays(a,i)));
+    P.weeks[k].forEach(st=>{
+      if(st.d||!st.lk)return;
+      let ok=false;
+      days.forEach(dk=>{
+        const T=L[dk];if(!T)return;
+        if(st.lk.k==="gym"){if(Object.values(T).some(x=>x&&x.length))ok=true}
+        else if(st.lk.k==="pr"){(T[st.lk.x]||[]).forEach(z=>{if(z.u==="kg"&&z.w>st.lk.w)ok=true})}
+      });
+      if(ok){st.d=1;st.auto=1;n++}
+    });
+  });
+  return n;
 }
 function wpAct(a){
   const P=wpEnsure();
   if(a.indexOf("w:")===0){WPV.wk=+a.slice(2);renderPaper();return}
   const k=wpKey(WPV.wk),L=P.weeks[k]=P.weeks[k]||[];
+  if(a.indexOf("lk:")===0){WPV.txt=$("wpnew")?$("wpnew").value:"";if($("wpx"))WPV.x=$("wpx").value;if($("wpw"))WPV.w=$("wpw").value;WPV.lk=a.slice(3);renderPaper();return}
   if(a==="add"){
     const i=$("wpnew"),v=i.value.trim();if(!v)return;
-    L.push({t:v,d:0});
+    const st={t:v,d:0};
+    if(WPV.lk==="gym")st.lk={k:"gym"};
+    else if(WPV.lk==="pr"){const w=parseFloat($("wpw")&&$("wpw").value);if(!(w>0)){toast("اكتب الوزن اللي عايز تكسره");return}st.lk={k:"pr",x:+$("wpx").value,w};WPV.x=st.lk.x;WPV.w=w}
+    L.push(st);WPV.txt="";try{wpAuto()}catch(e){}
     Object.keys(P.weeks).sort().slice(0,-12).forEach(x=>delete P.weeks[x]);
     save();renderPaper();const n=$("wpnew");if(n)n.focus();
   }else if(a.indexOf("t:")===0){const j=+a.slice(2);if(L[j])L[j].d=L[j].d?0:1;save();renderPaper()}
@@ -4871,6 +4921,14 @@ const gy=()=>{const g=S.gym=(S.gym&&typeof S.gym==="object")?S.gym:{};g.log=g.lo
 const td=()=>iso(new Date());
 const stx=(x,e)=>(x.w||e!=="w")?TR(x.u==="pl"?"{0} بلاطة × {1}":"{0} كجم × {1}",AR(x.w),AR(x.r)):TR("{0} عدّة",AR(x.r));
 function hist(i){let last=null,best=0;const L=gy().log;Object.keys(L).sort().forEach(k=>{const s=L[k][i];if(s&&s.length){if(k!==td())last=s;s.forEach(x=>{if(x.u==="kg")best=Math.max(best,x.w)})}});return{last,best}}
+const GYG={m:{n:"💪 تضخيم",sr:"3-4 × 8-12",rest:"60-90 ثانية",tip:"زوّد الوزن شوية كل أسبوع، وكُل بروتين كفاية."},f:{n:"🔥 تنشيف",sr:"3 × 10-15",rest:"30-60 ثانية",tip:"ضيف كارديو 20-30 دقيقة، 2-3 مرات في الأسبوع."},s:{n:"🏋️ قوة",sr:"4-5 × 3-6",rest:"2-3 دقايق",tip:"ركّز على الأساسيات التقيلة: سكوات، ديدلفت، بنش."},g:{n:"🧘 لياقة عامة",sr:"2-3 × 12-15",rest:"45-60 ثانية",tip:"الانتظام أهم من الوزن في البداية."}};
+function planFor(goal,days){
+  if(days<=3)return"fb";
+  if(days===4)return"ul";
+  if(days===5)return goal==="m"?"bro":goal==="s"?"ppl":"ul";
+  return goal==="m"?"arn":"ppl";
+}
+function applyPlan(){const g=gy();if(!g.goal||!g.days)return;g.s=GS.p==="h"?"home":planFor(g.goal,g.days);g.d=0;g.ld=null;GS.m=null}
 const gsync=()=>{const t=today0();S.habits.forEach(h=>{if(/^جيم/.test(h.name)&&active(h,t))S.done[iso(t)+"|"+h.id]=1})};
 function renderGym(){
   const g=gy(),sy=SY[g.s],dy=sy[1][Math.min(g.d,sy[1].length-1)],mus=GS.m?[GS.m]:dy[1],T=g.log[td()]||{};
@@ -4878,7 +4936,11 @@ function renderGym(){
   const ns=Object.keys(T).filter(k=>T[k].length).length,sets=Object.values(T).reduce((a,b)=>a+b.length,0);
   $("quote").textContent="كل تمرينة بتتسجل بتقرّبك لهدفك 💪";
   const ch=(on,x,t)=>`<button class="chip ${on?"on":""}" data-x="${x}">${t}</button>`;
-  $("main").innerHTML=`<div class="deen"><div class="q">النظام</div><div class="chips">${Object.entries(SY).map(([k,v])=>ch(g.s===k,"sys:"+k,v[0])).join("")}</div>
+  const gl=g.goal&&GYG[g.goal],nd=sy[1].length,nx=(g.ld==null)?0:(g.ld+1)%nd;
+  $("main").innerHTML=`<div class="deen"><div class="q">هدفك</div><div class="chips">${Object.entries(GYG).map(([k,v])=>ch(g.goal===k,"goal:"+k,v.n)).join("")}</div>
+  <div class="q">كام يوم في الأسبوع؟</div><div class="chips">${[3,4,5,6].map(n=>ch(g.days===n,"gdays:"+n,AR(n))).join("")}</div>
+  ${gl&&g.days?`<div class="note" style="color:var(--ink)">📋 خطتك: ${sy[0]} • ${AR(g.days)} أيام<br>المجموعات × العدّات: <span dir="ltr">${gl.sr}</span> • راحة ${gl.rest}<br><span style="color:var(--soft)">${gl.tip}</span><br>🎯 اليوم المقترح: <b>${sy[1][nx][0]}</b></div>`:'<div class="note">اختار هدفك وعدد الأيام وهرتّبلك النظام المناسب.</div>'}
+  <div class="q">النظام</div><div class="chips">${Object.entries(SY).map(([k,v])=>ch(g.s===k,"sys:"+k,v[0])).join("")}</div>
   <div class="q">يوم التمرين</div><div class="chips">${sy[1].map((d,i)=>ch(g.d===i,"day:"+i,d[0])).join("")}</div>
   <div class="q">المكان</div><div class="chips">${ch(GS.p==="g","pl:g","🏋️ جيم")}${ch(GS.p==="h","pl:h","🏠 البيت")}</div>
   <div class="q">العضلة</div><div class="chips">${ch(!GS.m,"mu:all","اليوم كله")}${dy[1].map(m=>ch(GS.m===m,"mu:"+m,MU[m])).join("")}</div>
@@ -4887,7 +4949,7 @@ function renderGym(){
 }
 function lgr(i){
   const e=EX[i],g=gy(),T=g.log[td()]=g.log[td()]||{},s=T[i]||[],h=hist(i),ls=s.length?s[s.length-1]:(h.last?h.last[h.last.length-1]:null);
-  $("sheet").innerHTML=`<h2>${e.n}</h2><p>${TR(MU[e.m])} · ${TR(EQ[e.e])}${h.best?" · "+TR("أعلى وزن {0} كجم",AR(h.best)):""}</p>${h.last?`<div class="note">آخر مرة: ${h.last.map(x=>stx(x,e.e)).join(" · ")}</div>`:""}
+  $("sheet").innerHTML=`<h2>${e.n}</h2><p>${TR(MU[e.m])} · ${TR(EQ[e.e])}${h.best?" · "+TR("أعلى وزن {0} كجم",AR(h.best)):""}</p>${g.goal&&GYG[g.goal]?`<div class="note">🎯 هدفك (${GYG[g.goal].n}): <span dir="ltr">${GYG[g.goal].sr}</span> • راحة ${GYG[g.goal].rest}</div>`:""}${h.last?`<div class="note">آخر مرة: ${h.last.map(x=>stx(x,e.e)).join(" · ")}</div>`:""}
   ${e.e==="c"?`<div class="q">الوزن بـ</div><div class="chips"><button class="chip ${GS.u==="pl"?"on":""}" data-x="u:pl">بلاطات</button><button class="chip ${GS.u==="kg"?"on":""}" data-x="u:kg">كجم</button></div>`:""}
   <div class="row" style="margin-top:12px"><input id="gw" class="inp" type="number" inputmode="decimal" placeholder="${GS.u==="pl"?"عدد البلاطات":e.e==="w"?"وزن إضافي (اختياري)":"كجم"}" value="${ls&&ls.u===GS.u?ls.w:""}"><input id="gr" class="inp" type="number" inputmode="numeric" placeholder="عدّات" value="${ls?ls.r:""}"></div>
   <button class="go" data-x="ga">＋ سجّل مجموعة</button><div style="margin-top:14px">${s.map((x,j)=>`<div class="hb">${AR(j+1)}. ${stx(x,e.e)}<span data-x="gd:${j}">✕</span></div>`).join("")}</div><button class="back" style="margin-top:10px" data-x="gc">تم ✓</button>`;
@@ -5034,6 +5096,8 @@ document.addEventListener("click",e=>{
   else if(k==="wg"){W.g=+a;drawW()}
   else if(k==="wc"){W.c=a;drawW()}
   else if(k==="wh"){if($("nm"))W.name=$("nm").value;W.hr=+a;drawW()}
+  else if(k==="goal"){const g=gy();g.goal=a;applyPlan();save();renderGym()}
+  else if(k==="gdays"){const g=gy();g.days=+a;applyPlan();save();renderGym()}
   else if(k==="sys"){const g=gy();g.s=a;g.d=0;GS.m=null;if(a==="home")GS.p="h";save();renderGym()}
   else if(k==="day"){gy().d=+a;GS.m=null;save();renderGym()}
   else if(k==="pl"){GS.p=a;renderGym()}
@@ -5043,8 +5107,13 @@ document.addEventListener("click",e=>{
   else if(k==="ga"){
     const w=parseFloat($("gw").value)||0,r=parseInt($("gr").value);if(!(r>0)){toast("اكتب عدد العدّات");return}
     if(!w&&EX[GS.e].e!=="w"){toast("اكتب الوزن");return}
-    const g=gy(),T=g.log[td()]=g.log[td()]||{};(T[GS.e]=T[GS.e]||[]).push({w,r,u:GS.u});
-    Object.keys(g.log).sort().slice(0,-90).forEach(x=>delete g.log[x]);gsync();save();lgr(GS.e);renderGym();
+    const g=gy(),prevBest=hist(GS.e).best,T=g.log[td()]=g.log[td()]||{};(T[GS.e]=T[GS.e]||[]).push({w,r,u:GS.u});
+    g.ld=g.d;
+    Object.keys(g.log).sort().slice(0,-90).forEach(x=>delete g.log[x]);gsync();
+    const ticked=wpAuto();
+    save();lgr(GS.e);renderGym();
+    if(GS.u==="kg"&&prevBest>0&&w>prevBest)toast("🏆 رقم جديد! "+EX[GS.e].n+" "+AR(w)+" كجم"+(ticked?" • واتعلّمت في ورقتك ✓":""));
+    else if(ticked)toast("اتعلّمت خطوة في ورقتك تلقائي ✓");
   }
   else if(k==="gd"){const T=gy().log[td()];if(T&&T[GS.e]){T[GS.e].splice(+a,1);save();lgr(GS.e);renderGym()}}
   else if(k==="gc"){closeW();renderGym()}

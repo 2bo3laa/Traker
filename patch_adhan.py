@@ -185,8 +185,12 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.session.MediaSession;
 import android.media.session.PlaybackState;
+import android.database.ContentObserver;
 import android.os.Build;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Looper;
+import android.provider.Settings;
 import android.os.PowerManager;
 import android.os.SystemClock;
 import androidx.core.content.ContextCompat;
@@ -202,6 +206,10 @@ public class AdhanService extends Service {
     private BroadcastReceiver volRx;
     private AudioFocusRequest focusReq;
     private long startedAt;
+    private Handler handler;
+    private Runnable poll;
+    private ContentObserver volObs;
+    private int baseVol = -1;
 
     @Override
     public IBinder onBind(Intent i) { return null; }
@@ -244,7 +252,7 @@ public class AdhanService extends Service {
         Notification.Builder b = Build.VERSION.SDK_INT >= 26 ? new Notification.Builder(this, CH) : new Notification.Builder(this);
         b.setSmallIcon(android.R.drawable.ic_lock_idle_alarm)
          .setContentTitle(title)
-         .setContentText(body)
+         .setContentText(body.length() > 0 ? body + "  \u2022  \u0627\u0636\u063a\u0637 \u0623\u064a \u0632\u0631\u0627\u0631 \u0635\u0648\u062a \u0644\u0644\u0625\u064a\u0642\u0627\u0641" : "\u0627\u0636\u063a\u0637 \u0623\u064a \u0632\u0631\u0627\u0631 \u0635\u0648\u062a \u0644\u0644\u0625\u064a\u0642\u0627\u0641")
          .setOngoing(true)
          .setCategory(Notification.CATEGORY_ALARM)
          .addAction(android.R.drawable.ic_media_pause, "\u0625\u064a\u0642\u0627\u0641", stopPi);
@@ -296,6 +304,28 @@ public class AdhanService extends Service {
             ms.setActive(true);
         } catch (Exception ignored) {}
         try {
+            final AudioManager am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+            baseVol = am.getStreamVolume(AudioManager.STREAM_ALARM);
+            handler = new Handler(Looper.getMainLooper());
+            poll = new Runnable() {
+                @Override public void run() {
+                    try {
+                        if (SystemClock.elapsedRealtime() - startedAt > 1200 && am.getStreamVolume(AudioManager.STREAM_ALARM) != baseVol) { stopSelf(); return; }
+                    } catch (Exception ignored) {}
+                    if (handler != null) handler.postDelayed(this, 120);
+                }
+            };
+            handler.postDelayed(poll, 400);
+            volObs = new ContentObserver(handler) {
+                @Override public void onChange(boolean selfChange) {
+                    try {
+                        if (SystemClock.elapsedRealtime() - startedAt > 1200 && am.getStreamVolume(AudioManager.STREAM_ALARM) != baseVol) stopSelf();
+                    } catch (Exception ignored) {}
+                }
+            };
+            getContentResolver().registerContentObserver(Settings.System.CONTENT_URI, true, volObs);
+        } catch (Exception ignored) {}
+        try {
             volRx = new BroadcastReceiver() {
                 @Override public void onReceive(Context c, Intent i) {
                     if (SystemClock.elapsedRealtime() - startedAt < 1500) return;
@@ -314,6 +344,10 @@ public class AdhanService extends Service {
         ms = null;
         try { if (volRx != null) unregisterReceiver(volRx); } catch (Exception ignored) {}
         volRx = null;
+        try { if (handler != null && poll != null) handler.removeCallbacks(poll); } catch (Exception ignored) {}
+        handler = null; poll = null;
+        try { if (volObs != null) getContentResolver().unregisterContentObserver(volObs); } catch (Exception ignored) {}
+        volObs = null;
         try {
             if (focusReq != null && Build.VERSION.SDK_INT >= 26) {
                 ((AudioManager) getSystemService(Context.AUDIO_SERVICE)).abandonAudioFocusRequest(focusReq);
