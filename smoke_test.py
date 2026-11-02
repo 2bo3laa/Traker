@@ -117,6 +117,42 @@ async def run(browser, locale, width):
     check("minors are blocked", "18" in await ev("document.getElementById('main').innerText"))
     await ev("S.nu.age=28;save()")
     await pg.click('#bar [data-pg="today"]')
+
+    # --- Today: worship first, then workout, then the rest; next prayer on top
+    secs = await ev("[...document.querySelectorAll('#main .sec')].map(x=>x.textContent)")
+    order = [i for i, k in enumerate(("العبادات", "التمرين", "باقي يومك")) if any(k in x for x in secs)]
+    check("Today lists worship, workout, rest in that order", len(order) == 3 and
+          [next(j for j, x in enumerate(secs) if k in x) for k in ("العبادات", "التمرين", "باقي يومك")] == sorted(
+          [next(j for j, x in enumerate(secs) if k in x) for k in ("العبادات", "التمرين", "باقي يومك")]), str(secs))
+    check("next prayer card is the first thing in the list", await ev("document.querySelector('#main .tcard')&&document.querySelector('#main .tcard').dataset.pg==='pray'"))
+
+    # --- offline assistant
+    await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="assist"]')
+    await pg.click('[data-as="q:0"]')
+    check("the advice chip works", "مش فاهم" not in await ev("document.getElementById('aschat').innerText"))
+    await pg.click('[data-as="q:1"]')
+    await pg.fill("#asin", "ساعات شغلي الشهر ده"); await pg.click('[data-as="send"]')
+    txt = await ev("document.getElementById('aschat').innerText")
+    check("assistant answers about prayers", "صلّيت" in txt, txt[:120])
+    check("assistant answers about work hours", "ساعة" in txt, txt[:200])
+    await pg.fill("#asin", "ايه ده؟؟ xyz"); await pg.click('[data-as="send"]')
+    check("assistant admits when it does not understand", "مش فاهم" in await ev("document.getElementById('aschat').innerText"))
+    await pg.click('#bar [data-pg="today"]')
+
+    # --- adhan sound settings
+    await ev("S.pn={on:true,at:1,pre:1,post:1,p:{},s:{}};save()")
+    await pg.click("#thm")
+    await pg.click('[data-pn="m:الفجر:bell"]')
+    check("bell mode keeps the prayer on but not the adhan", await ev("S.pn.s['الفجر']===0&&S.pn.p['الفجر']!==0"))
+    await pg.click('[data-pn="m:الفجر:off"]')
+    check("off mode silences the prayer", await ev("S.pn.p['الفجر']===0"))
+    await pg.click('[data-pn="m:الفجر:adhan"]')
+    check("adhan mode turns it back on", await ev("S.pn.p['الفجر']===1&&S.pn.s['الفجر']===1"))
+    await pg.click('[data-pn="loop"]')
+    check("repeat-until-stopped option saved", await ev("S.pn.loop===1"))
+    await pg.click('[data-pn="keys"]')
+    check("volume-button stop can be switched off", await ev("S.pn.keys===0"))
+    await ev("closeW()")
     await pg.click("#thm")
     check("settings sheet opens", await ev("document.getElementById('modal').classList.contains('on')"))
     await ev("closeW()")

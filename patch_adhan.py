@@ -6,7 +6,7 @@ apply(app, pkg, manifest_text) writes the java files and returns the new manifes
 import os
 from patch_widgets import esc, w
 
-LOOP = "false"   # "true" = repeat the adhan until the user stops it
+LOOP = "false"   # (kept for compatibility; the app now sends the loop option per alarm)
 
 SCHEDULER = r'''package __PKG__;
 
@@ -30,6 +30,8 @@ final class AdhanScheduler {
         i.setAction(FIRE);
         i.setData(Uri.parse("adhan://alarm/" + id));
         i.putExtra("fajr", o.optBoolean("fajr", false));
+        i.putExtra("loop", o.optBoolean("loop", false));
+        i.putExtra("keys", o.optBoolean("keys", true));
         i.putExtra("title", o.optString("title", ""));
         i.putExtra("body", o.optString("body", ""));
         return PendingIntent.getBroadcast(c, id, i, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
@@ -113,6 +115,8 @@ public class AdhanPlugin extends Plugin {
         try {
             Intent s = new Intent(getContext(), AdhanService.class);
             s.putExtra("fajr", Boolean.TRUE.equals(call.getBoolean("fajr", false)));
+            s.putExtra("loop", Boolean.TRUE.equals(call.getBoolean("loop", false)));
+            s.putExtra("keys", !Boolean.FALSE.equals(call.getBoolean("keys", true)));
             s.putExtra("title", call.getString("title", ""));
             s.putExtra("body", call.getString("body", ""));
             ContextCompat.startForegroundService(getContext(), s);
@@ -199,7 +203,7 @@ import android.media.VolumeProvider;
 public class AdhanService extends Service {
     static final String CH = "adhan_live";
     static final int NID = 7731;
-    static final boolean LOOP = __LOOP__;
+    private boolean loopOn = false;
 
     private MediaPlayer mp;
     private MediaSession ms;
@@ -218,6 +222,8 @@ public class AdhanService extends Service {
     public int onStartCommand(Intent in, int flags, int startId) {
         release();
         boolean fajr = in != null && in.getBooleanExtra("fajr", false);
+        loopOn = in != null && in.getBooleanExtra("loop", false);
+        boolean keysOn = in == null || in.getBooleanExtra("keys", true);
         String title = in != null ? in.getStringExtra("title") : null;
         String body = in != null ? in.getStringExtra("body") : null;
         if (title == null || title.length() == 0) title = "\u062d\u0627\u0646 \u0627\u0644\u0622\u0646 \u0645\u0648\u0639\u062f \u0627\u0644\u0635\u0644\u0627\u0629";
@@ -231,7 +237,7 @@ public class AdhanService extends Service {
             return START_NOT_STICKY;
         }
         if (!play(fajr)) { stopSelf(); return START_NOT_STICKY; }
-        listenForVolumeKeys();
+        if (keysOn) listenForVolumeKeys();
         return START_NOT_STICKY;
     }
 
@@ -280,7 +286,7 @@ public class AdhanService extends Service {
             AssetFileDescriptor afd = getResources().openRawResourceFd(res);
             mp.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
             afd.close();
-            mp.setLooping(LOOP);
+            mp.setLooping(loopOn);
             mp.setOnCompletionListener(m -> stopSelf());
             mp.setOnErrorListener((m, what, extra) -> { stopSelf(); return true; });
             mp.prepare();
