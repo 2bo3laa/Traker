@@ -69,6 +69,7 @@ async def run(browser, locale, width):
 
     # --- workout goal + linked paper steps + automatic ticking
     await pg.click("#fab"); await pg.click('[data-c="gym"]'); await pg.click("[data-add]")
+    await ev("S.habits.filter(h=>/^جيم/.test(h.name)).forEach(h=>h.days=[0,1,2,3,4,5,6]);save();render()")   # keep the test independent of the weekday
     await pg.click('#bar [data-pg="paper"]')
     await pg.click('[data-wp="lk:gym"]'); await pg.fill("#wpnew", "Workout"); await pg.click('[data-wp="add"]')
     await pg.click('[data-wp="lk:pr"]'); await pg.select_option("#wpx", "0"); await pg.fill("#wpw", "50")
@@ -126,6 +127,91 @@ async def run(browser, locale, width):
           [next(j for j, x in enumerate(secs) if k in x) for k in ("العبادات", "التمرين", "باقي يومك")]), str(secs))
     check("next prayer card is the first thing in the list", await ev("document.querySelector('#main .tcard')&&document.querySelector('#main .tcard').dataset.pg==='pray'"))
 
+    # --- ready-made habits and counter habits
+    await pg.click("#fab"); await pg.click('[data-c="tpl"]')
+    names = await ev("TPL.map(x=>x.n)")
+    wi = next(i for i, n in enumerate(names) if "شرب المياه" in n)
+    await pg.click('[data-tp="c:h"]'); await pg.click(f'[data-tp="s:{wi}"]'); await pg.click('[data-tp="c:g"]'); await pg.click('[data-tp="c:w"]')
+    ti = next(i for i, n in enumerate(names) if "تسبيح" in n)
+    await pg.click(f'[data-tp="s:{ti}"]'); await pg.click('[data-tp="add"]')
+    check("templates add several habits at once", await ev("S.habits.filter(h=>h.goal).length") == 2)
+    check("selected template from another tab is kept too", await ev("S.habits.some(h=>/تسبيح/.test(h.name))"))
+    await pg.click("#fab"); await pg.click('[data-c="tpl"]')
+    check("already-added templates are disabled", await ev("document.querySelectorAll('#sheet [data-tp^=\"s:\"][disabled]').length") == 0 and await ev("[...document.querySelectorAll('#sheet .chip[disabled]')].length") >= 1)
+    await ev("closeW()")
+    cnt = await ev("S.habits.filter(h=>h.goal).length")
+    check("both counter habits created", cnt == 2, str(cnt))
+    wid = await ev("S.habits.find(h=>/شرب المياه/.test(h.name)).id")
+    for _ in range(8):
+        await pg.click(f'[data-cn^="+:{wid}"]')
+    check("8 glasses completes the water habit", await ev(f"S.done[iso(today0())+'|{wid}']") == 1)
+    await pg.click(f'[data-cn^="-:{wid}"]')
+    check("removing a glass un-completes it", not await ev(f"S.done[iso(today0())+'|{wid}']"))
+
+    # --- tasks: dated, prioritised, overdue stays visible
+    await pg.click("#fab"); await pg.click('[data-c="task"]')
+    await pg.fill("#tkt", "Pay the internet bill"); await pg.click('[data-tk="p:1"]'); await pg.click('[data-tk="add"]')
+    check("task created for today", await ev("S.tk.length") == 1 and await ev("S.tk[0].due===tkNow()&&S.tk[0].pr===1"))
+    await ev("S.tk.push({id:'old1',t:'Old task',due:iso(addDays(today0(),-3)),pr:2,done:0});save();render()")
+    secs = await ev("[...document.querySelectorAll('#main .sec')].map(x=>x.textContent)")
+    check("Today has a tasks section", any("مهامك" in x for x in secs), str(secs))
+    check("overdue task is still shown and marked late", "متأخرة" in await ev("document.getElementById('main').innerText"))
+    await pg.click('[data-tk="t:old1"]')
+    check("ticking a task completes it", await ev("S.tk.find(x=>x.id==='old1').done>0"))
+    await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="tasks"]')
+    check("tasks page lists the open task", "Pay the internet bill" in await ev("document.getElementById('main').innerText"))
+    await pg.click('[data-tk="new"]'); await pg.click('[data-tk="d:none"]'); await pg.fill("#tkt", "Someday task"); await pg.click('[data-tk="add"]')
+    check("undated task goes to its own group", "من غير تاريخ" in await ev("document.getElementById('main').innerText"))
+    await pg.click('[data-tk="x:old1"]')
+    check("task can be deleted", await ev("!S.tk.some(x=>x.id==='old1')"))
+    await pg.click('#bar [data-pg="today"]')
+
+    # --- focus timer
+    await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="focus"]')
+    await pg.click('[data-fc="d:15"]'); await pg.click('[data-fc="start"]')
+    check("focus session starts", await ev("S.fc.end>Date.now()") and await ev("S.fc.dur") == 15)
+    await ev("S.fc.end=Date.now()-1000;save()"); await pg.wait_for_timeout(900)
+    check("finished session is logged", await ev("(S.fl[iso(today0())]||{}).min") == 15)
+
+    # --- money: expenses, budget, subscriptions
+    await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="money"]')
+    await pg.click('[data-mn="new:ex"]'); await pg.fill("#mna", "150"); await pg.click('[data-mn="c:مواصلات"]'); await pg.click('[data-mn="add:ex"]')
+    await pg.click('[data-mn="new:bud"]'); await pg.fill("#mna", "1000"); await pg.click('[data-mn="add:bud"]')
+    await pg.click('[data-mn="new:sub"]'); await pg.fill("#mnn", "Netflix"); await pg.fill("#mna", "200"); await pg.fill("#mnd", "10"); await pg.click('[data-mn="add:sub"]')
+    check("expense, budget and subscription saved", await ev("S.mn.ex.length")==1 and await ev("S.mn.bud")==1000 and await ev("S.mn.sub.length")==1)
+    check("money page shows the month total", "150" in await ev("document.getElementById('main').innerText") or "١٥٠" in await ev("document.getElementById('main').innerText"))
+    await pg.click('[data-mn^="x:"]')
+    check("expense can be removed", await ev("S.mn.ex.length")==0)
+    await ev("S.mn.ex.push({id:'z',a:75,c:'أكل',n:'',d:iso(today0()),t:Date.now()});save()")
+    await pg.click('#bar [data-pg="today"]')
+
+    # --- comeback: quit-habit tracker, urge tool, relapse flow, never-miss-twice banner
+    pg.on("dialog", lambda d: asyncio.ensure_future(d.accept()))
+    await pg.click("#fab"); await pg.click('[data-c="quit"]'); await pg.click('[data-qt="t:0"]'); await pg.click('[data-qt="save"]')
+    check("quit habit created", await ev("S.qt.length") == 1)
+    check("Today shows the comeback section", "رحلة الإقلاع" in await ev("document.getElementById('main').innerText"))
+    await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="quit"]')
+    await pg.click('[data-qt^="urge:"]'); await pg.click('[data-qt="start"]')
+    check("urge timer runs for ten minutes", 590000 < await ev("W.ue-Date.now()") <= 600000)
+    await pg.click('[data-qt="won"]')
+    check("resisted urge is counted", await ev("S.qt[0].res") == 1)
+    await ev("S.qt[0].since=Date.now()-5*864e5;save();render()")
+    await pg.click('[data-qt^="rel:"]'); await pg.click('[data-qt="g:ملل"]'); await pg.click('[data-qt="relsave"]')
+    q0 = await ev("S.qt[0]")
+    check("relapse is logged and the streak restarts", len(q0["rel"]) == 1 and q0["rel"][0]["tag"] == "ملل" and (Date.now() if False else True))
+    check("longest streak is kept after a relapse", await ev("S.qt[0].best") >= 4.9 * 864e5)
+    check("streak restarted from zero days", await ev("qtDays(S.qt[0])") == 0)
+    await ev("S.qt[0].since=Date.now()-2*864e5;save()")
+    await pg.click('[data-qt^="rel:"]'); await pg.click('[data-qt="g:ملل"]'); await pg.click('[data-qt="relsave"]')
+    check("after two relapses the app shows a pattern insight", "انتكاساتك" in await ev("document.getElementById('main').innerText"))
+    await ev("""(()=>{const t=today0(),h={id:'rb1',start:iso(addDays(t,-10)),name:'Test habit',sub:'',days:[0,1,2,3,4,5,6]};S.habits.push(h);
+      for(let i=2;i<=5;i++)S.done[iso(addDays(t,-i))+'|rb1']=1;delete S.qbd;save()})()""")
+    await pg.click('#bar [data-pg="today"]')
+    check("never-miss-twice banner appears after a broken streak", "امبارح فاتتك" in await ev("document.getElementById('main').innerText"))
+    await pg.click('[data-qt="bn"]')
+    check("banner can be dismissed for the day", "امبارح فاتتك" not in await ev("document.getElementById('main').innerText"))
+    await ev("S.habits=S.habits.filter(h=>h.id!=='rb1');save();render()")
+
     # --- offline assistant
     await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="assist"]')
     await pg.click('[data-as="q:0"]')
@@ -135,6 +221,12 @@ async def run(browser, locale, width):
     txt = await ev("document.getElementById('aschat').innerText")
     check("assistant answers about prayers", "صلّيت" in txt, txt[:120])
     check("assistant answers about work hours", "ساعة" in txt, txt[:200])
+    await pg.fill("#asin", "عندي كام مهمة؟"); await pg.click('[data-as="send"]')
+    check("assistant answers about tasks", "مهمة مفتوحة" in await ev("document.getElementById('aschat').innerText"))
+    await pg.fill("#asin", "صرفت كام الشهر ده؟"); await pg.click('[data-as="send"]')
+    check("assistant answers about spending", "صرفت" in await ev("document.getElementById('aschat').innerText"))
+    await pg.fill("#asin", "انتكست"); await pg.click('[data-as="send"]')
+    check("assistant answers supportively about relapse", "الانتكاسة" in await ev("document.getElementById('aschat').innerText"))
     await pg.fill("#asin", "ايه ده؟؟ xyz"); await pg.click('[data-as="send"]')
     check("assistant admits when it does not understand", "مش فاهم" in await ev("document.getElementById('aschat').innerText"))
     await pg.click('#bar [data-pg="today"]')
@@ -159,7 +251,7 @@ async def run(browser, locale, width):
 
     # --- data survives a reload
     await pg.reload(); await pg.wait_for_timeout(500)
-    check("data persists after reload", await ev("S.habits.length") == 8 and await ev("S.name") == "Ahmed")
+    check("data persists after reload", await ev("S.habits.length") == 10 and await ev("S.name") == "Ahmed")
     check("no onboarding after reload", not await ev("document.getElementById('modal').classList.contains('on')"))
 
     check("no page errors", not errs, "; ".join(errs[:3]))

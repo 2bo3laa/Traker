@@ -98,6 +98,10 @@ tr.sum td{border-bottom:0;font-size:10px;color:var(--soft)}
 .fab{position:fixed;left:18px;bottom:calc(86px + env(safe-area-inset-bottom,0px));width:58px;height:58px;border-radius:50%;border:0;background:linear-gradient(135deg,var(--acc),var(--acc2));color:var(--on);font-size:34px;font-weight:700;box-shadow:0 8px 28px color-mix(in srgb,var(--acc) 45%,transparent);z-index:5}
 .modal{position:fixed;inset:0;background:#000a;display:none;align-items:flex-end;justify-content:center;z-index:10}
 .modal.on{display:flex}
+.pgin{animation:pgin .24s cubic-bezier(.2,.8,.2,1)}
+@keyframes pgin{from{opacity:0;transform:translateY(10px)}}
+.tcard.pop{animation:popk .4s cubic-bezier(.3,1.6,.5,1)}
+@keyframes popk{0%{transform:scale(.96)}50%{transform:scale(1.025)}100%{transform:scale(1)}}
 /* polish: press feedback, sheet slide-up, reduced motion */
 .tcard,.chip,.go,.cat,.zk,.fab,.back{transition:transform .12s ease,box-shadow .2s;-webkit-tap-highlight-color:transparent}
 .tcard:active,.chip:active,.go:active,.cat:active,.zk:active,.back:active{transform:scale(.97)}
@@ -4054,7 +4058,7 @@ const MON=["يناير","فبراير","مارس","أبريل","مايو","يو�
 const COL=["var(--w0)","var(--w1)","var(--w2)","var(--w3)","var(--w4)"];
 const PR=["الفجر","الظهر","العصر","المغرب","العشاء"];
 const GYM={1:[6],2:[6,2],3:[6,1,3],4:[6,0,2,4],5:[6,0,1,3,4],6:[6,0,1,2,3,4]};
-const CATS=[["prayer","🕌","صلاة"],["gym","💪","جيم"],["work","💼","شغل"],["course","🎓","كورس"],["read","📖","قراءة"],["custom","✨","أخرى"]];
+const CATS=[["prayer","🕌","صلاة"],["gym","💪","جيم"],["work","💼","شغل"],["course","🎓","كورس"],["read","📖","قراءة"],["custom","✨","أخرى"],["task","✅","مهمة"],["quit","🌱","إقلاع"]];
 
 let S={habits:[],done:{}};
 try{S=JSON.parse(localStorage.getItem("hb1"))||S}catch(e){}
@@ -4107,9 +4111,11 @@ function renderToday(){
   $("quote").textContent=TR("{0}، {1}",S.name?TR("{0} يا {1}",TR(g),S.name):TR(g),TR(b?(p===100?"خلصت يومك. فخور بيك 🔥":"كل خطوة بتفرق"):"النهارده يوم راحة 🌿"));
   let H=`<div class="ring">${ringSVG(p)}<div class="c"><strong>${p}%</strong><span>${a} من ${b} النهارده</span></div></div><div class="badges"><div>🔥 ${streak()} يوم متتالي</div></div>${msgCard(p,t)}`;
   const list=S.habits.filter(x=>active(x,t));
-  const rowH=x=>{const k=iso(t)+"|"+x.id,on=S.done[k];if(x.log){const st=wlStatus();return `<div class="tcard ${on?"on":""}"${st.open?' data-wlrun="1"':""}><span class="ck">${on?"✓":""}</span><span class="tx">${esc(x.name)}<small>${st.txt}</small></span>${editing?del(x):`<button class="chip" data-wl="${st.open?"out":"in"}" style="background:var(--panel);color:var(--ink);font-weight:700">${st.open?"⏹ انصراف":"▶ حضور"}</button>`}</div>`}return `<button class="tcard ${on?"on":""}${on&&LT(k)?" late":""}" ${editing?"":`data-k="${k}"`}><span class="ck">${on?"✓":""}</span><span class="tx">${esc(x.name)}${x.sub?`<small>${esc(x.sub)}</small>`:""}${on&&LT(k)?`<small class="lt">صُلّيت بعد وقتها</small>`:""}</span>${del(x)}</button>`};
+  const rowH=x=>{const k=iso(t)+"|"+x.id,on=S.done[k];if(x.goal&&typeof cnRow==="function")return cnRow(x,k,on,del);if(x.log){const st=wlStatus();return `<div class="tcard ${on?"on":""}"${st.open?' data-wlrun="1"':""}><span class="ck">${on?"✓":""}</span><span class="tx">${esc(x.name)}<small>${st.txt}</small></span>${editing?del(x):`<button class="chip" data-wl="${st.open?"out":"in"}" style="background:var(--panel);color:var(--ink);font-weight:700">${st.open?"⏹ انصراف":"▶ حضور"}</button>`}</div>`}return `<button class="tcard ${on?"on":""}${on&&LT(k)?" late":""}" ${editing?"":`data-k="${k}"`}><span class="ck">${on?"✓":""}</span><span class="tx">${esc(x.name)}${x.sub?`<small>${esc(x.sub)}</small>`:""}${on&&LT(k)?`<small class="lt">صُلّيت بعد وقتها</small>`:""}</span>${del(x)}</button>`};
   const grp=x=>(PR.includes(x.name)||/ورد|قرآن|أذكار|ذكر|صلاة/.test(x.name))?0:/^جيم/.test(x.name)?1:2,GH=["🕌 العبادات","💪 التمرين","📋 باقي يومك"];
-  if(list.length){const gs=[0,1,2].map(g=>list.filter(x=>grp(x)===g)),used=gs.filter(z=>z.length).length;H+=nextPrayerCard()+gs.map((z,gi)=>z.length?(used>1?`<div class="sec">${GH[gi]}</div>`:"")+z.map(rowH).join(""):"").join("")}
+  const tkH=((typeof tkSection==="function")?tkSection():"")+((typeof qtToday==="function")?qtToday():"");
+  if(list.length){const gs=[0,1,2].map(g=>list.filter(x=>grp(x)===g)),used=gs.filter(z=>z.length).length+(tkH?1:0);H+=nextPrayerCard()+((typeof qtBanner==="function")?qtBanner():"")+gs.map((z,gi)=>(gi===2?tkH:"")+(z.length?(used>1?`<div class="sec">${GH[gi]}</div>`:"")+z.map(rowH).join(""):"")).join("")}
+  else if(tkH)H+=nextPrayerCard()+tkH;
   else H+=`<div class="empty">مفيش حاجة مجدولة النهارده، استمتع بيومك 🌿</div>`;
   H+=wlCard()+`<div class="sec">آخر 7 أيام</div><div class="strip">`+Array.from({length:7},(_,i)=>{const d=addDays(t,i-6),[x,y]=dayStat(d);return `<div><i style="--p:${y?pct(x,y):0}"></i>${DS[d.getDay()]}</div>`}).join("")+`</div>`;
   $("main").innerHTML=H;
@@ -4383,9 +4389,13 @@ function closeW(){$("modal").classList.remove("on");W=null}
 const chipsD=(sel)=>`<div class="chips">${ORDER.map(d=>`<button class="chip ${sel.has(d)?"on":""}" data-d="${d}">${DN[d]}</button>`).join("")}</div>`;
 function drawW(){
   if(W.wl)return drawWL();
+  if(W.tk)return drawTK();
+  if(W.tpl)return drawTPL();
+  if(W.mn)return drawMN();
+  if(W.qt)return drawQT();
   const sh=$("sheet");
   if(!W.cat){
-    sh.innerHTML=`<h2>إيه اللي عايز تضيفه؟</h2><p>اختار النوع وأنا هجهزلك الباقي.</p><div class="cats">${CATS.map(([k,e,n])=>{const full=(k==="prayer"&&!missingPR().length)||(k==="gym"&&hasKey("gym"))||(k==="work"&&hasKey("work"));return `<button class="cat" data-c="${k}"${full?' style="opacity:.5"':""}><b>${e}</b>${n}${full?"<small style=\"display:block;font-size:11px;margin-top:2px\">✓ موجود</small>":""}</button>`}).join("")}</div>`;
+    sh.innerHTML=`<h2>إيه اللي عايز تضيفه؟</h2><p>اختار النوع وأنا هجهزلك الباقي.</p><button class="go" data-c="tpl" style="margin:0 0 14px">⚡ قوالب جاهزة (٣٠+ عادة بضغطة)</button><div class="cats">${CATS.map(([k,e,n])=>{const full=(k==="prayer"&&!missingPR().length)||(k==="gym"&&hasKey("gym"))||(k==="work"&&hasKey("work"));return `<button class="cat" data-c="${k}"${full?' style="opacity:.5"':""}><b>${e}</b>${n}${full?"<small style=\"display:block;font-size:11px;margin-top:2px\">✓ موجود</small>":""}</button>`}).join("")}</div>`;
     return;
   }
   let h=`<button class="back" data-back="1">← رجوع</button>`,c=W.cat;
@@ -4448,7 +4458,7 @@ document.addEventListener("click",e=>{
   if(D.k){const was=S.done[D.k];was?delete S.done[D.k]:S.done[D.k]=1;S.late=S.late||{};const kp=D.k.split("|"),hh=S.habits.find(x=>x.id===kp[1]);let lateNow=0;if(was)delete S.late[D.k];else if(hh&&prayLate(hh,kp[0])){S.late[D.k]=1;lateNow=1}trimLate();save();render();schedSoon();if(lateNow)toast("بارك الله فيك! حاول في المرة القادمة أن تصلّيها في وقتها 🤍");else if(!was&&page==="today"){const[a,b]=dayStat(today0());if(b&&a===b){burst();toast(MILE[streak()]||rnd(pool("done")))}else if(a===1)toast(rnd(pool("mid")))}}
   else if(D.v){view=D.v;idx=findIdx(view);render()}
   else if(D.del){if(pend===D.del){S.habits=S.habits.filter(h=>h.id!==D.del);pend=null;if(!S.habits.length){S.start=null;idx=0}save()}else pend=D.del;render()}
-  else if(D.c){if((D.c==="prayer"&&!missingPR().length)||(D.c==="gym"&&hasKey("gym"))||(D.c==="work"&&hasKey("work")))toast("موجود بالفعل في جدولك ✓");else pick(D.c)}
+  else if(D.c){if(D.c==="quit")openQT("add");else if(D.c==="tpl")openTPL();else if(D.c==="task")openTK();else if((D.c==="prayer"&&!missingPR().length)||(D.c==="gym"&&hasKey("gym"))||(D.c==="work"&&hasKey("work")))toast("موجود بالفعل في جدولك ✓");else pick(D.c)}
   else if(D.d){const n=+D.d;W.days.has(n)?W.days.delete(n):W.days.add(n);if($("nm"))W.name=$("nm").value;if($("t1"))W.t1=$("t1").value;if($("t2"))W.t2=$("t2").value;drawW()}
   else if(D.p){W.pr.has(D.p)?W.pr.delete(D.p):W.pr.add(D.p);drawW()}
   else if(D.n){W.n=Math.min(6,Math.max(1,W.n+(+D.n)));W.days=new Set(GYM[W.n]);drawW()}
@@ -4817,6 +4827,10 @@ async function schedNotif(){
           if(at>now)list.push({id:500+i,title:TR("تمرينك ينتظرك 💪"),body:(wy.length?TR("لقد بدأت من أجل: {0}. خطوة واحدة الآن تكفي لتعود 💪",TR(wy[(d.getDate()+i)%wy.length])):TR(wl[(d.getDate()+i)%wl.length])),schedule:{at,allowWhileIdle:true},channelId:"workout"})}}
     }
     try{await P.createChannel({id:"daily",name:"Daily reminder",importance:3,vibration:false});await P.createChannel({id:"prayer",name:"Prayer times",importance:4,vibration:true});await P.createChannel({id:"workout",name:"Workout",importance:4,vibration:true});await P.createChannel({id:"adhan2",name:"Adhan",importance:5,sound:"adhan.mp3",vibration:true});await P.createChannel({id:"adhan_fajr2",name:"Adhan Fajr",importance:5,sound:"adhan_fajr.mp3",vibration:true})}catch(e){}
+    tkAll().filter(x=>!x.done&&x.due).slice(0,60).forEach((x,j)=>{const[yy,mo,dd]=x.due.split("-").map(Number),at=new Date(yy,mo-1,dd,9,0,0);if(at>now&&at-now<7*864e5)list.push({id:2000+j,title:ttl,body:"✅ "+x.t,schedule:{at,allowWhileIdle:false},channelId:"daily"})});
+    if(S.fc&&S.fc.end>Date.now())list.push({id:3000,title:"⏱️ خلّصت جلسة التركيز",body:"خد راحة قصيرة 🤍",schedule:{at:new Date(S.fc.end),allowWhileIdle:true},channelId:"daily"});
+    ((S.mn&&S.mn.sub)||[]).slice(0,30).forEach((sb,j)=>{const nx=mnNext(sb),at=new Date(nx.getFullYear(),nx.getMonth(),nx.getDate()-1,9,0,0);if(at>now&&at-now<8*864e5)list.push({id:2100+j,title:ttl,body:"🔁 اشتراك "+sb.n+" بيتجدد بكرة ("+sb.a+" ج)",schedule:{at,allowWhileIdle:false},channelId:"daily"})});
+    ((S.qt)||[]).slice(0,10).forEach((q,j)=>{if(!q.risk)return;const[hh,mm]=q.risk.split(":").map(Number);for(let d=0;d<7;d++){const at=new Date();at.setDate(at.getDate()+d);at.setHours(hh,mm,0,0);if(at>now)list.push({id:2200+j*10+d,title:ttl,body:"🌱 "+q.n+": وقتك الحساس. اعمل بديل دلوقتي، وافتح 🆘 لو محتاج",schedule:{at,allowWhileIdle:false},channelId:"daily"})}});
     if(AD){try{await AD.schedule({items:adh})}catch(e){adh.forEach(a=>list.push({id:a.id,title:a.title,body:a.body,schedule:{at:new Date(a.at),allowWhileIdle:true},channelId:a.fajr?"adhan_fajr2":"adhan2"}))}}
     if(list.length)await P.schedule({notifications:list});
   }catch(e){}
@@ -5112,14 +5126,17 @@ Object.assign(AZ,{
     {x:"اللَّهُمَّ رَحْمَتَكَ أَرْجُو فَلَا تَكِلْنِي إِلَى نَفْسِي طَرْفَةَ عَيْنٍ، وَأَصْلِحْ لِي شَأْنِي كُلَّهُ، لَا إِلَهَ إِلَّا أَنْتَ",n:1}]}
 });
 /* glue */
-const MORE=["more","stats","food","deen","pray","assist"];
+const MORE=["more","stats","food","deen","pray","assist","tasks","focus","money","quit"];
+let LASTPG=null;
 const _render=render;render=function(){
+  if(LASTPG!==null&&LASTPG!==page){const m=$("main");if(m){m.classList.remove("pgin");void m.offsetWidth;m.classList.add("pgin")}}
+  LASTPG=page;
   sync();
   const hl=()=>document.querySelectorAll("#bar button").forEach(b=>b.classList.toggle("on",b.dataset.pg===(MORE.includes(page)?"more":page)));
-  if(page==="gym"||page==="pray"||page==="paper"||page==="more"||page==="food"||page==="assist"){
+  if(page==="gym"||page==="pray"||page==="paper"||page==="more"||page==="food"||page==="assist"||page==="tasks"||page==="focus"||page==="money"||page==="quit"){
     hl();
     $("tabs").style.display="none";document.querySelector(".nav").style.display="none";$("stat").style.display="none";$("edit").style.display="none";$("fab").style.display="none";
-    return page==="gym"?renderGym():page==="paper"?renderPaper():page==="more"?renderMore():page==="food"?renderFood():page==="assist"?renderAssist():renderPray();
+    return page==="gym"?renderGym():page==="paper"?renderPaper():page==="more"?renderMore():page==="food"?renderFood():page==="assist"?renderAssist():page==="tasks"?renderTasks():page==="focus"?renderFocus():page==="money"?renderMoney():page==="quit"?renderQuit():renderPray();
   }
   _render();hl();
 };
@@ -5241,7 +5258,7 @@ function nuBlock(msg){return `<div class="deen"><h2 style="margin:6px 2px">🥗 
 function renderMore(){
   $("quote").textContent="كل اللي محتاجه في مكان واحد";
   const c=(pg,e,t,s)=>`<button class="cat" data-pg="${pg}" style="padding:18px 8px"><b style="font-size:30px;display:block;margin-bottom:6px">${e}</b>${t}<small style="display:block;font-size:11px;font-weight:600;opacity:.7;margin-top:3px">${s}</small></button>`;
-  $("main").innerHTML=`<div class="deen" style="padding-bottom:90px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">${c("assist","🤖","المساعد","اسأل عن يومك (أوفلاين)")}${c("stats","📊","إحصائياتي","تقدّمك وأرقامك")}${c("food","🥗","الأكل","نظام غذائي بالبدائل")}${c("deen","🕌","ذكر وقرآن","أذكار ومصحف")}${c("pray","🧭","مواقيت وقبلة","الصلاة والتقويم")}<button class="cat" onclick="$('thm').click()" style="padding:18px 8px"><b style="font-size:30px;display:block;margin-bottom:6px">⚙️</b>الإعدادات<small style="display:block;font-size:11px;font-weight:600;opacity:.7;margin-top:3px">الشكل والنسخ الاحتياطي</small></button></div></div>`;
+  $("main").innerHTML=`<div class="deen" style="padding-bottom:90px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">${c("tasks","✅","المهام","بتاريخ وأولوية")}${c("focus","⏱️","تركيز","جلسات مذاكرة وشغل")}${c("money","💰","المصاريف","ميزانية واشتراكات")}${c("quit","🌱","رحلة الإقلاع","بطّل عادة وارجع لو وقعت")}${c("assist","🤖","المساعد","اسأل عن يومك (أوفلاين)")}${c("stats","📊","إحصائياتي","تقدّمك وأرقامك")}${c("food","🥗","الأكل","نظام غذائي بالبدائل")}${c("deen","🕌","ذكر وقرآن","أذكار ومصحف")}${c("pray","🧭","مواقيت وقبلة","الصلاة والتقويم")}<button class="cat" onclick="$('thm').click()" style="padding:18px 8px"><b style="font-size:30px;display:block;margin-bottom:6px">⚙️</b>الإعدادات<small style="display:block;font-size:11px;font-weight:600;opacity:.7;margin-top:3px">الشكل والنسخ الاحتياطي</small></button></div></div>`;
 }
 function renderFood(){
   const n=nuS();$("quote").textContent="كُل صح من غير ما تتقيّد بحاجة";
@@ -5338,6 +5355,8 @@ function asInsights(){
     if(!T.left.length)o.push("🔥 خلّصت كل عادات النهارده، ما شاء الله!");
     else o.push(`📌 فاضل ${AR(T.left.length)} من ${AR(T.L.length)} النهارده${T.left.length<=2?": "+T.left.map(h=>h.name).join(" و "):""}.`);
   }
+  {const L=tkAll().filter(x=>!x.done),late=L.filter(x=>x.due&&x.due<tkNow()).length,now=L.filter(x=>x.due===tkNow()).length;
+   if(late)o.push(`⚠️ عندك ${AR(late)} مهمة متأخرة، خلّصها قبل ما تتراكم.`);else if(now)o.push(`✅ ${AR(now)} مهمة مستنياك النهارده.`)}
   const miss=T.pr.filter(h=>!S.done[iso(today0())+"|"+h.id]).map(h=>h.name);
   if(miss.length&&T.pr.length>=3&&hr>=14)o.push(`🕌 لسه ما سجّلتش: ${miss.join("، ")}.`);
   const w=asWeakest();
@@ -5385,6 +5404,20 @@ function asAnswer(q){
     const E=(n.eaten||{})[iso(new Date())]||{},plan=nuPlan(n,c);let k=0;Object.keys(plan).forEach(sl=>{if(E[sl])k+=plan[sl].opts[0].kcal});
     return `هدفك ${AR(c.t)} سعر في اليوم، وعلّمت ${AR(k)} سعر لحد دلوقتي.`;
   }
+  if(asHas(t,"مهام","مهمه","مهمات")){
+    const L=tkAll().filter(x=>!x.done),td=tkNow(),late=L.filter(x=>x.due&&x.due<td),now=L.filter(x=>x.due===td);
+    if(!L.length)return "مفيش مهام مفتوحة 🎉";
+    return `عندك ${AR(L.length)} مهمة مفتوحة: ${AR(now.length)} النهارده و${AR(late.length)} متأخرة.`+(late.length?"\n⚠️ "+late.slice(0,3).map(x=>x.t).join("، "):"")+(now.length?"\n📅 "+now.slice(0,3).map(x=>x.t).join("، "):"");
+  }
+  if(asHas(t,"ركزت","تركيز","بومودورو")){const o=(fcLog()[tk])||{min:0,n:0};return `النهارده ركّزت ${AR(o.min)} دقيقة في ${AR(o.n)} جلسة.`}
+  if(asHas(t,"صرفت","مصاريف","مصروف","ميزانيه","اشتراك","فلوس")){
+    const m=mnS(),cur=mnMonth(tk),tot=m.ex.filter(x=>mnMonth(x.d)===cur).reduce((a,x)=>a+x.a,0),sb=m.sub.reduce((a,x)=>a+x.a,0);
+    return `صرفت الشهر ده ${mnFmt(tot)}`+(m.bud?` من ميزانية ${mnFmt(m.bud)} (فاضل ${mnFmt(Math.max(0,m.bud-tot))})`:"")+(sb?`.\nاشتراكاتك الشهرية ${mnFmt(sb)}.`:".");
+  }
+  if(asHas(t,"انتكس","انتكاس","رغبه","وقعت","رجعت للعاده")){
+    const L=qtAll();
+    return (L.length?"أيامك لحد دلوقتي:\n"+L.map(q=>`${q.e} ${q.n}: ${AR(qtDays(q))} يوم (أطول فترة ${qtFmt(Math.max(q.best||0,qtLen(q)))})`).join("\n")+"\n\n":"")+"الانتكاسة مش نهاية الطريق. افتح ☰ المزيد ← 🌱 رحلة الإقلاع، وفيها زرار 🆘 للرغبة، وتسجّل اللي حصل وتبدأ من جديد من غير ما تخسر أطول فترة وصلتلها.";
+  }
   if(asHas(t,"سلسل","متتال","streak"))return `سلسلتك الحالية ${AR(streak())} يوم متتالي 🔥`;
   if(asHas(t,"ورق","خطه","خطوات","اهداف")){
     const wp=((S.wp||{}).weeks||{})[wpKey(0)]||[];if(!wp.length)return "ما عندكش خطوات في ورقة الأسبوع ده.";
@@ -5418,6 +5451,363 @@ document.addEventListener("click",e=>{
   renderAssist();try{buzz(8)}catch(x){}
 });
 document.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.id==="asin"){e.preventDefault();const b=document.querySelector('[data-as="send"]');if(b)b.click()}});
+</script>
+<script>
+/* ===== tasks: dated, prioritised, overdue ones stay visible until done ===== */
+const TKP=[["🔴","عاجل ومهم"],["🟠","مهم"],["🟡","عاجل"],["⚪","عادي"]];
+const tkAll=()=>Array.isArray(S.tk)?S.tk:(S.tk=[]);
+const tkNow=()=>iso(today0());
+const tkSort=(a,b)=>((a.due||"9999")<(b.due||"9999")?-1:(a.due||"9999")>(b.due||"9999")?1:0)||(a.pr-b.pr);
+function tkLabel(x){
+  if(!x.due)return "من غير تاريخ";
+  const t=today0(),d=dOf(x.due),n=Math.round((d-t)/864e5);
+  if(n<0)return `متأخرة ${AR(-n)} ${-n===1?"يوم":"أيام"}`;
+  if(n===0)return "النهارده";
+  if(n===1)return "بكرة";
+  return fmt(d);
+}
+function tkClean(){const lim=Date.now()-30*864e5;S.tk=tkAll().filter(x=>!x.done||x.done>lim)}
+const tkIcon=x=>TKP[(x.pr||4)-1][0];
+function tkRow(x){
+  const late=!x.done&&x.due&&x.due<tkNow();
+  return `<button class="tcard ${x.done?"on":""}" data-tk="t:${x.id}"><span class="ck">${x.done?"✓":""}</span><span class="tx" style="${x.done?"text-decoration:line-through;opacity:.7":""}">${esc(x.t)}<small style="${late?"color:#ff6b8a;font-weight:700":""}">${tkIcon(x)} ${x.done?"تمت":tkLabel(x)}</small></span><i data-tk="x:${x.id}" style="font-style:normal;padding:6px 8px;color:#ff6b8a">✕</i></button>`;
+}
+function tkSection(){
+  const t=tkNow(),L=tkAll(),open=L.filter(x=>!x.done&&x.due&&x.due<=t).sort(tkSort),dn=L.filter(x=>x.done&&iso(new Date(x.done))===t&&x.due&&x.due<=t);
+  if(!open.length&&!dn.length)return "";
+  const sh=open.slice(0,6);
+  return `<div class="sec">✅ مهامك</div>`+sh.concat(dn).map(tkRow).join("")+`<div class="chips" style="margin:2px 0 10px">${open.length>6?`<button class="chip" data-pg="tasks">+${AR(open.length-6)} كمان</button>`:""}<button class="chip" data-tk="new">➕ مهمة</button><button class="chip" data-pg="tasks">كل المهام ›</button></div>`;
+}
+function renderTasks(){
+  tkClean();
+  $("quote").textContent="اللي اتأخر بيفضل ظاهر قدامك لحد ما تخلّصه";
+  const t=tkNow(),L=tkAll(),open=L.filter(x=>!x.done).sort(tkSort),tm=iso(addDays(today0(),1)),wk=iso(addDays(today0(),7));
+  const G=[["⚠️ متأخرة",open.filter(x=>x.due&&x.due<t)],["📅 النهارده",open.filter(x=>x.due===t)],["🌤️ بكرة",open.filter(x=>x.due===tm)],["🗓️ الأسبوع ده",open.filter(x=>x.due>tm&&x.due<=wk)],["⏭️ بعدين",open.filter(x=>x.due>wk)],["📥 من غير تاريخ",open.filter(x=>!x.due)]];
+  const done=L.filter(x=>x.done&&Date.now()-x.done<7*864e5).sort((a,b)=>b.done-a.done);
+  const body=G.filter(g=>g[1].length).map(g=>`<div class="sec">${g[0]} (${AR(g[1].length)})</div>`+g[1].map(tkRow).join("")).join("");
+  $("main").innerHTML=`<div class="deen" style="padding-bottom:110px"><h2 style="margin:6px 2px">✅ المهام</h2>
+  <div class="chips"><button class="chip on" data-tk="new" style="font-size:15px;padding:10px 18px">➕ مهمة جديدة</button></div>
+  ${body||'<div class="empty">مفيش مهام مفتوحة 🎉 ضيف أول مهمة.</div>'}
+  ${done.length?`<div class="sec">تمت مؤخرًا (${AR(done.length)})</div>`+done.map(tkRow).join(""):""}</div>`;
+}
+function openTK(){W={tk:1,due:"today",pr:2,date:"",text:""};drawW();$("modal").classList.add("on");setTimeout(()=>{const i=$("tkt");if(i)i.focus()},120)}
+function drawTK(){
+  const ch=(on,k,t)=>`<button class="chip ${on?"on":""}" data-tk="${k}">${t}</button>`;
+  $("sheet").innerHTML=`<h2>مهمة جديدة ✅</h2>
+  <div class="q">إيه المهمة؟</div><input class="inp" id="tkt" placeholder="مثال: أسدّد فاتورة النت" value="${esc(W.text)}">
+  <div class="q">موعدها</div><div class="chips">${ch(W.due==="today","d:today","النهارده")}${ch(W.due==="tom","d:tom","بكرة")}${ch(W.due==="3d","d:3d","بعد ٣ أيام")}${ch(W.due==="wk","d:wk","الأسبوع الجاي")}${ch(W.due==="pick","d:pick","📆 تاريخ تاني")}${ch(W.due==="none","d:none","من غير تاريخ")}</div>
+  ${W.due==="pick"?`<input class="inp" type="date" id="tkdate" value="${esc(W.date||tkNow())}" style="margin-top:8px">`:""}
+  <div class="q">الأولوية</div><div class="chips">${TKP.map((p,i)=>ch(W.pr===i+1,"p:"+(i+1),p[0]+" "+p[1])).join("")}</div>
+  <div class="err" id="tkerr"></div><button class="go" data-tk="add">أضف المهمة</button>`;
+}
+function tkResched(){try{if(typeof schedSoon==="function")schedSoon();else schedNotif()}catch(e){}}
+document.addEventListener("click",e=>{
+  const t=e.target.closest("[data-tk]");if(!t)return;
+  e.stopPropagation();
+  const[k,a]=t.dataset.tk.split(":");
+  if(k==="new"){openTK();return}
+  if(W&&W.tk){
+    W.text=$("tkt")?$("tkt").value:W.text;if($("tkdate"))W.date=$("tkdate").value;
+    if(k==="d"){W.due=a;drawTK();return}
+    if(k==="p"){W.pr=+a;drawTK();return}
+    if(k==="add"){
+      const txt=(W.text||"").trim();if(!txt){$("tkerr").textContent="اكتب المهمة الأول";return}
+      let due="";const n=today0();
+      if(W.due==="today")due=iso(n);else if(W.due==="tom")due=iso(addDays(n,1));else if(W.due==="3d")due=iso(addDays(n,3));else if(W.due==="wk")due=iso(addDays(n,7));else if(W.due==="pick")due=W.date||iso(n);
+      tkAll().push({id:Date.now().toString(36)+Math.random().toString(36).slice(2,5),t:txt,due,pr:W.pr,done:0});
+      save();closeW();render();tkResched();toast("اتضافت المهمة ✓");return;
+    }
+  }
+  if(k==="t"){const x=tkAll().find(z=>z.id===a);if(x){x.done=x.done?0:Date.now();save();render();tkResched();try{buzz(12)}catch(z){}}}
+  else if(k==="x"){S.tk=tkAll().filter(z=>z.id!==a);save();render();tkResched()}
+},true);
+try{render()}catch(e){}
+</script>
+<script>
+/* ===== ready-made habits, counter habits, smooth transitions ===== */
+const TPL_SEC=[["w","🕌 عبادة"],["h","💪 صحة"],["g","🧠 تطوير"],["l","🏠 حياة"]];
+const TPL=[
+ {k:"w",n:"🌅 صلاة الضحى"},{k:"w",n:"🌙 قيام الليل"},{k:"w",n:"🕌 السنن الرواتب",sub:"١٢ ركعة"},
+ {k:"w",n:"📿 تسبيح",goal:100,step:10,unit:"مرة"},{k:"w",n:"🤲 استغفار",goal:100,step:10,unit:"مرة"},
+ {k:"w",n:"💝 صدقة يومية"},{k:"w",n:"🌿 صيام الاثنين والخميس",days:[1,4]},{k:"w",n:"👨‍👩‍👧 اتصال بالوالدين"},{k:"w",n:"🕋 صلاة الجمعة وسورة الكهف",days:[5]},
+ {k:"h",n:"💧 شرب المياه",goal:8,step:1,unit:"كوب"},{k:"h",n:"🚶 مشي ٣٠ دقيقة"},{k:"h",n:"😴 نوم بدري"},{k:"h",n:"⏰ صحيان بدري"},
+ {k:"h",n:"💊 فيتامينات / أدوية"},{k:"h",n:"🧘 تأمل وتنفّس ١٠ دقايق"},{k:"h",n:"🍬 من غير سكر"},{k:"h",n:"🪥 تنظيف الأسنان قبل النوم"},{k:"h",n:"🏃 كارديو ٢٠ دقيقة"},{k:"h",n:"🥤 مياه بدل المشروبات الغازية"},
+ {k:"g",n:"📖 قراءة (صفحات)",goal:10,step:5,unit:"صفحة"},{k:"g",n:"🌍 تعلّم لغة ٢٠ دقيقة"},{k:"g",n:"💻 مذاكرة أمن معلومات / برمجة",sub:"ساعة"},
+ {k:"g",n:"✍️ يوميات وامتنان"},{k:"g",n:"🎧 بودكاست أو كورس"},{k:"g",n:"📵 من غير موبايل قبل النوم بساعة"},{k:"g",n:"🎯 مراجعة أهداف اليوم"},
+ {k:"l",n:"🛏️ ترتيب السرير"},{k:"l",n:"🧹 ترتيب البيت"},{k:"l",n:"💵 تسجيل المصاريف"},{k:"l",n:"📞 صلة رحم"},{k:"l",n:"🌱 سقي النباتات"},{k:"l",n:"🧺 غسيل وكوي",days:[6]}
+];
+const tplHave=n=>S.habits.some(h=>h.name===n);
+function openTPL(){W={tpl:1,sec:"w",sel:new Set()};drawW();$("modal").classList.add("on")}
+function drawTPL(){
+  const L=TPL.map((t,i)=>[t,i]).filter(([t])=>t.k===W.sec);
+  $("sheet").innerHTML=`<button class="back" data-back="1">← رجوع</button><h2>قوالب جاهزة ⚡</h2><p>اختار اللي عايزه وضيفهم مرة واحدة.</p>
+  <div class="chips">${TPL_SEC.map(([k,t])=>`<button class="chip ${W.sec===k?"on":""}" data-tp="c:${k}">${t}</button>`).join("")}</div>
+  <div class="chips" style="margin-top:12px">${L.map(([t,i])=>{const has=tplHave(t.n),on=W.sel.has(i);return `<button class="chip ${on?"on":""}" ${has?'style="opacity:.45" disabled':`data-tp="s:${i}"`}>${has?"✓ ":on?"✔ ":""}${esc(t.n)}${t.goal?` <small>(${AR(t.goal)} ${t.unit})</small>`:""}</button>`}).join("")}</div>
+  <button class="go" data-tp="add" ${W.sel.size?"":'style="opacity:.5"'}>ضيف ${W.sel.size?"("+AR(W.sel.size)+")":""}</button>`;
+}
+document.addEventListener("click",e=>{
+  const t=e.target.closest("[data-tp]");if(!t)return;
+  e.stopPropagation();
+  const[k,a]=t.dataset.tp.split(":");
+  if(!W||!W.tpl)return;
+  if(k==="c"){W.sec=a;drawTPL()}
+  else if(k==="s"){const i=+a;W.sel.has(i)?W.sel.delete(i):W.sel.add(i);drawTPL()}
+  else if(k==="add"){
+    if(!W.sel.size){toast("اختار عادة على الأقل");return}
+    const st=iso(new Date()),all=[0,1,2,3,4,5,6];
+    [...W.sel].sort((x,y)=>x-y).forEach(i=>{const t=TPL[i];if(tplHave(t.n))return;
+      const h={id:Date.now().toString(36)+Math.random().toString(36).slice(2,6),start:st,name:t.n,sub:t.sub||(t.goal?AR(t.goal)+" "+t.unit:"عادة يومية"),days:t.days||all};
+      if(t.goal){h.goal=t.goal;h.step=t.step||1;h.unit=t.unit||""}
+      insertHabit(h)});
+    if(!S.start)S.start=st;
+    const n=W.sel.size;save();closeW();render();toast(`اتضافت ${AR(n)} ${n===1?"عادة":"عادات"} ✓`);
+  }
+},true);
+/* counter habits (water, tasbeeh, pages…) */
+document.addEventListener("click",e=>{
+  const t=e.target.closest("[data-cn]");if(!t)return;
+  e.stopPropagation();
+  const[op,id,k]=t.dataset.cn.split(":"),h=S.habits.find(z=>z.id===id);if(!h)return;
+  S.cnt=S.cnt||{};
+  const st=h.step||1;let n=Math.max(0,(+S.cnt[k]||0)+(op==="+"?st:-st));
+  S.cnt[k]=n;
+  if(n>=h.goal)S.done[k]=1;else delete S.done[k];
+  Object.keys(S.cnt).sort().slice(0,-200).forEach(x=>delete S.cnt[x]);
+  save();render();try{buzz(op==="+"&&n>=h.goal?[20,40,20]:10)}catch(x){}
+},true);
+function cnRow(x,k,on,del){
+  const n=+((S.cnt||{})[k])||0,pc=Math.min(100,Math.round(n/x.goal*100));
+  return `<div class="tcard ${on?"on":""}" style="display:block"><div style="display:flex;align-items:center;gap:8px"><span class="ck">${on?"✓":""}</span><span class="tx" style="flex:1">${esc(x.name)}<small>${AR(n)} / ${AR(x.goal)} ${esc(x.unit||"")}</small></span>${editing?del(x):`<button class="chip" data-cn="-:${x.id}:${k}">−</button><button class="chip on" data-cn="+:${x.id}:${k}" style="font-weight:800;background:var(--panel);color:var(--ink)"><span dir="ltr">+${AR(x.step||1)}</span></button>`}</div><div style="height:6px;border-radius:99px;background:#0003;margin-top:8px;overflow:hidden"><div style="height:100%;width:${pc}%;border-radius:99px;background:var(--acc);transition:width .3s"></div></div></div>`;
+}
+/* smooth: page fade, tick pop */
+document.addEventListener("click",e=>{
+  const t=e.target.closest("[data-k]");if(!t)return;
+  const k=t.dataset.k;
+  setTimeout(()=>{const el=document.querySelector('[data-k="'+k+'"]');if(el&&el.classList.contains("on")){el.classList.add("pop");setTimeout(()=>el.classList.remove("pop"),450)}},40);
+},true);
+try{render()}catch(e){}
+</script>
+<script>
+/* ===== focus timer ===== */
+const fcCfg=()=>{const f=S.fc=(S.fc&&typeof S.fc==="object")?S.fc:{};f.dur=f.dur||25;f.end=f.end||0;return f};
+const fcLog=()=>S.fl=(S.fl&&typeof S.fl==="object")?S.fl:{};
+const fcFmt=ms=>{const s=Math.max(0,Math.ceil(ms/1000)),m=Math.floor(s/60);return String(m).padStart(2,"0")+":"+String(s%60).padStart(2,"0")};
+function fcCheck(){
+  const f=fcCfg();
+  if(f.end&&Date.now()>=f.end){
+    const k=iso(today0()),L=fcLog(),o=L[k]=L[k]||{min:0,n:0};
+    o.min+=f.dur;o.n+=1;f.end=0;
+    Object.keys(L).sort().slice(0,-60).forEach(x=>delete L[x]);
+    save();try{buzz([200,100,200,100,300])}catch(e){}toast("🎉 خلّصت جلسة تركيز!");return true;
+  }
+  return false;
+}
+function renderFocus(){
+  fcCheck();
+  const f=fcCfg(),run=f.end>Date.now(),L=fcLog(),tk=iso(today0()),o=L[tk]||{min:0,n:0};
+  $("quote").textContent="جلسة واحدة مركّزة أحسن من ساعة مشتتة";
+  const days=Array.from({length:7},(_,i)=>iso(addDays(today0(),i-6))),mx=Math.max(30,...days.map(d=>(L[d]||{}).min||0));
+  $("main").innerHTML=`<div class="deen" style="padding-bottom:110px"><h2 style="margin:6px 2px">⏱️ تركيز</h2>
+  <div class="tcard on" style="display:block;text-align:center;padding:26px 10px"><div id="fcT" style="font-size:64px;font-weight:800;letter-spacing:2px">${run?fcFmt(f.end-Date.now()):fcFmt(f.dur*60000)}</div><div style="font-size:13px;opacity:.8">${run?"ركّز… الموبايل على جنب 🤍":"اختار المدة وابدأ"}</div></div>
+  ${run?"":`<div class="chips" style="margin-top:12px;justify-content:center">${[15,25,45,60].map(m=>`<button class="chip ${f.dur===m?"on":""}" data-fc="d:${m}">${AR(m)} دقيقة</button>`).join("")}</div>`}
+  <button class="go" data-fc="${run?"stop":"start"}" style="margin-top:14px">${run?"⏹ إلغاء الجلسة":"▶ ابدأ"}</button>
+  <div class="sec">النهارده</div><div class="note" style="color:var(--ink)">${AR(o.min)} دقيقة تركيز • ${AR(o.n)} جلسة</div>
+  <div class="sec">آخر ٧ أيام</div><div style="display:flex;gap:6px;align-items:flex-end;height:90px">${days.map(d=>{const m=(L[d]||{}).min||0;return `<div style="flex:1;text-align:center;font-size:10px"><div style="height:${Math.max(3,Math.round(m/mx*70))}px;background:var(--acc);border-radius:6px;opacity:${m?1:.25}"></div>${m?AR(m):""}</div>`}).join("")}</div></div>`;
+}
+document.addEventListener("click",e=>{
+  const t=e.target.closest("[data-fc]");if(!t)return;e.stopPropagation();
+  const[k,a]=t.dataset.fc.split(":"),f=fcCfg();
+  if(k==="d"){f.dur=+a;save();renderFocus()}
+  else if(k==="start"){f.end=Date.now()+f.dur*60000;save();renderFocus();try{schedNotif()}catch(x){}}
+  else if(k==="stop"){f.end=0;save();renderFocus();try{schedNotif()}catch(x){}}
+},true);
+setInterval(()=>{
+  if(page!=="focus")return;
+  const f=fcCfg();
+  if(f.end&&Date.now()>=f.end){if(fcCheck())renderFocus();return}
+  const el=$("fcT");if(el&&f.end)el.textContent=fcFmt(f.end-Date.now());
+},500);
+/* ===== money: expenses, budget, subscriptions ===== */
+const MNC=[["🍔","أكل"],["🚌","مواصلات"],["🧾","فواتير"],["🎮","ترفيه"],["🛍️","تسوق"],["💊","صحة"],["🎓","تعليم"],["✨","أخرى"]];
+const mnS=()=>{const m=S.mn=(S.mn&&typeof S.mn==="object")?S.mn:{};m.ex=Array.isArray(m.ex)?m.ex:[];m.sub=Array.isArray(m.sub)?m.sub:[];m.bud=+m.bud||0;return m};
+const mnMonth=d=>d.slice(0,7);
+const mnFmt=n=>AR(Math.round(n*100)/100)+" ج";
+function mnNext(sb){const t=today0();let d=new Date(t.getFullYear(),t.getMonth(),sb.day);if(d<t)d=new Date(t.getFullYear(),t.getMonth()+1,sb.day);return d}
+function renderMoney(){
+  const m=mnS(),cur=mnMonth(iso(today0()));
+  $("quote").textContent="اللي بتسجّله بتتحكم فيه";
+  const ex=m.ex.filter(x=>mnMonth(x.d)===cur).sort((a,b)=>b.d.localeCompare(a.d)||b.t-a.t),tot=ex.reduce((a,x)=>a+x.a,0),subT=m.sub.reduce((a,x)=>a+x.a,0);
+  const by=MNC.map(([e,n])=>[e,n,ex.filter(x=>x.c===n).reduce((a,x)=>a+x.a,0)]).filter(x=>x[2]>0).sort((a,b)=>b[2]-a[2]);
+  const pc=m.bud?Math.min(100,Math.round(tot/m.bud*100)):0,over=m.bud&&tot>m.bud;
+  $("main").innerHTML=`<div class="deen" style="padding-bottom:110px"><h2 style="margin:6px 2px">💰 المصاريف</h2>
+  <div class="tcard on" style="display:block"><div style="font-size:13px;opacity:.85">مصروف الشهر ده</div><div style="font-size:30px;font-weight:800">${mnFmt(tot)}</div>
+  ${m.bud?`<div style="height:8px;border-radius:99px;background:#0003;margin:8px 0 4px;overflow:hidden"><div style="height:100%;width:${pc}%;background:${over?"#ff4d6d":"var(--panel)"}"></div></div><div style="font-size:12px">${over?"⚠️ عدّيت الميزانية بـ "+mnFmt(tot-m.bud):"فاضل "+mnFmt(m.bud-tot)+" من "+mnFmt(m.bud)}</div>`:`<div style="font-size:12px;opacity:.8">حدّد ميزانية شهرية عشان تتابعها</div>`}
+  ${subT?`<div style="font-size:12px;margin-top:6px">🔁 اشتراكات شهرية: ${mnFmt(subT)}</div>`:""}</div>
+  <div class="chips" style="margin-top:12px"><button class="chip on" data-mn="new:ex" style="font-size:15px;padding:10px 16px">➕ مصروف</button><button class="chip" data-mn="new:sub">🔁 اشتراك</button><button class="chip" data-mn="new:bud">🎯 الميزانية</button></div>
+  ${by.length?`<div class="sec">على إيه صرفت؟</div>`+by.map(([e,n,v])=>`<div style="margin:6px 2px"><div style="display:flex;justify-content:space-between;font-size:14px"><span>${e} ${n}</span><b>${mnFmt(v)}</b></div><div style="height:6px;border-radius:99px;background:#fff2;margin-top:3px"><div style="height:100%;width:${Math.round(v/by[0][2]*100)}%;background:var(--acc);border-radius:99px"></div></div></div>`).join(""):""}
+  ${m.sub.length?`<div class="sec">🔁 الاشتراكات</div>`+m.sub.map(x=>{const nx=mnNext(x),dd=Math.round((nx-today0())/864e5);return `<div class="tcard" style="display:flex"><span class="tx">${esc(x.n)}<small>التجديد ${dd===0?"النهارده":"بعد "+AR(dd)+" يوم"} (يوم ${AR(x.day)})</small></span><b>${mnFmt(x.a)}</b><i data-mn="xs:${x.id}" style="font-style:normal;padding:6px 8px;color:#ff6b8a">✕</i></div>`}).join(""):""}
+  ${ex.length?`<div class="sec">آخر المصاريف</div>`+ex.slice(0,15).map(x=>`<div class="tcard" style="display:flex"><span class="tx">${MNC.find(c=>c[1]===x.c)?MNC.find(c=>c[1]===x.c)[0]:"✨"} ${esc(x.n||x.c)}<small>${fmt(dOf(x.d))}</small></span><b>${mnFmt(x.a)}</b><i data-mn="x:${x.id}" style="font-style:normal;padding:6px 8px;color:#ff6b8a">✕</i></div>`).join(""):'<div class="empty">لسه ما سجّلتش مصاريف الشهر ده.</div>'}</div>`;
+}
+function openMN(kind){W={mn:kind,c:"أكل",day:"today",a:"",n:"",d:"",sd:5};drawW();$("modal").classList.add("on");setTimeout(()=>{const i=$("mna");if(i)i.focus()},120)}
+function drawMN(){
+  const ch=(on,k,t)=>`<button class="chip ${on?"on":""}" data-mn="${k}">${t}</button>`,m=mnS();
+  if(W.mn==="ex")$("sheet").innerHTML=`<h2>مصروف جديد 💸</h2><div class="q">المبلغ (جنيه)</div><input class="inp" id="mna" type="number" inputmode="decimal" placeholder="٠" value="${esc(W.a)}">
+  <div class="q">النوع</div><div class="chips">${MNC.map(([e,n])=>ch(W.c===n,"c:"+n,e+" "+n)).join("")}</div>
+  <div class="q">ملاحظة (اختياري)</div><input class="inp" id="mnn" placeholder="مثال: غدا" value="${esc(W.n)}">
+  <div class="q">امتى؟</div><div class="chips">${ch(W.day==="today","dy:today","النهارده")}${ch(W.day==="yest","dy:yest","إمبارح")}</div>
+  <div class="err" id="mnerr"></div><button class="go" data-mn="add:ex">سجّل</button>`;
+  else if(W.mn==="sub")$("sheet").innerHTML=`<h2>اشتراك جديد 🔁</h2><div class="q">اسم الاشتراك</div><input class="inp" id="mnn" placeholder="مثال: نتفليكس" value="${esc(W.n)}">
+  <div class="q">المبلغ الشهري (جنيه)</div><input class="inp" id="mna" type="number" inputmode="decimal" value="${esc(W.a)}">
+  <div class="q">يوم التجديد في الشهر (١-٢٨)</div><input class="inp" id="mnd" type="number" inputmode="numeric" min="1" max="28" value="${W.sd}">
+  <div class="err" id="mnerr"></div><button class="go" data-mn="add:sub">أضف الاشتراك</button>`;
+  else $("sheet").innerHTML=`<h2>ميزانية الشهر 🎯</h2><div class="q">أقصى مبلغ تصرفه في الشهر (جنيه)</div><input class="inp" id="mna" type="number" inputmode="decimal" value="${m.bud||""}"><div class="err" id="mnerr"></div><button class="go" data-mn="add:bud">احفظ</button>`;
+}
+function mnRead(){if($("mna"))W.a=$("mna").value;if($("mnn"))W.n=$("mnn").value;if($("mnd"))W.sd=+$("mnd").value}
+document.addEventListener("click",e=>{
+  const t=e.target.closest("[data-mn]");if(!t)return;e.stopPropagation();
+  const[k,a]=t.dataset.mn.split(":"),m=mnS(),id=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,5);
+  if(k==="new"){openMN(a);return}
+  if(k==="x"){m.ex=m.ex.filter(x=>x.id!==a);save();render();return}
+  if(k==="xs"){m.sub=m.sub.filter(x=>x.id!==a);save();render();try{schedNotif()}catch(x){}return}
+  if(!W||!W.mn)return;
+  mnRead();
+  if(k==="c"){W.c=a;drawMN();return}
+  if(k==="dy"){W.day=a;drawMN();return}
+  if(k==="add"){
+    const err=s=>{$("mnerr").textContent=s},v=parseFloat(W.a);
+    if(a==="ex"){
+      if(!(v>0))return err("اكتب المبلغ");
+      m.ex.push({id:id(),a:v,c:W.c,n:(W.n||"").trim(),d:iso(W.day==="yest"?addDays(today0(),-1):today0()),t:Date.now()});
+      m.ex=m.ex.slice(-1500);toast("اتسجّل ✓");
+    }else if(a==="sub"){
+      const nm=(W.n||"").trim(),dy=Math.round(W.sd);
+      if(!nm)return err("اكتب اسم الاشتراك");if(!(v>0))return err("اكتب المبلغ");if(!(dy>=1&&dy<=28))return err("اليوم من ١ لـ ٢٨");
+      m.sub.push({id:id(),n:nm,a:v,day:dy});toast("اتضاف ✓");
+    }else{m.bud=v>0?v:0;toast("اتحفظت ✓")}
+    save();closeW();render();try{schedNotif()}catch(x){}
+  }
+},true);
+try{render()}catch(e){}
+</script>
+<script>
+/* ===== comeback: quit-a-habit tracker, urge tool, relapse flow, "never miss twice" ===== */
+const QT_TPL=[["🚭","التدخين"],["🍬","السكر"],["📱","السوشيال ميديا"],["🌙","السهر"],["🎮","الألعاب بإفراط"],["🍟","الأكل السريع"],["🔒","عادة تانية (باسم خاص)"]];
+const QT_TRG=["ملل","توتر","وحدة","تعب","سهر","مكان أو ناس","مشاعر صعبة","من غير سبب واضح"];
+const QT_ALT=["🚿 توضّأ أو خد دش","🚶 امشي ١٠ دقايق","💧 اشرب كوباية مياه","📞 كلّم حد بتثق فيه","📿 اذكر الله واستغفر","✍️ اكتب اللي جواك","💪 اعمل ١٠ تمارين ضغط"];
+const QT_MS=[1,3,7,14,30,60,90,180,365];
+const QT_MSG=["الانتكاسة مش نهاية الطريق، دي محطة تتعلّم منها.","اللي يرجع بعد ما يقع أقوى ممن ما جرّبش.","أيامك اللي فاتت ما راحتش، هي اللي هتفرق المرة الجاية.","ارجع من جديد، فإن الله يحب التوّابين."];
+const qtAll=()=>Array.isArray(S.qt)?S.qt:(S.qt=[]);
+const qtDays=q=>Math.floor((Date.now()-q.since)/864e5);
+const qtLen=q=>Math.max(0,Date.now()-q.since);
+const qtFmt=ms=>{const d=Math.floor(ms/864e5),h=Math.floor(ms%864e5/36e5);return d?`${AR(d)} يوم${h?" و"+AR(h)+" ساعة":""}`:`${AR(h)} ساعة`};
+function qtInsight(q){
+  const r=q.rel||[];if(r.length<2)return "";
+  const cnt={};r.forEach(x=>{if(x.tag)cnt[x.tag]=(cnt[x.tag]||0)+1});
+  const tg=Object.entries(cnt).sort((a,b)=>b[1]-a[1])[0];
+  const hrs={};r.forEach(x=>{const h=new Date(x.at).getHours(),b=h>=22||h<4?"بالليل":h<12?"الصبح":h<18?"بعد الضهر":"المغرب";hrs[b]=(hrs[b]||0)+1});
+  const hb=Object.entries(hrs).sort((a,b)=>b[1]-a[1])[0];
+  return `📊 أغلب انتكاساتك بتحصل ${hb[0]}${tg?` وسببها غالبًا «${tg[0]}»`:""}. جهّز بديل مسبقًا للوقت ده.`;
+}
+function qtCard(q){
+  const d=qtDays(q),nx=QT_MS.find(m=>m>d)||QT_MS[QT_MS.length-1],pv=[0,...QT_MS].filter(m=>m<=d).pop()||0,pc=Math.min(100,Math.round((d-pv)/(nx-pv)*100)),best=Math.max(q.best||0,qtLen(q));
+  return `<div class="tcard on" style="display:block;margin-bottom:12px"><div style="display:flex;align-items:center;gap:8px"><b style="flex:1;font-size:17px">${q.e} ${esc(q.n)}</b><i data-qt="del:${q.id}" style="font-style:normal;padding:4px 8px;opacity:.7">🗑</i></div>
+  <div style="font-size:42px;font-weight:800;margin:6px 0 0">${AR(d)} <small style="font-size:16px">يوم</small></div><div style="font-size:12px;opacity:.85">${qtFmt(qtLen(q))} من غير • أطول فترة: ${qtFmt(best)} • انتكاسات: ${AR((q.rel||[]).length)} • رغبات عدّت: ${AR(q.res||0)}</div>
+  <div style="height:7px;border-radius:99px;background:#0003;margin:10px 0 3px;overflow:hidden"><div style="height:100%;width:${pc}%;background:var(--panel)"></div></div><div style="font-size:11px;opacity:.8">الهدف الجاي: ${AR(nx)} يوم</div>
+  ${qtInsight(q)?`<div style="font-size:12px;margin-top:8px;line-height:1.7">${qtInsight(q)}</div>`:""}
+  ${q.plan?`<div style="font-size:12px;margin-top:8px;line-height:1.7">📌 خطتي: ${esc(q.plan)}</div>`:""}
+  <div class="chips" style="margin-top:10px"><button class="chip" data-qt="urge:${q.id}" style="background:var(--panel);color:var(--ink);font-weight:800">🆘 عندي رغبة دلوقتي</button><button class="chip" data-qt="rel:${q.id}" style="background:var(--panel);color:var(--ink)">↩️ حصلت انتكاسة</button><button class="chip" data-qt="plan:${q.id}" style="background:var(--panel);color:var(--ink)">📝 خطتي</button></div></div>`;
+}
+function renderQuit(){
+  $("quote").textContent="السقطة مش الفشل، الفشل إنك ما ترجعش";
+  const L=qtAll();
+  $("main").innerHTML=`<div class="deen" style="padding-bottom:110px"><h2 style="margin:6px 2px">🌱 رحلة الإقلاع</h2>
+  <div class="note" style="color:var(--soft);line-height:1.8">اختار عادة عايز تبطّلها. التطبيق بيحسب أيامك، ولو حصلت انتكاسة مش بتبدأ من الصفر المهين: بتتعلّم السبب وتحتفظ بأطول فترة وصلتلها.</div>
+  <div class="chips" style="margin:10px 0"><button class="chip on" data-qt="add" style="font-size:15px;padding:10px 18px">➕ عادة جديدة للإقلاع</button></div>
+  ${L.map(qtCard).join("")||'<div class="empty">لسه ما ضفتش عادة. لو حاسس إن الموضوع تقيل عليك أو بيأثر على حياتك، كلّم حد بتثق فيه أو مختص، مفيش عيب في ده.</div>'}</div>`;
+}
+function qtToday(){
+  const L=qtAll();if(!L.length)return "";
+  return `<div class="sec">🌱 رحلة الإقلاع</div>`+L.map(q=>`<button class="tcard" data-pg="quit"><span class="tx">${q.e} ${esc(q.n)}<small>${AR(qtDays(q))} يوم • أطول فترة ${qtFmt(Math.max(q.best||0,qtLen(q)))}</small></span><span class="chip" data-qt="urge:${q.id}" style="background:var(--panel);color:var(--ink)">🆘</span></button>`).join("");
+}
+function qtBanner(){
+  try{
+    const t=today0(),y=addDays(t,-1),k=iso(y);
+    if(S.qbd===iso(t))return "";
+    const run={},miss=S.habits.filter(h=>{
+      if(!active(h,y)||S.done[k+"|"+h.id])return false;
+      let n=0;for(let i=2;i<30;i++){const d=addDays(t,-i);if(!active(h,d))continue;if(S.done[iso(d)+"|"+h.id])n++;else break}
+      run[h.id]=n;return n>=3});
+    if(!miss.length)return "";
+    const h=miss[0];
+    return `<div class="tcard" style="display:block;margin-bottom:10px;border-color:var(--acc)"><div style="font-weight:700">🌱 امبارح فاتتك «${esc(h.name)}» بعد ${AR(run[h.id])} يوم متتالي</div><div style="font-size:13px;opacity:.85;margin-top:4px;line-height:1.7">المرة الواحدة مش انتكاسة. القاعدة: ما تفوّتش مرتين. ارجع النهارده وكمّل سلسلتك.</div><button class="chip" data-qt="bn" style="margin-top:8px">تمام، راجع 💪</button></div>`;
+  }catch(e){return ""}
+}
+function openQT(kind,id){W={qt:kind,id:id||null,tpl:null,name:"",tag:"",note:"",risk:"",ue:0};drawW();$("modal").classList.add("on")}
+function drawQT(){
+  const ch=(on,k,t)=>`<button class="chip ${on?"on":""}" data-qt="${k}">${t}</button>`,q=qtAll().find(z=>z.id===W.id);
+  if(W.qt==="add"){
+    $("sheet").innerHTML=`<h2>عادة للإقلاع 🌱</h2><p>اختار اسمها، وأنا هحسبلك أيامك من اللحظة دي.</p><div class="chips">${QT_TPL.map(([e,n],i)=>ch(W.tpl===i,"t:"+i,e+" "+n)).join("")}</div>
+    ${W.tpl===QT_TPL.length-1?`<div class="q">اكتب اسم تختاره (محدش هيشوفه غيرك)</div><input class="inp" id="qtn" placeholder="مثال: عادة X" value="${esc(W.name)}">`:""}
+    <div class="q">وقت حساس عندك (اختياري) — هنبعتلك تنبيه يفكّرك</div><input class="inp" type="time" id="qtr" value="${esc(W.risk)}">
+    <div class="err" id="qterr"></div><button class="go" data-qt="save">ابدأ</button>`;
+  }else if(W.qt==="urge"&&q){
+    const left=W.ue?Math.max(0,W.ue-Date.now()):600000,m=Math.floor(left/60000),s=Math.floor(left/1000)%60;
+    const alts=(q.alt&&q.alt.length?q.alt:QT_ALT);
+    $("sheet").innerHTML=`<h2>الرغبة بتعدّي زي الموجة 🌊</h2><p>مش لازم تنفّذها. اصبر ١٠ دقايق، وهتلاقيها هديت.</p>
+    <div style="text-align:center;margin:12px 0"><div id="qtT" style="font-size:54px;font-weight:800">${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}</div><div id="qtB" style="font-size:15px;opacity:.85;min-height:24px">${W.ue?"":"دوس ابدأ"}</div></div>
+    ${W.ue?`<div class="chips" style="justify-content:center"><button class="chip on" data-qt="won">✅ عدّت الرغبة</button></div>`:`<button class="go" data-qt="start">▶ ابدأ العدّ</button>`}
+    <div class="q">اعمل حاجة بدل ما تفكّر فيها:</div><div class="chips">${alts.map(a=>`<span class="chip">${esc(a)}</span>`).join("")}</div>
+    <div class="note" style="color:var(--soft)">لو حاسس إنك في خطر على نفسك، كلّم حد قريب منك دلوقتي أو اتصل بالإسعاف 123.</div>`;
+  }else if(W.qt==="rel"&&q){
+    const msg=QT_MSG[(q.rel||[]).length%QT_MSG.length];
+    $("sheet").innerHTML=`<h2>ولا يهمك 🤍</h2><p style="line-height:1.9">${msg}<br>اتفضل سجّل اللي حصل عشان نتعلّم منه. أيامك (${AR(qtDays(q))}) هتفضل في "أطول فترة".</p>
+    <div class="q">إيه اللي سبّب الموقف؟</div><div class="chips">${QT_TRG.map(t=>ch(W.tag===t,"g:"+t,t)).join("")}</div>
+    <div class="q">ملاحظة (اختياري)</div><input class="inp" id="qtnote" placeholder="إيه اللي هتعمله مختلف؟" value="${esc(W.note)}">
+    <div class="err" id="qterr"></div><button class="go" data-qt="relsave">سجّل وابدأ من جديد</button>`;
+  }else if(W.qt==="plan"&&q){
+    $("sheet").innerHTML=`<h2>خطتي 📝</h2><p>جملة واحدة: «لو حصل ... هعمل ...»</p><input class="inp" id="qtplan" placeholder="لو حسّيت بملل بالليل هعمل ..." value="${esc(q.plan||"")}"><div class="q">وقت حساس (تنبيه يومي)</div><input class="inp" type="time" id="qtr" value="${esc(q.risk||"")}"><button class="go" data-qt="plansave">احفظ</button>`;
+  }
+}
+document.addEventListener("click",e=>{
+  const t=e.target.closest("[data-qt]");if(!t)return;e.stopPropagation();
+  const[k,a]=t.dataset.qt.split(":"),L=qtAll(),q=L.find(z=>z.id===a)||L.find(z=>z.id===(W&&W.id));
+  const rd=()=>{if(W&&W.qt){if($("qtn"))W.name=$("qtn").value;if($("qtr"))W.risk=$("qtr").value;if($("qtnote"))W.note=$("qtnote").value}};
+  if(k==="bn"){S.qbd=iso(today0());save();render();return}
+  if(k==="add"){openQT("add");return}
+  if(k==="urge"){openQT("urge",a);return}
+  if(k==="rel"){openQT("rel",a);return}
+  if(k==="plan"){openQT("plan",a);return}
+  if(k==="del"){if(confirm("تمسح العادة دي وكل سجلها؟")){S.qt=L.filter(z=>z.id!==a);save();render();try{schedNotif()}catch(x){}}return}
+  if(!W||!W.qt)return;
+  rd();
+  if(k==="t"){W.tpl=+a;drawQT();return}
+  if(k==="g"){W.tag=a;drawQT();return}
+  if(k==="save"){
+    if(W.tpl===null)return $("qterr").textContent="اختار عادة";
+    const last=W.tpl===QT_TPL.length-1,nm=last?(W.name||"").trim():QT_TPL[W.tpl][1];
+    if(!nm)return $("qterr").textContent="اكتب الاسم";
+    L.push({id:Date.now().toString(36)+Math.random().toString(36).slice(2,5),n:nm,e:QT_TPL[W.tpl][0],since:Date.now(),best:0,rel:[],res:0,risk:W.risk||"",plan:""});
+    save();closeW();render();try{schedNotif()}catch(x){}toast("بالتوفيق! أول يوم النهارده 🌱");return;
+  }
+  if(!q)return;
+  if(k==="start"){W.ue=Date.now()+600000;drawQT();return}
+  if(k==="won"){q.res=(q.res||0)+1;save();closeW();render();try{buzz([30,60,30])}catch(x){}toast("🎉 عدّت! دي قوتك");return}
+  if(k==="relsave"){
+    const len=qtLen(q);q.best=Math.max(q.best||0,len);
+    (q.rel=q.rel||[]).push({at:Date.now(),len,tag:W.tag||"",note:(W.note||"").trim().slice(0,200)});
+    q.since=Date.now();
+    save();closeW();render();toast("اتسجّلت. ابدأ من جديد وأطول فترة بتاعتك محفوظة 🤍");return;
+  }
+  if(k==="plansave"){q.plan=($("qtplan")?$("qtplan").value:"").trim().slice(0,200);q.risk=W.risk||"";save();closeW();render();try{schedNotif()}catch(x){}toast("اتحفظت ✓");return}
+},true);
+setInterval(()=>{
+  if(!(W&&W.qt==="urge"&&W.ue))return;
+  const left=Math.max(0,W.ue-Date.now()),m=Math.floor(left/60000),s=Math.floor(left/1000)%60,el=$("qtT"),b=$("qtB");
+  if(el)el.textContent=String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
+  if(b){const ph=Math.floor((Date.now()/1000)%10);b.textContent=ph<4?"🌬️ شهيق… ٤ ثواني":"😮‍💨 زفير بطيء… ٦ ثواني"}
+  if(left<=0&&b)b.textContent="عدّت ١٠ دقايق 👏 لو لسه فيه رغبة، كمّل ١٠ كمان";
+},1000);
+try{render()}catch(e){}
 </script>
 </body>
 </html>
