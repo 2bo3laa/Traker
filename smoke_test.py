@@ -148,6 +148,20 @@ async def run(browser, locale, width):
     await pg.click(f'[data-cn^="-:{wid}"]')
     check("removing a glass un-completes it", not await ev(f"S.done[iso(today0())+'|{wid}']"))
 
+    # --- reminders on every habit
+    wr = await ev("S.habits.find(h=>/شرب المياه/.test(h.name)).rm.length")
+    check("template habits come with suggested reminders", wr == 6, str(wr))
+    await pg.click("#fab"); await pg.click('[data-c="read"]'); await pg.fill("#nm", "Quran study"); await pg.fill("#rmt", "20:00"); await pg.click("[data-add]")
+    check("wizard habit gets the reminder time", await ev("S.habits.find(h=>h.name==='Quran study').rm.join()") == "20:00")
+    await pg.click("#edit"); await pg.click("#emedit")
+    qid = await ev("S.habits.find(h=>h.name==='Quran study').id")
+    await pg.click(f'[data-rm="{qid}"]'); await pg.click('[data-rmx="m:3h"]'); await pg.click('[data-rmx="save"]')
+    check("reminder can be changed from edit mode", await ev("S.habits.find(h=>h.name==='Quran study').rm.length") == 5)
+    await pg.click(f'[data-rm="{qid}"]'); await pg.click('[data-rmx="m:off"]'); await pg.click('[data-rmx="save"]')
+    check("reminder can be switched off", await ev("S.habits.find(h=>h.name==='Quran study').rm.length") == 0)
+    await ev("S.habits=S.habits.filter(h=>h.name!=='Quran study');save()")
+    await pg.click("#edit")
+
     # --- tasks: dated, prioritised, overdue stays visible
     await pg.click("#fab"); await pg.click('[data-c="task"]')
     await pg.fill("#tkt", "Pay the internet bill"); await pg.click('[data-tk="p:1"]'); await pg.click('[data-tk="add"]')
@@ -265,8 +279,10 @@ async def run_native_mock(browser):
     errs = []
     pg.on("pageerror", lambda e: errs.append(str(e)))
     await pg.add_init_script("""
-      window.__syncs=[];window.__events=[];
-      window.Capacitor={Plugins:{WorkLog:{
+      window.__syncs=[];window.__events=[];window.__sched=[];
+      const LN=new Proxy({},{get:(o,k)=>async a=>{if(k==="schedule"){window.__sched.push(...(a.notifications||[]))}
+        if(k==="getPending")return{notifications:[]};if(k==="requestPermissions"||k==="checkPermissions")return{display:"granted"};return{}}});
+      window.Capacitor={Plugins:{LocalNotifications:LN,WorkLog:{
         sync:async s=>{window.__syncs.push(s)},
         pull:async()=>{const e=window.__events;window.__events=[];return{events:e}}}}};""")
     await pg.goto(URL); await pg.wait_for_timeout(500)
@@ -285,6 +301,16 @@ async def run_native_mock(browser):
     await ev("wlPull()"); await pg.wait_for_timeout(200)
     total = await ev("Object.keys(S.wl).reduce((a,k)=>a+wlDayMs(k),0)")
     check("punches made from the notification are merged (2h)", total >= 2 * 3600e3 - 60e3, str(total))
+    # reminders are really scheduled with the phone's notification plugin
+    await pg.click("#fab"); await pg.click('[data-c="read"]'); await pg.fill("#nm", "Evening reading"); await pg.fill("#rmt", "23:59"); await pg.click("[data-add]")
+    await ev("S.habits.find(h=>h.name==='Evening reading').days=[0,1,2,3,4,5,6];save()")
+    await ev("schedNotif()"); await pg.wait_for_timeout(300)
+    sched = await ev("window.__sched.filter(n=>/Evening reading/.test(n.body)).map(n=>n.id)")
+    check("habit reminders are scheduled for the coming days", len(sched) >= 2 and all(i >= 4000 for i in sched), str(sched))
+    await ev("S.habits.forEach(h=>{if(h.name==='Evening reading')S.done[iso(today0())+'|'+h.id]=1});save()")
+    await ev("window.__sched.length=0;schedNotif()"); await pg.wait_for_timeout(300)
+    sched2 = await ev("window.__sched.filter(n=>/Evening reading/.test(n.body)).length")
+    check("a finished habit stops reminding for today", sched2 == len(sched) - 1, f"{sched2} vs {len(sched)}")
     check("no page errors", not errs, "; ".join(errs[:3]))
     await ctx.close()
 

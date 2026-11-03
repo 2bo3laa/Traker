@@ -4170,7 +4170,7 @@ function renderTable(){
   $("main").innerHTML=`<div class="wrap">${view==="year"?yearT():gridT()}</div>`+(S.late&&Object.keys(S.late).some(k=>S.done[k])?`<div class="note" style="color:var(--soft)"><span class="lg"></span> صلاة صُلّيت بعد وقتها</div>`:"");
   {const P=pct(A,B);$("quote").textContent=P>=80?"بترجع لنفسك خطوة ورا خطوة 🔥":P>=50?"نص الطريق خلص 💪":P>0?"أي خطوة صغيرة بتتحسب":"النهارده يوم جديد، وأول مربع بيبدأ الرحلة ✨"}
 }
-const del=h=>editing?`<i data-del="${h.id}">${pend===h.id?"تأكيد؟":"✕"}</i>`:"";
+const del=h=>editing?`<i data-rm="${h.id}" style="font-style:normal;padding:0 6px">${h.rm&&h.rm.length?"🔔":"🔕"}</i><i data-del="${h.id}">${pend===h.id?"تأكيد؟":"✕"}</i>`:"";
 function label(h){return `<td class="nm">${esc(h.name)}${del(h)}${h.sub?`<small>${esc(h.sub)}</small>`:""}</td>`}
 function gridT(){
   const ds=days(),today=iso(new Date());
@@ -4393,6 +4393,7 @@ function drawW(){
   if(W.tpl)return drawTPL();
   if(W.mn)return drawMN();
   if(W.qt)return drawQT();
+  if(W.rm)return drawRM();
   const sh=$("sheet");
   if(!W.cat){
     sh.innerHTML=`<h2>إيه اللي عايز تضيفه؟</h2><p>اختار النوع وأنا هجهزلك الباقي.</p><button class="go" data-c="tpl" style="margin:0 0 14px">⚡ قوالب جاهزة (٣٠+ عادة بضغطة)</button><div class="cats">${CATS.map(([k,e,n])=>{const full=(k==="prayer"&&!missingPR().length)||(k==="gym"&&hasKey("gym"))||(k==="work"&&hasKey("work"));return `<button class="cat" data-c="${k}"${full?' style="opacity:.5"':""}><b>${e}</b>${n}${full?"<small style=\"display:block;font-size:11px;margin-top:2px\">✓ موجود</small>":""}</button>`}).join("")}</div>`;
@@ -4419,7 +4420,7 @@ function drawW(){
     h+=`<h2>${ttl}</h2><p>اسم العادة وأيامها؟</p><div class="q">الاسم</div><input class="inp" id="nm" value="${esc(W.name)}" placeholder="مثال: مشي نص ساعة">
     <div class="q">الأيام</div>${chipsD(W.days)}`;
   }
-  sh.innerHTML=h+`<div class="err" id="err"></div><button class="go" data-add="1">إضافة للجدول</button>`;
+  sh.innerHTML=h+`${(typeof rmField==="function"&&W.cat!=="prayer"&&!(W.cat==="work"&&W.wm==="log"))?rmField():""}<div class="err" id="err"></div><button class="go" data-add="1">إضافة للجدول</button>`;
 }
 function pick(c){
   const all=new Set([0,1,2,3,4,5,6]);
@@ -4444,7 +4445,9 @@ function addW(){
     if(c==="read"||c==="custom")add.push({name:W.name,sub:"",days:D});
   }
   if(!S.start)S.start=st;
+  const rmv=(typeof rmRead==="function"&&c!=="prayer")?rmRead():null;if(rmv)add.forEach(a=>a.rm=rmv);
   add.forEach(a=>insertHabit({id:id(),start:st,...a}));
+  if(rmv)try{ensurePerm()}catch(x){}
   idx=findIdx(view);
   save();closeW();render();
 }
@@ -4831,6 +4834,13 @@ async function schedNotif(){
     if(S.fc&&S.fc.end>Date.now())list.push({id:3000,title:"⏱️ خلّصت جلسة التركيز",body:"خد راحة قصيرة 🤍",schedule:{at:new Date(S.fc.end),allowWhileIdle:true},channelId:"daily"});
     ((S.mn&&S.mn.sub)||[]).slice(0,30).forEach((sb,j)=>{const nx=mnNext(sb),at=new Date(nx.getFullYear(),nx.getMonth(),nx.getDate()-1,9,0,0);if(at>now&&at-now<8*864e5)list.push({id:2100+j,title:ttl,body:"🔁 اشتراك "+sb.n+" بيتجدد بكرة ("+sb.a+" ج)",schedule:{at,allowWhileIdle:false},channelId:"daily"})});
     ((S.qt)||[]).slice(0,10).forEach((q,j)=>{if(!q.risk)return;const[hh,mm]=q.risk.split(":").map(Number);for(let d=0;d<7;d++){const at=new Date();at.setDate(at.getDate()+d);at.setHours(hh,mm,0,0);if(at>now)list.push({id:2200+j*10+d,title:ttl,body:"🌱 "+q.n+": وقتك الحساس. اعمل بديل دلوقتي، وافتح 🆘 لو محتاج",schedule:{at,allowWhileIdle:false},channelId:"daily"})}});
+    S.habits.forEach((h,hi)=>{
+      if(!h.rm||!h.rm.length)return;
+      for(let i=0;i<7;i++){
+        const d=addDays(today0(),i);if(!active(h,d))continue;if(i===0&&S.done[iso(d)+"|"+h.id])continue;
+        h.rm.slice(0,9).forEach((tm,k)=>{const[hh,mm]=tm.split(":").map(Number),at=new Date(d.getFullYear(),d.getMonth(),d.getDate(),hh||0,mm||0,0);if(at>now)list.push({id:4000+hi*70+i*10+k,title:ttl,body:"🔔 "+h.name+(h.goal?" — "+AR(h.goal)+" "+(h.unit||""):""),schedule:{at,allowWhileIdle:false},channelId:"daily"})});
+      }
+    });
     if(AD){try{await AD.schedule({items:adh})}catch(e){adh.forEach(a=>list.push({id:a.id,title:a.title,body:a.body,schedule:{at:new Date(a.at),allowWhileIdle:true},channelId:a.fajr?"adhan_fajr2":"adhan2"}))}}
     if(list.length)await P.schedule({notifications:list});
   }catch(e){}
@@ -5088,7 +5098,7 @@ const _dw=drawW;drawW=function(){
   if(W.cat==="wird")h+=`<h2>ورد القرآن 📖</h2><p>بيتعلّم لوحده لما تقرا من المصحف اللي في التطبيق وتضغط على آخر آية.</p><div class="chips">${ch(W.u==="v","wu:v","آيات")}${ch(W.u==="s","wu:s","سور")}${ch(W.u==="p","wu:p","صفحات")}</div><div class="q">الكمية في اليوم</div><div class="chips">${(W.u==="s"?[1,2,3,5]:W.u==="p"?[1,2,5,10,20]:[10,20,50,100]).map(g=>ch(W.g===g,"wg:"+g,AR(g))).join("")}</div>`;
   else if(W.cat==="azk")h+=`<h2>الأذكار 📿</h2><p>بيتعلّم لوحده لما تخلّص الأذكار في التطبيق.</p><div class="chips">${ch(W.c==="m","wc:m","الصباح")}${ch(W.c==="e","wc:e","المساء")}${ch(W.c==="b","wc:b","الاتنين")}</div>`;
   else h+=`<h2>المذاكرة 📚</h2><p>اسم المادة (اختياري) وعدد الساعات، أو سيبها عامة.</p><input class="inp" id="nm" value="${esc(W.name)}" placeholder="مثال: Network+"><div class="q">الساعات في اليوم</div><div class="chips">${[0,1,2,3,4].map(x=>ch(W.hr===x,"wh:"+x,x?AR(x):"عام")).join("")}</div>`;
-  $("sheet").innerHTML=h+`<div class="q">الأيام</div>${chipsD(W.days)}<div class="err" id="err"></div><button class="go" data-add="1">إضافة للجدول</button>`;
+  $("sheet").innerHTML=h+`<div class="q">الأيام</div>${chipsD(W.days)}${typeof rmField==="function"?rmField():""}<div class="err" id="err"></div><button class="go" data-add="1">إضافة للجدول</button>`;
 };
 const _aw=addW;addW=function(){
   if(!W||!NC.includes(W.cat))return _aw();
@@ -5537,20 +5547,21 @@ const TPL=[
  {k:"l",n:"🛏️ ترتيب السرير"},{k:"l",n:"🧹 ترتيب البيت"},{k:"l",n:"💵 تسجيل المصاريف"},{k:"l",n:"📞 صلة رحم"},{k:"l",n:"🌱 سقي النباتات"},{k:"l",n:"🧺 غسيل وكوي",days:[6]}
 ];
 const tplHave=n=>S.habits.some(h=>h.name===n);
-function openTPL(){W={tpl:1,sec:"w",sel:new Set()};drawW();$("modal").classList.add("on")}
+function openTPL(){W={tpl:1,sec:"w",sel:new Set(),rmOn:true};drawW();$("modal").classList.add("on")}
 function drawTPL(){
   const L=TPL.map((t,i)=>[t,i]).filter(([t])=>t.k===W.sec);
   $("sheet").innerHTML=`<button class="back" data-back="1">← رجوع</button><h2>قوالب جاهزة ⚡</h2><p>اختار اللي عايزه وضيفهم مرة واحدة.</p>
   <div class="chips">${TPL_SEC.map(([k,t])=>`<button class="chip ${W.sec===k?"on":""}" data-tp="c:${k}">${t}</button>`).join("")}</div>
   <div class="chips" style="margin-top:12px">${L.map(([t,i])=>{const has=tplHave(t.n),on=W.sel.has(i);return `<button class="chip ${on?"on":""}" ${has?'style="opacity:.45" disabled':`data-tp="s:${i}"`}>${has?"✓ ":on?"✔ ":""}${esc(t.n)}${t.goal?` <small>(${AR(t.goal)} ${t.unit})</small>`:""}</button>`}).join("")}</div>
-  <button class="go" data-tp="add" ${W.sel.size?"":'style="opacity:.5"'}>ضيف ${W.sel.size?"("+AR(W.sel.size)+")":""}</button>`;
+  <div class="chips" style="margin-top:14px"><button class="chip ${W.rmOn?"on":""}" data-tp="rm">🔔 فعّل التذكيرات المقترحة</button></div><div class="note" style="color:var(--soft)">لكل عادة وقت مناسب، وتقدر تغيّره بعدين من ⋮ ← تعديل ← 🔔.</div><button class="go" data-tp="add" ${W.sel.size?"":'style="opacity:.5"'}>ضيف ${W.sel.size?"("+AR(W.sel.size)+")":""}</button>`;
 }
-document.addEventListener("click",e=>{
+document.addEventListener("click",async e=>{
   const t=e.target.closest("[data-tp]");if(!t)return;
   e.stopPropagation();
   const[k,a]=t.dataset.tp.split(":");
   if(!W||!W.tpl)return;
   if(k==="c"){W.sec=a;drawTPL()}
+  else if(k==="rm"){W.rmOn=!W.rmOn;drawTPL()}
   else if(k==="s"){const i=+a;W.sel.has(i)?W.sel.delete(i):W.sel.add(i);drawTPL()}
   else if(k==="add"){
     if(!W.sel.size){toast("اختار عادة على الأقل");return}
@@ -5558,9 +5569,11 @@ document.addEventListener("click",e=>{
     [...W.sel].sort((x,y)=>x-y).forEach(i=>{const t=TPL[i];if(tplHave(t.n))return;
       const h={id:Date.now().toString(36)+Math.random().toString(36).slice(2,6),start:st,name:t.n,sub:t.sub||(t.goal?AR(t.goal)+" "+t.unit:"عادة يومية"),days:t.days||all};
       if(t.goal){h.goal=t.goal;h.step=t.step||1;h.unit=t.unit||""}
+      if(W.rmOn){const r=(typeof tplRm==="function")?tplRm(t.n):[];if(r.length)h.rm=r.slice()}
       insertHabit(h)});
     if(!S.start)S.start=st;
-    const n=W.sel.size;save();closeW();render();toast(`اتضافت ${AR(n)} ${n===1?"عادة":"عادات"} ✓`);
+    const n=W.sel.size,wantRm=W.rmOn;save();closeW();render();toast(`اتضافت ${AR(n)} ${n===1?"عادة":"عادات"} ✓`+(wantRm?" • والتذكيرات 🔔":""));
+    if(wantRm){try{await ensurePerm()}catch(x){}try{schedNotif()}catch(x){}}
   }
 },true);
 /* counter habits (water, tasbeeh, pages…) */
@@ -5807,6 +5820,53 @@ setInterval(()=>{
   if(b){const ph=Math.floor((Date.now()/1000)%10);b.textContent=ph<4?"🌬️ شهيق… ٤ ثواني":"😮‍💨 زفير بطيء… ٦ ثواني"}
   if(left<=0&&b)b.textContent="عدّت ١٠ دقايق 👏 لو لسه فيه رغبة، كمّل ١٠ كمان";
 },1000);
+try{render()}catch(e){}
+</script>
+<script>
+/* ===== reminders for every habit ===== */
+const RM_2H=["10:00","12:00","14:00","16:00","18:00","20:00"],RM_3H=["09:00","12:00","15:00","18:00","21:00"];
+const TPL_RM=[["ضحى",["10:00"]],["قيام الليل",["03:30"]],["تسبيح",["21:00"]],["استغفار",["22:00"]],["صدقة",["09:00"]],["صيام",["03:30"]],["اتصال بالوالدين",["18:00"]],["الجمعة",["08:00"]],
+ ["شرب المياه",RM_2H],["مشي",["17:30"]],["نوم بدري",["22:30"]],["صحيان بدري",["05:00"]],["فيتامينات",["09:00"]],["تأمل",["07:30"]],["الأسنان",["23:00"]],["كارديو",["18:30"]],
+ ["قراءة",["21:00"]],["لغة",["20:00"]],["مذاكرة",["19:00"]],["يوميات",["22:00"]],["بودكاست",["17:00"]],["من غير موبايل",["22:00"]],["مراجعة أهداف",["08:00"]],
+ ["ترتيب السرير",["08:00"]],["ترتيب البيت",["16:00"]],["تسجيل المصاريف",["21:30"]],["صلة رحم",["19:00"]],["سقي النباتات",["08:30"]],["غسيل",["10:00"]]];
+const tplRm=n=>{const r=TPL_RM.find(([k])=>n.indexOf(k)>=0);return r?r[1]:[]};
+const rmTxt=a=>!a||!a.length?"بدون تذكير":a.length===1?"الساعة "+hm(+a[0].split(":")[0]+(+a[0].split(":")[1])/60):"كل "+(a.length===6?"ساعتين":"٣ ساعات")+" ("+a.length+" مرات)";
+function rmField(){
+  return `<div class="q">🔔 تذكير (اختياري)</div><input class="inp" type="time" id="rmt" value="${esc((W&&W.rmv)||"")}">`;
+}
+function rmRead(){const el=$("rmt");if(el&&el.value){if(W)W.rmv=el.value;return[el.value]}return null}
+function openRM(id){
+  const h=S.habits.find(z=>z.id===id);if(!h)return;
+  const r=h.rm||[];
+  W={rm:1,id,mode:!r.length?"off":r.length===1?"one":r.length===6?"2h":"3h",time:r[0]||(h.goal?"10:00":"20:00")};
+  drawW();$("modal").classList.add("on");
+}
+function drawRM(){
+  const h=S.habits.find(z=>z.id===W.id);if(!h){closeW();return}
+  const ch=(on,k,t)=>`<button class="chip ${on?"on":""}" data-rmx="${k}">${t}</button>`;
+  $("sheet").innerHTML=`<h2>🔔 تذكير</h2><p>${esc(h.name)}</p>
+  <div class="chips">${ch(W.mode==="off","m:off","🔕 بدون")}${ch(W.mode==="one","m:one","⏰ مرة في اليوم")}${ch(W.mode==="2h","m:2h","💧 كل ساعتين")}${ch(W.mode==="3h","m:3h","كل ٣ ساعات")}</div>
+  ${W.mode==="one"?`<div class="q">الساعة كام؟</div><input class="inp" type="time" id="rmt2" value="${esc(W.time)}">`:""}
+  ${W.mode==="2h"?`<div class="note" style="color:var(--soft)">١٠ص ١٢م ٢م ٤م ٦م ٨م</div>`:W.mode==="3h"?`<div class="note" style="color:var(--soft)">٩ص ١٢م ٣م ٦م ٩م</div>`:""}
+  <div class="note" style="color:var(--soft)">التذكير بيجي في أيام العادة بس، ومش بيجي لو خلّصتها.</div>
+  <button class="go" data-rmx="save">احفظ</button>`;
+}
+document.addEventListener("click",async e=>{
+  const o=e.target.closest("[data-rm]");
+  if(o){e.stopPropagation();openRM(o.dataset.rm);return}
+  const t=e.target.closest("[data-rmx]");if(!t)return;e.stopPropagation();
+  if(!W||!W.rm)return;
+  const[k,a]=t.dataset.rmx.split(":");
+  if($("rmt2"))W.time=$("rmt2").value;
+  if(k==="m"){W.mode=a;drawRM();return}
+  if(k==="save"){
+    const h=S.habits.find(z=>z.id===W.id);if(!h)return;
+    const arr=W.mode==="off"?[]:W.mode==="one"?[W.time||"20:00"]:W.mode==="2h"?RM_2H.slice():RM_3H.slice();
+    if(arr.length){try{await ensurePerm()}catch(x){}}
+    h.rm=arr;save();closeW();render();try{schedNotif()}catch(x){}
+    toast(arr.length?"اتفعّل التذكير 🔔":"اتقفل التذكير");
+  }
+},true);
 try{render()}catch(e){}
 </script>
 </body>
