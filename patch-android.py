@@ -113,9 +113,12 @@ def main():
         man = man.replace("</manifest>",
             '    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />\n</manifest>', 1)
 
-    if "USE_EXACT_ALARM" not in man:
+    # SCHEDULE_EXACT_ALARM (user-grantable, declared in Play Console) is safer for review than USE_EXACT_ALARM
+    if "SCHEDULE_EXACT_ALARM" not in man:
         man = man.replace("</manifest>",
-            '    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />\n    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />\n</manifest>', 1)
+            '    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />\n</manifest>', 1)
+    if "usesCleartextTraffic" not in man:
+        man = man.replace("<application", '<application android:usesCleartextTraffic="false"', 1)
 
     if "ACCESS_COARSE_LOCATION" not in man:
         man = man.replace("</manifest>",
@@ -193,6 +196,17 @@ public class MainActivity extends BridgeActivity {{
     man = patch_worklog.apply(app, pkg, man)
 
     fetch_pages(app)
+
+    # --- version for Google Play: versionCode must grow with every upload (CI passes the run number)
+    import re as _re
+    vc = int(os.environ.get("VERSION_CODE", "1") or "1")
+    gp = "android/app/build.gradle"
+    if os.path.exists(gp):
+        g = open(gp, encoding="utf-8").read()
+        g = _re.sub(r"versionCode\s*=?\s*\d+", f"versionCode {vc}", g, count=1)
+        g = _re.sub(r'versionName\s*=?\s*"[^"]*"', f'versionName "1.0.{vc}"', g, count=1)
+        open(gp, "w", encoding="utf-8").write(g)
+        print("version code", vc)
 
     # --- 4. manifest last
     open(man_path, "w", encoding="utf-8").write(man)

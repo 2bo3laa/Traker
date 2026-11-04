@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#140b1f;--panel:#1f1333;--line:#3d2b58;--ink:#fff4ea;--soft:#bba8cc;--acc:#ffb547;--acc2:#ff6b6b;--chip:#2a1c44;--on:#2a0f14;--w0:#ffb547;--w1:#ff8a4c;--w2:#ff6b6b;--w3:#e0609a;--w4:#a88bff;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+box-sizing:border-box;padding-top:max(env(safe-area-inset-top,0px),var(--safe-area-inset-top,0px));padding-bottom:max(env(safe-area-inset-bottom,0px),var(--safe-area-inset-bottom,0px))}
 @media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#fff6ec;--panel:#fff;--line:#f0d9c4;--ink:#3a2330;--soft:#8a6a62;--acc:#f0922b;--acc2:#ee5a5a;--chip:#fdebd9}}
 :root[data-theme="light"]{--bg:#fff6ec;--panel:#fff;--line:#f0d9c4;--ink:#3a2330;--soft:#8a6a62;--acc:#f0922b;--acc2:#ee5a5a;--chip:#fdebd9}
 :root[data-t="dawn"]{--bg:#140b1f;--panel:#1f1333;--line:#3d2b58;--ink:#fff4ea;--soft:#bba8cc;--acc:#ffb547;--acc2:#ff6b6b;--chip:#2a1c44;--on:#2a0f14;--w0:#ffb547;--w1:#ff8a4c;--w2:#ff6b6b;--w3:#e0609a;--w4:#a88bff}
@@ -59,7 +59,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;ba
 .msg .chip{font-size:12px;padding:5px 12px}
 .brand{display:flex;align-items:center;gap:8px}
 .brand img{border-radius:8px;flex:none}
-.toast{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);width:max-content;max-width:90%;text-align:center;background:linear-gradient(135deg,var(--acc),var(--acc2));color:var(--on);padding:12px 18px;border-radius:16px;font-weight:700;font-size:14px;line-height:1.7;z-index:30;box-shadow:0 8px 24px rgba(0,0,0,.3);animation:tin .3s ease}
+.toast{position:fixed;top:calc(14px + max(env(safe-area-inset-top,0px),var(--safe-area-inset-top,0px)));left:50%;transform:translateX(-50%);width:max-content;max-width:90%;text-align:center;background:linear-gradient(135deg,var(--acc),var(--acc2));color:var(--on);padding:12px 18px;border-radius:16px;font-weight:700;font-size:14px;line-height:1.7;z-index:30;box-shadow:0 8px 24px rgba(0,0,0,.3);animation:tin .3s ease}
 @keyframes tin{from{opacity:0;transform:translate(-50%,-10px)}}
 *{box-sizing:border-box}
 html,body{margin:0;min-height:100%}
@@ -95,7 +95,7 @@ tr.sum td{border-bottom:0;font-size:10px;color:var(--soft)}
 .yc{font-weight:700;font-size:12px}
 .empty{text-align:center;padding:60px 20px;color:var(--soft);line-height:2}
 .empty b{display:block;font-size:20px;color:var(--ink)}
-.fab{position:fixed;left:18px;bottom:calc(86px + env(safe-area-inset-bottom,0px));width:58px;height:58px;border-radius:50%;border:0;background:linear-gradient(135deg,var(--acc),var(--acc2));color:var(--on);font-size:34px;font-weight:700;box-shadow:0 8px 28px color-mix(in srgb,var(--acc) 45%,transparent);z-index:5}
+.fab{position:fixed;left:18px;bottom:calc(86px + max(env(safe-area-inset-bottom,0px),var(--safe-area-inset-bottom,0px)));width:58px;height:58px;border-radius:50%;border:0;background:linear-gradient(135deg,var(--acc),var(--acc2));color:var(--on);font-size:34px;font-weight:700;box-shadow:0 8px 28px color-mix(in srgb,var(--acc) 45%,transparent);z-index:5}
 .modal{position:fixed;inset:0;background:#000a;display:none;align-items:flex-end;justify-content:center;z-index:10}
 .modal.on{display:flex}
 .pgin{animation:pgin .24s cubic-bezier(.2,.8,.2,1)}
@@ -111,7 +111,7 @@ tr.sum td{border-bottom:0;font-size:10px;color:var(--soft)}
 @keyframes sup{from{transform:translateY(46px);opacity:.4}}
 @keyframes mfade{from{opacity:0}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-.sheet{width:100%;max-width:480px;max-height:88vh;overflow:auto;background:var(--panel);border-radius:24px 24px 0 0;padding:20px 18px calc(24px + env(safe-area-inset-bottom,0px));border:1px solid var(--line)}
+.sheet{width:100%;max-width:480px;max-height:88vh;overflow:auto;background:var(--panel);border-radius:24px 24px 0 0;padding:20px 18px calc(24px + max(env(safe-area-inset-bottom,0px),var(--safe-area-inset-bottom,0px)));border:1px solid var(--line)}
 .sheet h2{margin:0 0 4px;font-size:20px}
 .sheet p{margin:0 0 14px;color:var(--soft);font-size:14px;line-height:1.7}
 .cats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
@@ -131,7 +131,7 @@ tr.sum td{border-bottom:0;font-size:10px;color:var(--soft)}
 .go{width:100%;margin-top:20px;padding:14px;border:0;border-radius:14px;background:linear-gradient(135deg,var(--acc),var(--acc2));color:var(--on);font-size:17px;font-weight:800}
 .back{background:none;border:0;color:var(--soft);font-size:14px;margin-bottom:6px;padding:0}
 .err{color:#ff6b8a;font-size:13px;min-height:18px;margin-top:8px}
-.bar{position:fixed;left:0;right:0;bottom:0;display:flex;background:color-mix(in srgb,var(--panel) 92%,transparent);backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px));z-index:6}
+.bar{position:fixed;left:0;right:0;bottom:0;display:flex;background:color-mix(in srgb,var(--panel) 92%,transparent);backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:8px 10px calc(8px + max(env(safe-area-inset-bottom,0px),var(--safe-area-inset-bottom,0px)));z-index:6}
 .bar button{flex:1;min-width:0;border:0;background:none;color:var(--soft);font-size:11px;font-weight:700;padding:4px 0;white-space:nowrap}
 .bar button b{display:block;font-size:22px;font-weight:400}
 .bar button.on{color:var(--acc)}
@@ -4060,8 +4060,17 @@ const PR=["الفجر","الظهر","العصر","المغرب","العشاء"];
 const GYM={1:[6],2:[6,2],3:[6,1,3],4:[6,0,2,4],5:[6,0,1,3,4],6:[6,0,1,2,3,4]};
 const CATS=[["prayer","🕌","صلاة"],["gym","💪","جيم"],["work","💼","شغل"],["course","🎓","كورس"],["read","📖","قراءة"],["custom","✨","أخرى"],["task","✅","مهمة"],["quit","🌱","إقلاع"]];
 
+/* security: ids and emoji end up inside HTML attributes, so only safe characters may survive load/import */
+const idOk=v=>String(v==null?"":v).replace(/[^A-Za-z0-9_-]/g,"").slice(0,40)||Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+function cleanState(o){
+  if(!o||typeof o!=="object")return o;
+  const fix=a=>{if(Array.isArray(a))a.forEach(x=>{if(x&&typeof x==="object")x.id=idOk(x.id)})};
+  fix(o.habits);fix(o.tk);fix(o.qt);if(o.mn){fix(o.mn.ex);fix(o.mn.sub)}if(o.md){fix(o.md.meds)}
+  if(Array.isArray(o.qt))o.qt.forEach(x=>{if(x&&typeof x==="object")x.e=String(x.e||"🔒").replace(/[<>"'&`\\]/g,"").slice(0,8)});
+  return o;
+}
 let S={habits:[],done:{}};
-try{S=JSON.parse(localStorage.getItem("hb1"))||S}catch(e){}
+try{S=cleanState(JSON.parse(localStorage.getItem("hb1")))||S}catch(e){}
 const save=()=>{try{localStorage.setItem("hb1",JSON.stringify(S))}catch(e){}try{wlSync()}catch(e){}};
 let view="month",cur=new Date(),editing=false,pend=null,idx=0,page="today";
 let TH="dawn";try{TH=localStorage.getItem("hb_theme")||TH}catch(e){}
@@ -4105,15 +4114,16 @@ function streak(){
 function dayStat(d){let a=0,b=0;S.habits.forEach(h=>{if(active(h,d)){b++;if(S.done[iso(d)+"|"+h.id])a++}});return[a,b]}
 function today0(){const t=new Date();t.setHours(0,0,0,0);return t}
 function ringSVG(p){const r=84,c=2*Math.PI*r;return `<svg width="190" height="190"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--acc)"/><stop offset="1" style="stop-color:var(--acc2)"/></linearGradient></defs><circle cx="95" cy="95" r="${r}" fill="none" stroke="var(--chip)" stroke-width="14"/><circle cx="95" cy="95" r="${r}" fill="none" stroke="url(#g)" stroke-width="14" stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${c*(1-p/100)}" style="transition:stroke-dashoffset .6s"/></svg>`}
+const hasToday=()=>S.habits.length||(S.tk||[]).length||((S.md||{}).meds||[]).length||(S.qt||[]).length;
 function renderToday(){
   const t=today0(),[a,b]=dayStat(t),p=pct(a,b),hr=new Date().getHours();
   const g=hr<5?"سهران؟":hr<12?"صباح الخير":hr<18?"نهارك سعيد":"مساء الخير";
   $("quote").textContent=TR("{0}، {1}",S.name?TR("{0} يا {1}",TR(g),S.name):TR(g),TR(b?(p===100?"خلصت يومك. فخور بيك 🔥":"كل خطوة بتفرق"):"النهارده يوم راحة 🌿"));
-  let H=`<div class="ring">${ringSVG(p)}<div class="c"><strong>${p}%</strong><span>${a} من ${b} النهارده</span></div></div><div class="badges"><div>🔥 ${streak()} يوم متتالي</div></div>${msgCard(p,t)}`;
+  let H=S.habits.length?`<div class="ring">${ringSVG(p)}<div class="c"><strong>${p}%</strong><span>${a} من ${b} النهارده</span></div></div><div class="badges"><div>🔥 ${streak()} يوم متتالي</div></div>${msgCard(p,t)}`:"";
   const list=S.habits.filter(x=>active(x,t));
   const rowH=x=>{const k=iso(t)+"|"+x.id,on=S.done[k];if(x.goal&&typeof cnRow==="function")return cnRow(x,k,on,del);if(x.log){const st=wlStatus();return `<div class="tcard ${on?"on":""}"${st.open?' data-wlrun="1"':""}><span class="ck">${on?"✓":""}</span><span class="tx">${esc(x.name)}<small>${st.txt}</small></span>${editing?del(x):`<button class="chip" data-wl="${st.open?"out":"in"}" style="background:var(--panel);color:var(--ink);font-weight:700">${st.open?"⏹ انصراف":"▶ حضور"}</button>`}</div>`}return `<button class="tcard ${on?"on":""}${on&&LT(k)?" late":""}" ${editing?"":`data-k="${k}"`}><span class="ck">${on?"✓":""}</span><span class="tx">${esc(x.name)}${x.sub?`<small>${esc(x.sub)}</small>`:""}${on&&LT(k)?`<small class="lt">صُلّيت بعد وقتها</small>`:""}</span>${del(x)}</button>`};
   const grp=x=>(PR.includes(x.name)||/ورد|قرآن|أذكار|ذكر|صلاة/.test(x.name))?0:/^جيم/.test(x.name)?1:2,GH=["🕌 العبادات","💪 التمرين","📋 باقي يومك"];
-  const tkH=((typeof tkSection==="function")?tkSection():"")+((typeof qtToday==="function")?qtToday():"");
+  const tkH=((typeof mdToday==="function")?mdToday():"")+((typeof tkSection==="function")?tkSection():"")+((typeof qtToday==="function")?qtToday():"");
   if(list.length){const gs=[0,1,2].map(g=>list.filter(x=>grp(x)===g)),used=gs.filter(z=>z.length).length+(tkH?1:0);H+=nextPrayerCard()+((typeof qtBanner==="function")?qtBanner():"")+gs.map((z,gi)=>(gi===2?tkH:"")+(z.length?(used>1?`<div class="sec">${GH[gi]}</div>`:"")+z.map(rowH).join(""):"")).join("")}
   else if(tkH)H+=nextPrayerCard()+tkH;
   else H+=`<div class="empty">مفيش حاجة مجدولة النهارده، استمتع بيومك 🌿</div>`;
@@ -4128,7 +4138,7 @@ function renderStats(){
 }
 function burst(){const E=["✨","🔥","🎉","⭐","💛"];for(let i=0;i<22;i++){const s=document.createElement("span");s.className="fx";s.textContent=E[i%5];s.style.setProperty("--x",(Math.random()*320-160)+"px");s.style.setProperty("--y",(-40-Math.random()*300)+"px");s.style.setProperty("--r",(Math.random()*360)+"deg");document.body.appendChild(s);setTimeout(()=>s.remove(),1500)}}
 function setHTML(){return `<div class="q">اللغة</div><div class="chips">${Object.entries(LN).map(([k,n])=>`<button class="chip ${LANG===k?"on":""}" data-lg="${k}">${n}</button>`).join("")}</div><div class="q">اسمك</div><input class="inp" id="nm2" value="${esc(S.name||"")}" placeholder="اكتب اسمك"><div class="q">سنّك (اختياري)</div><input class="inp" id="age2" type="number" inputmode="numeric" min="5" max="99" value="${S.age||""}" placeholder="مثال: 25"><div class="note" style="color:var(--soft)">نستخدمه فقط لاختيار رسائل وتنبيهات تناسبك، وتبقى بياناتك على جهازك.</div><div class="q">ما الذي بدأت من أجله؟</div><div class="chips">${goalChips()}</div><input class="inp" id="why2" style="margin-top:10px" value="${esc(S.why||"")}" placeholder="بكلماتك أنت (اختياري)"><div class="q">نسخة احتياطية لبياناتك</div><div class="chips"><button class="chip" data-bk="file">💾 حفظ ملف نسخة احتياطية</button><button class="chip" data-bk="load">📂 استرجاع من ملف</button><button class="chip" data-bk="copy">نسخ كنص</button><button class="chip" data-bk="paste">استرجاع من نص</button></div><div class="note" id="bkm"></div><input type="file" id="bkf" accept=".json,application/json,text/plain" style="display:none"><textarea class="inp" id="bkb" rows="4" style="display:none;margin-top:8px"></textarea><button class="chip" id="bkapply" data-bk="apply" style="display:none;margin-top:8px">تطبيق</button>${ntHTML()}${pnHTML()}<div id="icsec">${icHTML()}</div>`}
-function restoreFrom(txt){const o=JSON.parse(txt);if(!o||!Array.isArray(o.habits)||typeof o.done!=="object")throw 0;if(o.deen&&(typeof o.deen!=="object"||Array.isArray(o.deen)))delete o.deen;if(o.notif)o.notif={on:!!o.notif.on,h:Math.min(23,Math.max(0,+o.notif.h||20)),m:Math.min(59,Math.max(0,+o.notif.m||0))};S=o;save();idx=findIdx(view);render();schedSoon()}
+function restoreFrom(txt){const o=JSON.parse(txt);if(!o||!Array.isArray(o.habits)||typeof o.done!=="object")throw 0;if(o.deen&&(typeof o.deen!=="object"||Array.isArray(o.deen)))delete o.deen;if(o.notif)o.notif={on:!!o.notif.on,h:Math.min(23,Math.max(0,+o.notif.h||20)),m:Math.min(59,Math.max(0,+o.notif.m||0))};S=cleanState(o);save();idx=findIdx(view);render();schedSoon()}
 async function backup(m){
   const e=$("bkm"),box=$("bkb"),ap=$("bkapply"),show=v=>{box.style.display=v?"":"none";ap.style.display=v==="paste"?"":"none"};
   try{
@@ -4147,9 +4157,9 @@ function render(){
   $("edit").style.display=page==="deen"?"none":"";$("fab").style.display=page==="deen"?"none":"";
   if(page==="deen"){document.querySelectorAll("#bar button").forEach(b=>b.classList.toggle("on",b.dataset.pg===page));$("tabs").style.display="none";document.querySelector(".nav").style.display="none";$("stat").style.display="none";return renderDeen()}
   document.querySelectorAll("#bar button").forEach(b=>b.classList.toggle("on",b.dataset.pg===page));
-  const tb=page==="table"||!S.habits.length;
+  const tb=page==="table"||!hasToday();
   $("tabs").style.display=tb?"":"none";document.querySelector(".nav").style.display=tb?"":"none";$("stat").style.display=tb?"":"none";
-  if(S.habits.length&&page==="today")return renderToday();
+  if(hasToday()&&page==="today")return renderToday();
   if(S.habits.length&&page==="stats")return renderStats();
   renderTable();
 }
@@ -4394,6 +4404,7 @@ function drawW(){
   if(W.mn)return drawMN();
   if(W.qt)return drawQT();
   if(W.rm)return drawRM();
+  if(W.md)return drawMD();
   const sh=$("sheet");
   if(!W.cat){
     sh.innerHTML=`<h2>إيه اللي عايز تضيفه؟</h2><p>اختار النوع وأنا هجهزلك الباقي.</p><button class="go" data-c="tpl" style="margin:0 0 14px">⚡ قوالب جاهزة (٣٠+ عادة بضغطة)</button><div class="cats">${CATS.map(([k,e,n])=>{const full=(k==="prayer"&&!missingPR().length)||(k==="gym"&&hasKey("gym"))||(k==="work"&&hasKey("work"));return `<button class="cat" data-c="${k}"${full?' style="opacity:.5"':""}><b>${e}</b>${n}${full?"<small style=\"display:block;font-size:11px;margin-top:2px\">✓ موجود</small>":""}</button>`}).join("")}</div>`;
@@ -4829,7 +4840,7 @@ async function schedNotif(){
         if(gh&&!S.done[ds+"|"+gh.id]){const at=new Date(+dAt(d,WN.h+WN.m/60)+18e5);
           if(at>now)list.push({id:500+i,title:TR("تمرينك ينتظرك 💪"),body:(wy.length?TR("لقد بدأت من أجل: {0}. خطوة واحدة الآن تكفي لتعود 💪",TR(wy[(d.getDate()+i)%wy.length])):TR(wl[(d.getDate()+i)%wl.length])),schedule:{at,allowWhileIdle:true},channelId:"workout"})}}
     }
-    try{await P.createChannel({id:"daily",name:"Daily reminder",importance:3,vibration:false});await P.createChannel({id:"prayer",name:"Prayer times",importance:4,vibration:true});await P.createChannel({id:"workout",name:"Workout",importance:4,vibration:true});await P.createChannel({id:"adhan2",name:"Adhan",importance:5,sound:"adhan.mp3",vibration:true});await P.createChannel({id:"adhan_fajr2",name:"Adhan Fajr",importance:5,sound:"adhan_fajr.mp3",vibration:true})}catch(e){}
+    try{await P.createChannel({id:"daily",name:"Daily reminder",importance:3,vibration:false});await P.createChannel({id:"prayer",name:"Prayer times",importance:4,vibration:true});await P.createChannel({id:"workout",name:"Workout",importance:4,vibration:true});await P.createChannel({id:"adhan2",name:"Adhan",importance:5,sound:"adhan.mp3",vibration:true});await P.createChannel({id:"adhan_fajr2",name:"Adhan Fajr",importance:5,sound:"adhan_fajr.mp3",vibration:true});await P.createChannel({id:"meds",name:"Medication",importance:5,vibration:true})}catch(e){}
     tkAll().filter(x=>!x.done&&x.due).slice(0,60).forEach((x,j)=>{const[yy,mo,dd]=x.due.split("-").map(Number),at=new Date(yy,mo-1,dd,9,0,0);if(at>now&&at-now<7*864e5)list.push({id:2000+j,title:ttl,body:"✅ "+x.t,schedule:{at,allowWhileIdle:false},channelId:"daily"})});
     if(S.fc&&S.fc.end>Date.now())list.push({id:3000,title:"⏱️ خلّصت جلسة التركيز",body:"خد راحة قصيرة 🤍",schedule:{at:new Date(S.fc.end),allowWhileIdle:true},channelId:"daily"});
     ((S.mn&&S.mn.sub)||[]).slice(0,30).forEach((sb,j)=>{const nx=mnNext(sb),at=new Date(nx.getFullYear(),nx.getMonth(),nx.getDate()-1,9,0,0);if(at>now&&at-now<8*864e5)list.push({id:2100+j,title:ttl,body:"🔁 اشتراك "+sb.n+" بيتجدد بكرة ("+sb.a+" ج)",schedule:{at,allowWhileIdle:false},channelId:"daily"})});
@@ -4840,6 +4851,18 @@ async function schedNotif(){
         const d=addDays(today0(),i);if(!active(h,d))continue;if(i===0&&S.done[iso(d)+"|"+h.id])continue;
         h.rm.slice(0,9).forEach((tm,k)=>{const[hh,mm]=tm.split(":").map(Number),at=new Date(d.getFullYear(),d.getMonth(),d.getDate(),hh||0,mm||0,0);if(at>now)list.push({id:4000+hi*70+i*10+k,title:ttl,body:"🔔 "+h.name+(h.goal?" — "+AR(h.goal)+" "+(h.unit||""):""),schedule:{at,allowWhileIdle:false},channelId:"daily"})});
       }
+    });
+    (((S.md||{}).meds)||[]).slice(0,20).forEach((x,mi)=>{
+      const lg=(S.md&&S.md.log)||{};
+      for(let i=0;i<7;i++){
+        const d=addDays(today0(),i);if(!mdActive(x,d))continue;
+        (x.times||[]).slice(0,6).forEach((tm,ti)=>{
+          if(lg[iso(d)+"|"+x.id+"|"+tm])return;
+          const[hh,mm]=tm.split(":").map(Number),at=new Date(d.getFullYear(),d.getMonth(),d.getDate(),hh||0,mm||0,0),base=6000+mi*200+i*20+ti*3,body=x.n+(x.dose?" — "+x.dose:"")+(x.ins?" • "+x.ins:"");
+          [[0,"💊 ميعاد الدوا"],[10,"⏰ لسه ما أخدتش دواءك؟"],[30,"⚠️ فاتتك جرعة؟"]].forEach(([off,tt],si)=>{const a2=new Date(at.getTime()+off*60000);if(a2>now)list.push({id:base+si,title:tt,body,schedule:{at:a2,allowWhileIdle:true},channelId:"meds"})});
+        });
+      }
+      if(x.st&&x.st.n!=null&&x.st.n<=(x.st.warn||5)&&(!x.end||iso(today0())<=x.end)){const a3=new Date();a3.setHours(10,0,0,0);if(a3<now)a3.setDate(a3.getDate()+1);list.push({id:9990+mi,title:"📦 الدواء قرّب يخلص",body:x.n+": باقي "+x.st.n+" جرعة",schedule:{at:a3,allowWhileIdle:false},channelId:"daily"})}
     });
     if(AD){try{await AD.schedule({items:adh})}catch(e){adh.forEach(a=>list.push({id:a.id,title:a.title,body:a.body,schedule:{at:new Date(a.at),allowWhileIdle:true},channelId:a.fajr?"adhan_fajr2":"adhan2"}))}}
     if(list.length)await P.schedule({notifications:list});
@@ -5136,17 +5159,17 @@ Object.assign(AZ,{
     {x:"اللَّهُمَّ رَحْمَتَكَ أَرْجُو فَلَا تَكِلْنِي إِلَى نَفْسِي طَرْفَةَ عَيْنٍ، وَأَصْلِحْ لِي شَأْنِي كُلَّهُ، لَا إِلَهَ إِلَّا أَنْتَ",n:1}]}
 });
 /* glue */
-const MORE=["more","stats","food","deen","pray","assist","tasks","focus","money","quit"];
+const MORE=["more","stats","food","deen","pray","assist","tasks","focus","money","quit","meds"];
 let LASTPG=null;
 const _render=render;render=function(){
   if(LASTPG!==null&&LASTPG!==page){const m=$("main");if(m){m.classList.remove("pgin");void m.offsetWidth;m.classList.add("pgin")}}
   LASTPG=page;
   sync();
   const hl=()=>document.querySelectorAll("#bar button").forEach(b=>b.classList.toggle("on",b.dataset.pg===(MORE.includes(page)?"more":page)));
-  if(page==="gym"||page==="pray"||page==="paper"||page==="more"||page==="food"||page==="assist"||page==="tasks"||page==="focus"||page==="money"||page==="quit"){
+  if(page==="gym"||page==="pray"||page==="paper"||page==="more"||page==="food"||page==="assist"||page==="tasks"||page==="focus"||page==="money"||page==="quit"||page==="meds"){
     hl();
     $("tabs").style.display="none";document.querySelector(".nav").style.display="none";$("stat").style.display="none";$("edit").style.display="none";$("fab").style.display="none";
-    return page==="gym"?renderGym():page==="paper"?renderPaper():page==="more"?renderMore():page==="food"?renderFood():page==="assist"?renderAssist():page==="tasks"?renderTasks():page==="focus"?renderFocus():page==="money"?renderMoney():page==="quit"?renderQuit():renderPray();
+    return page==="gym"?renderGym():page==="paper"?renderPaper():page==="more"?renderMore():page==="food"?renderFood():page==="assist"?renderAssist():page==="tasks"?renderTasks():page==="focus"?renderFocus():page==="money"?renderMoney():page==="quit"?renderQuit():page==="meds"?renderMeds():renderPray();
   }
   _render();hl();
 };
@@ -5268,7 +5291,7 @@ function nuBlock(msg){return `<div class="deen"><h2 style="margin:6px 2px">🥗 
 function renderMore(){
   $("quote").textContent="كل اللي محتاجه في مكان واحد";
   const c=(pg,e,t,s)=>`<button class="cat" data-pg="${pg}" style="padding:18px 8px"><b style="font-size:30px;display:block;margin-bottom:6px">${e}</b>${t}<small style="display:block;font-size:11px;font-weight:600;opacity:.7;margin-top:3px">${s}</small></button>`;
-  $("main").innerHTML=`<div class="deen" style="padding-bottom:90px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">${c("tasks","✅","المهام","بتاريخ وأولوية")}${c("focus","⏱️","تركيز","جلسات مذاكرة وشغل")}${c("money","💰","المصاريف","ميزانية واشتراكات")}${c("quit","🌱","رحلة الإقلاع","بطّل عادة وارجع لو وقعت")}${c("assist","🤖","المساعد","اسأل عن يومك (أوفلاين)")}${c("stats","📊","إحصائياتي","تقدّمك وأرقامك")}${c("food","🥗","الأكل","نظام غذائي بالبدائل")}${c("deen","🕌","ذكر وقرآن","أذكار ومصحف")}${c("pray","🧭","مواقيت وقبلة","الصلاة والتقويم")}<button class="cat" onclick="$('thm').click()" style="padding:18px 8px"><b style="font-size:30px;display:block;margin-bottom:6px">⚙️</b>الإعدادات<small style="display:block;font-size:11px;font-weight:600;opacity:.7;margin-top:3px">الشكل والنسخ الاحتياطي</small></button></div></div>`;
+  $("main").innerHTML=`<div class="deen" style="padding-bottom:90px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">${c("meds","💊","الأدوية","منبّه وجرعات ومتابعة")}${c("tasks","✅","المهام","بتاريخ وأولوية")}${c("focus","⏱️","تركيز","جلسات مذاكرة وشغل")}${c("money","💰","المصاريف","ميزانية واشتراكات")}${c("quit","🌱","رحلة الإقلاع","بطّل عادة وارجع لو وقعت")}${c("assist","🤖","المساعد","اسأل عن يومك (أوفلاين)")}${c("stats","📊","إحصائياتي","تقدّمك وأرقامك")}${c("food","🥗","الأكل","نظام غذائي بالبدائل")}${c("deen","🕌","ذكر وقرآن","أذكار ومصحف")}${c("pray","🧭","مواقيت وقبلة","الصلاة والتقويم")}<button class="cat" onclick="$('thm').click()" style="padding:18px 8px"><b style="font-size:30px;display:block;margin-bottom:6px">⚙️</b>الإعدادات<small style="display:block;font-size:11px;font-weight:600;opacity:.7;margin-top:3px">الشكل والنسخ الاحتياطي</small></button></div></div>`;
 }
 function renderFood(){
   const n=nuS();$("quote").textContent="كُل صح من غير ما تتقيّد بحاجة";
@@ -5426,7 +5449,12 @@ function asAnswer(q){
   }
   if(asHas(t,"انتكس","انتكاس","رغبه","وقعت","رجعت للعاده")){
     const L=qtAll();
-    return (L.length?"أيامك لحد دلوقتي:\n"+L.map(q=>`${q.e} ${q.n}: ${AR(qtDays(q))} يوم (أطول فترة ${qtFmt(Math.max(q.best||0,qtLen(q)))})`).join("\n")+"\n\n":"")+"الانتكاسة مش نهاية الطريق. افتح ☰ المزيد ← 🌱 رحلة الإقلاع، وفيها زرار 🆘 للرغبة، وتسجّل اللي حصل وتبدأ من جديد من غير ما تخسر أطول فترة وصلتلها.";
+    return (L.length?"أيامك لحد دلوقتي:\n"+L.map(q=>`${esc(q.e)} ${q.n}: ${AR(qtDays(q))} يوم (أطول فترة ${qtFmt(Math.max(q.best||0,qtLen(q)))})`).join("\n")+"\n\n":"")+"الانتكاسة مش نهاية الطريق. افتح ☰ المزيد ← 🌱 رحلة الإقلاع، وفيها زرار 🆘 للرغبة، وتسجّل اللي حصل وتبدأ من جديد من غير ما تخسر أطول فترة وصلتلها.";
+  }
+  if(asHas(t,"دوا","ادويه","دواء","جرعه","جرعات","علاج")){
+    const dz=mdDoses(today0());if(!dz.length)return "مفيش جرعات النهارده. ضيف دواءك من ☰ المزيد ← 💊 الأدوية.";
+    const left=dz.filter(z=>!z.lg),nx=left.find(z=>z.at>Date.now()-30*60000),miss=left.filter(z=>mdState(z)==="missed");
+    return `جرعات النهارده: أخدت ${AR(dz.filter(z=>z.lg&&z.lg.s==="t").length)} من ${AR(dz.length)}.`+(miss.length?`\n⚠️ فاتتك: ${miss.map(z=>z.m.n+" "+mdT(z.t)).join("، ")}`:"")+(nx?`\n⏰ الجاية: ${nx.m.n} الساعة ${mdT(nx.t)}`:"");
   }
   if(asHas(t,"سلسل","متتال","streak"))return `سلسلتك الحالية ${AR(streak())} يوم متتالي 🔥`;
   if(asHas(t,"ورق","خطه","خطوات","اهداف")){
@@ -5723,7 +5751,7 @@ function qtInsight(q){
 }
 function qtCard(q){
   const d=qtDays(q),nx=QT_MS.find(m=>m>d)||QT_MS[QT_MS.length-1],pv=[0,...QT_MS].filter(m=>m<=d).pop()||0,pc=Math.min(100,Math.round((d-pv)/(nx-pv)*100)),best=Math.max(q.best||0,qtLen(q));
-  return `<div class="tcard on" style="display:block;margin-bottom:12px"><div style="display:flex;align-items:center;gap:8px"><b style="flex:1;font-size:17px">${q.e} ${esc(q.n)}</b><i data-qt="del:${q.id}" style="font-style:normal;padding:4px 8px;opacity:.7">🗑</i></div>
+  return `<div class="tcard on" style="display:block;margin-bottom:12px"><div style="display:flex;align-items:center;gap:8px"><b style="flex:1;font-size:17px">${esc(q.e)} ${esc(q.n)}</b><i data-qt="del:${q.id}" style="font-style:normal;padding:4px 8px;opacity:.7">🗑</i></div>
   <div style="font-size:42px;font-weight:800;margin:6px 0 0">${AR(d)} <small style="font-size:16px">يوم</small></div><div style="font-size:12px;opacity:.85">${qtFmt(qtLen(q))} من غير • أطول فترة: ${qtFmt(best)} • انتكاسات: ${AR((q.rel||[]).length)} • رغبات عدّت: ${AR(q.res||0)}</div>
   <div style="height:7px;border-radius:99px;background:#0003;margin:10px 0 3px;overflow:hidden"><div style="height:100%;width:${pc}%;background:var(--panel)"></div></div><div style="font-size:11px;opacity:.8">الهدف الجاي: ${AR(nx)} يوم</div>
   ${qtInsight(q)?`<div style="font-size:12px;margin-top:8px;line-height:1.7">${qtInsight(q)}</div>`:""}
@@ -5740,7 +5768,7 @@ function renderQuit(){
 }
 function qtToday(){
   const L=qtAll();if(!L.length)return "";
-  return `<div class="sec">🌱 رحلة الإقلاع</div>`+L.map(q=>`<button class="tcard" data-pg="quit"><span class="tx">${q.e} ${esc(q.n)}<small>${AR(qtDays(q))} يوم • أطول فترة ${qtFmt(Math.max(q.best||0,qtLen(q)))}</small></span><span class="chip" data-qt="urge:${q.id}" style="background:var(--panel);color:var(--ink)">🆘</span></button>`).join("");
+  return `<div class="sec">🌱 رحلة الإقلاع</div>`+L.map(q=>`<button class="tcard" data-pg="quit"><span class="tx">${esc(q.e)} ${esc(q.n)}<small>${AR(qtDays(q))} يوم • أطول فترة ${qtFmt(Math.max(q.best||0,qtLen(q)))}</small></span><span class="chip" data-qt="urge:${q.id}" style="background:var(--panel);color:var(--ink)">🆘</span></button>`).join("");
 }
 function qtBanner(){
   try{
@@ -5867,6 +5895,137 @@ document.addEventListener("click",async e=>{
     toast(arr.length?"اتفعّل التذكير 🔔":"اتقفل التذكير");
   }
 },true);
+try{render()}catch(e){}
+</script>
+<script>
+/* ===== medication reminders: doses, follow-up alerts, stock, adherence ===== */
+const MD_INS=["","قبل الأكل","بعد الأكل","مع الأكل","على الريق","قبل النوم"];
+const MD_DUR=[0,3,5,7,10,14,30];
+const MD_DEF={1:["08:00"],2:["08:00","20:00"],3:["08:00","14:00","20:00"],4:["08:00","12:00","16:00","20:00"]};
+const MD_WD=["أحد","اثنين","تلات","أربع","خميس","جمعة","سبت"];
+const mdS=()=>{const m=S.md=(S.md&&typeof S.md==="object")?S.md:{};m.meds=Array.isArray(m.meds)?m.meds:[];m.log=(m.log&&typeof m.log==="object")?m.log:{};return m};
+const mdT=t=>{const[h,m]=t.split(":").map(Number);return hm(h+m/60)};
+function mdActive(x,d){const k=iso(d);if(x.start&&k<x.start)return false;if(x.end&&k>x.end)return false;return !x.days||!x.days.length||x.days.indexOf(d.getDay())>=0}
+function mdDoses(d){
+  const m=mdS(),k=iso(d),out=[];
+  m.meds.forEach(x=>{if(!mdActive(x,d))return;(x.times||[]).forEach(t=>{const[hh,mm]=t.split(":").map(Number),at=new Date(d.getFullYear(),d.getMonth(),d.getDate(),hh||0,mm||0,0).getTime();out.push({m:x,t,key:k+"|"+x.id+"|"+t,at,lg:m.log[k+"|"+x.id+"|"+t]})})});
+  return out.sort((a,b)=>a.at-b.at);
+}
+const mdState=z=>z.lg?(z.lg.s==="t"?"taken":"skipped"):(Date.now()>z.at+30*60000?"missed":Date.now()>=z.at-5*60000?"due":"later");
+function mdTake(key,op){
+  const m=mdS(),[dk,id]=key.split("|"),x=m.meds.find(z=>z.id===id);if(!x)return;
+  const prev=m.log[key];
+  if(op==="u"){if(prev&&prev.s==="t"&&x.st&&x.st.n!=null)x.st.n++;delete m.log[key]}
+  else{
+    if(prev&&prev.s===op)return;
+    if(prev&&prev.s==="t"&&x.st&&x.st.n!=null)x.st.n++;
+    m.log[key]={s:op,at:Date.now()};
+    if(op==="t"&&x.st&&x.st.n>0)x.st.n--;
+  }
+  const lim=iso(addDays(today0(),-120));Object.keys(m.log).forEach(k=>{if(k.slice(0,10)<lim)delete m.log[k]});
+  save();render();try{buzz(op==="t"?[15,30,15]:10)}catch(e){}try{schedNotif()}catch(e){}
+}
+function mdRow(z,compact){
+  const st=mdState(z),x=z.m,col=st==="missed"?"#ff6b8a":st==="taken"?"var(--ink)":"var(--ink)";
+  const lab=st==="taken"?`✓ أخدته ${hm(new Date(z.lg.at).getHours()+new Date(z.lg.at).getMinutes()/60)}`:st==="skipped"?"اتخطّى":st==="missed"?"فاتت":st==="due"?"دلوقتي":"";
+  const acts=z.lg?`<button class="chip" data-md="u|${z.key}">↩︎</button>`:`<button class="chip on" data-md="t|${z.key}" style="background:var(--panel);color:var(--ink);font-weight:800">✓ أخدته</button><button class="chip" data-md="s|${z.key}">تخطي</button>`;
+  return `<div class="tcard ${st==="taken"?"on":""}" style="display:block;${st==="due"?"border-color:var(--acc)":""}"><div style="display:flex;align-items:center;gap:8px"><span class="tx" style="flex:1;${st==="taken"?"opacity:.8":""}"><b>💊 ${esc(x.n)}</b>${x.dose?" • "+esc(x.dose):""}<small style="color:${col}">${mdT(z.t)}${x.ins?" • "+esc(x.ins):""}${lab?" • "+lab:""}</small></span>${acts}</div></div>`;
+}
+function mdLow(){return mdS().meds.filter(x=>x.st&&x.st.n!=null&&x.st.n<=(x.st.warn||5)&&(!x.end||iso(today0())<=x.end))}
+function mdToday(){
+  const dz=mdDoses(today0()),low=mdLow();
+  if(!dz.length&&!low.length)return "";
+  const pend=dz.filter(z=>!z.lg).length;
+  return `<div class="sec">💊 أدويتك النهارده${pend?` (${AR(pend)} باقي)`:" ✓"}</div>`+dz.map(z=>mdRow(z)).join("")+low.map(x=>`<div class="note" style="color:#ff6b8a;margin:2px 4px">📦 ${esc(x.n)} قرّب يخلص (باقي ${AR(x.st.n)} جرعة)</div>`).join("")+`<div class="chips" style="margin:2px 0 10px"><button class="chip" data-pg="meds">كل الأدوية ›</button></div>`;
+}
+function mdAdh(days){
+  let t=0,k=0,perfect=0,streak=0,cnt=true;
+  const bars=[];
+  for(let i=days-1;i>=0;i--){
+    const d=addDays(today0(),-i),dz=mdDoses(d).filter(z=>i>0||z.at<Date.now()+0);
+    const tk=dz.filter(z=>z.lg&&z.lg.s==="t").length,tot=dz.length;
+    t+=tot;k+=tk;bars.push([d,tk,tot]);
+  }
+  for(let i=0;i<days;i++){const b=bars[days-1-i];if(!b[2])continue;if(b[1]===b[2]&&cnt)streak++;else cnt=false}
+  return{pct:t?Math.round(k/t*100):null,taken:k,total:t,bars,streak};
+}
+function renderMeds(){
+  $("quote").textContent="الانتظام في الدوا نص العلاج";
+  const m=mdS(),dz=mdDoses(today0()),a=mdAdh(7);
+  $("main").innerHTML=`<div class="deen" style="padding-bottom:110px"><h2 style="margin:6px 2px">💊 الأدوية</h2>
+  <div class="chips"><button class="chip on" data-md="new" style="font-size:15px;padding:10px 18px">➕ دواء جديد</button><button class="chip" data-md="rep">📋 تقرير للدكتور</button></div>
+  ${a.total?`<div class="tcard on" style="display:block;margin-top:10px"><div style="font-size:13px;opacity:.85">التزامك آخر ٧ أيام</div><div style="font-size:34px;font-weight:800">${AR(a.pct)}%</div><div style="display:flex;gap:6px;align-items:flex-end;height:46px;margin-top:6px">${a.bars.map(([d,tk,tot])=>`<div style="flex:1;text-align:center;font-size:10px"><div style="height:${tot?Math.max(4,Math.round(tk/tot*36)):4}px;background:var(--panel);border-radius:5px;opacity:${tot?1:.3}"></div>${fmt(d).split(" ")[0]}</div>`).join("")}</div><div style="font-size:12px;margin-top:6px">${AR(a.taken)} من ${AR(a.total)} جرعة${a.streak?` • ${AR(a.streak)} يوم كامل متتالي 🔥`:""}</div></div>`:""}
+  <div class="sec">النهارده</div>${dz.length?dz.map(z=>mdRow(z)).join(""):'<div class="empty">مفيش جرعات النهارده.</div>'}
+  <div class="sec">أدويتي</div>${m.meds.length?m.meds.map(x=>{const dys=!x.days||x.days.length===7||!x.days.length?"كل يوم":x.days.map(i=>MD_WD[i]).join("، ");const ended=x.end&&iso(today0())>x.end;
+    return `<div class="tcard" style="display:block;${ended?"opacity:.55":""}" data-md="e|${x.id}"><div style="display:flex;align-items:center;gap:8px"><span class="tx" style="flex:1"><b>💊 ${esc(x.n)}</b>${x.dose?" • "+esc(x.dose):""}<small>${x.times.map(mdT).join(" • ")} • ${dys}${x.ins?" • "+esc(x.ins):""}</small>${x.end?`<small>${ended?"خلص العلاج":"لحد "+fmt(dOf(x.end))}</small>`:""}${x.st&&x.st.n!=null?`<small style="${x.st.n<=(x.st.warn||5)?"color:#ff6b8a;font-weight:700":""}">📦 باقي ${AR(x.st.n)} جرعة</small>`:""}${x.note?`<small>📝 ${esc(x.note)}</small>`:""}</span><i data-md="x|${x.id}" style="font-style:normal;padding:6px 8px;color:#ff6b8a">✕</i></div></div>`}).join(""):'<div class="empty">لسه ما ضفتش دواء.</div>'}
+  <div class="note" style="color:var(--soft);line-height:1.8;margin-top:14px">التطبيق بيفكّرك بالمواعيد اللي إنت كتبتها بس، ومش بيدّي نصايح طبية ولا بيراجع التداخلات بين الأدوية. اتبع دايمًا تعليمات الدكتور أو الصيدلي.</div></div>`;
+}
+function openMD(id){
+  const x=id?mdS().meds.find(z=>z.id===id):null;
+  W=x?{md:1,id,name:x.n,dose:x.dose||"",n:x.times.length,times:x.times.slice(),days:(x.days&&x.days.length?x.days.slice():[0,1,2,3,4,5,6]),ins:x.ins||"",dur:0,keepEnd:x.end||"",stock:x.st&&x.st.n!=null?String(x.st.n):"",note:x.note||""}
+   :{md:1,id:null,name:"",dose:"",n:1,times:MD_DEF[1].slice(),days:[0,1,2,3,4,5,6],ins:"",dur:0,keepEnd:"",stock:"",note:""};
+  drawW();$("modal").classList.add("on");
+}
+function mdRead(){
+  if($("mdn"))W.name=$("mdn").value;if($("mdd"))W.dose=$("mdd").value;if($("mds"))W.stock=$("mds").value;if($("mdnote"))W.note=$("mdnote").value;
+  const ts=[];for(let i=0;i<W.n;i++){const el=$("mdt"+i);ts.push(el&&el.value?el.value:W.times[i]||"08:00")}W.times=ts;
+}
+function drawMD(){
+  const ch=(on,k,t)=>`<button class="chip ${on?"on":""}" data-md="${k}">${t}</button>`;
+  $("sheet").innerHTML=`<h2>${W.id?"تعديل دواء":"دواء جديد"} 💊</h2>
+  <div class="q">اسم الدواء</div><input class="inp" id="mdn" placeholder="مثال: فيتامين د" value="${esc(W.name)}">
+  <div class="q">الجرعة (اختياري)</div><input class="inp" id="mdd" placeholder="مثال: قرص واحد / ٥٠٠ مجم / ٥ مل" value="${esc(W.dose)}">
+  <div class="q">كام مرة في اليوم؟</div><div class="chips">${[1,2,3,4].map(n=>ch(W.n===n,"n:"+n,AR(n)+(n===1?" مرة":" مرات"))).join("")}</div>
+  <div class="q">المواعيد</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">${W.times.slice(0,W.n).map((t,i)=>`<input class="inp" type="time" id="mdt${i}" value="${esc(t)}">`).join("")}</div>
+  <div class="q">الأيام</div><div class="chips">${MD_WD.map((n,i)=>ch(W.days.indexOf(i)>=0,"d:"+i,n)).join("")}</div>
+  <div class="q">تعليمات</div><div class="chips">${MD_INS.map((n,i)=>ch(W.ins===n,"i:"+i,n||"بدون")).join("")}</div>
+  <div class="q">مدة العلاج</div><div class="chips">${MD_DUR.map(n=>ch(W.dur===n&&!(W.id&&W.dur===0&&W.keepEnd&&n===0),"u:"+n,n?AR(n)+" يوم":"مستمر")).join("")}</div>${W.id&&W.keepEnd&&!W.dur?`<div class="note" style="color:var(--soft)">لحد ${fmt(dOf(W.keepEnd))} (اختار مدة لتغييرها)</div>`:""}
+  <div class="q">عدد الجرعات اللي معاك (اختياري) — هنفكّرك قبل ما يخلص</div><input class="inp" id="mds" type="number" inputmode="numeric" min="0" value="${esc(W.stock)}">
+  <div class="q">ملاحظة (اختياري)</div><input class="inp" id="mdnote" placeholder="مثال: بعد الغدا" value="${esc(W.note)}">
+  <div class="err" id="mderr"></div><button class="go" data-md="save">${W.id?"احفظ التعديل":"أضف الدواء"}</button>`;
+}
+function mdReport(){
+  const m=mdS(),out=["تقرير الالتزام بالأدوية — آخر ٣٠ يوم"];
+  m.meds.forEach(x=>{let t=0,k=0,sk=0;for(let i=29;i>=0;i--){const d=addDays(today0(),-i);if(!mdActive(x,d))continue;(x.times||[]).forEach(tm=>{const[hh,mm]=tm.split(":").map(Number),at=new Date(d.getFullYear(),d.getMonth(),d.getDate(),hh,mm).getTime();if(at>Date.now())return;t++;const l=m.log[iso(d)+"|"+x.id+"|"+tm];if(l&&l.s==="t")k++;else if(l&&l.s==="s")sk++})}
+    out.push(`• ${x.n}${x.dose?" ("+x.dose+")":""}: أخدت ${k} من ${t} جرعة${t?" ("+Math.round(k/t*100)+"%)":""}${sk?`، تخطّيت ${sk}`:""}`)});
+  return out.join("\n");
+}
+document.addEventListener("click",async e=>{
+  const t=e.target.closest("[data-md]");if(!t)return;e.stopPropagation();
+  const v=t.dataset.md,[k,...r]=v.split("|"),rest=r.join("|");
+  if(k==="new"){openMD();return}
+  if(k==="e"){openMD(rest);return}
+  if(k==="t"||k==="s"||k==="u"){mdTake(rest,k);return}
+  if(k==="x"){if(confirm("تمسح الدوا ده وسجله؟")){const m=mdS();m.meds=m.meds.filter(z=>z.id!==rest);Object.keys(m.log).forEach(q=>{if(q.split("|")[1]===rest)delete m.log[q]});save();render();try{schedNotif()}catch(x){}}return}
+  if(k==="rep"){
+    const txt=mdReport();
+    try{const Sh=NPL("Share");if(Sh){await Sh.share({title:"تقرير الأدوية",text:txt});return}}catch(x){}
+    try{await navigator.clipboard.writeText(txt);toast("اتنسخ التقرير ✓")}catch(x){alert(txt)}
+    return;
+  }
+  if(!W||!W.md)return;
+  mdRead();
+  const[a,b]=(v.split("|")[0]||"").split(":");
+  if(k.indexOf("n:")===0){W.n=+k.slice(2);W.times=(MD_DEF[W.n]||MD_DEF[1]).slice();drawMD();return}
+  if(k.indexOf("d:")===0){const i=+k.slice(2),p=W.days.indexOf(i);p>=0?W.days.splice(p,1):W.days.push(i);drawMD();return}
+  if(k.indexOf("i:")===0){W.ins=MD_INS[+k.slice(2)];drawMD();return}
+  if(k.indexOf("u:")===0){W.dur=+k.slice(2);W.keepEnd="";drawMD();return}
+  if(k==="save"){
+    const err=s=>{$("mderr").textContent=s},nm=(W.name||"").trim();
+    if(!nm)return err("اكتب اسم الدواء");
+    if(!W.days.length)return err("اختار يوم على الأقل");
+    const tm=[...new Set(W.times.slice(0,W.n))].sort();if(!tm.length)return err("حدّد ميعاد");
+    const m=mdS(),stk=W.stock!==""&&!isNaN(+W.stock)?Math.max(0,Math.round(+W.stock)):null;
+    let x=W.id?m.meds.find(z=>z.id===W.id):null;
+    if(!x){x={id:Date.now().toString(36)+Math.random().toString(36).slice(2,6),start:iso(today0())};m.meds.push(x)}
+    x.n=nm.slice(0,60);x.dose=(W.dose||"").trim().slice(0,40);x.times=tm;x.days=W.days.length===7?[]:W.days.slice().sort();x.ins=W.ins||"";x.note=(W.note||"").trim().slice(0,100);
+    x.end=W.dur?iso(addDays(today0(),W.dur-1)):(W.keepEnd||"");
+    x.st=stk==null?null:{n:stk,warn:5};
+    try{await ensurePerm()}catch(q){}
+    save();closeW();render();try{schedNotif()}catch(q){}toast("اتحفظ ✓ والتذكيرات شغالة 🔔");
+  }
+},true);
+setInterval(()=>{if(page==="meds"||page==="today"){if(!(W&&W.md))render()}},60000);
 try{render()}catch(e){}
 </script>
 </body>

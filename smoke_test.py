@@ -18,6 +18,7 @@ async def run(browser, locale, width):
     pg = await ctx.new_page()
     errs = []
     pg.on("pageerror", lambda e: errs.append(str(e)))
+    pg.on("dialog", lambda d: asyncio.ensure_future(d.accept()))   # confirm() dialogs (deleting things) are accepted
     ev = pg.evaluate
     await pg.goto(URL)
     await pg.wait_for_timeout(700)
@@ -162,6 +163,31 @@ async def run(browser, locale, width):
     await ev("S.habits=S.habits.filter(h=>h.name!=='Quran study');save()")
     await pg.click("#edit")
 
+    # --- medication reminders
+    await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="meds"]')
+    await pg.click('[data-md="new"]'); await pg.fill("#mdn", "Vitamin D"); await pg.fill("#mdd", "1 tablet")
+    await pg.click('[data-md="n:2"]'); await pg.click('[data-md="i:2"]'); await pg.click('[data-md="u:7"]'); await pg.fill("#mds", "6"); await pg.click('[data-md="save"]')
+    m0 = await ev("S.md.meds[0]")
+    check("medicine saved with two daily times, duration and stock", m0["n"] == "Vitamin D" and len(m0["times"]) == 2 and m0["end"] and m0["st"]["n"] == 6, str(m0))
+    await ev("S.md.meds[0].times=['00:05','00:10'];save();render()")   # both doses are in the past, so they are 'missed' until taken
+    await pg.click('#bar [data-pg="today"]')
+    check("Today lists today's doses", "Vitamin D" in await ev("document.getElementById('main').innerText"))
+    await pg.click('[data-md^="t|"]')
+    check("taking a dose logs it and reduces the stock", await ev("Object.values(S.md.log).filter(x=>x.s==='t').length") == 1 and await ev("S.md.meds[0].st.n") == 5)
+    check("low stock warning appears at five or fewer doses", "قرّب يخلص" in await ev("document.getElementById('main').innerText"))
+    await pg.click('[data-md^="s|"]')
+    check("a dose can be skipped", await ev("Object.values(S.md.log).filter(x=>x.s==='s').length") == 1)
+    await pg.click('[data-md^="u|"]')
+    check("taking back a dose restores the stock", await ev("S.md.meds[0].st.n") == 6 and await ev("Object.values(S.md.log).length") == 1)
+    await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="meds"]')
+    check("adherence card is shown", "التزامك" in await ev("document.getElementById('main').innerText"))
+    await pg.click('[data-md^="e|"]'); await pg.fill("#mdn", "Vitamin D3"); await pg.click('[data-md="save"]')
+    check("medicine can be edited", await ev("S.md.meds[0].n") == "Vitamin D3")
+    check("doctor report is generated", "Vitamin D3" in await ev("mdReport()"))
+    await pg.click('[data-md^="x|"]')
+    check("medicine can be deleted", await ev("S.md.meds.length") == 0)
+    await pg.click('#bar [data-pg="today"]')
+
     # --- tasks: dated, prioritised, overdue stays visible
     await pg.click("#fab"); await pg.click('[data-c="task"]')
     await pg.fill("#tkt", "Pay the internet bill"); await pg.click('[data-tk="p:1"]'); await pg.click('[data-tk="add"]')
@@ -200,7 +226,6 @@ async def run(browser, locale, width):
     await pg.click('#bar [data-pg="today"]')
 
     # --- comeback: quit-habit tracker, urge tool, relapse flow, never-miss-twice banner
-    pg.on("dialog", lambda d: asyncio.ensure_future(d.accept()))
     await pg.click("#fab"); await pg.click('[data-c="quit"]'); await pg.click('[data-qt="t:0"]'); await pg.click('[data-qt="save"]')
     check("quit habit created", await ev("S.qt.length") == 1)
     check("Today shows the comeback section", "رحلة الإقلاع" in await ev("document.getElementById('main').innerText"))
@@ -311,6 +336,16 @@ async def run_native_mock(browser):
     await ev("window.__sched.length=0;schedNotif()"); await pg.wait_for_timeout(300)
     sched2 = await ev("window.__sched.filter(n=>/Evening reading/.test(n.body)).length")
     check("a finished habit stops reminding for today", sched2 == len(sched) - 1, f"{sched2} vs {len(sched)}")
+    await ev("S.md={meds:[{id:'m1',n:'Antibiotic',dose:'1 pill',times:['23:50'],days:[],ins:'بعد الأكل',start:iso(addDays(today0(),-1)),end:'',st:null}],log:{}};save()")
+    await ev("window.__sched.length=0;schedNotif()"); await pg.wait_for_timeout(300)
+    ms = await ev("window.__sched.filter(n=>/Antibiotic/.test(n.body)).map(n=>({id:n.id,t:n.title,ch:n.channelId}))")
+    check("each dose gets the main alert plus two follow-ups", len(ms) >= 6 and all(x["id"] >= 6000 and x["ch"] == "meds" for x in ms), str(ms[:3]))
+    check("follow-up alerts exist for a missed dose", any("لسه ما أخدتش" in x["t"] for x in ms) and any("فاتتك" in x["t"] for x in ms))
+    day = await ev("iso(today0())")
+    await ev("S.md.log[iso(today0())+'|m1|23:50']={s:'t',at:Date.now()};save()")
+    await ev("window.__sched.length=0;schedNotif()"); await pg.wait_for_timeout(300)
+    after = await ev("window.__sched.filter(n=>/Antibiotic/.test(n.body)).length")
+    check("taking the dose cancels today's follow-ups", after == len(ms) - 3, f"{after} vs {len(ms)}")
     check("no page errors", not errs, "; ".join(errs[:3]))
     await ctx.close()
 
