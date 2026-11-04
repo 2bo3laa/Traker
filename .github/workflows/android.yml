@@ -20,6 +20,10 @@ jobs:
         run: python static_check.py
       - name: Browser smoke tests
         run: python smoke_test.py
+      - name: Security tests
+        run: python security_test.py
+      - name: Dependency audit (informational)
+        run: npm install --package-lock-only --ignore-scripts && npm audit --audit-level=high || true
   build:
     needs: test
     runs-on: ubuntu-24.04
@@ -48,16 +52,18 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: 17
+          java-version: 21
       - run: npm install
       - run: npx cap add android
       - run: npx capacitor-assets generate --android
       - run: npx cap sync android
       - name: Launcher icons and notifications patch
+        env:
+          VERSION_CODE: ${{ github.run_number }}
         run: |
           python3 -c "import PIL" || python3 -m pip install --break-system-packages pillow
           python3 patch-android.py
-      - name: Build APK (signed if keystore secrets exist, otherwise debug)
+      - name: Build (signed APK + Play AAB if keystore secrets exist, otherwise debug APK)
         env:
           KS_B64: ${{ secrets.KEYSTORE_BASE64 }}
           KS_PASS: ${{ secrets.KEYSTORE_PASSWORD }}
@@ -69,21 +75,25 @@ jobs:
           cd android
           if [ -n "$KS_B64" ] && [ -n "$KS_PASS" ] && [ -n "$KEY_ALIAS" ] && [ -n "$KEY_PASS" ]; then
             echo "Signed release build"
-            ./gradlew assembleRelease
-            BT=$(ls -d "$ANDROID_HOME"/build-tools/* | sort -V | tail -1)
+            ./gradlew assembleRelease bundleRelease
             echo "$KS_B64" | base64 -d > "$RUNNER_TEMP/release.jks"
+            BT=$(ls -d "$ANDROID_HOME"/build-tools/* | sort -V | tail -1)
             "$BT/zipalign" -p -f 4 app/build/outputs/apk/release/app-release-unsigned.apk "$RUNNER_TEMP/aligned.apk"
             "$BT/apksigner" sign --ks "$RUNNER_TEMP/release.jks" --ks-key-alias "$KEY_ALIAS" \
               --ks-pass env:KS_PASS --key-pass env:KEY_PASS \
               --out ../out/jadwali.apk "$RUNNER_TEMP/aligned.apk"
             "$BT/apksigner" verify ../out/jadwali.apk
+            jarsigner -keystore "$RUNNER_TEMP/release.jks" -storepass:env KS_PASS -keypass:env KEY_PASS \
+              -sigalg SHA256withRSA -digestalg SHA-256 \
+              -signedjar ../out/jadwali.aab app/build/outputs/bundle/release/app-release.aab "$KEY_ALIAS"
+            jarsigner -verify ../out/jadwali.aab
             rm -f "$RUNNER_TEMP/release.jks"
           else
-            echo "No keystore secrets found: building debug APK"
+            echo "No keystore secrets found: building debug APK only (Google Play needs a signed AAB)"
             ./gradlew assembleDebug
             cp app/build/outputs/apk/debug/app-debug.apk ../out/jadwali.apk
           fi
       - uses: actions/upload-artifact@v4
         with:
-          name: habit-tracker-apk
-          path: out/jadwali.apk
+          name: habit-tracker-release
+          path: out/*
