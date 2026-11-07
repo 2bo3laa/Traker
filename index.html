@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'">
+<script>try{if(localStorage.getItem("hb_lock"))document.documentElement.classList.add("locked")}catch(e){}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>جدولي</title>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
@@ -98,6 +99,16 @@ tr.sum td{border-bottom:0;font-size:10px;color:var(--soft)}
 .fab{position:fixed;left:18px;bottom:calc(86px + max(env(safe-area-inset-bottom,0px),var(--safe-area-inset-bottom,0px)));width:58px;height:58px;border-radius:50%;border:0;background:linear-gradient(135deg,var(--acc),var(--acc2));color:var(--on);font-size:34px;font-weight:700;box-shadow:0 8px 28px color-mix(in srgb,var(--acc) 45%,transparent);z-index:5}
 .modal{position:fixed;inset:0;background:#000a;display:none;align-items:flex-end;justify-content:center;z-index:10}
 .modal.on{display:flex}
+html.locked body>*:not(#lockscr){visibility:hidden}
+#lockscr{position:fixed;inset:0;z-index:99999;background:linear-gradient(160deg,#120a1f,#2a1450);color:#fff4ea;display:flex;align-items:center;justify-content:center;visibility:visible}
+.lkbox{text-align:center;width:min(320px,88vw)}.lkbox h2{margin:4px 0}
+.lkdots{display:flex;gap:12px;justify-content:center;margin:10px 0}.lkdots i{width:14px;height:14px;border-radius:50%;border:2px solid #ffb547;display:block}.lkdots i.on{background:#ffb547}
+.lkpad{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px auto;max-width:300px}
+.lkpad button{height:62px;border-radius:50%;border:1px solid #fff3;background:#ffffff14;color:inherit;font-size:24px;font-weight:700}.lkpad button:active{background:#ffffff30}.lkpad .ok{background:#ffb547;color:#1a0f2b}
+.lkerr{color:#ff8fa3;min-height:22px;font-size:14px}.lkforgot{background:none;border:0;color:#fff9;font-size:13px;margin-top:6px}
+html.compact .tcard{padding:8px 12px!important}html.compact .sec{margin-top:8px}
+.chip{min-height:34px}
+.sec[data-ux]{user-select:none}
 .pgin{animation:pgin .24s cubic-bezier(.2,.8,.2,1)}
 @keyframes pgin{from{opacity:0;transform:translateY(10px)}}
 .tcard.pop{animation:popk .4s cubic-bezier(.3,1.6,.5,1)}
@@ -4071,7 +4082,17 @@ function cleanState(o){
 }
 let S={habits:[],done:{}};
 try{S=cleanState(JSON.parse(localStorage.getItem("hb1")))||S}catch(e){}
-const save=()=>{try{localStorage.setItem("hb1",JSON.stringify(S))}catch(e){}try{wlSync()}catch(e){}};
+const FEATS=[
+ ["tasks","✅","المهام","بتاريخ وأولوية","p"],["focus","⏱️","تركيز","جلسات مذاكرة وشغل","p"],["review","🔍","مراجعتي","أسبوعك وإنجازاتك وشاراتك","p"],["assist","🤖","المساعد","اسأل عن يومك (أوفلاين)","p"],["stats","📊","إحصائياتي","تقدّمك وأرقامك","p"],
+ ["pray","🧭","مواقيت وقبلة","الصلاة والتقويم","w"],["deen","🕌","ذكر وقرآن","أذكار ومصحف","w"],["khatma","📖","ختمتي","خطة ختمة القرآن","w"],["ramadan","🌙","رمضان","صيام وسحور وإفطار","w"],
+ ["meds","💊","الأدوية","منبّه وجرعات ومتابعة","h"],["health","📈","صحتي","وزن ونوم ومزاج وأنماط","h"],["food","🥗","الأكل","نظام غذائي بالبدائل","h"],
+ ["money","💰","المصاريف","ميزانية واشتراكات","m"],["quit","🌱","رحلة الإقلاع","بطّل عادة وارجع لو وقعت","g"],
+ ["lock","🔒","الحماية","قفل ونسخ تلقائية","s"],["custom","🎛️","تخصيص","اختار اللي يظهرلك والخط","s"]
+];
+const FSEC={p:"📋 إنتاجية",w:"🕌 عبادة",h:"💪 صحة",m:"💰 مال",g:"🌱 تطوير ذاتي",s:"⚙️ النظام"};
+const uxS=()=>{const u=S.ux=(S.ux&&typeof S.ux==="object")?S.ux:{};u.hide=u.hide||{};u.col=u.col||{};if(!u.t0)u.t0=Date.now();return u};
+const uxOn=id=>!uxS().hide[id];
+const save=()=>{try{localStorage.setItem("hb1",JSON.stringify(S))}catch(e){}try{wlSync()}catch(e){}try{bdSoon()}catch(e){}};
 let view="month",cur=new Date(),editing=false,pend=null,idx=0,page="today";
 let TH="dawn";try{TH=localStorage.getItem("hb_theme")||TH}catch(e){}
 document.documentElement.dataset.t=TH;
@@ -4124,10 +4145,10 @@ function renderToday(){
   const rowH=x=>{const k=iso(t)+"|"+x.id,on=S.done[k];if(x.goal&&typeof cnRow==="function")return cnRow(x,k,on,del);if(x.log){const st=wlStatus();return `<div class="tcard ${on?"on":""}"${st.open?' data-wlrun="1"':""}><span class="ck">${on?"✓":""}</span><span class="tx">${esc(x.name)}<small>${st.txt}</small></span>${editing?del(x):`<button class="chip" data-wl="${st.open?"out":"in"}" style="background:var(--panel);color:var(--ink);font-weight:700">${st.open?"⏹ انصراف":"▶ حضور"}</button>`}</div>`}return `<button class="tcard ${on?"on":""}${on&&LT(k)?" late":""}" ${editing?"":`data-k="${k}"`}><span class="ck">${on?"✓":""}</span><span class="tx">${esc(x.name)}${x.sub?`<small>${esc(x.sub)}</small>`:""}${on&&LT(k)?`<small class="lt">صُلّيت بعد وقتها</small>`:""}</span>${del(x)}</button>`};
   const grp=x=>(PR.includes(x.name)||/ورد|قرآن|أذكار|ذكر|صلاة/.test(x.name))?0:/^جيم/.test(x.name)?1:2,GH=["🕌 العبادات","💪 التمرين","📋 باقي يومك"];
   const tkH=((typeof mdToday==="function")?mdToday():"")+((typeof tkSection==="function")?tkSection():"")+((typeof qtToday==="function")?qtToday():"");
-  if(list.length){const gs=[0,1,2].map(g=>list.filter(x=>grp(x)===g)),used=gs.filter(z=>z.length).length+(tkH?1:0);H+=nextPrayerCard()+((typeof qtBanner==="function")?qtBanner():"")+gs.map((z,gi)=>(gi===2?tkH:"")+(z.length?(used>1?`<div class="sec">${GH[gi]}</div>`:"")+z.map(rowH).join(""):"")).join("")}
+  if(list.length){const gs=[0,1,2].map(g=>list.filter(x=>grp(x)===g)),used=gs.filter(z=>z.length).length+(tkH?1:0);H+=nextPrayerCard()+((typeof uxChecklist==="function")?uxChecklist():"")+((typeof rdToday==="function")?rdToday():"")+((typeof khToday==="function")?khToday():"")+((typeof rvBanner==="function")?rvBanner():"")+((typeof qtBanner==="function")?qtBanner():"")+gs.map((z,gi)=>(gi===2?tkH:"")+(z.length?(used>1?`<div class="sec">${GH[gi]}</div>`:"")+z.map(rowH).join(""):"")).join("")}
   else if(tkH)H+=nextPrayerCard()+tkH;
   else H+=`<div class="empty">مفيش حاجة مجدولة النهارده، استمتع بيومك 🌿</div>`;
-  H+=wlCard()+`<div class="sec">آخر 7 أيام</div><div class="strip">`+Array.from({length:7},(_,i)=>{const d=addDays(t,i-6),[x,y]=dayStat(d);return `<div><i style="--p:${y?pct(x,y):0}"></i>${DS[d.getDay()]}</div>`}).join("")+`</div>`;
+  H+=((typeof hlTodayCard==="function")?hlTodayCard():"")+wlCard()+`<div class="sec">آخر 7 أيام</div><div class="strip">`+Array.from({length:7},(_,i)=>{const d=addDays(t,i-6),[x,y]=dayStat(d);return `<div><i style="--p:${y?pct(x,y):0}"></i>${DS[d.getDay()]}</div>`}).join("")+`</div>`;
   $("main").innerHTML=H;
 }
 function renderStats(){
@@ -4307,7 +4328,7 @@ function wlAct(a){
 setInterval(()=>{if(page==="today"&&!editing&&document.querySelector("[data-wlrun]")&&!(W&&W.wl))renderToday()},30000);
 
 /* ---------- next prayer ---------- */
-function nextPrayerCard(){
+function nextPrayerCard(){if(!uxOn("pray"))return "";
   try{
     const L=LC(),n=new Date(),T=PT(n,L.la,L.lo),h=n.getHours()+n.getMinutes()/60;
     const P=[["الفجر",T.f],["الظهر",T.d],["العصر",T.a],["المغرب",T.m],["العشاء",T.i]];
@@ -4405,6 +4426,9 @@ function drawW(){
   if(W.qt)return drawQT();
   if(W.rm)return drawRM();
   if(W.md)return drawMD();
+  if(W.lk)return drawLK();
+  if(W.hl)return drawHL();
+  if(W.qk)return drawQK();
   const sh=$("sheet");
   if(!W.cat){
     sh.innerHTML=`<h2>إيه اللي عايز تضيفه؟</h2><p>اختار النوع وأنا هجهزلك الباقي.</p><button class="go" data-c="tpl" style="margin:0 0 14px">⚡ قوالب جاهزة (٣٠+ عادة بضغطة)</button><div class="cats">${CATS.map(([k,e,n])=>{const full=(k==="prayer"&&!missingPR().length)||(k==="gym"&&hasKey("gym"))||(k==="work"&&hasKey("work"));return `<button class="cat" data-c="${k}"${full?' style="opacity:.5"':""}><b>${e}</b>${n}${full?"<small style=\"display:block;font-size:11px;margin-top:2px\">✓ موجود</small>":""}</button>`}).join("")}</div>`;
@@ -4495,7 +4519,7 @@ document.addEventListener("click",e=>{
   else if(D.dn)deenAct(D.dn);
 });
 $("modal").addEventListener("click",e=>{if(e.target.id==="modal"&&!(W&&W.ob))closeW()});
-$("fab").onclick=openW;$("thm").onclick=openT;
+$("fab").onclick=()=>{typeof uxQuick==="function"?uxQuick():openW()};$("thm").onclick=openT;
 document.addEventListener("change",e=>{if(e.target.id==="wls"){const n=Math.round(+e.target.value);S.wlStart=n>=1&&n<=28?n:1;save();if(W&&W.wl)drawWL();render()}});
 document.addEventListener("input",e=>{const id=e.target.id||"";if(id.indexOf("wpg_")===0){wpEnsure().goals[id.slice(4)]=e.target.value;save()}else if(id==="wpd"){wpEnsure().dump=e.target.value;save()}
   if(e.target.id==="nm2"){S.name=e.target.value.trim();save()}
@@ -4864,6 +4888,11 @@ async function schedNotif(){
       }
       if(x.st&&x.st.n!=null&&x.st.n<=(x.st.warn||5)&&(!x.end||iso(today0())<=x.end)){const a3=new Date();a3.setHours(10,0,0,0);if(a3<now)a3.setDate(a3.getDate()+1);list.push({id:9990+mi,title:"📦 الدواء قرّب يخلص",body:x.n+": باقي "+x.st.n+" جرعة",schedule:{at:a3,allowWhileIdle:false},channelId:"daily"})}
     });
+    {const kh=S.kh;if(kh&&kh.start&&kh.rm&&typeof khPlan==="function"){const p=khPlan(),[hh,mm]=kh.rm.split(":").map(Number);if(p&&!p.done)for(let i=0;i<7;i++){const d=addDays(today0(),i),at=new Date(d.getFullYear(),d.getMonth(),d.getDate(),hh||0,mm||0,0);if(i===0&&p.rt>=p.target)continue;if(at>now)list.push({id:5100+i,title:ttl,body:"📖 ورد القرآن النهارده: "+p.target+" صفحة",schedule:{at,allowWhileIdle:false},channelId:"daily"})}}}
+    if(typeof rdActive==="function"&&rdActive()&&!(S.rmd&&S.rmd.n===0)){for(let i=0;i<3;i++){const d=addDays(today0(),i),T=rdTimes(d);if(!T)continue;
+      [[T.f-1,"🌙 وقت السحور","قوم تسحّر، باقي ساعة على الفجر"],[T.m-.25,"🌙 قرب الإفطار","ادعُ بما شئت، الصايم دعوته لا تُرد"],[T.m,"🌙 حان وقت الإفطار","اللهم لك صمت وعلى رزقك أفطرت"]].forEach(([h2,tt,bd],k)=>{const at=rdAt(d,h2);if(at>now)list.push({id:5200+i*3+k,title:tt,body:bd,schedule:{at,allowWhileIdle:true},channelId:"daily"})})}}
+    for(let i=0;i<7;i++){const d=addDays(today0(),i),at=new Date(d.getFullYear(),d.getMonth(),d.getDate(),22,0,0);if(at>now&&!(i===0&&S.hl&&S.hl[iso(d)])&&S.hlRem!==0)list.push({id:5300+i,title:ttl,body:"📈 سجّل يومك: وزن ونوم ومزاج",schedule:{at,allowWhileIdle:false},channelId:"daily"})}
+    if(S.rvRem!==0)for(let i=0;i<14;i++){const d=addDays(today0(),i);if((d.getDay()+1)%7!==0)continue;const at=new Date(d.getFullYear(),d.getMonth(),d.getDate(),9,0,0);if(at>now)list.push({id:5400+i,title:"📊 مراجعة أسبوعك جاهزة",body:"شوف التزامك وإنجازاتك الأسبوع اللي فات",schedule:{at,allowWhileIdle:false},channelId:"daily"})}
     if(AD){try{await AD.schedule({items:adh})}catch(e){adh.forEach(a=>list.push({id:a.id,title:a.title,body:a.body,schedule:{at:new Date(a.at),allowWhileIdle:true},channelId:a.fajr?"adhan_fajr2":"adhan2"}))}}
     if(list.length)await P.schedule({notifications:list});
   }catch(e){}
@@ -5159,19 +5188,21 @@ Object.assign(AZ,{
     {x:"اللَّهُمَّ رَحْمَتَكَ أَرْجُو فَلَا تَكِلْنِي إِلَى نَفْسِي طَرْفَةَ عَيْنٍ، وَأَصْلِحْ لِي شَأْنِي كُلَّهُ، لَا إِلَهَ إِلَّا أَنْتَ",n:1}]}
 });
 /* glue */
-const MORE=["more","stats","food","deen","pray","assist","tasks","focus","money","quit","meds"];
-let LASTPG=null;
+const MORE=["more","stats","food","deen","pray","assist","tasks","focus","money","quit","meds","lock","khatma","ramadan","health","review","custom"];
+let LASTPG=null,SUBFROM="more";
 const _render=render;render=function(){
   if(LASTPG!==null&&LASTPG!==page){const m=$("main");if(m){m.classList.remove("pgin");void m.offsetWidth;m.classList.add("pgin")}}
+  if(LASTPG!==null&&LASTPG!==page&&MORE.indexOf(page)>=0&&page!=="more")SUBFROM=LASTPG;
   LASTPG=page;
   sync();
   const hl=()=>document.querySelectorAll("#bar button").forEach(b=>b.classList.toggle("on",b.dataset.pg===(MORE.includes(page)?"more":page)));
-  if(page==="gym"||page==="pray"||page==="paper"||page==="more"||page==="food"||page==="assist"||page==="tasks"||page==="focus"||page==="money"||page==="quit"||page==="meds"){
+  if(page==="gym"||page==="pray"||page==="paper"||page==="more"||page==="food"||page==="assist"||page==="tasks"||page==="focus"||page==="money"||page==="quit"||page==="meds"||page==="lock"||page==="khatma"||page==="ramadan"||page==="health"||page==="review"||page==="custom"){
     hl();
     $("tabs").style.display="none";document.querySelector(".nav").style.display="none";$("stat").style.display="none";$("edit").style.display="none";$("fab").style.display="none";
-    return page==="gym"?renderGym():page==="paper"?renderPaper():page==="more"?renderMore():page==="food"?renderFood():page==="assist"?renderAssist():page==="tasks"?renderTasks():page==="focus"?renderFocus():page==="money"?renderMoney():page==="quit"?renderQuit():page==="meds"?renderMeds():renderPray();
+    return page==="gym"?renderGym():page==="paper"?renderPaper():page==="more"?renderMore():page==="food"?renderFood():page==="assist"?renderAssist():page==="tasks"?renderTasks():page==="focus"?renderFocus():page==="money"?renderMoney():page==="quit"?renderQuit():page==="meds"?renderMeds():page==="lock"?renderLock():page==="khatma"?renderKhatma():page==="ramadan"?renderRamadan():page==="health"?renderHealth():page==="review"?renderReview():page==="custom"?renderCustom():renderPray();
   }
   _render();hl();
+  if(page==="today"){try{uxCollapse()}catch(e){}}
 };
 document.addEventListener("click",e=>{
   const t=e.target.closest("[data-x]");if(!t)return;const[k,a]=t.dataset.x.split(":");
@@ -5195,6 +5226,7 @@ document.addEventListener("click",e=>{
     Object.keys(g.log).sort().slice(0,-90).forEach(x=>delete g.log[x]);gsync();
     const ticked=wpAuto();
     save();lgr(GS.e);renderGym();
+    if(GS.u==="kg"&&prevBest>0&&w>prevBest){S.cn=S.cn||{};S.cn.pr=(S.cn.pr||0)+1;save()}
     if(GS.u==="kg"&&prevBest>0&&w>prevBest)toast("🏆 رقم جديد! "+EX[GS.e].n+" "+AR(w)+" كجم"+(ticked?" • واتعلّمت في ورقتك ✓":""));
     else if(ticked)toast("اتعلّمت خطوة في ورقتك تلقائي ✓");
   }
@@ -5288,11 +5320,22 @@ function nuPlan(n,c){
 const nuFmt=([f,g])=>{const d=NU_F[f];return f==="egg"?`${d[0]} ${g/50===1?"بيضة":g/50===2?"بيضتين":Math.round(g/50)+" بيضات"}`:`${d[0]} ${g}ج`};
 const nuDay=()=>iso(new Date());
 function nuBlock(msg){return `<div class="deen"><h2 style="margin:6px 2px">🥗 الأكل</h2><div class="note" style="color:var(--ink);line-height:1.9">${msg}</div><button class="go" data-nu="edit">عدّل بياناتك</button></div>`}
+let MQ="";
+function uxMoreGrid(){
+  const u=uxS(),q=MQ.trim(),F=FEATS.filter(f=>(f[0]==="custom"||!u.hide[f[0]])&&(!q||(typeof asNorm==="function"?asNorm(f[2]+" "+f[3]).indexOf(asNorm(q)):(f[2]+" "+f[3]).indexOf(q))>=0));
+  const card=f=>`<button class="cat" data-pg="${f[0]}" style="padding:16px 8px"><b style="font-size:28px;display:block;margin-bottom:5px">${f[1]}</b>${f[2]}<small style="display:block;font-size:11px;font-weight:600;opacity:.7;margin-top:3px">${f[3]}</small></button>`;
+  const grid=l=>`<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">${l.map(card).join("")}</div>`;
+  const gear=`<button class="cat" onclick="$('thm').click()" style="padding:16px 8px;margin-top:10px;width:100%"><b style="font-size:28px;display:block;margin-bottom:5px">⚙️</b>إعدادات الشكل والنسخ<small style="display:block;font-size:11px;font-weight:600;opacity:.7;margin-top:3px">الألوان واللغة والنسخ الاحتياطي</small></button>`;
+  const g=$("mgrid");if(!g)return;
+  if(q){g.innerHTML=F.length?grid(F):'<div class="empty">مفيش ميزة بالاسم ده.</div>';return}
+  g.innerHTML=Object.keys(FSEC).map(k=>{const l=F.filter(f=>f[4]===k);return l.length?`<div class="sec noc" style="cursor:default">${FSEC[k]}</div>${grid(l)}`:""}).join("")+gear;
+}
 function renderMore(){
   $("quote").textContent="كل اللي محتاجه في مكان واحد";
-  const c=(pg,e,t,s)=>`<button class="cat" data-pg="${pg}" style="padding:18px 8px"><b style="font-size:30px;display:block;margin-bottom:6px">${e}</b>${t}<small style="display:block;font-size:11px;font-weight:600;opacity:.7;margin-top:3px">${s}</small></button>`;
-  $("main").innerHTML=`<div class="deen" style="padding-bottom:90px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">${c("meds","💊","الأدوية","منبّه وجرعات ومتابعة")}${c("tasks","✅","المهام","بتاريخ وأولوية")}${c("focus","⏱️","تركيز","جلسات مذاكرة وشغل")}${c("money","💰","المصاريف","ميزانية واشتراكات")}${c("quit","🌱","رحلة الإقلاع","بطّل عادة وارجع لو وقعت")}${c("assist","🤖","المساعد","اسأل عن يومك (أوفلاين)")}${c("stats","📊","إحصائياتي","تقدّمك وأرقامك")}${c("food","🥗","الأكل","نظام غذائي بالبدائل")}${c("deen","🕌","ذكر وقرآن","أذكار ومصحف")}${c("pray","🧭","مواقيت وقبلة","الصلاة والتقويم")}<button class="cat" onclick="$('thm').click()" style="padding:18px 8px"><b style="font-size:30px;display:block;margin-bottom:6px">⚙️</b>الإعدادات<small style="display:block;font-size:11px;font-weight:600;opacity:.7;margin-top:3px">الشكل والنسخ الاحتياطي</small></button></div></div>`;
+  $("main").innerHTML=`<div class="deen" style="padding-bottom:100px"><input class="inp" id="mrs" placeholder="🔍 دوّر على ميزة" value="${esc(MQ)}" autocomplete="off"><div id="mgrid" style="margin-top:6px"></div></div>`;
+  uxMoreGrid();
 }
+document.addEventListener("input",e=>{if(e.target.id==="mrs"){MQ=e.target.value;uxMoreGrid()}});
 function renderFood(){
   const n=nuS();$("quote").textContent="كُل صح من غير ما تتقيّد بحاجة";
   if(!n.ok||n.edit)return renderFoodSetup(n);
@@ -5456,6 +5499,10 @@ function asAnswer(q){
     const left=dz.filter(z=>!z.lg),nx=left.find(z=>z.at>Date.now()-30*60000),miss=left.filter(z=>mdState(z)==="missed");
     return `جرعات النهارده: أخدت ${AR(dz.filter(z=>z.lg&&z.lg.s==="t").length)} من ${AR(dz.length)}.`+(miss.length?`\n⚠️ فاتتك: ${miss.map(z=>z.m.n+" "+mdT(z.t)).join("، ")}`:"")+(nx?`\n⏰ الجاية: ${nx.m.n} الساعة ${mdT(nx.t)}`:"");
   }
+  if(asHas(t,"وزن","وزني","نمت","نوم","مزاج")){
+    const H=hlS(),ks=hlDays(7),w=Object.keys(H).filter(k=>H[k].w).sort().pop(),sl=hlAvg(ks,e=>e&&e.sh?+e.sh:null);
+    return (w?`آخر وزن سجّلته: ${AR(H[w].w)} كجم (${fmt(dOf(w))}).`:"لسه ما سجّلتش وزنك.")+(sl?`\nمتوسط نومك آخر ٧ أيام: ${AR(Math.round(sl*10)/10)} ساعة.`:"")+(hlPatterns()[0]?"\n"+hlPatterns()[0]:"");
+  }
   if(asHas(t,"سلسل","متتال","streak"))return `سلسلتك الحالية ${AR(streak())} يوم متتالي 🔥`;
   if(asHas(t,"ورق","خطه","خطوات","اهداف")){
     const wp=((S.wp||{}).weeks||{})[wpKey(0)]||[];if(!wp.length)return "ما عندكش خطوات في ورقة الأسبوع ده.";
@@ -5510,7 +5557,7 @@ function tkRow(x){
   const late=!x.done&&x.due&&x.due<tkNow();
   return `<button class="tcard ${x.done?"on":""}" data-tk="t:${x.id}"><span class="ck">${x.done?"✓":""}</span><span class="tx" style="${x.done?"text-decoration:line-through;opacity:.7":""}">${esc(x.t)}<small style="${late?"color:#ff6b8a;font-weight:700":""}">${tkIcon(x)} ${x.done?"تمت":tkLabel(x)}</small></span><i data-tk="x:${x.id}" style="font-style:normal;padding:6px 8px;color:#ff6b8a">✕</i></button>`;
 }
-function tkSection(){
+function tkSection(){if(!uxOn("tasks"))return "";
   const t=tkNow(),L=tkAll(),open=L.filter(x=>!x.done&&x.due&&x.due<=t).sort(tkSort),dn=L.filter(x=>x.done&&iso(new Date(x.done))===t&&x.due&&x.due<=t);
   if(!open.length&&!dn.length)return "";
   const sh=open.slice(0,6);
@@ -5556,7 +5603,7 @@ document.addEventListener("click",e=>{
       save();closeW();render();tkResched();toast("اتضافت المهمة ✓");return;
     }
   }
-  if(k==="t"){const x=tkAll().find(z=>z.id===a);if(x){x.done=x.done?0:Date.now();save();render();tkResched();try{buzz(12)}catch(z){}}}
+  if(k==="t"){const x=tkAll().find(z=>z.id===a);if(x){{const was=x.done;x.done=was?0:Date.now();if(!was){S.cn=S.cn||{};S.cn.td=(S.cn.td||0)+1}}save();render();tkResched();try{buzz(12)}catch(z){}}}
   else if(k==="x"){S.tk=tkAll().filter(z=>z.id!==a);save();render();tkResched()}
 },true);
 try{render()}catch(e){}
@@ -5766,7 +5813,7 @@ function renderQuit(){
   <div class="chips" style="margin:10px 0"><button class="chip on" data-qt="add" style="font-size:15px;padding:10px 18px">➕ عادة جديدة للإقلاع</button></div>
   ${L.map(qtCard).join("")||'<div class="empty">لسه ما ضفتش عادة. لو حاسس إن الموضوع تقيل عليك أو بيأثر على حياتك، كلّم حد بتثق فيه أو مختص، مفيش عيب في ده.</div>'}</div>`;
 }
-function qtToday(){
+function qtToday(){if(!uxOn("quit"))return "";
   const L=qtAll();if(!L.length)return "";
   return `<div class="sec">🌱 رحلة الإقلاع</div>`+L.map(q=>`<button class="tcard" data-pg="quit"><span class="tx">${esc(q.e)} ${esc(q.n)}<small>${AR(qtDays(q))} يوم • أطول فترة ${qtFmt(Math.max(q.best||0,qtLen(q)))}</small></span><span class="chip" data-qt="urge:${q.id}" style="background:var(--panel);color:var(--ink)">🆘</span></button>`).join("");
 }
@@ -5932,7 +5979,7 @@ function mdRow(z,compact){
   return `<div class="tcard ${st==="taken"?"on":""}" style="display:block;${st==="due"?"border-color:var(--acc)":""}"><div style="display:flex;align-items:center;gap:8px"><span class="tx" style="flex:1;${st==="taken"?"opacity:.8":""}"><b>💊 ${esc(x.n)}</b>${x.dose?" • "+esc(x.dose):""}<small style="color:${col}">${mdT(z.t)}${x.ins?" • "+esc(x.ins):""}${lab?" • "+lab:""}</small></span>${acts}</div></div>`;
 }
 function mdLow(){return mdS().meds.filter(x=>x.st&&x.st.n!=null&&x.st.n<=(x.st.warn||5)&&(!x.end||iso(today0())<=x.end))}
-function mdToday(){
+function mdToday(){if(!uxOn("meds"))return "";
   const dz=mdDoses(today0()),low=mdLow();
   if(!dz.length&&!low.length)return "";
   const pend=dz.filter(z=>!z.lg).length;
@@ -6026,6 +6073,578 @@ document.addEventListener("click",async e=>{
   }
 },true);
 setInterval(()=>{if(page==="meds"||page==="today"){if(!(W&&W.md))render()}},60000);
+try{render()}catch(e){}
+</script>
+<script>
+/* ===== app lock (PIN) and automatic snapshots ===== */
+const LK="hb_lock",LKF="hb_lkf",SNK="hb_snaps";
+const lkGet=()=>{try{return JSON.parse(localStorage.getItem(LK)||"null")}catch(e){return null}};
+function lkSimple(str){let h1=0xdeadbeef,h2=0x41c6ce57;for(let i=0;i<str.length;i++){const c=str.charCodeAt(i);h1=Math.imul(h1^c,2654435761);h2=Math.imul(h2^c,1597334677)}h1=Math.imul(h1^(h1>>>16),2246822507)^Math.imul(h2^(h2>>>13),3266489909);h2=Math.imul(h2^(h2>>>16),2246822507)^Math.imul(h1^(h1>>>13),3266489909);return (4294967296*(2097151&h2)+(h1>>>0)).toString(16)}
+async function lkHash(pin,salt){
+  try{if(window.crypto&&crypto.subtle){const d=new TextEncoder().encode(salt+":"+pin),h=await crypto.subtle.digest("SHA-256",d);return"s"+[...new Uint8Array(h)].map(b=>b.toString(16).padStart(2,"0")).join("")}}catch(e){}
+  return"w"+lkSimple(salt+":"+pin);
+}
+const lkPad=(pre)=>`<div class="lkpad">${[1,2,3,4,5,6,7,8,9].map(n=>`<button data-lk="${pre}k:${n}">${AR(n)}</button>`).join("")}<button data-lk="${pre}k:del">⌫</button><button data-lk="${pre}k:0">${AR(0)}</button><button data-lk="${pre}k:ok" class="ok">✓</button></div>`;
+const lkDots=(n,len)=>`<div class="lkdots">${Array.from({length:Math.max(len,n,4)},(_,i)=>`<i class="${i<n?"on":""}"></i>`).join("")}</div>`;
+let LKBUF="",LKWAIT=0;
+function lkLocked(){return document.documentElement.classList.contains("locked")}
+function lkShow(){
+  const L=lkGet();if(!L)return;
+  document.documentElement.classList.add("locked");
+  let o=document.getElementById("lockscr");
+  if(!o){o=document.createElement("div");o.id="lockscr";document.body.appendChild(o)}
+  LKBUF="";lkDraw("");
+  if(L.mode==="device"||L.bio)setTimeout(lkBio,300);
+}
+const BIO=()=>NPL("Biometric");
+let BIOAV={bio:false,dev:false};
+async function bioProbe(){const P=BIO();if(!P)return BIOAV;try{const r=await P.isAvailable();BIOAV={bio:!!(r&&r.bio),dev:!!(r&&r.dev)}}catch(e){}return BIOAV}
+async function bioAsk(title,dev){const P=BIO();if(!P)return false;try{const r=await P.verify({title:title||"افتح جدولي",device:!!dev,cancel:"استخدم الرقم السري"});return !!(r&&r.ok)}catch(e){return false}}
+function lkUnlock(){localStorage.removeItem(LKF);LKBUF="";document.documentElement.classList.remove("locked");const o=document.getElementById("lockscr");if(o)o.remove();try{render()}catch(e){}}
+async function lkBio(){
+  const L=lkGet();if(!L||!lkLocked())return;
+  const av=await bioProbe();
+  if(L.mode==="device"?!av.dev:!av.bio){
+    if(L.mode==="device"){localStorage.removeItem(LK);lkUnlock();toast("قفل الموبايل مش متفعّل، القفل اتلغى");}
+    else lkDraw("البصمة مش متاحة، استخدم الرقم السري");
+    return;
+  }
+  if(await bioAsk("افتح جدولي",L.mode==="device"))lkUnlock();else lkDraw(L.mode==="device"?"اتلغت. دوس الزرار وجرّب تاني":"");
+}
+function lkDraw(err){
+  const o=document.getElementById("lockscr"),L=lkGet();if(!o||!L)return;
+  const f=(()=>{try{return JSON.parse(localStorage.getItem(LKF)||"{}")}catch(e){return{}}})(),wait=Math.max(0,Math.ceil(((f.until||0)-Date.now())/1000));
+  if(L.mode==="device"){
+    o.innerHTML=`<div class="lkbox"><div style="font-size:46px">🔒</div><h2>جدولي</h2><div id="lkerr" class="lkerr">${err||""}</div><button class="go" data-lk="ubio" style="margin-top:18px">👆 افتح بالبصمة أو الوجه</button><button class="lkforgot" data-lk="forgot">مشكلة في الفتح؟</button></div>`;
+    return;
+  }
+  o.innerHTML=`<div class="lkbox"><div style="font-size:46px">🔒</div><h2>جدولي</h2><div style="opacity:.8;margin-bottom:10px">اكتب الرقم السري</div>${lkDots(LKBUF.length,L.len)}<div id="lkerr" class="lkerr">${wait?"حاول بعد "+AR(wait)+" ثانية":err||""}</div>${lkPad("u")}${L.bio?'<button class="chip" data-lk="ubio" style="margin:2px 0 6px">👆 بالبصمة / الوجه</button><br>':""}<button class="lkforgot" data-lk="forgot">نسيت الرقم؟</button></div>`;
+}
+async function lkTry(){
+  const L=lkGet(),f=(()=>{try{return JSON.parse(localStorage.getItem(LKF)||"{}")}catch(e){return{}}})();
+  if(Date.now()<(f.until||0)){LKBUF="";lkDraw();return}
+  const h=await lkHash(LKBUF,L.salt);
+  if(h===L.hash){lkUnlock();return}
+  const n=(f.n||0)+1,until=n>=5?Date.now()+Math.min(300,30*(n-4))*1000:0;
+  localStorage.setItem(LKF,JSON.stringify({n,until}));LKBUF="";lkDraw("الرقم غلط ("+AR(n)+")");
+  try{navigator.vibrate&&navigator.vibrate([60,40,60])}catch(e){}
+}
+function lkWipe(){
+  const t=prompt("ده هيمسح كل بياناتك من الموبايل نهائيًا. اكتب كلمة: مسح");
+  if(t&&t.trim()==="مسح"){Object.keys(localStorage).filter(k=>k.indexOf("hb")===0).forEach(k=>localStorage.removeItem(k));location.reload()}
+}
+/* set / change / disable the PIN */
+function openLK(mode){W={lk:1,mode,step:mode==="set"?"new":"cur",buf:"",first:""};drawW();$("modal").classList.add("on")}
+function drawLK(){
+  const T={cur:"اكتب الرقم السري الحالي",new:"اكتب رقم سري جديد (٤ لـ ٦ أرقام)",confirm:"اكتبه تاني للتأكيد"};
+  $("sheet").innerHTML=`<h2>🔒 ${W.mode==="off"?"إلغاء القفل":W.mode==="change"?"تغيير الرقم":"تفعيل القفل"}</h2><div style="text-align:center;margin:8px 0">${T[W.step]}${lkDots(W.buf.length,4)}<div class="lkerr" id="lkerr2">${esc(W.err||"")}</div></div>${lkPad("s")}`;
+}
+async function lkStep(){
+  const b=W.buf,L=lkGet();
+  if(W.step==="cur"){
+    if(await lkHash(b,L.salt)!==L.hash){W.err="الرقم غلط";W.buf="";drawLK();return}
+    if(W.mode==="off"){localStorage.removeItem(LK);closeW();render();toast("اتلغى القفل");return}
+    W.step="new";W.buf="";W.err="";drawLK();return;
+  }
+  if(b.length<4){W.err="٤ أرقام على الأقل";drawLK();return}
+  if(W.step==="new"){W.first=b;W.step="confirm";W.buf="";W.err="";drawLK();return}
+  if(b!==W.first){W.err="الرقمين مش متطابقين";W.step="new";W.buf="";W.first="";drawLK();return}
+  const salt=Math.random().toString(36).slice(2)+Date.now().toString(36),old=lkGet();
+  localStorage.setItem(LK,JSON.stringify({mode:"pin",salt,hash:await lkHash(b,salt),len:b.length,to:old?old.to:60,bio:old&&old.bio&&old.mode!=="device"?1:0}));
+  closeW();render();toast("القفل اتفعّل 🔒");
+  const av=await bioProbe(),cur=lkGet();
+  if(av.bio&&cur&&!cur.bio&&confirm("تفعّل فتح التطبيق بالبصمة / الوجه كمان؟ (الرقم السري هيفضل احتياطي)")){
+    if(await bioAsk("تأكيد البصمة",false)){cur.bio=1;localStorage.setItem(LK,JSON.stringify(cur));render();toast("اتفعّلت البصمة 👆")}
+  }
+}
+document.addEventListener("click",async e=>{
+  const t=e.target.closest("[data-lk]");if(!t)return;e.stopPropagation();
+  const v=t.dataset.lk;
+  if(v==="forgot"){lkWipe();return}
+  if(v==="ubio"){lkBio();return}
+  if(v==="dev"){
+    const av=await bioProbe();
+    if(!av.dev){toast("فعّل بصمة أو قفل شاشة في إعدادات الموبايل الأول");return}
+    if(await bioAsk("تأكيد التفعيل",true)){localStorage.setItem(LK,JSON.stringify({mode:"device",to:60}));render();toast("القفل اتفعّل بقفل الموبايل 🔒")}
+    return;
+  }
+  if(v==="bio"){
+    const L=lkGet();if(!L||L.mode==="device")return;
+    if(L.bio){L.bio=0;localStorage.setItem(LK,JSON.stringify(L));render();return}
+    const av=await bioProbe();if(!av.bio){toast("مفيش بصمة أو وجه متسجّل في الموبايل");return}
+    if(await bioAsk("تأكيد البصمة",false)){L.bio=1;localStorage.setItem(LK,JSON.stringify(L));render();toast("اتفعّلت البصمة 👆")}
+    return;
+  }
+  if(v==="off"){
+    const L=lkGet();
+    if(L&&L.mode==="device"){if(await bioAsk("تأكيد إلغاء القفل",true)){localStorage.removeItem(LK);render();toast("اتلغى القفل")}return}
+    openLK("off");return;
+  }
+  if(v==="set"||v==="change"){openLK(v);return}
+  if(v.indexOf("to:")===0){const L=lkGet();if(L){L.to=+v.slice(3);localStorage.setItem(LK,JSON.stringify(L));render()}return}
+  if(v==="snap"){snTake(false);render();toast("اتاخدت نسخة 📸");return}
+  if(v.indexOf("rs:")===0){
+    const k=v.slice(3),js=localStorage.getItem(k);if(!js)return;
+    if(confirm("هترجّع بياناتك لتاريخ النسخة دي؟ هناخد نسخة من الوضع الحالي الأول.")){snTake(false);try{restoreFrom(js);toast("اتسترجعت ✓")}catch(x){toast("النسخة تالفة")}}
+    return;
+  }
+  if(v==="settings"){$("thm").click();return}
+  const lock=v[0]==="u",sh=v[0]==="s",key=v.slice(1);
+  const op=key.slice(2);
+  if(lock){
+    if(op==="del")LKBUF=LKBUF.slice(0,-1);else if(op==="ok"){}else if(LKBUF.length<8)LKBUF+=op;
+    const L=lkGet();if(!L)return;
+    if(op==="ok"||LKBUF.length>=L.len){if(LKBUF.length>=4){await lkTry();return}}
+    lkDraw();return;
+  }
+  if(sh&&W&&W.lk){
+    if(op==="del")W.buf=W.buf.slice(0,-1);else if(op==="ok"){await lkStep();return}else if(W.buf.length<6)W.buf+=op;
+    W.err="";drawLK();
+  }
+},true);
+let LKHID=0;
+document.addEventListener("visibilitychange",()=>{
+  if(document.hidden){LKHID=Date.now();return}
+  const L=lkGet();
+  if(L&&LKHID&&Date.now()-LKHID>=(L.to||0)*1000&&!lkLocked())lkShow();
+  snAuto();
+});
+/* snapshots: a copy of your data every week, the last four are kept */
+const snList=()=>{try{return JSON.parse(localStorage.getItem(SNK)||"[]")}catch(e){return[]}};
+function snTake(auto){
+  const L=snList(),id="hb_snap_"+Date.now(),js=JSON.stringify(S);
+  try{localStorage.setItem(id,js)}catch(e){toast("المساحة ممتلئة");return}
+  L.push({k:id,at:Date.now(),sz:js.length,auto:!!auto});
+  while(L.length>4){const o=L.shift();try{localStorage.removeItem(o.k)}catch(e){}}
+  try{localStorage.setItem(SNK,JSON.stringify(L))}catch(e){}
+}
+function snAuto(){try{const L=snList(),last=L.length?L[L.length-1].at:0;if((S.habits.length||(S.tk||[]).length||(S.md&&S.md.meds&&S.md.meds.length))&&Date.now()-last>7*864e5)snTake(true)}catch(e){}}
+function renderLock(){
+  $("quote").textContent="بياناتك أمانة، احميها";
+  if(!renderLock._t||Date.now()-renderLock._t>5000){renderLock._t=Date.now();bioProbe().then(()=>{if(page==="lock"&&!(W&&W.lk)){renderLock._t=Date.now();renderLock()}})}
+  const L=lkGet(),sn=snList().slice().reverse();
+  $("main").innerHTML=`<div class="deen" style="padding-bottom:110px"><h2 style="margin:6px 2px">🔒 الحماية والنسخ</h2>
+  <div class="tcard ${L?"on":""}" style="display:block"><b>قفل التطبيق (اختياري): ${L?(L.mode==="device"?"مفعّل بقفل الموبايل ✓":"مفعّل برقم سري ✓"):"مقفول"}</b><div style="font-size:12px;opacity:.85;margin:4px 0 8px;line-height:1.7">${L?"التطبيق بيتقفل لما تخرج منه، ومحدش يشوف أدويتك أو مصاريفك أو رحلتك.":"التطبيق بيفتح من غير قفل لحد ما تفعّله. فعّله لو فيه بيانات خاصة (أدوية، مصاريف…)."}</div>
+  <div class="chips">${L?`${L.mode==="device"?"":`<button class="chip" data-lk="change" style="background:var(--panel);color:var(--ink)">تغيير الرقم</button>`}<button class="chip" data-lk="off" style="background:var(--panel);color:var(--ink)">إلغاء القفل</button>`:`<button class="chip on" data-lk="dev" style="background:var(--panel);color:var(--ink);font-weight:800">👆 بالبصمة / الوجه (الأسهل)</button><button class="chip" data-lk="set" style="background:var(--panel);color:var(--ink)">🔢 رقم سري للتطبيق</button>`}</div></div>
+  ${!L?`<div class="note" style="color:var(--soft);line-height:1.8">«بالبصمة / الوجه» بيستخدم قفل موبايلك نفسه (بصمة أو وجه أو نمط أو رقم الموبايل)، فمش هتحتاج تحفظ رقم جديد.${BIOAV.dev?"":"<br>⚠️ المتاح في موبايلك دلوقتي: مفيش قفل شاشة متفعّل."}</div>`:""}
+  ${L&&L.mode!=="device"?`<div class="chips" style="margin-top:8px"><button class="chip ${L.bio?"on":""}" data-lk="bio">👆 فتح بالبصمة / الوجه ${L.bio?"✓":""}</button></div>${BIOAV.bio||L.bio?"":'<div class="note" style="color:var(--soft)">مفيش بصمة أو وجه متسجّل في موبايلك.</div>'}`:""}
+  ${L?`<div class="q">يتقفل بعد ما تخرج بـ</div><div class="chips">${[[0,"فورًا"],[60,"دقيقة"],[300,"٥ دقايق"]].map(([s,t])=>`<button class="chip ${(L.to||0)===s?"on":""}" data-lk="to:${s}">${t}</button>`).join("")}</div>`:""}
+  <div class="sec">📸 نسخ تلقائية</div>
+  <div class="note" style="color:var(--soft);line-height:1.8">التطبيق بياخد نسخة من بياناتك كل أسبوع (بيحتفظ بآخر ٤). لو مسحت حاجة بالغلط أو بياناتك اتلخبطت، ارجع لنسخة قديمة.</div>
+  <div class="chips" style="margin:8px 0"><button class="chip on" data-lk="snap">📸 خد نسخة دلوقتي</button><button class="chip" data-lk="settings">💾 ملف احتياطي (من الإعدادات)</button></div>
+  ${sn.length?sn.map(x=>`<div class="tcard" style="display:flex"><span class="tx">${x.auto?"تلقائية":"يدوية"} • ${fmt(new Date(x.at))} ${hm(new Date(x.at).getHours()+new Date(x.at).getMinutes()/60)}<small>${AR(Math.round(x.sz/1024))} كيلو</small></span><button class="chip" data-lk="rs:${x.k}">استرجاع</button></div>`).join(""):'<div class="empty">لسه مفيش نسخ.</div>'}
+  <div class="note" style="color:var(--soft);line-height:1.8;margin-top:14px">⚠️ القفل بيمنع اللي ماسك موبايلك من فتح التطبيق، لكنه مش تشفير للملفات. وعشان بياناتك تبقى آمنة لو الموبايل ضاع، احتفظ بملف احتياطي برّه الموبايل، وفعّل النسخ الاحتياطي التلقائي لحساب جوجل من إعدادات الموبايل (Google backup). لو نسيت الرقم الطريقة الوحيدة مسح البيانات.</div></div>`;
+}
+try{if(lkGet())lkShow()}catch(e){}
+setTimeout(snAuto,3000);
+try{render()}catch(e){}
+</script>
+<script>
+/* ===== Quran khatma plan + Ramadan mode ===== */
+const khS=()=>{const k=S.kh=(S.kh&&typeof S.kh==="object")?S.kh:{};k.total=k.total||604;k.log=(k.log&&typeof k.log==="object")?k.log:{};k.done=k.done||0;return k};
+const khRead=k=>Object.values(k.log).reduce((a,b)=>a+(+b||0),0);
+function khPlan(){
+  const k=khS();if(!k.start)return null;
+  const t=today0(),el=Math.max(0,Math.floor((t-dOf(k.start))/864e5)),read=khRead(k),rt=+k.log[iso(t)]||0;
+  const rem=Math.max(0,k.total-(read-rt)),left=Math.max(1,k.days-el),target=Math.min(k.total,Math.ceil(rem/left));
+  return{k,el,read,rt,target,left,pct:Math.min(100,Math.round(read/k.total*100)),done:read>=k.total,late:el>=k.days&&read<k.total};
+}
+function khAdd(n){
+  const p=khPlan();if(!p)return;const k=p.k,tk=iso(today0());
+  k.log[tk]=Math.max(0,(+k.log[tk]||0)+n);
+  const q=khPlan();
+  const h=S.habits.find(z=>/ورد|قرآن/.test(z.name)&&!z.goal);
+  if(h){const key=tk+"|"+h.id;if(q.rt>=q.target&&q.rt>0)S.done[key]=1}
+  if(q.done&&!k.fin){k.fin=1;k.done=(k.done||0)+1;toast("🎉 ما شاء الله، ختمت القرآن!")}
+  Object.keys(k.log).sort().slice(0,-400).forEach(x=>delete k.log[x]);
+  save();render();try{buzz(10)}catch(e){}
+}
+function khToday(){if(!uxOn("khatma"))return "";
+  const p=khPlan();if(!p||p.done)return "";
+  return `<div class="tcard" style="display:block;margin-bottom:10px"><div style="display:flex;align-items:center;gap:8px"><span class="tx" style="flex:1" data-pg="khatma">📖 ختمتي<small>النهارده ${AR(p.rt)} / ${AR(p.target)} صفحة • تمّت ${AR(p.pct)}%</small></span><button class="chip" data-kh="add:1" style="background:var(--panel);color:var(--ink)">+١</button><button class="chip on" data-kh="add:5" style="background:var(--panel);color:var(--ink);font-weight:800">+٥</button></div><div style="height:5px;border-radius:99px;background:#0003;margin-top:8px;overflow:hidden"><div style="height:100%;width:${Math.min(100,Math.round(p.rt/p.target*100))}%;background:var(--acc)"></div></div></div>`;
+}
+function renderKhatma(){
+  $("quote").textContent="ورد قليل دائم خير من كثير منقطع";
+  const p=khPlan(),k=khS();
+  if(!p){
+    $("main").innerHTML=`<div class="deen" style="padding-bottom:110px"><h2 style="margin:6px 2px">📖 ختمة القرآن</h2><div class="note" style="color:var(--soft);line-height:1.8">اختار هتختم في كام يوم، والتطبيق يقولك تقرأ كام صفحة كل يوم ويعدّل الخطة لو فاتك يوم.${k.done?`<br>ختمات سابقة: ${AR(k.done)}`:""}</div>
+    <div class="q">مدة الختمة</div><div class="chips">${[[30,"٣٠ يوم (رمضان)"],[60,"٦٠ يوم"],[90,"٩٠ يوم"],[120,"٤ شهور"],[180,"٦ شهور"],[365,"سنة"]].map(([d,t])=>`<button class="chip ${(W&&W.khd||30)===d?"on":""}" data-kh="d:${d}">${t}</button>`).join("")}</div>
+    <div class="q">تذكير يومي (اختياري)</div><input class="inp" type="time" id="khr" value="21:00">
+    <div class="note" style="color:var(--ink)">حوالي ${AR(Math.ceil(604/((W&&W.khd)||30)))} صفحة في اليوم</div>
+    <button class="go" data-kh="start">ابدأ الختمة</button></div>`;
+    return;
+  }
+  $("main").innerHTML=`<div class="deen" style="padding-bottom:110px"><h2 style="margin:6px 2px">📖 ختمة القرآن</h2>
+  <div class="tcard on" style="display:block;text-align:center"><div style="font-size:13px;opacity:.85">${p.done?"ما شاء الله، خلّصت الختمة 🎉":"النهارده المطلوب"}</div><div style="font-size:40px;font-weight:800">${p.done?"✓":AR(p.rt)+" / "+AR(p.target)}</div><div style="font-size:12px">${p.done?"":"صفحة"}</div>
+  <div style="height:8px;border-radius:99px;background:#0003;margin:10px 0 4px;overflow:hidden"><div style="height:100%;width:${p.pct}%;background:var(--panel)"></div></div><div style="font-size:12px">قرأت ${AR(p.read)} من ٦٠٤ صفحة (${AR(p.pct)}%) • فاضل ${AR(Math.max(0,p.k.total-p.read))}${p.done?"":" • باقي "+AR(p.left)+" يوم"}</div>${p.late?'<div style="font-size:12px;margin-top:6px">⚠️ عدّى الميعاد اللي حددته، كمّل بهدوء.</div>':""}</div>
+  ${p.done?`<button class="go" data-kh="again">ابدأ ختمة جديدة</button>`:`<div class="chips" style="margin-top:12px;justify-content:center">${[1,5,10,20].map(n=>`<button class="chip on" data-kh="add:${n}" style="font-size:16px;padding:10px 16px">+${AR(n)}</button>`).join("")}<button class="chip" data-kh="add:-1">−١</button></div>`}
+  <div class="chips" style="margin-top:14px"><button class="chip" data-kh="reset">🗑 إلغاء الخطة</button></div>
+  ${p.k.rm?`<div class="note" style="color:var(--soft)">🔔 تذكير يومي الساعة ${esc(p.k.rm)}</div>`:""}</div>`;
+}
+document.addEventListener("click",async e=>{
+  const t=e.target.closest("[data-kh]");if(!t)return;e.stopPropagation();
+  const[k,a]=t.dataset.kh.split(":");
+  if(k==="d"){W={khd:+a};renderKhatma();return}
+  if(k==="add"){khAdd(+a);return}
+  if(k==="start"){
+    const kh=khS(),r=$("khr")&&$("khr").value;
+    kh.start=iso(today0());kh.days=(W&&W.khd)||30;kh.log={};kh.fin=0;kh.rm=r||"";W=null;
+    if(r){try{await ensurePerm()}catch(x){}}
+    save();render();try{schedNotif()}catch(x){}toast("بالتوفيق، ربنا يتقبل 🤍");return;
+  }
+  if(k==="again"){const kh=khS();kh.start=null;kh.fin=0;kh.log={};save();render();return}
+  if(k==="reset"){if(confirm("تلغي خطة الختمة؟")){const kh=khS();kh.start=null;kh.log={};kh.fin=0;save();render();try{schedNotif()}catch(x){}}return}
+},true);
+
+/* ---- Ramadan ---- */
+function hij(d){try{const p=new Intl.DateTimeFormat("en-u-ca-islamic-umalqura",{day:"numeric",month:"numeric",year:"numeric"}).formatToParts(d),g=x=>+(p.find(z=>z.type===x)||{}).value;return{y:g("year"),m:g("month"),d:g("day")}}catch(e){return null}}
+const rdS=()=>{const r=S.rmd=(S.rmd&&typeof S.rmd==="object")?S.rmd:{};r.fast=r.fast||{};r.tar=r.tar||{};return r};
+function rdState(){
+  const h=hij(today0());if(!h)return{ram:false,days:null};
+  if(h.m===9)return{ram:true,day:h.d,days:0};
+  let n=null;for(let i=1;i<=400;i++){const x=hij(addDays(today0(),i));if(x&&x.m===9){n=i;break}}
+  return{ram:false,days:n};
+}
+function rdActive(){return rdState().ram||!!rdS().force}
+function rdTimes(d){try{const L=LC(),T=PT(d,L.la,L.lo);return{f:T.f,m:T.m}}catch(e){return null}}
+const rdAt=(d,h)=>new Date(d.getFullYear(),d.getMonth(),d.getDate(),Math.floor(h),Math.round((h%1)*60),0);
+function rdToday(){if(!uxOn("ramadan"))return "";
+  if(!rdActive())return "";
+  const s=rdState(),r=rdS(),tk=iso(today0()),T=rdTimes(today0());if(!T)return "";
+  const now=new Date(),h=now.getHours()+now.getMinutes()/60;
+  const nx=h<T.f?["السحور/الإمساك",T.f]:h<T.m?["الإفطار",T.m]:["إمساك بكرة",T.f+24],mins=Math.max(0,Math.round((nx[1]-h)*60));
+  return `<div class="tcard on" style="display:block;margin-bottom:10px"><div style="display:flex;align-items:center;gap:8px"><span class="tx" style="flex:1" data-pg="ramadan">🌙 رمضان${s.ram?" • يوم "+AR(s.day):""}<small>${nx[0]} بعد ${AR(Math.floor(mins/60))} س ${AR(mins%60)} د</small></span><button class="chip ${r.fast[tk]?"on":""}" data-rd="fast" style="background:var(--panel);color:var(--ink)">${r.fast[tk]?"✓ صايم":"صايم؟"}</button></div></div>`;
+}
+function renderRamadan(){
+  $("quote").textContent="شهر الصيام والقرآن والدعاء";
+  const s=rdState(),r=rdS(),tk=iso(today0()),T=rdTimes(today0());
+  const fd=Object.keys(r.fast).filter(k=>r.fast[k]).length,td=Object.keys(r.tar).filter(k=>r.tar[k]).length;
+  const f=h=>h==null?"-":hm(h);
+  if(!rdActive()){
+    $("main").innerHTML=`<div class="deen"><h2 style="margin:6px 2px">🌙 رمضان</h2><div class="tcard on" style="display:block;text-align:center"><div style="font-size:13px">رمضان بعد حوالي</div><div style="font-size:44px;font-weight:800">${s.days==null?"—":AR(s.days)}</div><div style="font-size:12px">يوم</div></div><div class="note" style="color:var(--soft);line-height:1.8;margin-top:10px">لما رمضان يبدأ هيتفعّل الوضع تلقائي. تقدر تفعّله من دلوقتي للتجهيز.</div><button class="go" data-rd="force">🌙 فعّل وضع رمضان</button></div>`;return;
+  }
+  $("main").innerHTML=`<div class="deen" style="padding-bottom:110px"><h2 style="margin:6px 2px">🌙 رمضان ${s.ram?"• يوم "+AR(s.day):"(تجهيز)"}</h2>
+  <div class="tcard on" style="display:block"><div style="display:flex;justify-content:space-around;text-align:center"><div><div style="font-size:12px;opacity:.85">الإمساك (الفجر)</div><div style="font-size:24px;font-weight:800">${f(T&&T.f)}</div></div><div><div style="font-size:12px;opacity:.85">الإفطار (المغرب)</div><div style="font-size:24px;font-weight:800">${f(T&&T.m)}</div></div></div></div>
+  <div class="chips" style="margin-top:12px"><button class="chip ${r.fast[tk]?"on":""}" data-rd="fast" style="font-size:15px;padding:10px 16px">${r.fast[tk]?"✓ صمت النهارده":"صمت النهارده؟"}</button><button class="chip ${r.tar[tk]?"on":""}" data-rd="tar" style="font-size:15px;padding:10px 16px">${r.tar[tk]?"✓ صلّيت التراويح":"التراويح؟"}</button></div>
+  <div class="note" style="color:var(--ink);margin-top:10px">صيام: ${AR(fd)} يوم • تراويح: ${AR(td)} ليلة</div>
+  <div class="chips" style="margin-top:8px"><button class="chip" data-pg="khatma">📖 ختمة رمضان</button><button class="chip ${r.n===0?"":"on"}" data-rd="notif">🔔 تنبيهات السحور والإفطار</button></div>
+  <div class="sec">أدعية وأعمال</div><div class="note" style="color:var(--soft);line-height:2">• اللهم إنك عفوّ تحب العفو فاعفُ عنا (خصوصًا في العشر الأواخر)<br>• ذكر الله وقراءة القرآن وصلة الرحم والصدقة<br>• اللهم لك صمت وعلى رزقك أفطرت</div>
+  ${r.force&&!s.ram?`<div class="chips" style="margin-top:12px"><button class="chip" data-rd="unforce">إيقاف وضع رمضان</button></div>`:""}</div>`;
+}
+document.addEventListener("click",async e=>{
+  const t=e.target.closest("[data-rd]");if(!t)return;e.stopPropagation();
+  const k=t.dataset.rd,r=rdS(),tk=iso(today0());
+  if(k==="fast"){r.fast[tk]=r.fast[tk]?0:1;save();render();try{buzz(12)}catch(x){}}
+  else if(k==="tar"){r.tar[tk]=r.tar[tk]?0:1;save();render()}
+  else if(k==="force"){r.force=1;save();render()}
+  else if(k==="unforce"){r.force=0;save();render();try{schedNotif()}catch(x){}}
+  else if(k==="notif"){r.n=r.n===0?1:0;if(r.n!==0){try{await ensurePerm()}catch(x){}}save();render();try{schedNotif()}catch(x){}}
+},true);
+setInterval(()=>{if(page==="today"&&!(W&&(W.md||W.tk||W.qt||W.lk))&&rdActive())render()},60000);
+try{render()}catch(e){}
+</script>
+<script>
+/* ===== health log (weight, sleep, mood, energy) + pattern finder ===== */
+const hlS=()=>S.hl=(S.hl&&typeof S.hl==="object")?S.hl:{};
+const HL_MOOD=["😞","😕","😐","🙂","😄"],HL_EN=["🪫","😴","⚡","🔋","🚀"];
+function hlAvg(keys,f){const v=keys.map(k=>f(hlS()[k])).filter(x=>x!=null&&!isNaN(x));return v.length?v.reduce((a,b)=>a+b,0)/v.length:null}
+const hlDays=n=>Array.from({length:n},(_,i)=>iso(addDays(today0(),-(n-1-i))));
+function hlTodayCard(){if(!uxOn("health"))return "";
+  const E=hlS()[iso(today0())];if(E&&(E.w||E.sh||E.m))return "";
+  return `<button class="tcard" data-hl="new" style="margin-bottom:10px"><span class="tx">📈 سجّل يومك<small>وزن • نوم • مزاج (٣٠ ثانية)</small></span><b>+</b></button>`;
+}
+function openHL(){const E=hlS()[iso(today0())]||{};W={hl:1,w:E.w||"",sh:E.sh||"",sq:E.sq||0,m:E.m||0,en:E.en||0};drawW();$("modal").classList.add("on")}
+function drawHL(){
+  const ch=(on,k,t)=>`<button class="chip ${on?"on":""}" data-hl="${k}" style="font-size:20px;padding:8px 14px">${t}</button>`;
+  $("sheet").innerHTML=`<h2>📈 يومك</h2>
+  <div class="q">الوزن (كجم) — اختياري</div><input class="inp" id="hlw" type="number" inputmode="decimal" step="0.1" value="${esc(W.w)}">
+  <div class="q">نمت كام ساعة؟</div><input class="inp" id="hlsh" type="number" inputmode="decimal" step="0.5" min="0" max="24" value="${esc(W.sh)}">
+  <div class="q">جودة النوم</div><div class="chips">${[1,2,3,4,5].map(n=>ch(W.sq===n,"q:"+n,"⭐".repeat(n>3?3:n)+(n>3?(n===4?"+":"++"):""))).join("")}</div>
+  <div class="q">مزاجك</div><div class="chips">${HL_MOOD.map((e,i)=>ch(W.m===i+1,"m:"+(i+1),e)).join("")}</div>
+  <div class="q">طاقتك</div><div class="chips">${HL_EN.map((e,i)=>ch(W.en===i+1,"e:"+(i+1),e)).join("")}</div>
+  <div class="err" id="hlerr"></div><button class="go" data-hl="save">احفظ</button>`;
+}
+function hlPatterns(){
+  const out=[],H=hlS(),ks=Object.keys(H).filter(k=>k<=iso(today0())).sort();
+  const comp=k=>{const[a,b]=dayStat(dOf(k));return b?a/b*100:null};
+  const cmp=(sel1,sel2,label)=>{
+    const g1=ks.filter(sel1).map(comp).filter(x=>x!=null),g2=ks.filter(sel2).map(comp).filter(x=>x!=null);
+    if(g1.length>=3&&g2.length>=3){const a=g1.reduce((x,y)=>x+y,0)/g1.length,b=g2.reduce((x,y)=>x+y,0)/g2.length;if(Math.abs(a-b)>=10)out.push(label(Math.round(a),Math.round(b)))}
+  };
+  cmp(k=>H[k].sh&&H[k].sh<6.5,k=>H[k].sh&&H[k].sh>=7,(a,b)=>`😴 لما بتنام أقل من ٦٫٥ ساعة التزامك ${AR(a)}% مقابل ${AR(b)}% لما بتنام ٧ ساعات أو أكتر.`);
+  cmp(k=>H[k].m&&H[k].m<=2,k=>H[k].m&&H[k].m>=4,(a,b)=>`🙂 في الأيام اللي مزاجك فيها وحش التزامك ${AR(a)}% مقابل ${AR(b)}% في الأيام الحلوة.`);
+  cmp(k=>H[k].en&&H[k].en<=2,k=>H[k].en&&H[k].en>=4,(a,b)=>`⚡ لما طاقتك واطية التزامك ${AR(a)}% مقابل ${AR(b)}% لما تكون عالية.`);
+  const fj=S.habits.find(h=>h.name==="الفجر");
+  if(fj){
+    const f=k=>S.done[k+"|"+fj.id]?100:0,g1=ks.filter(k=>H[k].sh&&H[k].sh<6.5),g2=ks.filter(k=>H[k].sh&&H[k].sh>=7);
+    if(g1.length>=3&&g2.length>=3){const a=g1.reduce((x,k)=>x+f(k),0)/g1.length,b=g2.reduce((x,k)=>x+f(k),0)/g2.length;if(b-a>=20)out.push(`🕌 الفجر بيفوتك أكتر لما بتنام قليل (${AR(Math.round(a))}% مقابل ${AR(Math.round(b))}%). نام بدري النهارده.`)}
+  }
+  const wk=ks.filter(k=>H[k].w).slice(-30);
+  if(wk.length>=3){const a=wk[0],b=wk[wk.length-1],days=Math.max(1,(dOf(b)-dOf(a))/864e5),r=(H[b].w-H[a].w)/days*7;if(Math.abs(r)>=0.05)out.push(`⚖️ وزنك ${r<0?"بينزل":"بيزيد"} حوالي ${AR(Math.abs(Math.round(r*10)/10))} كجم في الأسبوع.`)}
+  return out;
+}
+function hlChart(vals,color){
+  const pts=vals.filter(v=>v.y!=null);if(pts.length<2)return '<div class="empty" style="padding:14px">سجّل مرتين على الأقل عشان يظهر الرسم.</div>';
+  const W0=300,H0=90,mn=Math.min(...pts.map(p=>p.y)),mx=Math.max(...pts.map(p=>p.y)),sp=Math.max(0.5,mx-mn),n=vals.length;
+  const xy=(p,i)=>[Math.round(i/(n-1)*W0),Math.round(H0-8-((p.y-mn)/sp)*(H0-20))];
+  const line=vals.map((p,i)=>p.y==null?null:xy(p,i)).filter(Boolean).map(c=>c.join(",")).join(" ");
+  return `<svg viewBox="0 0 ${W0} ${H0}" style="width:100%;height:100px;direction:ltr"><polyline fill="none" stroke="${color}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" points="${line}"/></svg><div style="display:flex;justify-content:space-between;font-size:11px;opacity:.75;direction:ltr"><span>${AR(Math.round(mn*10)/10)}</span><span>${AR(Math.round(mx*10)/10)}</span></div>`;
+}
+function renderHealth(){
+  $("quote").textContent="اللي بتقيسه بيتحسّن";
+  const H=hlS(),ks30=hlDays(30),ks7=hlDays(7),today=iso(today0());
+  const wvals=ks30.map(k=>({k,y:H[k]&&H[k].w?+H[k].w:null})),lastW=[...wvals].reverse().find(v=>v.y!=null),firstW=wvals.find(v=>v.y!=null);
+  const sleep=hlAvg(ks7,e=>e&&e.sh?+e.sh:null),mood=hlAvg(ks7,e=>e&&e.m?+e.m:null),en=hlAvg(ks7,e=>e&&e.en?+e.en:null);
+  const pat=hlPatterns(),list=Object.keys(H).sort().reverse().slice(0,10);
+  $("main").innerHTML=`<div class="deen" style="padding-bottom:110px"><h2 style="margin:6px 2px">📈 صحتي</h2>
+  <div class="chips"><button class="chip on" data-hl="new" style="font-size:15px;padding:10px 18px">➕ سجّل يومك</button></div>
+  <div class="cards3" style="margin-top:10px"><div><strong>${lastW?AR(lastW.y):"—"}</strong>الوزن (كجم)</div><div><strong>${sleep?AR(Math.round(sleep*10)/10):"—"}</strong>نوم (ساعة)</div><div><strong>${mood?HL_MOOD[Math.round(mood)-1]:"—"}</strong>المزاج</div></div>
+  ${firstW&&lastW&&firstW!==lastW?`<div class="note" style="color:var(--ink)">تغيّر الوزن آخر ٣٠ يوم: ${lastW.y-firstW.y>0?"+":""}${AR(Math.round((lastW.y-firstW.y)*10)/10)} كجم</div>`:""}
+  <div class="sec">الوزن آخر ٣٠ يوم</div>${hlChart(wvals,"var(--acc)")}
+  <div class="sec">النوم آخر ٧ أيام</div><div style="display:flex;gap:6px;align-items:flex-end;height:84px">${ks7.map(k=>{const v=H[k]&&H[k].sh?+H[k].sh:0;return `<div style="flex:1;text-align:center;font-size:10px"><div style="height:${v?Math.max(4,Math.round(v/10*64)):4}px;background:${v&&v<6.5?"#ff6b8a":"var(--acc)"};border-radius:6px;opacity:${v?1:.25}"></div>${v?AR(v):""}</div>`}).join("")}</div>
+  <div class="sec">🔍 أنماط اكتشفتها</div>${pat.length?pat.map(x=>`<div class="note" style="color:var(--ink);line-height:1.8;margin:6px 2px">${x}</div>`).join(""):'<div class="note" style="color:var(--soft);line-height:1.8">سجّل نومك ومزاجك لمدة أسبوعين وهطلّعلك أنماط (مثلًا: النوم القليل بيأثر على التزامك).</div>'}
+  <div class="sec">آخر التسجيلات</div>${list.length?list.map(k=>{const e=H[k];return `<div class="tcard" style="display:flex"><span class="tx">${fmt(dOf(k))}${k===today?" (النهارده)":""}<small>${e.w?"⚖️ "+AR(e.w)+" كجم • ":""}${e.sh?"😴 "+AR(e.sh)+" س • ":""}${e.m?HL_MOOD[e.m-1]+" ":""}${e.en?HL_EN[e.en-1]:""}</small></span><i data-hl="x:${k}" style="font-style:normal;padding:6px 8px;color:#ff6b8a">✕</i></div>`}).join(""):'<div class="empty">لسه ما سجّلتش.</div>'}</div>`;
+}
+document.addEventListener("click",e=>{
+  const t=e.target.closest("[data-hl]");if(!t)return;e.stopPropagation();
+  const[k,a]=t.dataset.hl.split(":");
+  if(k==="new"){openHL();return}
+  if(k==="x"){delete hlS()[a];save();render();return}
+  if(!W||!W.hl)return;
+  if($("hlw"))W.w=$("hlw").value;if($("hlsh"))W.sh=$("hlsh").value;
+  if(k==="q"){W.sq=+a;drawHL();return}
+  if(k==="m"){W.m=+a;drawHL();return}
+  if(k==="e"){W.en=+a;drawHL();return}
+  if(k==="save"){
+    const w=parseFloat(W.w),sh=parseFloat(W.sh),err=s=>{$("hlerr").textContent=s};
+    if(W.w!==""&&!(w>20&&w<400))return err("الوزن مش منطقي");
+    if(W.sh!==""&&!(sh>=0&&sh<=24))return err("ساعات النوم من ٠ لـ ٢٤");
+    if(isNaN(w)&&isNaN(sh)&&!W.m&&!W.en)return err("سجّل حاجة على الأقل");
+    const e0=hlS()[iso(today0())]=Object.assign({},hlS()[iso(today0())]);
+    if(!isNaN(w)){e0.w=w;if(S.nu&&S.nu.ok)S.nu.w=w}
+    if(!isNaN(sh))e0.sh=sh;if(W.sq)e0.sq=W.sq;if(W.m)e0.m=W.m;if(W.en)e0.en=W.en;
+    Object.keys(hlS()).sort().slice(0,-400).forEach(x=>delete hlS()[x]);
+    save();closeW();render();toast("اتسجّل ✓");
+  }
+},true);
+try{render()}catch(e){}
+</script>
+<script>
+/* ===== weekly review + achievements ===== */
+const wkStart=off=>{const d=today0();d.setDate(d.getDate()-((d.getDay()+1)%7)+7*off);return d};
+function rvStats(start){
+  const ds=Array.from({length:7},(_,i)=>addDays(start,i)),ks=ds.map(iso),T=today0(),past=ds.filter(d=>d<=T),now=Date.now();
+  let a=0,b=0;past.forEach(d=>{const[x,y]=dayStat(d);a+=x;b+=y});
+  const pr=S.habits.filter(h=>PR.includes(h.name)),pa=past.reduce((t,d)=>t+pr.filter(h=>S.done[iso(d)+"|"+h.id]).length,0),pb=past.reduce((t,d)=>t+pr.filter(h=>active(h,d)).length,0);
+  const g=gy(),gym=ks.filter(k=>g.log[k]&&Object.values(g.log[k]).some(z=>z&&z.length)).length;
+  const e0=start.getTime(),e1=addDays(start,7).getTime();
+  const per=S.habits.filter(h=>!PR.includes(h.name)).map(h=>{const[x,y]=count(h,past);return{h,x,y,p:y?x/y:0}}).filter(z=>z.y>=3).sort((p,q)=>q.p-p.p);
+  const ws=ks.filter(k=>hlS()[k]&&hlS()[k].w);
+  let mt=0,mk=0;past.forEach(d=>mdDoses(d).forEach(z=>{if(z.at<=now){mt++;if(z.lg&&z.lg.s==="t")mk++}}));
+  return{pct:b?Math.round(a/b*100):null,pa,pb,gym,work:ks.reduce((t,k)=>t+wlDayMs(k),0),
+    tk:(S.tk||[]).filter(x=>x.done&&x.done>=e0&&x.done<e1).length,focus:ks.reduce((t,k)=>t+(((S.fl||{})[k]||{}).min||0),0),
+    exp:((S.mn&&S.mn.ex)||[]).filter(x=>ks.indexOf(x.d)>=0).reduce((t,x)=>t+x.a,0),sl:hlAvg(ks,e=>e&&e.sh?+e.sh:null),
+    dw:ws.length>=2?hlS()[ws[ws.length-1]].w-hlS()[ws[0]].w:null,quran:ks.reduce((t,k)=>t+(+((S.kh||{}).log||{})[k]||0),0),mt,mk,
+    best:per[0]||null,weak:per.length>1?per[per.length-1]:null};
+}
+function rvLines(st){
+  const L=[];
+  if(st.pb)L.push(`🕌 الصلوات: ${AR(st.pa)} من ${AR(st.pb)}`);
+  if(S.habits.some(h=>/^جيم/.test(h.name))||st.gym)L.push(`💪 أيام التمرين: ${AR(st.gym)}`);
+  if(hasLog())L.push(`⏱ ساعات الشغل: ${fdur(st.work)} س`);
+  if(st.tk)L.push(`✅ مهام خلّصتها: ${AR(st.tk)}`);
+  if(st.focus)L.push(`🎯 تركيز: ${AR(st.focus)} دقيقة`);
+  if(st.quran)L.push(`📖 قرآن: ${AR(st.quran)} صفحة`);
+  if(st.mt)L.push(`💊 الأدوية: ${AR(st.mk)} من ${AR(st.mt)} جرعة`);
+  if(st.exp)L.push(`💰 المصاريف: ${mnFmt(st.exp)}`);
+  if(st.sl)L.push(`😴 متوسط النوم: ${AR(Math.round(st.sl*10)/10)} ساعة`);
+  if(st.dw!=null)L.push(`⚖️ تغيّر الوزن: ${st.dw>0?"+":""}${AR(Math.round(st.dw*10)/10)} كجم`);
+  return L;
+}
+function rvTip(st){
+  if(st.pct==null)return "ضيف عادات في جدولك عشان أقدر أراجع أسبوعك.";
+  if(st.weak&&st.weak.p<.5)return `ركّز الأسبوع الجاي على «${st.weak.h.name}»، خلّيها أول حاجة في يومك أو اربطها بعادة بتعملها أصلًا.`;
+  if(st.pct>=85)return "أسبوع ممتاز! زوّد تحدي صغير الأسبوع الجاي وحافظ على نفس الإيقاع.";
+  if(st.pct>=60)return "أسبوع كويس. اختار عادة واحدة تحسّنها الأسبوع الجاي بدل ما تغيّر كل حاجة.";
+  return "مفيش مشكلة، الأسبوع اللي فات عدّى. ابدأ بعادتين أو تلاتة بس الأسبوع الجاي وكمّل بالتدريج.";
+}
+function rvText(off){
+  const s=wkStart(off),st=rvStats(s);
+  return [`📊 مراجعة أسبوعي (${fmt(s)} – ${fmt(addDays(s,6))})`,st.pct!=null?`الالتزام: ${st.pct}%`:"",...rvLines(st).map(x=>x),st.best?`⭐ الأقوى: ${st.best.h.name}`:"",st.weak?`📉 الأضعف: ${st.weak.h.name}`:""].filter(Boolean).join("\n");
+}
+/* achievements */
+const bdDone=()=>Object.keys(S.done||{}).length;
+const bdIds=names=>new Set(S.habits.filter(h=>names(h)).map(h=>h.id));
+const bdCount=names=>{const ids=bdIds(names);return Object.keys(S.done||{}).filter(k=>ids.has(k.split("|")[1])).length};
+function bdPerfect(){let n=0;for(let i=1;i<=90;i++){const[a,b]=dayStat(addDays(today0(),-i));if(b>0&&a===b)n++}return n}
+function bdGym(){const g=gy();return Object.keys(g.log).filter(k=>Object.values(g.log[k]).some(z=>z&&z.length)).length}
+const BD=[
+ ["first","🌱","أول خطوة","علّم أول عادة",()=>[bdDone(),1]],
+ ["s3","🔥","٣ أيام متتالية","سلسلة ٣ أيام",()=>[streak(),3]],
+ ["s7","🔥","أسبوع كامل","سلسلة ٧ أيام",()=>[streak(),7]],
+ ["s30","🏅","شهر التزام","سلسلة ٣٠ يوم",()=>[streak(),30]],
+ ["perfect","💯","يوم مثالي","خلّص كل عادات يوم كامل",()=>[bdPerfect(),1]],
+ ["pr100","🕌","١٠٠ صلاة","سجّل ١٠٠ صلاة",()=>[bdCount(h=>PR.includes(h.name)),100]],
+ ["fajr10","🌅","فجر ×١٠","سجّل الفجر ١٠ مرات",()=>[bdCount(h=>h.name==="الفجر"),10]],
+ ["gym10","💪","١٠ تمارين","١٠ أيام تمرين",()=>[bdGym(),10]],
+ ["rec","🏆","رقم قياسي","اكسر رقمك في تمرين",()=>[(S.cn||{}).pr||0,1]],
+ ["quran50","📖","٥٠ صفحة قرآن","اقرأ ٥٠ صفحة في الختمة",()=>[khRead(khS())+((khS().done||0)*604),50]],
+ ["focus10","🎯","١٠ ساعات تركيز","٦٠٠ دقيقة تركيز",()=>[Object.values(fcLog()).reduce((a,x)=>a+(x.min||0),0),600]],
+ ["tasks20","✅","٢٠ مهمة","خلّص ٢٠ مهمة",()=>[(S.cn||{}).td||0,20]],
+ ["water7","💧","٧ أيام مياه","حقق هدف العدّاد ٧ أيام",()=>[bdCount(h=>!!h.goal),7]],
+ ["meds7","💊","التزام دوائي","٧ أيام كاملة في الأدوية",()=>[mdAdh(7).streak,7]],
+ ["work40","⏱","٤٠ ساعة شغل","سجّل ٤٠ ساعة بصمة",()=>[Math.floor(Object.keys(S.wl||{}).reduce((a,k)=>a+wlDayMs(k),0)/36e5),40]],
+ ["w7","⚖️","٧ تسجيلات وزن","سجّل وزنك ٧ مرات",()=>[Object.values(hlS()).filter(e=>e.w).length,7]],
+ ["sleep5","😴","نوم كويس","٥ أيام نوم ٧ ساعات أو أكتر",()=>[Object.values(hlS()).filter(e=>e.sh>=7).length,5]],
+ ["fast10","🌙","١٠ أيام صيام","سجّل ١٠ أيام صيام",()=>[Object.values(rdS().fast).filter(Boolean).length,10]]
+];
+function bdXP(){
+  const cn=S.cn||{};
+  return bdDone()+(cn.td||0)*2+Math.floor(Object.values(fcLog()).reduce((a,x)=>a+(x.min||0),0)/10)+khRead(khS())+bdGym()*3+((cn.pr||0)*10);
+}
+const bdLevel=xp=>Math.floor(Math.sqrt(xp/15))+1;
+function bdCheck(){
+  try{
+    const base=!S.bd;S.bd=S.bd||{};let ch=false;
+    BD.forEach(([id,e,n,d,f])=>{const[c,t]=f();if(c>=t&&!S.bd[id]){S.bd[id]=Date.now();ch=true;if(!base)toast(`🏆 شارة جديدة: ${n}`)}});
+    if(ch||base)localStorage.setItem("hb1",JSON.stringify(S));
+  }catch(e){}
+}
+let BDT=0;
+function bdSoon(){clearTimeout(BDT);BDT=setTimeout(bdCheck,1500)}
+function rvBanner(){if(!uxOn("review"))return "";
+  const dow=(today0().getDay()+1)%7;if(dow>2)return "";
+  const k=iso(wkStart(0));if(S.rvSeen===k)return "";
+  const st=rvStats(wkStart(-1));if(st.pct==null)return "";
+  return `<button class="tcard" data-pg="review" style="margin-bottom:10px;border-color:var(--acc)"><span class="tx">📊 مراجعة أسبوعك جاهزة<small>التزامك الأسبوع اللي فات ${AR(st.pct)}%</small></span><b>›</b></button>`;
+}
+const RV={tab:"review",wk:-1};
+function renderReview(){
+  $("quote").textContent="اللي بيراجع نفسه بيتحسّن";
+  S.rvSeen=iso(wkStart(0));
+  const ch=(on,k,t)=>`<button class="chip ${on?"on":""}" data-rv="${k}">${t}</button>`;
+  let body="";
+  if(RV.tab==="review"){
+    const s=wkStart(RV.wk),st=rvStats(s),L=rvLines(st);
+    body=`<div class="chips" style="margin:6px 0">${ch(RV.wk===-1,"wk:-1","الأسبوع اللي فات")}${ch(RV.wk===0,"wk:0","الأسبوع ده لحد دلوقتي")}</div><div class="note" style="color:var(--soft)">${fmt(s)} – ${fmt(addDays(s,6))}</div>
+    <div class="tcard on" style="display:block;text-align:center"><div style="font-size:13px;opacity:.85">التزامك</div><div style="font-size:48px;font-weight:800">${st.pct==null?"—":AR(st.pct)+"%"}</div></div>
+    ${L.map(x=>`<div class="tcard" style="display:block;padding:10px 14px">${x}</div>`).join("")}
+    ${st.best?`<div class="note" style="color:var(--ink)">⭐ الأقوى: ${esc(st.best.h.name)} (${AR(Math.round(st.best.p*100))}%)</div>`:""}${st.weak?`<div class="note" style="color:var(--ink)">📉 الأضعف: ${esc(st.weak.h.name)} (${AR(Math.round(st.weak.p*100))}%)</div>`:""}
+    <div class="tcard" style="display:block;margin-top:10px;border-color:var(--acc)"><b>💡 نصيحة</b><div style="font-size:14px;line-height:1.8;margin-top:4px">${esc(rvTip(st))}</div></div>
+    <div class="chips" style="margin-top:12px"><button class="chip on" data-rv="share" style="font-size:15px;padding:10px 18px">📤 شارك ملخّصك</button><button class="chip ${S.rvRem===0?"":"on"}" data-rv="rem">🔔 تذكير السبت</button></div>`;
+  }else{
+    const xp=bdXP(),lv=bdLevel(xp),lo=(lv-1)*(lv-1)*15,hi=lv*lv*15,un=BD.filter(b=>S.bd&&S.bd[b[0]]).length;
+    body=`<div class="tcard on" style="display:block"><div style="font-size:13px;opacity:.85">مستواك</div><div style="font-size:40px;font-weight:800">${AR(lv)}</div><div style="height:8px;border-radius:99px;background:#0003;margin:8px 0 4px;overflow:hidden"><div style="height:100%;width:${Math.round((xp-lo)/(hi-lo)*100)}%;background:var(--panel)"></div></div><div style="font-size:12px">${AR(xp)} نقطة • الجاي عند ${AR(hi)} • شارات: ${AR(un)} من ${AR(BD.length)}</div></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px">${BD.map(([id,e,n,d,f])=>{const ok=S.bd&&S.bd[id],[c,t]=f();return `<div class="tcard" style="display:block;text-align:center;${ok?"":"opacity:.5"}"><div style="font-size:30px">${ok?e:"🔒"}</div><b style="font-size:13px">${n}</b><div style="font-size:11px;opacity:.8">${d}</div>${ok?"":`<div style="font-size:11px;margin-top:2px">${AR(Math.min(c,t))} / ${AR(t)}</div>`}</div>`}).join("")}</div>`;
+  }
+  $("main").innerHTML=`<div class="deen" style="padding-bottom:110px"><h2 style="margin:6px 2px">📊 مراجعتي</h2><div class="chips">${ch(RV.tab==="review","tab:review","📊 المراجعة")}${ch(RV.tab==="badges","tab:badges","🏆 إنجازاتي")}</div>${body}</div>`;
+}
+document.addEventListener("click",async e=>{
+  const t=e.target.closest("[data-rv]");if(!t)return;e.stopPropagation();
+  const[k,a]=t.dataset.rv.split(":");
+  if(k==="tab"){RV.tab=a;renderReview();return}
+  if(k==="wk"){RV.wk=+a;renderReview();return}
+  if(k==="rem"){S.rvRem=S.rvRem===0?1:0;if(S.rvRem!==0){try{await ensurePerm()}catch(x){}}save();renderReview();try{schedNotif()}catch(x){}return}
+  if(k==="share"){
+    const txt=rvText(RV.wk);
+    try{const Sh=NPL("Share");if(Sh){await Sh.share({title:"مراجعة أسبوعي",text:txt});return}}catch(x){}
+    try{await navigator.clipboard.writeText(txt);toast("اتنسخ الملخّص ✓")}catch(x){alert(txt)}
+  }
+},true);
+setTimeout(bdCheck,2500);
+try{render()}catch(e){}
+</script>
+<script>
+/* ===== UX layer: quick add, customisation, setup checklist, collapsible sections, back button ===== */
+function drawQK(){
+  const it=[["habit","➕","عادة",""],["task","✅","مهمة","tasks"],["exp","💸","مصروف","money"],["med","💊","دواء","meds"],["day","📈","سجّل يومك","health"],["focus","⏱️","تركيز","focus"],["tpl","⚡","قوالب عادات",""],["quit","🌱","إقلاع","quit"]].filter(x=>!x[3]||uxOn(x[3]));
+  $("sheet").innerHTML=`<h2>إضافة سريعة ⚡</h2><p>اختار اللي عايز تضيفه.</p><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">${it.map(x=>`<button class="cat" data-qk="${x[0]}" style="padding:14px 4px"><b style="font-size:26px;display:block">${x[1]}</b><span style="font-size:12px">${x[2]}</span></button>`).join("")}</div>`;
+}
+function uxQuick(){W={qk:1};drawW();$("modal").classList.add("on")}
+document.addEventListener("click",e=>{
+  const t=e.target.closest("[data-qk]");if(!t)return;e.stopPropagation();
+  const k=t.dataset.qk;
+  if(k==="habit")openW();else if(k==="task")openTK();else if(k==="exp")openMN("ex");else if(k==="med")openMD();
+  else if(k==="day")openHL();else if(k==="tpl")openTPL();else if(k==="quit")openQT("add");
+  else if(k==="focus"){closeW();page="focus";render()}
+},true);
+
+/* customisation page */
+const UX_FS=[[0.92,"صغير"],[1,"عادي"],[1.12,"كبير"],[1.25,"كبير جدًا"]];
+function uxApply(){const u=uxS();try{document.body.style.zoom=u.fs&&u.fs!==1?u.fs:""}catch(e){}document.documentElement.classList.toggle("compact",!!u.compact)}
+function renderCustom(){
+  $("quote").textContent="خلّي التطبيق على مزاجك";
+  const u=uxS(),ch=(on,k,t)=>`<button class="chip ${on?"on":""}" data-cu="${k}">${t}</button>`;
+  $("main").innerHTML=`<div class="deen" style="padding-bottom:110px"><h2 style="margin:6px 2px">🎛️ تخصيص</h2>
+  <div class="note" style="color:var(--soft);line-height:1.8">اقفل المزايا اللي مش محتاجها عشان التطبيق يبقى أبسط. بتتشال من «المزيد» ومن الصفحة الرئيسية، وبياناتك مش بتتمسح.</div>
+  <div class="sec">المزايا</div><div class="chips">${FEATS.filter(f=>f[0]!=="custom").map(f=>ch(!u.hide[f[0]],"t:"+f[0],f[1]+" "+f[2]+(u.hide[f[0]]?" ✕":""))).join("")}</div>
+  <div class="sec">حجم الخط</div><div class="chips">${UX_FS.map(([v,t])=>ch((u.fs||1)===v,"fs:"+v,t)).join("")}</div>
+  <div class="sec">الشكل</div><div class="chips">${ch(!!u.compact,"compact","📏 عرض مضغوط (كروت أصغر)")}</div>
+  <div class="sec">مساعدة</div><div class="chips"><button class="chip" data-cu="chk">🧭 اعرض قايمة «ابدأ هنا» تاني</button></div></div>`;
+}
+document.addEventListener("click",e=>{
+  const t=e.target.closest("[data-cu]");if(!t)return;e.stopPropagation();
+  const[k,a]=t.dataset.cu.split(":"),u=uxS();
+  if(k==="t"){u.hide[a]=u.hide[a]?0:1}
+  else if(k==="fs"){u.fs=+a}
+  else if(k==="compact"){u.compact=u.compact?0:1}
+  else if(k==="chk"){u.chk=0;toast("هتلاقيها في الصفحة الرئيسية")}
+  save();uxApply();renderCustom();
+},true);
+
+/* "start here" checklist for new users */
+function uxChecklist(){
+  const u=uxS();if(u.chk||!u.t0||Date.now()-u.t0>21*864e5)return "";
+  const items=[
+    ["ضيف ٣ عادات على الأقل","habit",S.habits.length>=3],
+    ["فعّل تنبيهات الصلاة","pn",!!(S.pn&&S.pn.on)],
+    ["ضيف أول مهمة","task",(S.tk||[]).length>0||((S.cn||{}).td||0)>0],
+    ["استكشف «المزيد»","more",!!u.seenMore],
+    ["فعّل القفل أو خد نسخة احتياطية","lock",!!lkGet()||snList().length>0]
+  ],n=items.filter(x=>x[2]).length;
+  if(n===items.length){u.chk=1;return ""}
+  return `<div class="tcard" style="display:block;margin-bottom:10px;border-color:var(--acc)"><div style="display:flex;align-items:center"><b style="flex:1">🧭 ابدأ هنا (${AR(n)} من ${AR(items.length)})</b><i data-ux2="close" style="font-style:normal;padding:4px 8px;opacity:.7">✕</i></div><div style="height:5px;border-radius:99px;background:#0003;margin:8px 0;overflow:hidden"><div style="height:100%;width:${Math.round(n/items.length*100)}%;background:var(--acc)"></div></div>${items.map(x=>`<div data-ux2="${x[1]}" style="padding:6px 2px;font-size:14px;cursor:pointer;${x[2]?"opacity:.55;text-decoration:line-through":""}">${x[2]?"✅":"⬜"} ${x[0]}</div>`).join("")}</div>`;
+}
+document.addEventListener("click",e=>{
+  const t=e.target.closest("[data-ux2]");if(!t)return;e.stopPropagation();
+  const k=t.dataset.ux2,u=uxS();
+  if(k==="close"){u.chk=1;save();render()}
+  else if(k==="habit")openW();
+  else if(k==="pn")$("thm").click();
+  else if(k==="task")openTK();
+  else if(k==="more"){u.seenMore=1;save();page="more";render()}
+  else if(k==="lock"){page="lock";render()}
+},true);
+
+/* collapsible sections on Today (state is remembered) */
+function uxCollapse(){
+  const m=$("main"),col=uxS().col;let hide=false;
+  [...m.children].forEach(el=>{
+    if(el.classList&&el.classList.contains("sec")){
+      const key=(el.dataset.ux||el.textContent.replace(/^[▾▸]\s*/,"").replace(/\s*[\(✓].*$/,"")).trim();
+      el.dataset.ux=key;hide=!!col[key];
+      el.textContent=(hide?"▸ ":"▾ ")+key;el.style.cursor="pointer";
+    }else if(hide){el.style.display="none"}
+  });
+}
+document.addEventListener("click",e=>{
+  const t=e.target.closest("#main > .sec[data-ux]");if(!t||page!=="today")return;
+  const u=uxS();u.col[t.dataset.ux]=u.col[t.dataset.ux]?0:1;save();render();
+},true);
+
+/* hardware back button */
+let EXITT=0;
+function uxBack(){
+  if(document.getElementById("lockscr")){try{NPL("App").minimizeApp()}catch(e){}return true}
+  const m=$("modal");if(m&&m.classList.contains("on")){closeW();return true}
+  if(MORE.indexOf(page)>=0&&page!=="more"){page=(SUBFROM&&SUBFROM!==page)?SUBFROM:"more";render();return true}
+  if(page!=="today"){page="today";render();return true}
+  if(Date.now()-EXITT<2000){try{NPL("App").exitApp()}catch(e){}return false}
+  EXITT=Date.now();toast("اضغط رجوع تاني للخروج");return true;
+}
+try{const A=NPL("App");if(A&&A.addListener)A.addListener("backButton",()=>{uxBack()})}catch(e){}
+document.addEventListener("click",e=>{if(e.target.closest("#bar button")){try{buzz(6)}catch(x){}if(e.target.closest('#bar [data-pg="more"]')){const u=uxS();if(!u.seenMore){u.seenMore=1;save()}}}},true);
+uxApply();
 try{render()}catch(e){}
 </script>
 </body>

@@ -27,8 +27,8 @@ async def main():
 
         print("\n== injection through the UI")
         await pg.fill("#obn", PAYLOAD); await pg.click('[data-ob="next"]'); await pg.click('[data-ob="done"]')
-        await pg.click("#fab"); await pg.click('[data-c="read"]'); await pg.fill("#nm", PAYLOAD); await pg.click("[data-add]")
-        await pg.click("#fab"); await pg.click('[data-c="task"]'); await pg.fill("#tkt", PAYLOAD); await pg.click('[data-tk="add"]')
+        await pg.click("#fab"); await pg.click('[data-qk="habit"]'); await pg.click('[data-c="read"]'); await pg.fill("#nm", PAYLOAD); await pg.click("[data-add]")
+        await pg.click("#fab"); await pg.click('[data-qk="habit"]'); await pg.click('[data-c="task"]'); await pg.fill("#tkt", PAYLOAD); await pg.click('[data-tk="add"]')
         await pg.click('#bar [data-pg="paper"]')
         for i in ("wpg_body", "wpg_study", "wpg_work"):
             await pg.fill(f"#{i}", PAYLOAD)

@@ -35,23 +35,24 @@ async def run(browser, locale, width):
     check("onboarding closed", not await ev("document.getElementById('modal').classList.contains('on')"))
 
     # --- prayers: add five, remove Asr, only Asr offered, comes back in place
-    await pg.click("#fab"); await pg.click('[data-c="prayer"]'); await pg.click("[data-add]")
+    await pg.click("#fab"); await pg.click('[data-qk="habit"]'); await pg.click('[data-c="prayer"]'); await pg.click("[data-add]")
     names = lambda: ev("S.habits.map(h=>h.name).join('|')")
     check("five prayers added", len(await ev("S.habits")) == 5)
     await ev("S.habits=S.habits.filter(h=>h.name!=='العصر');save();render()")
-    await pg.click("#fab"); await pg.click('[data-c="prayer"]')
+    await pg.click("#fab"); await pg.click('[data-qk="habit"]'); await pg.click('[data-c="prayer"]')
     check("only the missing prayer is offered", await ev("document.querySelectorAll('#sheet [data-p]').length") == 1)
     await pg.click("[data-add]"); await pg.wait_for_timeout(100)
     check("Asr back between Dhuhr and Maghrib", (await names()) == "الفجر|الظهر|العصر|المغرب|العشاء", await names())
-    await pg.click("#fab")
+    await pg.click("#fab"); await pg.click('[data-qk="habit"]')
     await pg.click('[data-c="prayer"]')
     check("full prayer category cannot be added twice", await ev("document.querySelectorAll('#sheet [data-p]').length") == 0)
     await ev("closeW()")
 
     # --- work log: punch in / out / history
-    await pg.click("#fab"); await pg.click('[data-c="work"]'); await pg.click('[data-wm="log"]')
+    await pg.click("#fab"); await pg.click('[data-qk="habit"]'); await pg.click('[data-c="work"]'); await pg.click('[data-wm="log"]')
     await pg.fill("#wls0", "26"); await pg.click("[data-add]"); await pg.wait_for_timeout(100)
     check("work-log habit created", await ev("S.habits.some(h=>h.log)") and await ev("S.wlStart") == 26)
+    await ev("S.habits.filter(h=>h.log).forEach(h=>h.days=[0,1,2,3,4,5,6]);save();render()")   # independent of the weekday
     await pg.click('[data-wl="in"]')
     check("punch in opens a session", await ev("!!wlFindOpen()"))
     await ev("S.wl[Object.keys(S.wl)[0]][0].i-=2*3600e3;save()")
@@ -69,7 +70,7 @@ async def run(browser, locale, width):
     await pg.click('#bar [data-pg="today"]')
 
     # --- workout goal + linked paper steps + automatic ticking
-    await pg.click("#fab"); await pg.click('[data-c="gym"]'); await pg.click("[data-add]")
+    await pg.click("#fab"); await pg.click('[data-qk="habit"]'); await pg.click('[data-c="gym"]'); await pg.click("[data-add]")
     await ev("S.habits.filter(h=>/^جيم/.test(h.name)).forEach(h=>h.days=[0,1,2,3,4,5,6]);save();render()")   # keep the test independent of the weekday
     await pg.click('#bar [data-pg="paper"]')
     await pg.click('[data-wp="lk:gym"]'); await pg.fill("#wpnew", "Workout"); await pg.click('[data-wp="add"]')
@@ -129,7 +130,7 @@ async def run(browser, locale, width):
     check("next prayer card is the first thing in the list", await ev("document.querySelector('#main .tcard')&&document.querySelector('#main .tcard').dataset.pg==='pray'"))
 
     # --- ready-made habits and counter habits
-    await pg.click("#fab"); await pg.click('[data-c="tpl"]')
+    await pg.click("#fab"); await pg.click('[data-qk="habit"]'); await pg.click('[data-c="tpl"]')
     names = await ev("TPL.map(x=>x.n)")
     wi = next(i for i, n in enumerate(names) if "شرب المياه" in n)
     await pg.click('[data-tp="c:h"]'); await pg.click(f'[data-tp="s:{wi}"]'); await pg.click('[data-tp="c:g"]'); await pg.click('[data-tp="c:w"]')
@@ -137,7 +138,7 @@ async def run(browser, locale, width):
     await pg.click(f'[data-tp="s:{ti}"]'); await pg.click('[data-tp="add"]')
     check("templates add several habits at once", await ev("S.habits.filter(h=>h.goal).length") == 2)
     check("selected template from another tab is kept too", await ev("S.habits.some(h=>/تسبيح/.test(h.name))"))
-    await pg.click("#fab"); await pg.click('[data-c="tpl"]')
+    await pg.click("#fab"); await pg.click('[data-qk="habit"]'); await pg.click('[data-c="tpl"]')
     check("already-added templates are disabled", await ev("document.querySelectorAll('#sheet [data-tp^=\"s:\"][disabled]').length") == 0 and await ev("[...document.querySelectorAll('#sheet .chip[disabled]')].length") >= 1)
     await ev("closeW()")
     cnt = await ev("S.habits.filter(h=>h.goal).length")
@@ -152,7 +153,7 @@ async def run(browser, locale, width):
     # --- reminders on every habit
     wr = await ev("S.habits.find(h=>/شرب المياه/.test(h.name)).rm.length")
     check("template habits come with suggested reminders", wr == 6, str(wr))
-    await pg.click("#fab"); await pg.click('[data-c="read"]'); await pg.fill("#nm", "Quran study"); await pg.fill("#rmt", "20:00"); await pg.click("[data-add]")
+    await pg.click("#fab"); await pg.click('[data-qk="habit"]'); await pg.click('[data-c="read"]'); await pg.fill("#nm", "Quran study"); await pg.fill("#rmt", "20:00"); await pg.click("[data-add]")
     check("wizard habit gets the reminder time", await ev("S.habits.find(h=>h.name==='Quran study').rm.join()") == "20:00")
     await pg.click("#edit"); await pg.click("#emedit")
     qid = await ev("S.habits.find(h=>h.name==='Quran study').id")
@@ -189,7 +190,7 @@ async def run(browser, locale, width):
     await pg.click('#bar [data-pg="today"]')
 
     # --- tasks: dated, prioritised, overdue stays visible
-    await pg.click("#fab"); await pg.click('[data-c="task"]')
+    await pg.click("#fab"); await pg.click('[data-qk="habit"]'); await pg.click('[data-c="task"]')
     await pg.fill("#tkt", "Pay the internet bill"); await pg.click('[data-tk="p:1"]'); await pg.click('[data-tk="add"]')
     check("task created for today", await ev("S.tk.length") == 1 and await ev("S.tk[0].due===tkNow()&&S.tk[0].pr===1"))
     await ev("S.tk.push({id:'old1',t:'Old task',due:iso(addDays(today0(),-3)),pr:2,done:0});save();render()")
@@ -226,7 +227,7 @@ async def run(browser, locale, width):
     await pg.click('#bar [data-pg="today"]')
 
     # --- comeback: quit-habit tracker, urge tool, relapse flow, never-miss-twice banner
-    await pg.click("#fab"); await pg.click('[data-c="quit"]'); await pg.click('[data-qt="t:0"]'); await pg.click('[data-qt="save"]')
+    await pg.click("#fab"); await pg.click('[data-qk="habit"]'); await pg.click('[data-c="quit"]'); await pg.click('[data-qt="t:0"]'); await pg.click('[data-qt="save"]')
     check("quit habit created", await ev("S.qt.length") == 1)
     check("Today shows the comeback section", "رحلة الإقلاع" in await ev("document.getElementById('main').innerText"))
     await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="quit"]')
@@ -293,6 +294,119 @@ async def run(browser, locale, width):
     check("data persists after reload", await ev("S.habits.length") == 10 and await ev("S.name") == "Ahmed")
     check("no onboarding after reload", not await ev("document.getElementById('modal').classList.contains('on')"))
 
+    # --- health log: weight, sleep, mood and patterns
+    await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="health"]')
+    await pg.click('[data-hl="new"]'); await pg.fill("#hlw", "80"); await pg.fill("#hlsh", "5.5"); await pg.click('[data-hl="m:2"]'); await pg.click('[data-hl="e:2"]'); await pg.click('[data-hl="save"]')
+    e0 = await ev("S.hl[iso(today0())]")
+    check("daily health entry saved", e0["w"] == 80 and e0["sh"] == 5.5 and e0["m"] == 2 and e0["en"] == 2, str(e0))
+    check("logging weight updates the nutrition plan", await ev("S.nu.w") == 80)
+    await pg.click('[data-hl="new"]'); await pg.fill("#hlw", "500"); await pg.click('[data-hl="save"]')
+    check("impossible weight is rejected", await ev("S.hl[iso(today0())].w") == 80)
+    await ev("closeW()")
+    await ev("S.habits.forEach(h=>h.start=iso(addDays(today0(),-30)));save()")
+    await ev("""(()=>{S.hl=S.hl||{};for(let i=1;i<=10;i++){const d=addDays(today0(),-i),k=iso(d),good=i%2===0;S.hl[k]={sh:good?8:5,m:good?5:1,en:good?5:1,w:80-i*0.1};
+      S.habits.forEach(h=>{if(active(h,d)){if(good)S.done[k+'|'+h.id]=1;else delete S.done[k+'|'+h.id]}})}save();render()})()""")
+    pats = await ev("hlPatterns()")
+    check("the app finds a sleep/mood pattern", any("😴" in x or "🙂" in x for x in pats), str(pats))
+    check("health page renders the weight chart", "<svg" in await ev("(page='health',render(),document.getElementById('main').innerHTML)"))
+    await pg.click('#bar [data-pg="today"]')
+
+    # --- weekly review and achievements
+    await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="review"]')
+    check("review page shows a score", "التزامك" in await ev("document.getElementById('main').innerText"))
+    check("share text is built", "مراجعة أسبوعي" in await ev("rvText(-1)"))
+    await pg.click('[data-rv="tab:badges"]')
+    check("achievements page lists the badges", await ev("document.querySelectorAll('#main .tcard').length") >= 10)
+    await ev("S.bd={};bdCheck()")
+    check("earned badges are unlocked", await ev("!!S.bd.first") and await ev("bdLevel(bdXP())") >= 1)
+    await pg.click('#bar [data-pg="today"]')
+
+    # --- Quran khatma plan
+    await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="khatma"]')
+    await pg.click('[data-kh="d:30"]'); await pg.click('[data-kh="start"]')
+    check("khatma plan targets about 21 pages a day for 30 days", await ev("khPlan().target") == 21, str(await ev("khPlan().target")))
+    await pg.click('[data-kh="add:10"]'); await pg.click('[data-kh="add:5"]')
+    check("pages are counted", await ev("khPlan().read") == 15 and await ev("khPlan().rt") == 15)
+    await ev("khAdd(589)"); await pg.wait_for_timeout(100)
+    check("finishing 604 pages completes the khatma", await ev("khPlan().done") is True and await ev("S.kh.done") == 1)
+    await pg.click('[data-kh="again"]')
+    check("a new khatma can be started", await ev("khPlan()") is None)
+
+    # --- Ramadan mode
+    await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="ramadan"]')
+    check("hijri date is available", await ev("!!hij(new Date())"))
+    if not await ev("rdActive()"):
+        await pg.click('[data-rd="force"]')
+    check("Ramadan mode can be enabled", await ev("rdActive()"))
+    await pg.click('[data-rd="fast"]'); await pg.click('[data-rd="tar"]')
+    check("fasting and taraweeh are tracked", await ev("S.rmd.fast[iso(today0())]") == 1 and await ev("S.rmd.tar[iso(today0())]") == 1)
+    await ev("S.rmd.force=0;save()")
+    await pg.click('#bar [data-pg="today"]')
+
+    # --- UX: quick add, customisation, collapsible sections, checklist, back button, search
+    await pg.click('#bar [data-pg="today"]')
+    await pg.click("#fab")
+    check("the plus button opens a quick-add sheet", await ev("document.querySelectorAll('[data-qk]').length") >= 6)
+    await pg.click('[data-qk="task"]')
+    check("quick add > task opens the task form", await ev("!!document.getElementById('tkt')"))
+    await ev("closeW()")
+    await pg.click("#fab"); await pg.click('[data-qk="exp"]')
+    check("quick add > expense opens the expense form", await ev("!!document.getElementById('mna')"))
+    await ev("closeW()")
+    secs = await ev("[...document.querySelectorAll('#main > .sec')].map(x=>x.dataset.ux)")
+    first = secs[0]
+    await pg.click(f'#main > .sec[data-ux="{first}"]')
+    check("a section can be collapsed and it is remembered", await ev("!!S.ux.col[%s]" % __import__('json').dumps(first)))
+    await pg.click(f'#main > .sec[data-ux="{first}"]')
+    check("and expanded again", not await ev("!!S.ux.col[%s]" % __import__('json').dumps(first)))
+    await ev("S.ux.chk=0;S.ux.t0=Date.now();S.habits=S.habits.slice(0,1);save();render()")
+    check("a 'start here' checklist helps new users", "ابدأ هنا" in await ev("document.getElementById('main').innerText"))
+    await pg.click('[data-ux2="close"]')
+    check("the checklist can be dismissed", "ابدأ هنا" not in await ev("document.getElementById('main').innerText"))
+    await pg.click('#bar [data-pg="more"]'); await pg.fill("#mrs", "أدوي")
+    check("the More page has a search", "الأدوية" in await ev("document.getElementById('mgrid').innerText") and "المصاريف" not in await ev("document.getElementById('mgrid').innerText"))
+    await pg.fill("#mrs", "")
+    check("More is grouped in sections", await ev("document.querySelectorAll('#mgrid .sec').length") >= 4)
+    await pg.click('#main [data-pg="custom"]')
+    await pg.click('[data-cu="t:money"]')
+    await pg.click('#bar [data-pg="more"]')
+    check("a hidden feature disappears from More", "المصاريف" not in await ev("document.getElementById('mgrid').innerText"))
+    await pg.click('#main [data-pg="custom"]'); await pg.click('[data-cu="t:money"]'); await pg.click('[data-cu="fs:1.12"]'); await pg.click('[data-cu="compact"]')
+    check("font size and compact mode are applied", await ev("document.body.style.zoom") in ("1.12", "112%") and await ev("document.documentElement.classList.contains('compact')"))
+    await pg.click('[data-cu="fs:1"]'); await pg.click('[data-cu="compact"]')
+    await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="tasks"]')
+    await ev("uxBack()")
+    check("back from a feature page returns to More", await ev("page") == "more")
+    await ev("uxBack()")
+    check("back from More returns to Today", await ev("page") == "today")
+    await pg.click("#fab"); await ev("uxBack()")
+    check("back closes an open sheet first", not await ev("document.getElementById('modal').classList.contains('on')") and await ev("page") == "today")
+
+    # --- app lock and snapshots
+    await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="lock"]')
+    await pg.click('[data-lk="set"]')
+    for d in "1234": await pg.click(f'[data-lk="sk:{d}"]')
+    await pg.click('[data-lk="sk:ok"]')
+    for d in "1234": await pg.click(f'[data-lk="sk:{d}"]')
+    await pg.click('[data-lk="sk:ok"]'); await pg.wait_for_timeout(200)
+    check("PIN lock enabled", await ev("!!localStorage.getItem('hb_lock')") and "1234" not in await ev("localStorage.getItem('hb_lock')"))
+    await ev("lkShow()"); await pg.wait_for_timeout(100)
+    check("lock screen covers the app", await ev("lkLocked()") and await ev("!!document.getElementById('lockscr')"))
+    for d in "0000": await pg.click(f'[data-lk="uk:{d}"]')
+    await pg.wait_for_timeout(250)
+    check("wrong PIN keeps it locked", await ev("lkLocked()"))
+    for d in "1234": await pg.click(f'[data-lk="uk:{d}"]')
+    await pg.wait_for_timeout(250)
+    check("right PIN unlocks", not await ev("lkLocked()") and not await ev("!!document.getElementById('lockscr')"))
+    await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="lock"]')
+    await pg.click('[data-lk="snap"]')
+    check("snapshot taken and restorable", await ev("snList().length") >= 1)
+    await pg.click('[data-lk="off"]')
+    for d in "1234": await pg.click(f'[data-lk="sk:{d}"]')
+    await pg.click('[data-lk="sk:ok"]'); await pg.wait_for_timeout(200)
+    check("lock can be removed with the PIN", not await ev("!!localStorage.getItem('hb_lock')"))
+    await pg.click('#bar [data-pg="today"]')
+
     check("no page errors", not errs, "; ".join(errs[:3]))
     await ctx.close()
 
@@ -307,13 +421,17 @@ async def run_native_mock(browser):
       window.__syncs=[];window.__events=[];window.__sched=[];
       const LN=new Proxy({},{get:(o,k)=>async a=>{if(k==="schedule"){window.__sched.push(...(a.notifications||[]))}
         if(k==="getPending")return{notifications:[]};if(k==="requestPermissions"||k==="checkPermissions")return{display:"granted"};return{}}});
-      window.Capacitor={Plugins:{LocalNotifications:LN,WorkLog:{
+      window.__bioOk=true;
+      const BIOM={isAvailable:async()=>({bio:true,dev:true}),verify:async()=>({ok:window.__bioOk!==false})};
+      window.Capacitor={Plugins:{LocalNotifications:LN,Biometric:BIOM,WorkLog:{
         sync:async s=>{window.__syncs.push(s)},
         pull:async()=>{const e=window.__events;window.__events=[];return{events:e}}}}};""")
     await pg.goto(URL); await pg.wait_for_timeout(500)
     ev = pg.evaluate
     await pg.fill("#obn", "Ahmed"); await pg.click('[data-ob="next"]'); await pg.click('[data-ob="done"]')
-    await pg.click("#fab"); await pg.click('[data-c="work"]'); await pg.click('[data-wm="log"]'); await pg.click("[data-add]")
+    await pg.click("#fab"); await pg.click('[data-qk="habit"]'); await pg.click('[data-c="work"]'); await pg.click('[data-wm="log"]'); await pg.click("[data-add]")
+    await pg.wait_for_timeout(100)
+    await ev("S.habits.filter(h=>h.log).forEach(h=>h.days=[0,1,2,3,4,5,6]);save();render()")
     await pg.wait_for_timeout(100)
     last = await ev("window.__syncs[window.__syncs.length-1]")
     check("notification enabled once a work-log habit exists", bool(last) and last.get("enabled") is True and last.get("open") is False)
@@ -327,7 +445,7 @@ async def run_native_mock(browser):
     total = await ev("Object.keys(S.wl).reduce((a,k)=>a+wlDayMs(k),0)")
     check("punches made from the notification are merged (2h)", total >= 2 * 3600e3 - 60e3, str(total))
     # reminders are really scheduled with the phone's notification plugin
-    await pg.click("#fab"); await pg.click('[data-c="read"]'); await pg.fill("#nm", "Evening reading"); await pg.fill("#rmt", "23:59"); await pg.click("[data-add]")
+    await pg.click("#fab"); await pg.click('[data-qk="habit"]'); await pg.click('[data-c="read"]'); await pg.fill("#nm", "Evening reading"); await pg.fill("#rmt", "23:59"); await pg.click("[data-add]")
     await ev("S.habits.find(h=>h.name==='Evening reading').days=[0,1,2,3,4,5,6];save()")
     await ev("schedNotif()"); await pg.wait_for_timeout(300)
     sched = await ev("window.__sched.filter(n=>/Evening reading/.test(n.body)).map(n=>n.id)")
@@ -346,6 +464,35 @@ async def run_native_mock(browser):
     await ev("window.__sched.length=0;schedNotif()"); await pg.wait_for_timeout(300)
     after = await ev("window.__sched.filter(n=>/Antibiotic/.test(n.body)).length")
     check("taking the dose cancels today's follow-ups", after == len(ms) - 3, f"{after} vs {len(ms)}")
+    # --- biometric / device-lock unlock (native plugin mocked)
+    await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="lock"]')
+    check("the lock is optional: off by default", not await ev("!!localStorage.getItem('hb_lock')"))
+    await pg.click('[data-lk="dev"]'); await pg.wait_for_timeout(200)
+    check("device lock (fingerprint/face) enabled without any PIN", await ev("JSON.parse(localStorage.getItem('hb_lock')).mode") == "device")
+    await ev("lkShow()"); await pg.wait_for_timeout(700)
+    check("biometric prompt unlocks automatically", not await ev("lkLocked()"))
+    await ev("window.__bioOk=false;lkShow()"); await pg.wait_for_timeout(700)
+    check("failed biometric keeps the app locked", await ev("lkLocked()"))
+    await ev("window.__bioOk=true"); await pg.click('[data-lk="ubio"]'); await pg.wait_for_timeout(500)
+    check("retry button unlocks after a good scan", not await ev("lkLocked()"))
+    await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="lock"]'); await pg.click('[data-lk="off"]'); await pg.wait_for_timeout(300)
+    check("device lock can be removed", not await ev("!!localStorage.getItem('hb_lock')"))
+    await pg.click('[data-lk="set"]')
+    for d in "2468": await pg.click(f'[data-lk="sk:{d}"]')
+    await pg.click('[data-lk="sk:ok"]')
+    for d in "2468": await pg.click(f'[data-lk="sk:{d}"]')
+    await pg.click('[data-lk="sk:ok"]'); await pg.wait_for_timeout(300)
+    await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="lock"]'); await pg.click('[data-lk="bio"]'); await pg.wait_for_timeout(300)
+    check("fingerprint shortcut can be added to the PIN", await ev("JSON.parse(localStorage.getItem('hb_lock')).bio") == 1)
+    await ev("lkShow()"); await pg.wait_for_timeout(700)
+    check("PIN mode unlocks with the fingerprint shortcut", not await ev("lkLocked()"))
+    await ev("localStorage.removeItem('hb_lock');render()")
+
+    await ev("S.rmd={force:1,fast:{},tar:{},n:1};S.kh={start:iso(today0()),days:30,total:604,log:{},done:0,rm:'23:55'};save()")
+    await ev("window.__sched.length=0;schedNotif()"); await pg.wait_for_timeout(300)
+    ids = await ev("window.__sched.map(n=>n.id)")
+    check("weekly-review and daily-log reminders are scheduled", any(5400 <= i < 5420 for i in ids) and any(5300 <= i < 5310 for i in ids), str(sorted(ids)[-10:]))
+    check("Ramadan and khatma reminders are scheduled", any(5100 <= i < 5110 for i in ids) and any(5200 <= i < 5210 for i in ids), str(sorted(ids)[:12]))
     check("no page errors", not errs, "; ".join(errs[:3]))
     await ctx.close()
 

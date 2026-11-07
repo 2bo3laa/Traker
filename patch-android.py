@@ -180,6 +180,7 @@ public class MainActivity extends BridgeActivity {{
         registerPlugin(WidgetBridgePlugin.class);
         registerPlugin(AdhanPlugin.class);
         registerPlugin(WorkLogPlugin.class);
+        registerPlugin(BiometricPlugin.class);
         super.onCreate(savedInstanceState);
     }}
 }}
@@ -194,6 +195,8 @@ public class MainActivity extends BridgeActivity {{
     man = patch_widget_previews.apply(app, pkg, man)
     import patch_worklog
     man = patch_worklog.apply(app, pkg, man)
+    import patch_biometric
+    man = patch_biometric.apply(app, pkg, man)
 
     fetch_pages(app)
 
