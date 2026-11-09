@@ -1,0 +1,848 @@
+ورقتي|My Sheet|Ma feuille|Mi hoja|Kâğıdım|Mein Blatt|Lembarku|میری شیٹ
+المزيد|More|Plus|Más|Daha fazla|Mehr|Lainnya|مزید
+الإعدادات|Settings|Paramètres|Ajustes|Ayarlar|Einstellungen|Pengaturan|ترتیبات
+خطوة واضحة أحسن من نية كبيرة|A clear step beats a big intention|Un pas clair vaut mieux qu’une grande intention|Un paso claro vale más que una gran intención|Net bir adım, büyük bir niyetten iyidir|Ein klarer Schritt ist besser als eine große Absicht|Satu langkah yang jelas lebih baik daripada niat besar|ایک واضح قدم بڑی نیت سے بہتر ہے
+ورقة الأسبوع 📝|Weekly sheet 📝|Feuille de la semaine 📝|Hoja de la semana 📝|Haftalık kâğıt 📝|Wochenblatt 📝|Lembar mingguan 📝|ہفتے کی شیٹ 📝
+عايز تكون فين؟|Where do you want to be?|Où veux-tu en être ?|¿Dónde quieres estar?|Nerede olmak istiyorsun?|Wo willst du stehen?|Kamu ingin berada di mana?|آپ کہاں پہنچنا چاہتے ہیں؟
+💪 جسمك|💪 Your body|💪 Ton corps|💪 Tu cuerpo|💪 Vücudun|💪 Dein Körper|💪 Tubuhmu|💪 آپ کا جسم
+📚 دراستك|📚 Your studies|📚 Tes études|📚 Tus estudios|📚 Eğitimin|📚 Dein Studium|📚 Studimu|📚 آپ کی پڑھائی
+💼 شغلك|💼 Your work|💼 Ton travail|💼 Tu trabajo|💼 İşin|💼 Deine Arbeit|💼 Pekerjaanmu|💼 آپ کا کام
+اكتب كل اللي في دماغك|Write everything on your mind|Écris tout ce que tu as en tête|Escribe todo lo que tienes en mente|Aklındaki her şeyi yaz|Schreib alles auf, was dir im Kopf ist|Tulis semua yang ada di pikiranmu|جو کچھ آپ کے ذہن میں ہے سب لکھیں
+خطة الأسبوع|Week plan|Plan de la semaine|Plan de la semana|Haftalık plan|Wochenplan|Rencana mingguan|ہفتے کا منصوبہ
+هذا الأسبوع|This week|Cette semaine|Esta semana|Bu hafta|Diese Woche|Minggu ini|اس ہفتے
+الأسبوع الجاي|Next week|La semaine prochaine|La próxima semana|Gelecek hafta|Nächste Woche|Minggu depan|اگلا ہفتہ
+من غير ربط|No link|Sans lien|Sin vincular|Bağlantısız|Ohne Verknüpfung|Tanpa tautan|بغیر لنک
+أي تمرين|Any workout|N’importe quel entraînement|Cualquier entrenamiento|Herhangi bir antrenman|Irgendein Training|Latihan apa saja|کوئی بھی ورزش
+كسر رقم في تمرين|Beat a record in a workout|Battre un record à l’entraînement|Superar una marca en un entrenamiento|Bir antrenmanda rekor kır|Einen Rekord im Training brechen|Pecahkan rekor dalam latihan|ورزش میں ریکارڈ توڑنا
+مثال: أنزل لـ 75 كيلو وأجري 5 كم|Example: drop to 75 kg and run 5 km|Exemple : descendre à 75 kg et courir 5 km|Ejemplo: bajar a 75 kg y correr 5 km|Örnek: 75 kiloya düşmek ve 5 km koşmak|Beispiel: auf 75 kg abnehmen und 5 km laufen|Contoh: turun ke 75 kg dan lari 5 km|مثال: وزن 75 کلو تک لانا اور 5 کلومیٹر دوڑنا
+مثال: أخلص الكورس وأدخل الامتحان|Example: finish the course and sit the exam|Exemple : finir le cours et passer l’examen|Ejemplo: terminar el curso y presentar el examen|Örnek: kursu bitirip sınava girmek|Beispiel: den Kurs beenden und die Prüfung ablegen|Contoh: menyelesaikan kursus dan ikut ujian|مثال: کورس مکمل کرنا اور امتحان دینا
+مثال: ترقية أو شغل جديد|Example: a promotion or a new job|Exemple : une promotion ou un nouvel emploi|Ejemplo: un ascenso o un trabajo nuevo|Örnek: terfi ya da yeni bir iş|Beispiel: eine Beförderung oder ein neuer Job|Contoh: promosi atau pekerjaan baru|مثال: ترقی یا نئی نوکری
+أي حاجة شاغلة بالك…|Anything on your mind…|Tout ce qui te préoccupe…|Lo que te preocupe…|Aklını meşgul eden her şey…|Alles, was dich beschäftigt…|Apa pun yang mengganggu pikiranmu…|کوئی بھی بات جو آپ کو پریشان کر رہی ہو…
+خطوة جديدة|New step|Nouvelle étape|Nuevo paso|Yeni adım|Neuer Schritt|Langkah baru|نیا قدم
+هدفك|Your goal|Ton objectif|Tu objetivo|Hedefin|Dein Ziel|Tujuanmu|آپ کا ہدف
+💪 تضخيم|💪 Bulking|💪 Prise de masse|💪 Volumen|💪 Kas kazanımı|💪 Muskelaufbau|💪 Menambah massa otot|💪 پٹھے بنانا
+🔥 تنشيف|🔥 Cutting|🔥 Sèche|🔥 Definición|🔥 Yağ yakımı|🔥 Fett abbauen|🔥 Membakar lemak|🔥 چربی کم کرنا
+🏋️ قوة|🏋️ Strength|🏋️ Force|🏋️ Fuerza|🏋️ Güç|🏋️ Kraft|🏋️ Kekuatan|🏋️ طاقت
+🧘 لياقة عامة|🧘 General fitness|🧘 Forme générale|🧘 Forma física general|🧘 Genel kondisyon|🧘 Allgemeine Fitness|🧘 Kebugaran umum|🧘 عمومی تندرستی
+كام يوم في الأسبوع؟|How many days a week?|Combien de jours par semaine ?|¿Cuántos días a la semana?|Haftada kaç gün?|Wie viele Tage pro Woche?|Berapa hari seminggu?|ہفتے میں کتنے دن؟
+كل اللي محتاجه في مكان واحد|Everything you need in one place|Tout ce dont tu as besoin au même endroit|Todo lo que necesitas en un solo lugar|İhtiyacın olan her şey tek yerde|Alles, was du brauchst, an einem Ort|Semua yang kamu butuhkan di satu tempat|آپ کی ضرورت کی ہر چیز ایک جگہ
+المهام|Tasks|Tâches|Tareas|Görevler|Aufgaben|Tugas|کام
+بتاريخ وأولوية|With dates and priority|Avec date et priorité|Con fecha y prioridad|Tarih ve öncelikle|Mit Datum und Priorität|Dengan tanggal dan prioritas|تاریخ اور ترجیح کے ساتھ
+تركيز|Focus|Concentration|Enfoque|Odak|Fokus|Fokus|توجہ
+جلسات مذاكرة وشغل|Study and work sessions|Séances d’étude et de travail|Sesiones de estudio y trabajo|Çalışma ve iş seansları|Lern- und Arbeitssitzungen|Sesi belajar dan kerja|پڑھائی اور کام کے سیشن
+مراجعتي|My review|Mon bilan|Mi resumen|Değerlendirmem|Meine Rückschau|Ulasanku|میرا جائزہ
+أسبوعك وإنجازاتك وشاراتك|Your week, achievements and badges|Ta semaine, tes réussites et tes badges|Tu semana, logros e insignias|Haftan, başarıların ve rozetlerin|Deine Woche, Erfolge und Abzeichen|Mingguanmu, pencapaian, dan lencanamu|آپ کا ہفتہ، کامیابیاں اور بیجز
+المساعد|Assistant|Assistant|Asistente|Asistan|Assistent|Asisten|معاون
+اسأل عن يومك (أوفلاين)|Ask about your day (offline)|Pose des questions sur ta journée (hors ligne)|Pregunta sobre tu día (sin conexión)|Gününü sor (çevrimdışı)|Frag nach deinem Tag (offline)|Tanya tentang harimu (offline)|اپنے دن کے بارے میں پوچھیں (آف لائن)
+مواقيت وقبلة|Prayer times and qibla|Horaires de prière et qibla|Horarios de oración y qibla|Namaz vakitleri ve kıble|Gebetszeiten und Qibla|Waktu salat dan kiblat|اوقاتِ نماز اور قبلہ
+الصلاة والتقويم|Prayer and calendar|Prière et calendrier|Oración y calendario|Namaz ve takvim|Gebet und Kalender|Salat dan kalender|نماز اور کیلنڈر
+ذكر وقرآن|Dhikr and Quran|Dhikr et Coran|Dhikr y Corán|Zikir ve Kur’an|Dhikr und Koran|Zikir dan Al-Qur’an|ذکر اور قرآن
+أذكار ومصحف|Adhkar and Mushaf|Adhkar et Mushaf|Adhkar y Mushaf|Zikirler ve Mushaf|Adhkar und Mushaf|Zikir dan Mushaf|اذکار اور مصحف
+ختمتي|My Khatma|Ma khatma|Mi jatma|Hatmim|Mein Khatma|Khatamku|میرا ختم
+خطة ختمة القرآن|Quran completion plan|Plan de lecture complète du Coran|Plan para completar el Corán|Kur’an hatim planı|Plan zum Abschluss des Korans|Rencana khatam Al-Qur’an|ختمِ قرآن کا منصوبہ
+رمضان|Ramadan|Ramadan|Ramadán|Ramazan|Ramadan|Ramadan|رمضان
+صيام وسحور وإفطار|Fasting, suhoor and iftar|Jeûne, suhoor et iftar|Ayuno, suhur e iftar|Oruç, sahur ve iftar|Fasten, Suhur und Iftar|Puasa, sahur, dan berbuka|روزہ، سحری اور افطار
+الأدوية|Medications|Médicaments|Medicamentos|İlaçlar|Medikamente|Obat|ادویات
+صحتي|My health|Ma santé|Mi salud|Sağlığım|Meine Gesundheit|Kesehatanku|میری صحت
+وزن ونوم ومزاج وأنماط|Weight, sleep, mood and patterns|Poids, sommeil, humeur et tendances|Peso, sueño, ánimo y patrones|Kilo, uyku, ruh hali ve örüntüler|Gewicht, Schlaf, Stimmung und Muster|Berat badan, tidur, suasana hati, dan pola|وزن، نیند، مزاج اور رجحانات
+الأكل|Food|Alimentation|Comida|Beslenme|Ernährung|Makanan|کھانا
+نظام غذائي بالبدائل|Meal plan with substitutes|Régime alimentaire avec alternatives|Plan de comidas con alternativas|Alternatifli beslenme planı|Ernährungsplan mit Alternativen|Pola makan dengan pilihan pengganti|متبادل کے ساتھ غذائی منصوبہ
+المصاريف|Expenses|Dépenses|Gastos|Harcamalar|Ausgaben|Pengeluaran|اخراجات
+ميزانية واشتراكات|Budget and subscriptions|Budget et abonnements|Presupuesto y suscripciones|Bütçe ve abonelikler|Budget und Abos|Anggaran dan langganan|بجٹ اور سبسکرپشنز
+رحلة الإقلاع|Quit journey|Parcours d’arrêt|Camino para dejarlo|Bırakma yolculuğu|Weg zum Aufhören|Perjalanan berhenti|چھوڑنے کا سفر
+الحماية|Protection|Protection|Protección|Koruma|Schutz|Perlindungan|تحفظ
+قفل ونسخ تلقائية|Lock and automatic backups|Verrouillage et sauvegardes automatiques|Bloqueo y copias automáticas|Kilit ve otomatik yedekler|Sperre und automatische Backups|Kunci dan cadangan otomatis|لاک اور خودکار بیک اپ
+تخصيص|Customize|Personnaliser|Personalizar|Özelleştir|Anpassen|Sesuaikan|حسب ضرورت بنائیں
+اختار اللي يظهرلك والخط|Choose what shows up, and the font|Choisis ce qui s’affiche, et la police|Elige qué se muestra y la fuente|Neyin görüneceğini ve yazı tipini seç|Wähle, was angezeigt wird, und die Schriftart|Pilih apa yang ditampilkan dan jenis huruf|منتخب کریں کیا نظر آئے اور فونٹ
+إعدادات الشكل والنسخ|Appearance and backup settings|Réglages d’apparence et de sauvegarde|Ajustes de apariencia y copia|Görünüm ve yedek ayarları|Darstellungs- und Backup-Einstellungen|Pengaturan tampilan dan cadangan|ظاہری شکل اور بیک اپ کی ترتیبات
+الألوان واللغة والنسخ الاحتياطي|Colors, language and backup|Couleurs, langue et sauvegarde|Colores, idioma y copia de seguridad|Renkler, dil ve yedekleme|Farben, Sprache und Backup|Warna, bahasa, dan cadangan|رنگ، زبان اور بیک اپ
+دوّر على ميزة|Find a feature|Chercher une fonction|Buscar una función|Özellik ara|Funktion suchen|Cari fitur|کوئی فیچر تلاش کریں
+🥗 نظامك الغذائي|🥗 Your meal plan|🥗 Ton régime alimentaire|🥗 Tu plan de comidas|🥗 Beslenme planın|🥗 Dein Ernährungsplan|🥗 Pola makanmu|🥗 آپ کا غذائی منصوبہ
+اكتب بياناتك وهعملك خطة بالأكل اللي بتحبه وبميزانيتك، ومعاها بدائل لكل وجبة.|Enter your details and I’ll build you a plan with the food you like, within your budget — with substitutes for every meal.|Saisis tes informations et je te prépare un plan avec les aliments que tu aimes, selon ton budget — avec des alternatives pour chaque repas.|Escribe tus datos y te haré un plan con la comida que te gusta y tu presupuesto, con alternativas para cada comida.|Bilgilerini yaz, sevdiğin yiyeceklerle ve bütçene uygun bir plan hazırlayayım — her öğün için alternatifleriyle.|Gib deine Daten ein, und ich erstelle dir einen Plan mit Essen, das du magst, passend zu deinem Budget — mit Alternativen für jede Mahlzeit.|Isi datamu dan aku buatkan rencana dengan makanan kesukaanmu sesuai anggaranmu — lengkap dengan pengganti untuk setiap waktu makan.|اپنی معلومات لکھیں اور میں آپ کی پسند کے کھانوں اور آپ کے بجٹ کے مطابق منصوبہ بنا دوں گا — ہر کھانے کے متبادل کے ساتھ۔
+النوع|Gender|Sexe|Sexo|Cinsiyet|Geschlecht|Jenis kelamin|جنس
+السن • الطول (سم) • الوزن (كجم) • الوزن المستهدف|Age • Height (cm) • Weight (kg) • Target weight|Âge • Taille (cm) • Poids (kg) • Poids visé|Edad • Altura (cm) • Peso (kg) • Peso objetivo|Yaş • Boy (cm) • Kilo (kg) • Hedef kilo|Alter • Größe (cm) • Gewicht (kg) • Zielgewicht|Usia • Tinggi (cm) • Berat (kg) • Berat target|عمر • قد (سینٹی میٹر) • وزن (کلو) • ہدف کا وزن
+نشاطك|Your activity|Ton activité|Tu actividad|Aktivite düzeyin|Dein Aktivitätslevel|Aktivitasmu|آپ کی سرگرمی
+قاعد|Sedentary|Sédentaire|Sedentario|Hareketsiz|Sitzend|Kurang gerak|بیٹھے رہنے والا
+نشاط خفيف|Light activity|Activité légère|Actividad ligera|Hafif aktivite|Leichte Aktivität|Aktivitas ringan|ہلکی سرگرمی
+نشاط متوسط|Moderate activity|Activité modérée|Actividad moderada|Orta aktivite|Mäßige Aktivität|Aktivitas sedang|درمیانی سرگرمی
+🔥 تنزيل وزن|🔥 Lose weight|🔥 Perdre du poids|🔥 Bajar de peso|🔥 Kilo ver|🔥 Abnehmen|🔥 Turunkan berat|🔥 وزن کم کرنا
+⚖️ تثبيت|⚖️ Maintain|⚖️ Maintenir|⚖️ Mantener|⚖️ Koru|⚖️ Halten|⚖️ Pertahankan|⚖️ وزن برقرار رکھنا
+💪 زيادة|💪 Gain|💪 Prendre du poids|💪 Subir de peso|💪 Kilo al|💪 Zunehmen|💪 Naikkan berat|💪 وزن بڑھانا
+ميزانيتك|Your budget|Ton budget|Tu presupuesto|Bütçen|Dein Budget|Anggaranmu|آپ کا بجٹ
+💰 اقتصادية|💰 Economical|💰 Économique|💰 Económico|💰 Ekonomik|💰 Günstig|💰 Hemat|💰 کفایتی
+💰💰 متوسطة|💰💰 Medium|💰💰 Moyen|💰💰 Medio|💰💰 Orta|💰💰 Mittel|💰💰 Sedang|💰💰 درمیانہ
+💰💰💰 مفتوحة|💰💰💰 Flexible|💰💰💰 Souple|💰💰💰 Flexible|💰💰💰 Esnek|💰💰💰 Flexibel|💰💰💰 Fleksibel|💰💰💰 کھلا
+كام وجبة في اليوم؟|How many meals a day?|Combien de repas par jour ?|¿Cuántas comidas al día?|Günde kaç öğün?|Wie viele Mahlzeiten am Tag?|Berapa kali makan sehari?|دن میں کتنے کھانے؟
+٣ وجبات|3 meals|3 repas|3 comidas|3 öğün|3 Mahlzeiten|3 kali makan|3 کھانے
+٤ (مع سناك)|4 (with a snack)|4 (avec en-cas)|4 (con un tentempié)|4 (atıştırmalıkla)|4 (mit Snack)|4 (dengan camilan)|4 (سنیک کے ساتھ)
+أكلك (دوس: 👍 بحبه ← 👎 مبحبوش ← عادي)|Your food (tap: 👍 like → 👎 dislike → neutral)|Ta nourriture (touche : 👍 j’aime → 👎 je n’aime pas → neutre)|Tu comida (toca: 👍 me gusta → 👎 no me gusta → normal)|Yiyeceklerin (dokun: 👍 severim → 👎 sevmem → fark etmez)|Dein Essen (tippen: 👍 mag ich → 👎 mag ich nicht → egal)|Makananmu (ketuk: 👍 suka → 👎 tidak suka → biasa)|آپ کا کھانا (ٹیپ کریں: 👍 پسند ← 👎 ناپسند ← عام)
+فراخ|Chicken|Poulet|Pollo|Tavuk|Hähnchen|Ayam|چکن
+لحمة|Meat|Viande|Carne|Et|Fleisch|Daging|گوشت
+سمك|Fish|Poisson|Pescado|Balık|Fisch|Ikan|مچھلی
+كبدة|Liver|Foie|Hígado|Ciğer|Leber|Hati|کلیجی
+تونة|Tuna|Thon|Atún|Ton balığı|Thunfisch|Tuna|ٹونا مچھلی
+بيض|Eggs|Œufs|Huevos|Yumurta|Eier|Telur|انڈے
+فول|Fava beans|Fèves|Habas|Bakla|Dicke Bohnen|Kacang fava|باقلا
+عدس وحمص|Lentils and chickpeas|Lentilles et pois chiches|Lentejas y garbanzos|Mercimek ve nohut|Linsen und Kichererbsen|Lentil dan buncis|دال اور چنے
+ألبان|Dairy|Produits laitiers|Lácteos|Süt ürünleri|Milchprodukte|Produk susu|ڈیری مصنوعات
+شوفان|Oats|Avoine|Avena|Yulaf|Haferflocken|Oat|جئی
+حالة صحية|Health condition|Problème de santé|Condición de salud|Sağlık durumu|Gesundheitszustand|Kondisi kesehatan|صحت کی حالت
+عندي مرض مزمن أو حامل/مرضعة|I have a chronic illness or am pregnant/breastfeeding|J’ai une maladie chronique ou je suis enceinte/allaitante|Tengo una enfermedad crónica o estoy embarazada/lactando|Kronik hastalığım var ya da hamile/emziriyorum|Ich habe eine chronische Krankheit oder bin schwanger/stillend|Saya punya penyakit kronis atau sedang hamil/menyusui|مجھے دائمی بیماری ہے یا میں حاملہ/دودھ پلانے والی ہوں
+اعمل خطتي|Build my plan|Crée mon plan|Crear mi plan|Planımı oluştur|Meinen Plan erstellen|Buatkan rencanaku|میرا منصوبہ بنائیں
+السن|Age|Âge|Edad|Yaş|Alter|Usia|عمر
+الطول|Height|Taille|Altura|Boy|Größe|Tinggi|قد
+الوزن|Weight|Poids|Peso|Kilo|Gewicht|Berat|وزن
+المستهدف|Target|Objectif|Objetivo|Hedef|Ziel|Target|ہدف
+اسألني عن يومك وأرقامك|Ask me about your day and your numbers|Pose-moi des questions sur ta journée et tes chiffres|Pregúntame sobre tu día y tus números|Bana gününü ve rakamlarını sor|Frag mich nach deinem Tag und deinen Zahlen|Tanyakan padaku soal harimu dan angkamu|مجھ سے اپنے دن اور اپنے اعداد و شمار کے بارے میں پوچھیں
+🤖 المساعد|🤖 Assistant|🤖 Assistant|🤖 Asistente|🤖 Asistan|🤖 Assistent|🤖 Asisten|🤖 معاون
+ملاحظات لليوم|Notes for today|Remarques du jour|Notas para hoy|Bugün için notlar|Hinweise für heute|Catatan hari ini|آج کے لیے نوٹس
+ضيف عادات في جدولك وأنا هبدأ أديك ملاحظات على أرقامك ✨|Add habits to your schedule and I’ll start giving you notes on your numbers ✨|Ajoute des habitudes à ton planning et je commencerai à te faire des remarques sur tes chiffres ✨|Añade hábitos a tu horario y empezaré a darte notas sobre tus números ✨|Programına alışkanlık ekle, rakamların hakkında not vermeye başlayayım ✨|Füge Gewohnheiten zu deinem Plan hinzu, und ich gebe dir Hinweise zu deinen Zahlen ✨|Tambahkan kebiasaan ke jadwalmu dan aku akan mulai memberi catatan soal angkamu ✨|اپنے شیڈول میں عادتیں شامل کریں اور میں آپ کے اعداد پر نوٹس دینا شروع کر دوں گا ✨
+صليت كام صلاة النهارده؟|How many prayers did I pray today?|Combien de prières ai-je faites aujourd’hui ?|¿Cuántas oraciones hice hoy?|Bugün kaç vakit namaz kıldım?|Wie viele Gebete habe ich heute verrichtet?|Berapa salat yang sudah kulakukan hari ini?|آج میں نے کتنی نمازیں پڑھیں؟
+ساعات شغلي الشهر ده|My work hours this month|Mes heures de travail ce mois-ci|Mis horas de trabajo este mes|Bu ayki çalışma saatlerim|Meine Arbeitsstunden diesen Monat|Jam kerjaku bulan ini|اس مہینے میرے کام کے گھنٹے
+اتمرنت كام مرة؟|How many times did I work out?|Combien de fois me suis-je entraîné ?|¿Cuántas veces entrené?|Kaç kez antrenman yaptım?|Wie oft habe ich trainiert?|Berapa kali aku berolahraga?|میں نے کتنی بار ورزش کی؟
+أعلى أوزاني|My top weights|Mes charges maximales|Mis pesos máximos|En yüksek ağırlıklarım|Meine Höchstgewichte|Beban tertinggiku|میرے سب سے زیادہ وزن
+أضعف عادة عندي|My weakest habit|Mon habitude la plus faible|Mi hábito más débil|En zayıf alışkanlığım|Meine schwächste Gewohnheit|Kebiasaan terlemahku|میری سب سے کمزور عادت
+اسألني: صليت كام صلاة؟|Ask me: how many prayers did I pray?|Demande-moi : combien de prières ai-je faites ?|Pregúntame: ¿cuántas oraciones hice?|Bana sor: kaç vakit namaz kıldım?|Frag mich: Wie viele Gebete habe ich verrichtet?|Tanya aku: berapa salat yang sudah kulakukan?|مجھ سے پوچھیں: میں نے کتنی نمازیں پڑھیں؟
+✅ المهام|✅ Tasks|✅ Tâches|✅ Tareas|✅ Görevler|✅ Aufgaben|✅ Tugas|✅ کام
+➕ مهمة جديدة|➕ New task|➕ Nouvelle tâche|➕ Nueva tarea|➕ Yeni görev|➕ Neue Aufgabe|➕ Tugas baru|➕ نیا کام
+مفيش مهام مفتوحة 🎉 ضيف أول مهمة.|No open tasks 🎉 Add your first task.|Aucune tâche ouverte 🎉 Ajoute ta première tâche.|No hay tareas abiertas 🎉 Añade tu primera tarea.|Açık görev yok 🎉 İlk görevini ekle.|Keine offenen Aufgaben 🎉 Füge deine erste Aufgabe hinzu.|Tidak ada tugas terbuka 🎉 Tambahkan tugas pertamamu.|کوئی کھلا کام نہیں 🎉 اپنا پہلا کام شامل کریں۔
+⏱️ تركيز|⏱️ Focus|⏱️ Concentration|⏱️ Enfoque|⏱️ Odak|⏱️ Fokus|⏱️ Fokus|⏱️ توجہ
+اختار المدة وابدأ|Choose a duration and start|Choisis la durée et démarre|Elige la duración y empieza|Süreyi seç ve başla|Wähle die Dauer und starte|Pilih durasi lalu mulai|دورانیہ منتخب کریں اور شروع کریں
+{0} دقيقة|{0} min|{0} min|{0} min|{0} dk|{0} Min.|{0} menit|{0} منٹ
+▶ ابدأ|▶ Start|▶ Démarrer|▶ Empezar|▶ Başla|▶ Starten|▶ Mulai|▶ شروع کریں
+النهارده|Today|Aujourd’hui|Hoy|Bugün|Heute|Hari ini|آج
+{0} دقيقة تركيز • {1} جلسة|{0} min of focus • {1} sessions|{0} min de concentration • {1} séances|{0} min de enfoque • {1} sesiones|{0} dk odak • {1} seans|{0} Min. Fokus • {1} Sitzungen|{0} menit fokus • {1} sesi|{0} منٹ توجہ • {1} سیشن
+آخر ٧ أيام|Last 7 days|7 derniers jours|Últimos 7 días|Son 7 gün|Letzte 7 Tage|7 hari terakhir|آخری 7 دن
+💰 المصاريف|💰 Expenses|💰 Dépenses|💰 Gastos|💰 Harcamalar|💰 Ausgaben|💰 Pengeluaran|💰 اخراجات
+مصروف الشهر ده|This month’s spending|Dépenses de ce mois|Gasto de este mes|Bu ayın harcaması|Ausgaben diesen Monat|Pengeluaran bulan ini|اس مہینے کا خرچ
+{0} ج|{0} EGP|{0} EGP|{0} EGP|{0} EGP|{0} EGP|{0} EGP|{0} مصری پاؤنڈ
+➕ مصروف|➕ Expense|➕ Dépense|➕ Gasto|➕ Harcama|➕ Ausgabe|➕ Pengeluaran|➕ خرچ
+🔁 اشتراك|🔁 Subscription|🔁 Abonnement|🔁 Suscripción|🔁 Abonelik|🔁 Abo|🔁 Langganan|🔁 سبسکرپشن
+🎯 الميزانية|🎯 Budget|🎯 Budget|🎯 Presupuesto|🎯 Bütçe|🎯 Budget|🎯 Anggaran|🎯 بجٹ
+السقطة مش الفشل، الفشل إنك ما ترجعش|A slip isn’t failure — failure is not coming back|Une rechute n’est pas un échec — l’échec, c’est de ne pas revenir|Una recaída no es el fracaso — el fracaso es no volver|Düşmek başarısızlık değil — başarısızlık geri dönmemektir|Ein Ausrutscher ist kein Scheitern — Scheitern ist, nicht zurückzukehren|Terpeleset bukan kegagalan — kegagalan adalah tidak kembali|لغزش ناکامی نہیں — ناکامی یہ ہے کہ آپ واپس نہ آئیں
+🌱 رحلة الإقلاع|🌱 Quit journey|🌱 Parcours d’arrêt|🌱 Camino para dejarlo|🌱 Bırakma yolculuğu|🌱 Weg zum Aufhören|🌱 Perjalanan berhenti|🌱 چھوڑنے کا سفر
+➕ عادة جديدة للإقلاع|➕ New habit to quit|➕ Nouvelle habitude à arrêter|➕ Nuevo hábito que dejar|➕ Bırakılacak yeni alışkanlık|➕ Neue Gewohnheit zum Aufhören|➕ Kebiasaan baru untuk dihentikan|➕ چھوڑنے کے لیے نئی عادت
+الانتظام في الدوا نص العلاج|Taking medicine regularly is half the treatment|Prendre ses médicaments régulièrement, c’est la moitié du traitement|Tomar la medicina con regularidad es la mitad del tratamiento|İlacı düzenli kullanmak tedavinin yarısıdır|Regelmäßige Einnahme ist die halbe Behandlung|Minum obat teratur adalah separuh dari pengobatan|دوا باقاعدگی سے لینا آدھا علاج ہے
+💊 الأدوية|💊 Medications|💊 Médicaments|💊 Medicamentos|💊 İlaçlar|💊 Medikamente|💊 Obat|💊 ادویات
+➕ دواء جديد|➕ New medication|➕ Nouveau médicament|➕ Nuevo medicamento|➕ Yeni ilaç|➕ Neues Medikament|➕ Obat baru|➕ نئی دوا
+📋 تقرير للدكتور|📋 Report for the doctor|📋 Rapport pour le médecin|📋 Informe para el médico|📋 Doktor için rapor|📋 Bericht für den Arzt|📋 Laporan untuk dokter|📋 ڈاکٹر کے لیے رپورٹ
+مفيش جرعات النهارده.|No doses today.|Aucune dose aujourd’hui.|No hay dosis hoy.|Bugün doz yok.|Heute keine Dosen.|Tidak ada dosis hari ini.|آج کوئی خوراک نہیں۔
+أدويتي|My medications|Mes médicaments|Mis medicamentos|İlaçlarım|Meine Medikamente|Obatku|میری ادویات
+لسه ما ضفتش دواء.|You haven’t added any medication yet.|Tu n’as pas encore ajouté de médicament.|Aún no has añadido ningún medicamento.|Henüz ilaç eklemedin.|Du hast noch kein Medikament hinzugefügt.|Kamu belum menambahkan obat.|آپ نے ابھی کوئی دوا شامل نہیں کی۔
+بياناتك أمانة، احميها|Your data is a trust — protect it|Tes données sont un dépôt de confiance — protège-les|Tus datos son una confianza — protégelos|Verilerin bir emanet — onu koru|Deine Daten sind anvertraut — schütze sie|Datamu adalah amanah — lindungilah|آپ کا ڈیٹا ایک امانت ہے — اس کی حفاظت کریں
+🔒 الحماية والنسخ|🔒 Protection and backups|🔒 Protection et sauvegardes|🔒 Protección y copias|🔒 Koruma ve yedekler|🔒 Schutz und Backups|🔒 Perlindungan dan cadangan|🔒 تحفظ اور بیک اپ
+قفل التطبيق (اختياري): مقفول|App lock (optional): locked|Verrouillage de l’app (facultatif) : verrouillée|Bloqueo de la app (opcional): bloqueada|Uygulama kilidi (isteğe bağlı): kilitli|App-Sperre (optional): gesperrt|Kunci aplikasi (opsional): terkunci|ایپ لاک (اختیاری): لاک ہے
+👆 بالبصمة / الوجه (الأسهل)|👆 Fingerprint / face (easiest)|👆 Empreinte / visage (le plus simple)|👆 Huella / rostro (lo más fácil)|👆 Parmak izi / yüz (en kolayı)|👆 Fingerabdruck / Gesicht (am einfachsten)|👆 Sidik jari / wajah (termudah)|👆 فنگر پرنٹ / چہرہ (سب سے آسان)
+🔢 رقم سري للتطبيق|🔢 App PIN|🔢 Code PIN de l’app|🔢 PIN de la app|🔢 Uygulama PIN’i|🔢 App-PIN|🔢 PIN aplikasi|🔢 ایپ کا پن
+«بالبصمة / الوجه» بيستخدم قفل موبايلك نفسه (بصمة أو وجه أو نمط أو رقم الموبايل)، فمش هتحتاج تحفظ رقم جديد.|“Fingerprint / face” uses your phone’s own lock (fingerprint, face, pattern or phone PIN) — so you won’t need to remember a new code.|« Empreinte / visage » utilise le verrouillage de ton téléphone (empreinte, visage, schéma ou code) — tu n’auras donc pas de nouveau code à retenir.|«Huella / rostro» usa el bloqueo de tu propio teléfono (huella, rostro, patrón o PIN), así que no tendrás que recordar un código nuevo.|“Parmak izi / yüz”, telefonunun kendi kilidini kullanır (parmak izi, yüz, desen veya PIN) — yani yeni bir kod hatırlaman gerekmez.|„Fingerabdruck / Gesicht“ nutzt die Sperre deines Handys (Fingerabdruck, Gesicht, Muster oder PIN) — du musst dir also keinen neuen Code merken.|“Sidik jari / wajah” memakai kunci ponselmu sendiri (sidik jari, wajah, pola, atau PIN) — jadi kamu tidak perlu mengingat kode baru.|«فنگر پرنٹ / چہرہ» آپ کے فون کا اپنا لاک استعمال کرتا ہے (فنگر پرنٹ، چہرہ، پیٹرن یا پن) — اس لیے آپ کو نیا کوڈ یاد رکھنے کی ضرورت نہیں۔
+📸 نسخ تلقائية|📸 Automatic backups|📸 Sauvegardes automatiques|📸 Copias automáticas|📸 Otomatik yedekler|📸 Automatische Backups|📸 Cadangan otomatis|📸 خودکار بیک اپ
+التطبيق بياخد نسخة من بياناتك كل أسبوع (بيحتفظ بآخر ٤). لو مسحت حاجة بالغلط أو بياناتك اتلخبطت، ارجع لنسخة قديمة.|The app takes a copy of your data every week (it keeps the last 4). If you delete something by mistake or your data gets messed up — go back to an older copy.|L’app fait une copie de tes données chaque semaine (elle garde les 4 dernières). Si tu supprimes quelque chose par erreur ou si tes données sont perturbées — reviens à une ancienne copie.|La app guarda una copia de tus datos cada semana (conserva las últimas 4). Si borras algo por error o tus datos se desordenan, vuelve a una copia anterior.|Uygulama her hafta verilerinin bir kopyasını alır (son 4’ünü saklar). Yanlışlıkla bir şey silersen ya da verilerin karışırsa eski bir kopyaya dön.|Die App erstellt jede Woche eine Kopie deiner Daten (die letzten 4 bleiben erhalten). Wenn du aus Versehen etwas löschst oder deine Daten durcheinandergeraten, geh zu einer älteren Kopie zurück.|Aplikasi menyalin datamu setiap minggu (menyimpan 4 terakhir). Jika kamu tak sengaja menghapus sesuatu atau datamu kacau, kembalilah ke salinan lama.|ایپ ہر ہفتے آپ کے ڈیٹا کی ایک کاپی لیتی ہے (آخری 4 رکھتی ہے)۔ اگر آپ نے غلطی سے کچھ مٹا دیا یا ڈیٹا بگڑ گیا تو پرانی کاپی پر واپس جائیں۔
+📸 خد نسخة دلوقتي|📸 Back up now|📸 Sauvegarder maintenant|📸 Hacer copia ahora|📸 Şimdi yedekle|📸 Jetzt sichern|📸 Cadangkan sekarang|📸 ابھی بیک اپ لیں
+💾 ملف احتياطي (من الإعدادات)|💾 Backup file (from Settings)|💾 Fichier de sauvegarde (depuis les Paramètres)|💾 Archivo de copia (desde Ajustes)|💾 Yedek dosyası (Ayarlar’dan)|💾 Backup-Datei (aus den Einstellungen)|💾 File cadangan (dari Pengaturan)|💾 بیک اپ فائل (ترتیبات سے)
+لسه مفيش نسخ.|No backups yet.|Pas encore de sauvegarde.|Aún no hay copias.|Henüz yedek yok.|Noch keine Backups.|Belum ada cadangan.|ابھی کوئی بیک اپ نہیں۔
+ورد قليل دائم خير من كثير منقطع|A little every day beats a lot now and then|Un peu chaque jour vaut mieux que beaucoup de temps en temps|Un poco cada día es mejor que mucho de vez en cuando|Her gün az, ara sıra çok olandan iyidir|Täglich wenig ist besser als selten viel|Sedikit tapi rutin lebih baik daripada banyak tapi terputus|روز تھوڑا مگر مسلسل، بہت مگر ٹوٹ ٹوٹ کر کرنے سے بہتر ہے
+📖 ختمة القرآن|📖 Quran completion|📖 Lecture complète du Coran|📖 Completar el Corán|📖 Kur’an hatmi|📖 Koran-Khatma|📖 Khatam Al-Qur’an|📖 ختمِ قرآن
+مدة الختمة|Completion period|Durée de la lecture complète|Duración de la lectura|Hatim süresi|Dauer der Khatma|Durasi khatam|ختم کی مدت
+٣٠ يوم (رمضان)|30 days (Ramadan)|30 jours (Ramadan)|30 días (Ramadán)|30 gün (Ramazan)|30 Tage (Ramadan)|30 hari (Ramadan)|30 دن (رمضان)
+٦٠ يوم|60 days|60 jours|60 días|60 gün|60 Tage|60 hari|60 دن
+٩٠ يوم|90 days|90 jours|90 días|90 gün|90 Tage|90 hari|90 دن
+٤ شهور|4 months|4 mois|4 meses|4 ay|4 Monate|4 bulan|4 مہینے
+٦ شهور|6 months|6 mois|6 meses|6 ay|6 Monate|6 bulan|6 مہینے
+سنة|1 year|1 an|1 año|1 yıl|1 Jahr|1 tahun|1 سال
+تذكير يومي (اختياري)|Daily reminder (optional)|Rappel quotidien (facultatif)|Recordatorio diario (opcional)|Günlük hatırlatıcı (isteğe bağlı)|Tägliche Erinnerung (optional)|Pengingat harian (opsional)|روزانہ یاد دہانی (اختیاری)
+حوالي {0} صفحة في اليوم|About {0} pages a day|Environ {0} pages par jour|Unas {0} páginas al día|Günde yaklaşık {0} sayfa|Etwa {0} Seiten pro Tag|Sekitar {0} halaman per hari|روزانہ تقریباً {0} صفحات
+ابدأ الختمة|Start the khatma|Commencer la lecture|Empezar la lectura|Hatme başla|Khatma beginnen|Mulai khatam|ختم شروع کریں
+شهر الصيام والقرآن والدعاء|The month of fasting, Quran and supplication|Le mois du jeûne, du Coran et de l’invocation|El mes del ayuno, el Corán y la súplica|Oruç, Kur’an ve dua ayı|Der Monat des Fastens, des Korans und des Bittgebets|Bulan puasa, Al-Qur’an, dan doa|روزے، قرآن اور دعا کا مہینہ
+🌙 رمضان|🌙 Ramadan|🌙 Ramadan|🌙 Ramadán|🌙 Ramazan|🌙 Ramadan|🌙 Ramadan|🌙 رمضان
+رمضان بعد حوالي|Ramadan in about|Ramadan dans environ|Ramadán en unos|Ramazan yaklaşık|Ramadan in etwa|Ramadan sekitar|رمضان تقریباً
+يوم|days|jours|días|gün|Tage|hari|دن
+📈 صحتي|📈 My health|📈 Ma santé|📈 Mi salud|📈 Sağlığım|📈 Meine Gesundheit|📈 Kesehatanku|📈 میری صحت
+الوزن (كجم)|Weight (kg)|Poids (kg)|Peso (kg)|Kilo (kg)|Gewicht (kg)|Berat (kg)|وزن (کلو)
+نوم (ساعة)|Sleep (hours)|Sommeil (heures)|Sueño (horas)|Uyku (saat)|Schlaf (Stunden)|Tidur (jam)|نیند (گھنٹے)
+المزاج|Mood|Humeur|Ánimo|Ruh hali|Stimmung|Suasana hati|مزاج
+الوزن آخر ٣٠ يوم|Weight over the last 30 days|Poids sur les 30 derniers jours|Peso en los últimos 30 días|Son 30 günün kilosu|Gewicht der letzten 30 Tage|Berat badan 30 hari terakhir|پچھلے 30 دن کا وزن
+النوم آخر ٧ أيام|Sleep over the last 7 days|Sommeil des 7 derniers jours|Sueño de los últimos 7 días|Son 7 günün uykusu|Schlaf der letzten 7 Tage|Tidur 7 hari terakhir|پچھلے 7 دن کی نیند
+🔍 أنماط اكتشفتها|🔍 Patterns I found|🔍 Tendances repérées|🔍 Patrones que encontré|🔍 Bulduğum örüntüler|🔍 Gefundene Muster|🔍 Pola yang kutemukan|🔍 جو رجحانات ملے
+آخر التسجيلات|Latest entries|Dernières entrées|Últimos registros|Son kayıtlar|Letzte Einträge|Catatan terbaru|حالیہ اندراجات
+📊 مراجعتي|📊 My review|📊 Mon bilan|📊 Mi resumen|📊 Değerlendirmem|📊 Meine Rückschau|📊 Ulasanku|📊 میرا جائزہ
+📊 المراجعة|📊 Review|📊 Bilan|📊 Resumen|📊 Değerlendirme|📊 Rückschau|📊 Ulasan|📊 جائزہ
+🏆 إنجازاتي|🏆 My achievements|🏆 Mes réussites|🏆 Mis logros|🏆 Başarılarım|🏆 Meine Erfolge|🏆 Pencapaianku|🏆 میری کامیابیاں
+التزامك|Your commitment|Ton assiduité|Tu constancia|Düzenliliğin|Deine Konsequenz|Konsistensimu|آپ کی پابندی
+💡 نصيحة|💡 Tip|💡 Conseil|💡 Consejo|💡 İpucu|💡 Tipp|💡 Tips|💡 مشورہ
+ضيف عادات في جدولك عشان أقدر أراجع أسبوعك.|Add habits to your schedule so I can review your week.|Ajoute des habitudes à ton planning pour que je puisse faire le bilan de ta semaine.|Añade hábitos a tu horario para que pueda revisar tu semana.|Programına alışkanlık ekle ki haftanı değerlendirebileyim.|Füge Gewohnheiten zu deinem Plan hinzu, damit ich deine Woche auswerten kann.|Tambahkan kebiasaan ke jadwalmu agar aku bisa meninjau minggumu.|اپنے شیڈول میں عادتیں شامل کریں تاکہ میں آپ کے ہفتے کا جائزہ لے سکوں۔
+🔔 تذكير السبت|🔔 Saturday reminder|🔔 Rappel du samedi|🔔 Recordatorio del sábado|🔔 Cumartesi hatırlatıcısı|🔔 Samstags-Erinnerung|🔔 Pengingat hari Sabtu|🔔 سنیچر کی یاد دہانی
+🎛️ تخصيص|🎛️ Customize|🎛️ Personnaliser|🎛️ Personalizar|🎛️ Özelleştir|🎛️ Anpassen|🎛️ Sesuaikan|🎛️ حسب ضرورت بنائیں
+اقفل المزايا اللي مش محتاجها عشان التطبيق يبقى أبسط. بتتشال من «المزيد» ومن الصفحة الرئيسية، وبياناتك مش بتتمسح.|Turn off the features you don’t need to keep the app simpler. They’re removed from “More” and the home page — and your data isn’t deleted.|Désactive les fonctions inutiles pour simplifier l’app. Elles disparaissent de « Plus » et de l’accueil — et tes données ne sont pas supprimées.|Desactiva las funciones que no necesitas para que la app sea más simple. Se quitan de «Más» y de la página principal, y tus datos no se borran.|İhtiyacın olmayan özellikleri kapat, uygulama sadeleşsin. “Daha fazla” bölümünden ve ana sayfadan kalkarlar — verilerin silinmez.|Schalte Funktionen aus, die du nicht brauchst, damit die App einfacher wird. Sie verschwinden aus „Mehr“ und von der Startseite — deine Daten bleiben erhalten.|Matikan fitur yang tidak kamu perlukan agar aplikasi lebih sederhana. Fitur itu hilang dari “Lainnya” dan beranda — datamu tidak terhapus.|جن فیچرز کی ضرورت نہیں انہیں بند کر دیں تاکہ ایپ سادہ ہو جائے۔ وہ «مزید» اور ہوم پیج سے ہٹ جاتے ہیں — اور آپ کا ڈیٹا نہیں مٹتا۔
+المزايا|Features|Fonctionnalités|Funciones|Özellikler|Funktionen|Fitur|فیچرز
+حجم الخط|Font size|Taille de la police|Tamaño de fuente|Yazı boyutu|Schriftgröße|Ukuran huruf|فونٹ کا سائز
+صغير|Small|Petit|Pequeño|Küçük|Klein|Kecil|چھوٹا
+عادي|Normal|Normal|Normal|Normal|Normal|Normal|عام
+كبير|Large|Grand|Grande|Büyük|Groß|Besar|بڑا
+الشكل|Appearance|Apparence|Apariencia|Görünüm|Darstellung|Tampilan|ظاہری شکل
+📏 عرض مضغوط (كروت أصغر)|📏 Compact view (smaller cards)|📏 Affichage compact (cartes plus petites)|📏 Vista compacta (tarjetas más pequeñas)|📏 Kompakt görünüm (daha küçük kartlar)|📏 Kompakte Ansicht (kleinere Karten)|📏 Tampilan ringkas (kartu lebih kecil)|📏 مختصر منظر (چھوٹے کارڈز)
+مساعدة|Help|Aide|Ayuda|Yardım|Hilfe|Bantuan|مدد
+🧭 اعرض قايمة «ابدأ هنا» تاني|🧭 Show the “Start here” list again|🧭 Réafficher la liste « Commence ici »|🧭 Mostrar de nuevo la lista «Empieza aquí»|🧭 “Buradan başla” listesini tekrar göster|🧭 Die Liste „Hier starten“ wieder anzeigen|🧭 Tampilkan lagi daftar “Mulai dari sini”|🧭 «یہاں سے شروع کریں» فہرست دوبارہ دکھائیں
+أنا رجل|I’m male|Je suis un homme|Soy hombre|Erkeğim|Ich bin männlich|Saya laki-laki|میں مرد ہوں
+أنا امرأة|I’m female|Je suis une femme|Soy mujer|Kadınım|Ich bin weiblich|Saya perempuan|میں خاتون ہوں
+الأسبوع اللي فات|Last week|La semaine dernière|La semana pasada|Geçen hafta|Letzte Woche|Minggu lalu|پچھلا ہفتہ
+الأسبوع ده لحد دلوقتي|This week so far|Cette semaine jusqu’à présent|Esta semana hasta ahora|Bu hafta şimdiye kadar|Diese Woche bisher|Minggu ini sejauh ini|اس ہفتے اب تک
+باقي على {0}|Time left until {0}|Temps restant avant {0}|Tiempo restante hasta {0}|{0} vaktine kalan|Noch bis {0}|Menuju {0}|{0} میں باقی
+مثال: شبكات الحاسب|e.g. Computer networking|ex. Réseaux informatiques|p. ej. Redes informáticas|örn. Bilgisayar ağları|z. B. Computernetzwerke|mis. Jaringan komputer|مثال: کمپیوٹر نیٹ ورکنگ
+ملف المصحف مش موجود جوه التطبيق. لازم تتأكد إن خطوة تحميل المصحف نجحت وقت البناء.|The Quran file isn’t inside the app. Make sure the Quran download step succeeded during the build.|Le fichier du Coran n’est pas dans l’app. Vérifie que l’étape de téléchargement du Coran a réussi lors de la compilation.|El archivo del Corán no está en la app. Comprueba que el paso de descarga del Corán se completó al compilar.|Kur’an dosyası uygulamanın içinde yok. Derleme sırasında Kur’an indirme adımının başarılı olduğundan emin ol.|Die Koran-Datei ist nicht in der App. Stelle sicher, dass der Schritt zum Herunterladen des Korans beim Build erfolgreich war.|File Al-Qur’an tidak ada di dalam aplikasi. Pastikan langkah pengunduhan Al-Qur’an berhasil saat proses build.|قرآن کی فائل ایپ کے اندر موجود نہیں۔ یقینی بنائیں کہ بلڈ کے وقت قرآن ڈاؤن لوڈ کا مرحلہ کامیاب رہا۔
+⚠️ القفل بيمنع اللي ماسك موبايلك من فتح التطبيق، لكنه مش تشفير للملفات. وعشان بياناتك تبقى آمنة لو الموبايل ضاع، احتفظ بملف احتياطي برّه الموبايل، وفعّل النسخ الاحتياطي التلقائي لحساب جوجل من إعدادات الموبايل (نسخ جوجل الاحتياطي). لو نسيت الرقم الطريقة الوحيدة مسح البيانات.|⚠️ The lock stops whoever holds your phone from opening the app, but it is not file encryption. To keep your data safe if the phone is lost, keep a backup file outside the phone and turn on automatic Google account backup in your phone settings (Google backup). If you forget the PIN, the only way in is to erase the data.|⚠️ Le verrouillage empêche quiconque tient ton téléphone d’ouvrir l’app, mais ce n’est pas un chiffrement des fichiers. Pour garder tes données en sécurité si le téléphone est perdu, conserve un fichier de sauvegarde hors du téléphone et active la sauvegarde automatique du compte Google dans les réglages du téléphone (sauvegarde Google). Si tu oublies le code, la seule solution est d’effacer les données.|⚠️ El bloqueo impide que quien tenga tu teléfono abra la app, pero no cifra los archivos. Para mantener tus datos a salvo si pierdes el teléfono, guarda una copia fuera del teléfono y activa la copia de seguridad automática de la cuenta de Google en los ajustes del teléfono (copia de seguridad de Google). Si olvidas el código, la única forma es borrar los datos.|⚠️ Kilit, telefonunu eline alanın uygulamayı açmasını engeller ama dosyaları şifrelemez. Telefon kaybolursa verilerin güvende olması için yedek dosyayı telefonun dışında sakla ve telefon ayarlarından Google hesabı otomatik yedeklemesini aç (Google yedekleme). Kodu unutursan tek yol verileri silmektir.|⚠️ Die Sperre hindert jeden, der dein Handy hält, am Öffnen der App, ist aber keine Dateiverschlüsselung. Damit deine Daten bei Verlust des Handys sicher sind, bewahre eine Backup-Datei außerhalb des Handys auf und aktiviere in den Handy-Einstellungen die automatische Sicherung deines Google-Kontos (Google-Backup). Wenn du den Code vergisst, bleibt nur das Löschen der Daten.|⚠️ Kunci mencegah siapa pun yang memegang ponselmu membuka aplikasi, tetapi ini bukan enkripsi file. Agar datamu aman jika ponsel hilang, simpan file cadangan di luar ponsel dan aktifkan pencadangan otomatis akun Google di pengaturan ponsel (pencadangan Google). Jika lupa kode, satu-satunya cara adalah menghapus data.|⚠️ لاک آپ کے فون کو پکڑنے والے کو ایپ کھولنے سے روکتا ہے، لیکن یہ فائلوں کی انکرپشن نہیں ہے۔ فون گم ہونے کی صورت میں ڈیٹا محفوظ رکھنے کے لیے بیک اپ فائل فون کے باہر رکھیں اور فون کی ترتیبات سے گوگل اکاؤنٹ کا خودکار بیک اپ آن کریں (گوگل بیک اپ)۔ اگر کوڈ بھول گئے تو واحد راستہ ڈیٹا مٹانا ہے۔
+Push/Pull/Legs|Push/Pull/Legs|Pousser/Tirer/Jambes|Empuje/Tirón/Piernas|İtme/Çekme/Bacak|Drücken/Ziehen/Beine|Dorong/Tarik/Kaki|پش / پل / لیگز
+Upper/Lower|Upper/Lower|Haut/Bas du corps|Tren superior/inferior|Üst/Alt vücut|Oberkörper/Unterkörper|Tubuh atas/bawah|اوپری / نچلا
+Full Body|Full body|Corps entier|Cuerpo completo|Tüm vücut|Ganzkörper|Seluruh tubuh|پورا جسم
+Push|Push|Pousser|Empuje|İtme|Drücken|Dorong|پش
+Pull|Pull|Tirer|Tirón|Çekme|Ziehen|Tarik|پل
+Legs|Legs|Jambes|Piernas|Bacak|Beine|Kaki|لیگز
+Upper|Upper|Haut du corps|Tren superior|Üst vücut|Oberkörper|Tubuh atas|اوپری
+Lower|Lower|Bas du corps|Tren inferior|Alt vücut|Unterkörper|Tubuh bawah|نچلا
+Full|Full|Corps entier|Cuerpo completo|Tüm vücut|Ganzkörper|Seluruh tubuh|مکمل
+V-ups|V-ups|Relevés en V|Elevaciones en V|V şeklinde mekik|Taschenmesser-Crunch|Angkat tubuh bentuk V|وی اپس
+إنتاجية|Productivity|Productivité|Productividad|Verimlilik|Produktivität|Produktivitas|پیداواریت
+عبادة|Worship|Pratique religieuse|Adoración|İbadet|Glaubenspraxis|Ibadah|عبادت
+صحة|Health|Santé|Salud|Sağlık|Gesundheit|Kesehatan|صحت
+مال|Money|Argent|Dinero|Para|Geld|Uang|رقم
+تطوير ذاتي|Self-development|Développement personnel|Desarrollo personal|Kişisel gelişim|Persönliche Entwicklung|Pengembangan diri|ذاتی ترقی
+التطبيق|App|Application|Aplicación|Uygulama|App|Aplikasi|ایپ
+{0} ✕|{0} ✕|{0} ✕|{0} ✕|{0} ✕|{0} ✕|{0} ✕|{0} ✕
+لا توجد أخطاء ✅|No errors ✅|Aucune erreur ✅|Sin errores ✅|Hata yok ✅|Keine Fehler ✅|Tidak ada error ✅|کوئی خرابی نہیں ✅
+تم نسخ سجل الأخطاء|Error log copied|Journal d’erreurs copié|Registro de errores copiado|Hata günlüğü kopyalandı|Fehlerprotokoll kopiert|Log error disalin|خرابیوں کا لاگ کاپی ہو گیا
+إقلاع|Quit|Arrêt|Dejar|Bırakma|Aufhören|Berhenti|چھوڑنا
+نسخ سجل الأخطاء|Copy error log|Copier le journal d’erreurs|Copiar registro de errores|Hata günlüğünü kopyala|Fehlerprotokoll kopieren|Salin log error|خرابیوں کا لاگ کاپی کریں
+⏹ انصراف|⏹ Check out|⏹ Pointer la sortie|⏹ Registrar salida|⏹ Çıkış yap|⏹ Ausstempeln|⏹ Absen pulang|⏹ روانگی درج کریں
+▶ حضور|▶ Check in|▶ Pointer l’arrivée|▶ Registrar entrada|▶ Giriş yap|▶ Einstempeln|▶ Absen masuk|▶ آمد درج کریں
+🕌 العبادات|🕌 Worship|🕌 Pratique religieuse|🕌 Adoración|🕌 İbadet|🕌 Glaubenspraxis|🕌 Ibadah|🕌 عبادت
+💪 التمرين|💪 Workout|💪 Entraînement|💪 Entrenamiento|💪 Antrenman|💪 Training|💪 Latihan|💪 ورزش
+📋 باقي يومك|📋 Rest of your day|📋 Reste de ta journée|📋 Lo que queda de tu día|📋 Günün geri kalanı|📋 Der Rest deines Tages|📋 Sisa harimu|📋 آپ کے دن کا باقی حصہ
+احفظ النسخة|Save the backup|Enregistrer la sauvegarde|Guardar la copia|Yedeği kaydet|Backup speichern|Simpan cadangan|بیک اپ محفوظ کریں
+إجمالي النهارده {0} س|Total today: {0} h|Total aujourd’hui : {0} h|Total de hoy: {0} h|Bugün toplam: {0} sa|Heute insgesamt: {0} Std.|Total hari ini: {0} jam|آج کل: {0} گھنٹے
+لسه ماتبصمتش|Not checked in yet|Pas encore pointé|Aún sin registrar entrada|Henüz giriş yapılmadı|Noch nicht eingestempelt|Belum absen masuk|ابھی آمد درج نہیں ہوئی
+اضغط ▶ لتسجيل الحضور|Tap ▶ to check in|Touche ▶ pour pointer l’arrivée|Toca ▶ para registrar la entrada|Giriş yapmak için ▶ dokun|Tippe auf ▶, um einzustempeln|Ketuk ▶ untuk absen masuk|آمد درج کرنے کے لیے ▶ دبائیں
+دخلت {0}|Checked in at {0}|Arrivée à {0}|Entrada a las {0}|Giriş: {0}|Eingestempelt um {0}|Masuk pukul {0}|آمد: {0}
+مرّ {0} س|{0} h elapsed|{0} h écoulées|{0} h transcurridas|{0} sa geçti|{0} Std. vergangen|{0} jam berlalu|{0} گھنٹے گزرے
+{0} س|{0} h|{0} h|{0} h|{0} sa|{0} Std.|{0} jam|{0} گھنٹے
+سجل الشغل 💼|Work log 💼|Journal de travail 💼|Registro de trabajo 💼|Çalışma kaydı 💼|Arbeitsprotokoll 💼|Catatan kerja 💼|کام کا ریکارڈ 💼
+ساعات شغلك لكل شهر شغل.|Your work hours for each work month.|Tes heures de travail pour chaque mois de travail.|Tus horas de trabajo de cada mes laboral.|Her çalışma ayı için çalışma saatlerin.|Deine Arbeitsstunden für jeden Arbeitsmonat.|Jam kerjamu untuk setiap bulan kerja.|ہر کام کے مہینے کے لیے آپ کے کام کے گھنٹے۔
+شهر الشغل بيبدأ يوم|Work month starts on day|Le mois de travail commence le jour|El mes laboral empieza el día|Çalışma ayı şu günde başlar|Der Arbeitsmonat beginnt am Tag|Bulan kerja dimulai pada hari ke|کام کا مہینہ اس دن شروع ہوتا ہے
+الفترة الحالية: {0}|Current period: {0}|Période en cours : {0}|Periodo actual: {0}|Mevcut dönem: {0}|Aktueller Zeitraum: {0}|Periode saat ini: {0}|موجودہ مدت: {0}
+🔔 إشعار البصمة في الستارة|🔔 Check-in notification in the notification shade|🔔 Notification de pointage dans le volet de notifications|🔔 Notificación de registro en la barra de notificaciones|🔔 Bildirim çubuğunda giriş bildirimi|🔔 Einstempel-Benachrichtigung in der Statusleiste|🔔 Notifikasi absen di bilah notifikasi|🔔 نوٹیفکیشن بار میں حاضری کی اطلاع
+الشهور|Months|Mois|Meses|Aylar|Monate|Bulan|مہینے
+{0} يوم شغل|{0} work days|{0} jours de travail|{0} días de trabajo|{0} iş günü|{0} Arbeitstage|{0} hari kerja|{0} کام کے دن
+الحالي|Current|En cours|Actual|Mevcut|Aktuell|Saat ini|موجودہ
+— {0} س|— {0} h|— {0} h|— {0} h|— {0} sa|— {0} Std.|— {0} jam|— {0} گھنٹے
+⚠ بدون انصراف|⚠ No check-out|⚠ Sans sortie|⚠ Sin salida|⚠ Çıkış yok|⚠ Ohne Ausstempeln|⚠ Tanpa absen pulang|⚠ روانگی درج نہیں
+إضافة يدوية (لو نسيت تبصم)|Manual entry (if you forgot to check in)|Saisie manuelle (si tu as oublié de pointer)|Entrada manual (si olvidaste registrar)|Elle ekleme (giriş yapmayı unuttuysan)|Manueller Eintrag (falls du das Einstempeln vergessen hast)|Input manual (jika lupa absen)|دستی اندراج (اگر حاضری لگانا بھول گئے)
+عندك بصمة حضور مفتوحة، اعمل انصراف الأول|You have an open check-in, check out first|Tu as un pointage ouvert, pointe d’abord la sortie|Tienes una entrada abierta, registra primero la salida|Açık bir girişin var, önce çıkış yap|Du hast einen offenen Einstempel-Eintrag, stempel zuerst aus|Kamu punya absen masuk yang terbuka, absen pulang dulu|آپ کی ایک حاضری کھلی ہے، پہلے روانگی درج کریں
+تم تسجيل الحضور ✅|Check-in recorded ✅|Arrivée enregistrée ✅|Entrada registrada ✅|Giriş kaydedildi ✅|Einstempeln erfasst ✅|Absen masuk tercatat ✅|آمد درج ہو گئی ✅
+تم الانصراف • إجمالي اليوم {0} س|Checked out • today’s total {0} h|Sortie pointée • total du jour {0} h|Salida registrada • total de hoy {0} h|Çıkış yapıldı • bugünün toplamı {0} sa|Ausgestempelt • Tagessumme {0} Std.|Absen pulang tercatat • total hari ini {0} jam|روانگی درج ہو گئی • آج کا کل {0} گھنٹے
+اكمل التاريخ والوقت|Complete the date and time|Complète la date et l’heure|Completa la fecha y la hora|Tarihi ve saati tamamla|Vervollständige Datum und Uhrzeit|Lengkapi tanggal dan waktu|تاریخ اور وقت مکمل کریں
+الوقت غير صحيح|Invalid time|Heure invalide|Hora no válida|Geçersiz saat|Ungültige Uhrzeit|Waktu tidak valid|وقت درست نہیں
+{0} س {1} د|{0} h {1} min|{0} h {1} min|{0} h {1} min|{0} sa {1} dk|{0} Std. {1} Min.|{0} jam {1} menit|{0} گھنٹے {1} منٹ
+🕌 الصلاة الجاية: {0}|🕌 Next prayer: {0}|🕌 Prochaine prière : {0}|🕌 Próxima oración: {0}|🕌 Sonraki namaz: {0}|🕌 Nächstes Gebet: {0}|🕌 Salat berikutnya: {0}|🕌 اگلی نماز: {0}
+بعد {0}|In {0}|Dans {0}|En {0}|{0} sonra|In {0}|{0} lagi|{0} بعد
+جسمك|Your body|Ton corps|Tu cuerpo|Vücudun|Dein Körper|Tubuhmu|آپ کا جسم
+دراستك|Your studies|Tes études|Tus estudios|Eğitimin|Dein Studium|Studimu|آپ کی پڑھائی
+شغلك|Your work|Ton travail|Tu trabajo|İşin|Deine Arbeit|Pekerjaanmu|آپ کا کام
+{0} من {1} خلصت|{0} of {1} done|{0} sur {1} terminées|{0} de {1} hechas|{0} / {1} tamamlandı|{0} von {1} erledigt|{0} dari {1} selesai|{1} میں سے {0} مکمل
+أكتر من كام كجم؟|More than how many kg?|Plus de combien de kg ?|¿Más de cuántos kg?|Kaç kilodan fazla?|Mehr als wie viele kg?|Lebih dari berapa kg?|کتنے کلو سے زیادہ؟
+اكتب الوزن اللي عايز تكسره|Enter the weight you want to beat|Saisis le poids que tu veux battre|Escribe el peso que quieres superar|Aşmak istediğin ağırlığı yaz|Gib das Gewicht ein, das du übertreffen willst|Tulis berat yang ingin kamu lampaui|جو وزن توڑنا چاہتے ہیں وہ لکھیں
+⚡ قوالب جاهزة (٣٠+ عادة بضغطة)|⚡ Ready-made templates (30+ habits in one tap)|⚡ Modèles prêts à l’emploi (30+ habitudes en un clic)|⚡ Plantillas listas (30+ hábitos con un toque)|⚡ Hazır şablonlar (tek dokunuşla 30+ alışkanlık)|⚡ Fertige Vorlagen (30+ Gewohnheiten mit einem Tipp)|⚡ Templat siap pakai (30+ kebiasaan sekali ketuk)|⚡ تیار سانچے (ایک ٹیپ میں 30+ عادتیں)
+✓ موجود|✓ Already added|✓ Déjà ajouté|✓ Ya añadido|✓ Zaten eklendi|✓ Bereits hinzugefügt|✓ Sudah ditambahkan|✓ پہلے سے شامل ہے
+دي الصلوات الناقصة من جدولك. هترجع كل واحدة في مكانها.|These are the prayers missing from your schedule. Each will go back in its place.|Ce sont les prières absentes de ton planning. Chacune reprendra sa place.|Estas son las oraciones que faltan en tu horario. Cada una volverá a su lugar.|Bunlar programından eksik olan namazlar. Her biri yerine geri dönecek.|Das sind die Gebete, die in deinem Plan fehlen. Jedes kommt an seinen Platz zurück.|Ini salat yang hilang dari jadwalmu. Masing-masing akan kembali ke tempatnya.|یہ آپ کے شیڈول سے غائب نمازیں ہیں۔ ہر ایک اپنی جگہ پر واپس آ جائے گی۔
+نظام الشغل|Work system|Système de travail|Sistema de trabajo|Çalışma düzeni|Arbeitsmodell|Sistem kerja|کام کا نظام
+معاد ثابت|Fixed schedule|Horaire fixe|Horario fijo|Sabit saat|Feste Zeiten|Jadwal tetap|مقررہ شیڈول
+بصمة حضور وانصراف|Check-in / check-out|Pointage arrivée / sortie|Registro de entrada / salida|Giriş / çıkış kaydı|Ein- / Ausstempeln|Absen masuk / pulang|حاضری / روانگی
+هتبصم حضور وانصراف من الصفحة الرئيسية، ونحسبلك ساعات كل يوم وكل شهر.|You’ll check in and out from the home page, and we’ll calculate your hours for every day and month.|Tu pointeras l’arrivée et la sortie depuis l’accueil, et nous calculerons tes heures par jour et par mois.|Registrarás entrada y salida desde la página principal y calcularemos tus horas de cada día y mes.|Giriş ve çıkışı ana sayfadan yapacaksın, her gün ve ay için saatlerini hesaplayacağız.|Du stempelst auf der Startseite ein und aus, und wir berechnen deine Stunden für jeden Tag und Monat.|Kamu absen masuk dan pulang dari beranda, dan kami hitung jam kerjamu tiap hari dan bulan.|آپ ہوم پیج سے آمد اور روانگی درج کریں گے، اور ہم ہر دن اور مہینے کے گھنٹے شمار کریں گے۔
+موجود بالفعل في جدولك ✓|Already in your schedule ✓|Déjà dans ton planning ✓|Ya está en tu horario ✓|Zaten programında ✓|Bereits in deinem Plan ✓|Sudah ada di jadwalmu ✓|آپ کے شیڈول میں پہلے سے ہے ✓
+{0} من {1} {2}|{0} of {1} {2}|{0} sur {1} {2}|{0} de {1} {2}|{0} / {1} {2}|{0} von {1} {2}|{0} dari {1} {2}|{1} {2} میں سے {0}
+صفحات|pages|pages|páginas|sayfa|Seiten|halaman|صفحات
+آية|verses|versets|versículos|ayet|Verse|ayat|آیات
+٢٠ صفحة = جزء كامل|20 pages = one full juz’|20 pages = un juz’ complet|20 páginas = un yuz completo|20 sayfa = tam bir cüz|20 Seiten = ein ganzer Dschuz|20 halaman = satu juz penuh|20 صفحات = ایک مکمل پارہ
+عدد الصفحات تقريبي. ٢٠ صفحة = جزء كامل|Page counts are approximate. 20 pages = one full juz’|Le nombre de pages est approximatif. 20 pages = un juz’ complet|El número de páginas es aproximado. 20 páginas = un yuz completo|Sayfa sayıları yaklaşıktır. 20 sayfa = tam bir cüz|Die Seitenzahl ist ungefähr. 20 Seiten = ein ganzer Dschuz|Jumlah halaman perkiraan. 20 halaman = satu juz penuh|صفحات کی تعداد تقریبی ہے۔ 20 صفحات = ایک مکمل پارہ
+بسم الله الرحمن الرحيم|In the name of God, the Most Gracious, the Most Merciful|Au nom de Dieu, le Tout Miséricordieux, le Très Miséricordieux|En el nombre de Dios, el Clemente, el Misericordioso|Rahman ve Rahim olan Allah’ın adıyla|Im Namen Gottes, des Allerbarmers, des Barmherzigen|Dengan nama Allah Yang Maha Pengasih lagi Maha Penyayang|اللہ کے نام سے جو بڑا مہربان نہایت رحم والا ہے
+صفحة {0}|Page {0}|Page {0}|Página {0}|Sayfa {0}|Seite {0}|Halaman {0}|صفحہ {0}
+أتممت {0}|You completed {0}|Tu as terminé {0}|Completaste {0}|{0} tamamladın|Du hast {0} abgeschlossen|Kamu menyelesaikan {0}|آپ نے {0} مکمل کیا
+صوت كل صلاة|Sound for each prayer|Son de chaque prière|Sonido de cada oración|Her namaz için ses|Ton für jedes Gebet|Suara untuk setiap salat|ہر نماز کی آواز
+طريقة تشغيل الأذان|How the adhan plays|Mode de lecture de l’adhan|Cómo suena el adhan|Ezanın çalma şekli|Wie der Adhan abgespielt wird|Cara adzan diputar|اذان بجانے کا طریقہ
+⏹ إيقاف|⏹ Stop|⏹ Arrêter|⏹ Detener|⏹ Durdur|⏹ Stopp|⏹ Berhenti|⏹ روکیں
+🕌 عند وقت الصلاة|🕌 At prayer time|🕌 À l’heure de la prière|🕌 A la hora de la oración|🕌 Namaz vaktinde|🕌 Zur Gebetszeit|🕌 Saat waktu salat|🕌 نماز کے وقت
+🌿 قبلها بـ ١٠ دقائق|🌿 10 minutes before|🌿 10 minutes avant|🌿 10 minutos antes|🌿 10 dakika önce|🌿 10 Minuten vorher|🌿 10 menit sebelumnya|🌿 10 منٹ پہلے
+⏰ تذكير بعد ٣٠ دقيقة|⏰ Reminder after 30 minutes|⏰ Rappel après 30 minutes|⏰ Recordatorio tras 30 minutos|⏰ 30 dakika sonra hatırlatma|⏰ Erinnerung nach 30 Minuten|⏰ Pengingat setelah 30 menit|⏰ 30 منٹ بعد یاد دہانی
+🕌 أذان|🕌 Adhan|🕌 Adhan|🕌 Adhan|🕌 Ezan|🕌 Adhan|🕌 Adzan|🕌 اذان
+🔇 قفل|🔇 Mute|🔇 Muet|🔇 Silencio|🔇 Sessiz|🔇 Stumm|🔇 Senyap|🔇 خاموش
+مرة لحد النهاية|Once until the end|Une fois jusqu’à la fin|Una vez hasta el final|Sona kadar bir kez|Einmal bis zum Ende|Sekali sampai selesai|ایک بار آخر تک
+يتكرر لحد ما أوقفه|Repeats until I stop it|Se répète jusqu’à ce que je l’arrête|Se repite hasta que lo detenga|Ben durdurana kadar tekrarlanır|Wiederholt sich, bis ich es stoppe|Berulang sampai kuhentikan|جب تک نہ روکوں دہراتا رہے
+🔊 أوقفه بأزرار الصوت|🔊 Stop it with the volume buttons|🔊 Arrête-le avec les boutons de volume|🔊 Detenlo con los botones de volumen|🔊 Ses tuşlarıyla durdur|🔊 Mit den Lautstärketasten stoppen|🔊 Hentikan dengan tombol volume|🔊 والیوم بٹنوں سے روکیں
+خد راحة قصيرة 🤍|Take a short break 🤍|Fais une courte pause 🤍|Toma un descanso corto 🤍|Kısa bir mola ver 🤍|Mach eine kurze Pause 🤍|Istirahat sebentar 🤍|تھوڑا آرام کریں 🤍
+🔁 اشتراك {0} بيتجدد بكرة ({1} ج)|🔁 {0} subscription renews tomorrow ({1} EGP)|🔁 L’abonnement {0} se renouvelle demain ({1} EGP)|🔁 La suscripción {0} se renueva mañana ({1} EGP)|🔁 {0} aboneliği yarın yenileniyor ({1} EGP)|🔁 Das Abo {0} verlängert sich morgen ({1} EGP)|🔁 Langganan {0} diperpanjang besok ({1} EGP)|🔁 {0} سبسکرپشن کل تجدید ہو گا ({1} مصری پاؤنڈ)
+🌱 {0}: وقتك الحساس. اعمل بديل دلوقتي، وافتح 🆘 لو محتاج|🌱 {0}: your critical moment. Do a substitute now, and open 🆘 if you need help|🌱 {0} : ton moment sensible. Fais une alternative maintenant, et ouvre 🆘 si besoin|🌱 {0}: tu momento crítico. Haz un sustituto ahora y abre 🆘 si lo necesitas|🌱 {0}: kritik anın. Şimdi bir alternatif yap, gerekirse 🆘 aç|🌱 {0}: dein kritischer Moment. Mach jetzt eine Ersatzhandlung und öffne 🆘, wenn du Hilfe brauchst|🌱 {0}: saat rawanmu. Lakukan pengganti sekarang, dan buka 🆘 jika perlu|🌱 {0}: آپ کا نازک وقت۔ ابھی کوئی متبادل کریں، اور ضرورت ہو تو 🆘 کھولیں
+💊 ميعاد الدوا|💊 Medication time|💊 C’est l’heure du médicament|💊 Hora de la medicina|💊 İlaç zamanı|💊 Zeit für die Medikamente|💊 Waktunya minum obat|💊 دوا کا وقت
+⏰ لسه ما أخدتش دواءك؟|⏰ Haven’t taken your medicine yet?|⏰ Tu n’as pas encore pris ton médicament ?|⏰ ¿Aún no tomaste tu medicina?|⏰ İlacını henüz almadın mı?|⏰ Noch keine Medikamente genommen?|⏰ Belum minum obatmu?|⏰ ابھی تک دوا نہیں لی؟
+⚠️ فاتتك جرعة؟|⚠️ Missed a dose?|⚠️ Une dose oubliée ?|⚠️ ¿Se te pasó una dosis?|⚠️ Bir dozu mu kaçırdın?|⚠️ Dosis verpasst?|⚠️ Terlewat satu dosis?|⚠️ کوئی خوراک رہ گئی؟
+{0}: باقي {1} جرعة|{0}: {1} doses left|{0} : {1} doses restantes|{0}: quedan {1} dosis|{0}: {1} doz kaldı|{0}: noch {1} Dosen|{0}: sisa {1} dosis|{0}: {1} خوراکیں باقی
+📖 ورد القرآن النهارده: {0} صفحة|📖 Today’s Quran portion: {0} pages|📖 Lecture du Coran aujourd’hui : {0} pages|📖 Lectura del Corán de hoy: {0} páginas|📖 Bugünkü Kur’an okuması: {0} sayfa|📖 Heutiger Koranabschnitt: {0} Seiten|📖 Wirid Al-Qur’an hari ini: {0} halaman|📖 آج کی تلاوت: {0} صفحات
+🌙 وقت السحور|🌙 Suhoor time|🌙 Heure du suhoor|🌙 Hora del suhur|🌙 Sahur vakti|🌙 Zeit für Suhur|🌙 Waktu sahur|🌙 سحری کا وقت
+🌙 قرب الإفطار|🌙 Iftar is near|🌙 L’iftar approche|🌙 Se acerca el iftar|🌙 İftar yaklaşıyor|🌙 Iftar rückt näher|🌙 Waktu berbuka sudah dekat|🌙 افطار قریب ہے
+كسر {0} ‏> {1} كجم|Beat {0} > {1} kg|Battre {0} > {1} kg|Superar {0} > {1} kg|{0} > {1} kg aş|{0} > {1} kg übertreffen|Pecahkan {0} > {1} kg|{0} > {1} کلو توڑیں
+🔔 إشعار|🔔 Notification|🔔 Notification|🔔 Notificación|🔔 Bildirim|🔔 Benachrichtigung|🔔 Notifikasi|🔔 اطلاع
+🌙 حان وقت الإفطار|🌙 Time for iftar|🌙 C’est l’heure de l’iftar|🌙 Hora del iftar|🌙 İftar vakti|🌙 Zeit für Iftar|🌙 Waktunya berbuka|🌙 افطار کا وقت
+اللهم لك صمت وعلى رزقك أفطرت|O God, for You I fasted and with Your provision I broke my fast|Ô Dieu, pour Toi j’ai jeûné et avec Ta subsistance j’ai rompu mon jeûne|Oh Dios, por Ti ayuné y con Tu sustento rompí mi ayuno|Allah’ım, Senin için oruç tuttum ve Senin rızkınla orucumu açtım|O Gott, für Dich habe ich gefastet und mit Deiner Versorgung habe ich das Fasten gebrochen|Ya Allah, untuk-Mu aku berpuasa dan dengan rezeki-Mu aku berbuka|اے اللہ! میں نے تیرے لیے روزہ رکھا اور تیرے رزق سے افطار کیا
+📊 مراجعة أسبوعك جاهزة|📊 Your weekly review is ready|📊 Ton bilan de la semaine est prêt|📊 Tu resumen semanal está listo|📊 Haftalık değerlendirmen hazır|📊 Deine Wochenrückschau ist fertig|📊 Ulasan mingguanmu sudah siap|📊 آپ کا ہفتہ وار جائزہ تیار ہے
+شوف التزامك وإنجازاتك الأسبوع اللي فات|See your commitment and achievements from last week|Découvre ton assiduité et tes réussites de la semaine dernière|Mira tu constancia y tus logros de la semana pasada|Geçen haftaki düzenliliğini ve başarılarını gör|Sieh dir deine Konsequenz und Erfolge der letzten Woche an|Lihat konsistensi dan pencapaianmu minggu lalu|پچھلے ہفتے کی اپنی پابندی اور کامیابیاں دیکھیں
+التجربة شغالة جوه تطبيق الموبايل بس|The test only works inside the mobile app|Le test ne fonctionne que dans l’application mobile|La prueba solo funciona dentro de la app móvil|Test yalnızca mobil uygulamanın içinde çalışır|Der Test funktioniert nur in der Mobil-App|Uji coba hanya berfungsi di dalam aplikasi seluler|ٹیسٹ صرف موبائل ایپ کے اندر کام کرتا ہے
+{0} ثانية|{0} seconds|{0} secondes|{0} segundos|{0} saniye|{0} Sekunden|{0} detik|{0} سیکنڈ
+{0} دقايق|{0} minutes|{0} minutes|{0} minutos|{0} dakika|{0} Minuten|{0} menit|{0} منٹ
+ضيف كارديو 20-30 دقيقة، 2-3 مرات في الأسبوع.|Add 20-30 minutes of cardio, 2-3 times a week.|Ajoute 20 à 30 minutes de cardio, 2 à 3 fois par semaine.|Añade 20-30 minutos de cardio, 2-3 veces por semana.|Haftada 2-3 kez 20-30 dakika kardiyo ekle.|Füge 2-3 Mal pro Woche 20-30 Minuten Cardio hinzu.|Tambahkan kardio 20-30 menit, 2-3 kali seminggu.|ہفتے میں 2-3 بار 20-30 منٹ کارڈیو شامل کریں۔
+الانتظام أهم من الوزن في البداية.|Consistency matters more than weight at the start.|La régularité compte plus que le poids au début.|La constancia importa más que el peso al principio.|Başlangıçta düzenlilik kilodan daha önemlidir.|Am Anfang ist Regelmäßigkeit wichtiger als das Gewicht.|Di awal, konsistensi lebih penting daripada berat badan.|شروع میں وزن سے زیادہ پابندی اہم ہے۔
+📋 خطتك: {0}|📋 Your plan: {0}|📋 Ton plan : {0}|📋 Tu plan: {0}|📋 Planın: {0}|📋 Dein Plan: {0}|📋 Rencanamu: {0}|📋 آپ کا منصوبہ: {0}
+{0} أيام|{0} days|{0} jours|{0} días|{0} gün|{0} Tage|{0} hari|{0} دن
+راحة {0}|Rest {0}|Repos {0}|Descanso {0}|Dinlenme {0}|Pause {0}|Istirahat {0}|آرام {0}
+🎯 اليوم المقترح:|🎯 Suggested day:|🎯 Jour suggéré :|🎯 Día sugerido:|🎯 Önerilen gün:|🎯 Vorgeschlagener Tag:|🎯 Hari yang disarankan:|🎯 تجویز کردہ دن:
+🎯 هدفك ({0}):|🎯 Your goal ({0}):|🎯 Ton objectif ({0}) :|🎯 Tu objetivo ({0}):|🎯 Hedefin ({0}):|🎯 Dein Ziel ({0}):|🎯 Tujuanmu ({0}):|🎯 آپ کا ہدف ({0}):
+الجاية|Next|Prochaine|Siguiente|Sonraki|Nächste|Berikutnya|اگلی
+{0}. سورة {1}|{0}. Surah {1}|{0}. Sourate {1}|{0}. Sura {1}|{0}. {1} Suresi|{0}. Sure {1}|{0}. Surah {1}|{0}۔ سورہ {1}
+سورة {0}|Surah {0}|Sourate {0}|Sura {0}|{0} Suresi|Sure {0}|Surah {0}|سورہ {0}
+🏆 رقم جديد! {0} {1} كجم{2}|🏆 New record! {0} {1} kg{2}|🏆 Nouveau record ! {0} {1} kg{2}|🏆 ¡Nuevo récord! {0} {1} kg{2}|🏆 Yeni rekor! {0} {1} kg{2}|🏆 Neuer Rekord! {0} {1} kg{2}|🏆 Rekor baru! {0} {1} kg{2}|🏆 نیا ریکارڈ! {0} {1} کلو{2}
+🏆 رقم جديد! {0} {1} كجم|🏆 New record! {0} {1} kg|🏆 Nouveau record ! {0} {1} kg|🏆 ¡Nuevo récord! {0} {1} kg|🏆 Yeni rekor! {0} {1} kg|🏆 Neuer Rekord! {0} {1} kg|🏆 Rekor baru! {0} {1} kg|🏆 نیا ریکارڈ! {0} {1} کلو
+ج|g|g|g|g|g|g|گرام
+{0} سعر|{0} kcal|{0} kcal|{0} kcal|{0} kcal|{0} kcal|{0} kkal|{0} کیلوریز
+{0}ج بروتين|{0} g protein|{0} g de protéines|{0} g de proteína|{0} g protein|{0} g Eiweiß|{0} g protein|{0} گرام پروٹین
+بيضة|1 egg|1 œuf|1 huevo|1 yumurta|1 Ei|1 telur|1 انڈا
+بيضتين|2 eggs|2 œufs|2 huevos|2 yumurta|2 Eier|2 telur|2 انڈے
+{0} بيضات|{0} eggs|{0} œufs|{0} huevos|{0} yumurta|{0} Eier|{0} telur|{0} انڈے
+🌅 الفطار|🌅 Breakfast|🌅 Petit-déjeuner|🌅 Desayuno|🌅 Kahvaltı|🌅 Frühstück|🌅 Sarapan|🌅 ناشتہ
+🍽️ الغداء|🍽️ Lunch|🍽️ Déjeuner|🍽️ Almuerzo|🍽️ Öğle yemeği|🍽️ Mittagessen|🍽️ Makan siang|🍽️ دوپہر کا کھانا
+🌙 العشاء|🌙 Dinner|🌙 Dîner|🌙 Cena|🌙 Akşam yemeği|🌙 Abendessen|🌙 Makan malam|🌙 رات کا کھانا
+🍎 سناك|🍎 Snack|🍎 En-cas|🍎 Merienda|🍎 Atıştırmalık|🍎 Snack|🍎 Camilan|🍎 سنیک
+فول مدمس|Ful medames|Ful medames|Ful medames|Ful medames|Ful Medames|Ful medames|فول مدمس
+عيش بلدي|Baladi bread|Pain baladi|Pan baladi|Baladi ekmeği|Baladi-Brot|Roti baladi|بلدی روٹی
+رز مطبوخ|Cooked rice|Riz cuit|Arroz cocido|Pişmiş pirinç|Gekochter Reis|Nasi matang|پکے ہوئے چاول
+مكرونة مسلوقة|Boiled pasta|Pâtes cuites|Pasta cocida|Haşlanmış makarna|Gekochte Nudeln|Pasta rebus|ابلا ہوا پاستا
+بطاطس مسلوقة|Boiled potatoes|Pommes de terre bouillies|Patatas cocidas|Haşlanmış patates|Gekochte Kartoffeln|Kentang rebus|ابلے ہوئے آلو
+عدس مطبوخ|Cooked lentils|Lentilles cuites|Lentejas cocidas|Pişmiş mercimek|Gekochte Linsen|Lentil matang|پکی ہوئی دال
+حمص مطبوخ|Cooked chickpeas|Pois chiches cuits|Garbanzos cocidos|Pişmiş nohut|Gekochte Kichererbsen|Buncis matang|پکے ہوئے چنے
+فراخ صدور مشوية|Grilled chicken breast|Poitrine de poulet grillée|Pechuga de pollo a la parrilla|Izgara tavuk göğsü|Gegrillte Hähnchenbrust|Dada ayam panggang|گرل کی ہوئی چکن بریسٹ
+فراخ أفخاذ مشوية (من غير جلد)|Grilled chicken thighs (skinless)|Cuisses de poulet grillées (sans peau)|Muslos de pollo a la parrilla (sin piel)|Izgara tavuk but (derisiz)|Gegrillte Hähnchenschenkel (ohne Haut)|Paha ayam panggang (tanpa kulit)|گرل کی ہوئی چکن ران (بغیر کھال)
+لحمة قليلة الدهن|Lean meat|Viande maigre|Carne magra|Yağsız et|Mageres Fleisch|Daging tanpa lemak|کم چکنائی والا گوشت
+سمك بلطي مشوي|Grilled tilapia|Tilapia grillé|Tilapia a la parrilla|Izgara tilapia|Gegrillter Tilapia|Ikan nila panggang|گرل کی ہوئی تلپیا مچھلی
+تونة (ماء)|Tuna (in water)|Thon (au naturel)|Atún (al natural)|Ton balığı (suda)|Thunfisch (im Wasser)|Tuna (dalam air)|ٹونا (پانی میں)
+جبنة قريش|Qarish cheese|Fromage qarish|Queso qarish|Karish peyniri|Qarish-Käse|Keju qarish|قریش پنیر
+لبن|Milk|Lait|Leche|Süt|Milch|Susu|دودھ
+خضار مطبوخ|Cooked vegetables|Légumes cuits|Verduras cocidas|Pişmiş sebze|Gekochtes Gemüse|Sayur matang|پکی ہوئی سبزیاں
+زيت|Oil|Huile|Aceite|Yağ|Öl|Minyak|تیل
+تمر|Dates|Dattes|Dátiles|Hurma|Datteln|Kurma|کھجور
+فول سوداني|Peanuts|Cacahuètes|Cacahuetes|Yer fıstığı|Erdnüsse|Kacang tanah|مونگ پھلی
+طحينة|Tahini|Tahini|Tahini|Tahin|Tahini|Tahini|طحینی
+فول بالزيت وبيضة|Ful with oil and an egg|Ful à l’huile et un œuf|Ful con aceite y un huevo|Zeytinyağlı ful ve yumurta|Ful mit Öl und einem Ei|Ful dengan minyak dan telur|تیل کے ساتھ فول اور ایک انڈا
+بيض وقريش وعيش|Eggs, qarish cheese and bread|Œufs, fromage qarish et pain|Huevos, queso qarish y pan|Yumurta, karish peyniri ve ekmek|Eier, Qarish-Käse und Brot|Telur, keju qarish, dan roti|انڈے، قریش پنیر اور روٹی
+شوفان بالحليب والموز|Oats with milk and banana|Flocons d’avoine au lait et banane|Avena con leche y plátano|Sütlü yulaf ve muz|Haferflocken mit Milch und Banane|Oat dengan susu dan pisang|دودھ اور کیلے کے ساتھ جئی
+زبادي بالشوفان والتمر|Yogurt with oats and dates|Yaourt avec avoine et dattes|Yogur con avena y dátiles|Yulaflı ve hurmalı yoğurt|Joghurt mit Haferflocken und Datteln|Yogurt dengan oat dan kurma|جئی اور کھجور کے ساتھ دہی
+فول بالطحينة|Ful with tahini|Ful à la tahini|Ful con tahini|Tahinli ful|Ful mit Tahini|Ful dengan tahini|طحینی کے ساتھ فول
+جبنة بيضاء وبيض|White cheese and eggs|Fromage blanc et œufs|Queso blanco y huevos|Beyaz peynir ve yumurta|Weißkäse und Eier|Keju putih dan telur|سفید پنیر اور انڈے
+فراخ مشوية ورز وخضار|Grilled chicken, rice and vegetables|Poulet grillé, riz et légumes|Pollo a la parrilla, arroz y verduras|Izgara tavuk, pilav ve sebze|Gegrilltes Hähnchen, Reis und Gemüse|Ayam panggang, nasi, dan sayur|گرل چکن، چاول اور سبزیاں
+فراخ أفخاذ وبطاطس|Chicken thighs and potatoes|Cuisses de poulet et pommes de terre|Muslos de pollo y patatas|Tavuk but ve patates|Hähnchenschenkel und Kartoffeln|Paha ayam dan kentang|چکن ران اور آلو
+عدس ورز وسلطة|Lentils, rice and salad|Lentilles, riz et salade|Lentejas, arroz y ensalada|Mercimek, pilav ve salata|Linsen, Reis und Salat|Lentil, nasi, dan salad|دال، چاول اور سلاد
+سمك مشوي ورز|Grilled fish and rice|Poisson grillé et riz|Pescado a la parrilla y arroz|Izgara balık ve pilav|Gegrillter Fisch und Reis|Ikan panggang dan nasi|گرل مچھلی اور چاول
+لحمة ومكرونة وخضار|Meat, pasta and vegetables|Viande, pâtes et légumes|Carne, pasta y verduras|Et, makarna ve sebze|Fleisch, Nudeln und Gemüse|Daging, pasta, dan sayur|گوشت، پاستا اور سبزیاں
+تونة ومكرونة|Tuna and pasta|Thon et pâtes|Atún y pasta|Ton balığı ve makarna|Thunfisch und Nudeln|Tuna dan pasta|ٹونا اور پاستا
+حمص ورز وسلطة|Chickpeas, rice and salad|Pois chiches, riz et salade|Garbanzos, arroz y ensalada|Nohut, pilav ve salata|Kichererbsen, Reis und Salat|Buncis, nasi, dan salad|چنے، چاول اور سلاد
+كبدة وعيش وسلطة|Liver, bread and salad|Foie, pain et salade|Hígado, pan y ensalada|Ciğer, ekmek ve salata|Leber, Brot und Salat|Hati, roti, dan salad|کلیجی، روٹی اور سلاد
+زبادي وقريش وخيار|Yogurt, qarish cheese and cucumber|Yaourt, fromage qarish et concombre|Yogur, queso qarish y pepino|Yoğurt, karish peyniri ve salatalık|Joghurt, Qarish-Käse und Gurke|Yogurt, keju qarish, dan timun|دہی، قریش پنیر اور کھیرا
+سلطة تونة وعيش|Tuna salad and bread|Salade de thon et pain|Ensalada de atún y pan|Ton balıklı salata ve ekmek|Thunfischsalat und Brot|Salad tuna dan roti|ٹونا سلاد اور روٹی
+أومليت بالخضار وعيش|Vegetable omelette and bread|Omelette aux légumes et pain|Tortilla de verduras y pan|Sebzeli omlet ve ekmek|Gemüse-Omelett und Brot|Omelet sayur dan roti|سبزیوں کا آملیٹ اور روٹی
+فراخ مشوية وبطاطس وسلطة|Grilled chicken, potatoes and salad|Poulet grillé, pommes de terre et salade|Pollo a la parrilla, patatas y ensalada|Izgara tavuk, patates ve salata|Gegrilltes Hähnchen, Kartoffeln und Salat|Ayam panggang, kentang, dan salad|گرل چکن، آلو اور سلاد
+شوربة عدس وعيش|Lentil soup and bread|Soupe de lentilles et pain|Sopa de lentejas y pan|Mercimek çorbası ve ekmek|Linsensuppe und Brot|Sup lentil dan roti|دال کا شوربہ اور روٹی
+فول وبيضة|Ful and an egg|Ful et un œuf|Ful y un huevo|Ful ve yumurta|Ful und ein Ei|Ful dan telur|فول اور ایک انڈا
+موزة وفول سوداني|A banana and peanuts|Une banane et des cacahuètes|Un plátano y cacahuetes|Muz ve yer fıstığı|Eine Banane und Erdnüsse|Pisang dan kacang tanah|ایک کیلا اور مونگ پھلی
+زبادي وتمر|Yogurt and dates|Yaourt et dattes|Yogur y dátiles|Yoğurt ve hurma|Joghurt und Datteln|Yogurt dan kurma|دہی اور کھجور
+تفاحة وقريش|An apple and qarish cheese|Une pomme et du fromage qarish|Una manzana y queso qarish|Elma ve karish peyniri|Ein Apfel und Qarish-Käse|Apel dan keju qarish|ایک سیب اور قریش پنیر
+برتقالة وبيضة|An orange and an egg|Une orange et un œuf|Una naranja y un huevo|Portakal ve yumurta|Eine Orange und ein Ei|Jeruk dan telur|ایک سنگترہ اور ایک انڈا
+، |, |, |, |, |, |, |، 
+ و | and | et | y | ve | und | dan | اور 
+🔥 خلّصت كل عادات النهارده، ما شاء الله!|🔥 You finished all of today’s habits, wonderful!|🔥 Tu as terminé toutes les habitudes d’aujourd’hui, magnifique !|🔥 ¡Terminaste todos los hábitos de hoy, genial!|🔥 Bugünkü tüm alışkanlıkları bitirdin, harika!|🔥 Du hast alle heutigen Gewohnheiten geschafft, großartig!|🔥 Kamu menyelesaikan semua kebiasaan hari ini, luar biasa!|🔥 آپ نے آج کی تمام عادتیں مکمل کر لیں، شاندار!
+📌 فاضل {0} من {1} النهارده{2}.|📌 {0} of {1} left today{2}.|📌 Il reste {0} sur {1} aujourd’hui{2}.|📌 Quedan {0} de {1} hoy{2}.|📌 Bugün {1} içinden {0} kaldı{2}.|📌 Heute noch {0} von {1}{2}.|📌 Tersisa {0} dari {1} hari ini{2}.|📌 آج {1} میں سے {0} باقی{2}۔
+⚠️ عندك {0} مهمة متأخرة، خلّصها قبل ما تتراكم.|⚠️ You have {0} overdue tasks, finish them before they pile up.|⚠️ Tu as {0} tâches en retard, termine-les avant qu’elles ne s’accumulent.|⚠️ Tienes {0} tareas atrasadas, termínalas antes de que se acumulen.|⚠️ {0} geciken görevin var, birikmeden bitir.|⚠️ Du hast {0} überfällige Aufgaben, erledige sie, bevor sie sich häufen.|⚠️ Kamu punya {0} tugas terlambat, selesaikan sebelum menumpuk.|⚠️ آپ کے {0} کام تاخیر کا شکار ہیں، جمع ہونے سے پہلے نمٹا لیں۔
+✅ {0} مهمة مستنياك النهارده.|✅ {0} tasks are waiting for you today.|✅ {0} tâches t’attendent aujourd’hui.|✅ {0} tareas te esperan hoy.|✅ Bugün seni {0} görev bekliyor.|✅ Heute warten {0} Aufgaben auf dich.|✅ {0} tugas menunggumu hari ini.|✅ آج آپ کے {0} کام منتظر ہیں۔
+🕌 لسه ما سجّلتش: {0}.|🕌 You haven’t logged yet: {0}.|🕌 Tu n’as pas encore enregistré : {0}.|🕌 Aún no registraste: {0}.|🕌 Henüz kaydetmedin: {0}.|🕌 Noch nicht eingetragen: {0}.|🕌 Belum kamu catat: {0}.|🕌 ابھی درج نہیں کیا: {0}۔
+📉 أضعف عادة آخر أسبوعين: {0} ({1}%). جرّب تربطها بوقت ثابت في يومك.|📉 Weakest habit in the last two weeks: {0} ({1}%). Try tying it to a fixed time in your day.|📉 Habitude la plus faible ces deux dernières semaines : {0} ({1} %). Essaie de la lier à un moment fixe de ta journée.|📉 Hábito más débil de las últimas dos semanas: {0} ({1} %). Prueba a vincularlo a una hora fija de tu día.|📉 Son iki haftanın en zayıf alışkanlığı: {0} (%{1}). Günün içinde sabit bir saate bağlamayı dene.|📉 Schwächste Gewohnheit der letzten zwei Wochen: {0} ({1} %). Versuch, sie an eine feste Uhrzeit zu binden.|📉 Kebiasaan terlemah dua minggu terakhir: {0} ({1}%). Coba kaitkan dengan waktu tetap dalam harimu.|📉 پچھلے دو ہفتوں کی سب سے کمزور عادت: {0} ({1}%)۔ اسے اپنے دن کے ایک مقررہ وقت سے جوڑ کر دیکھیں۔
+🏅 سلسلة {0} يوم متتالي، حافظ عليها.|🏅 A {0}-day streak, keep it going.|🏅 Une série de {0} jours d’affilée, continue.|🏅 Racha de {0} días seguidos, mantenla.|🏅 {0} günlük seri, sürdür.|🏅 {0} Tage in Folge, bleib dran.|🏅 Rentetan {0} hari berturut-turut, pertahankan.|🏅 {0} دن مسلسل، اسے جاری رکھیں۔
+💪 اتمرنت {0} من {1} أيام الأسبوع ده{2}.|💪 You trained {0} of {1} days this week{2}.|💪 Tu t’es entraîné {0} jours sur {1} cette semaine{2}.|💪 Entrenaste {0} de {1} días esta semana{2}.|💪 Bu hafta {1} günün {0}’inde antrenman yaptın{2}.|💪 Du hast diese Woche an {0} von {1} Tagen trainiert{2}.|💪 Kamu berlatih {0} dari {1} hari minggu ini{2}.|💪 اس ہفتے آپ نے {1} میں سے {0} دن ورزش کی{2}۔
+— خطتك مكتملة 👏|— your plan is complete 👏|— ton plan est terminé 👏|— tu plan está completo 👏|— planın tamamlandı 👏|— dein Plan ist erfüllt 👏|— rencanamu selesai 👏|— آپ کا منصوبہ مکمل ہو گیا 👏
+💪 اتمرنت {0} مرة آخر ٧ أيام.|💪 You trained {0} times in the last 7 days.|💪 Tu t’es entraîné {0} fois ces 7 derniers jours.|💪 Entrenaste {0} veces en los últimos 7 días.|💪 Son 7 günde {0} kez antrenman yaptın.|💪 Du hast in den letzten 7 Tagen {0}-mal trainiert.|💪 Kamu berlatih {0} kali dalam 7 hari terakhir.|💪 پچھلے 7 دنوں میں آپ نے {0} بار ورزش کی۔
+⏱ ساعات الشغل الشهر ده: {0} س في {1} يوم.|⏱ Work hours this month: {0} h over {1} days.|⏱ Heures de travail ce mois-ci : {0} h sur {1} jours.|⏱ Horas de trabajo este mes: {0} h en {1} días.|⏱ Bu ayki çalışma saatleri: {1} günde {0} sa.|⏱ Arbeitsstunden diesen Monat: {0} Std. an {1} Tagen.|⏱ Jam kerja bulan ini: {0} jam dalam {1} hari.|⏱ اس مہینے کام کے گھنٹے: {1} دن میں {0} گھنٹے۔
+📝 في ورقتك {0} خطوة لسه ما اتعملتش: {1}.|📝 Your sheet has {0} steps not done yet: {1}.|📝 Ta feuille a {0} étapes non faites : {1}.|📝 Tu hoja tiene {0} pasos sin hacer: {1}.|📝 Kâğıdında henüz yapılmamış {0} adım var: {1}.|📝 Dein Blatt hat {0} offene Schritte: {1}.|📝 Di lembarmu ada {0} langkah yang belum dikerjakan: {1}.|📝 آپ کی شیٹ میں {0} مراحل ابھی باقی ہیں: {1}۔
+🥗 لسه ما علّمتش أي وجبة من خطة الأكل النهارده.|🥗 You haven’t marked any meal from today’s meal plan yet.|🥗 Tu n’as marqué aucun repas du plan alimentaire d’aujourd’hui.|🥗 Aún no marcaste ninguna comida del plan de hoy.|🥗 Bugünkü beslenme planından henüz hiçbir öğünü işaretlemedin.|🥗 Du hast heute noch keine Mahlzeit aus dem Ernährungsplan abgehakt.|🥗 Kamu belum menandai makanan apa pun dari rencana makan hari ini.|🥗 آج کے غذائی منصوبے کا کوئی کھانا ابھی نشان زد نہیں کیا۔
+اكتب سؤالك 🙂|Type your question 🙂|Écris ta question 🙂|Escribe tu pregunta 🙂|Sorunu yaz 🙂|Schreib deine Frage 🙂|Tulis pertanyaanmu 🙂|اپنا سوال لکھیں 🙂
+مفيش صلوات مضافة في جدولك النهارده. ضيفها من زرار + ← صلاة.|There are no prayers in today’s schedule. Add them from the + button → Prayer.|Aucune prière dans ton planning d’aujourd’hui. Ajoute-les depuis le bouton + → Prière.|No hay oraciones en tu horario de hoy. Añádelas desde el botón + → Oración.|Bugünkü programında namaz yok. + düğmesinden Namaz’ı ekle.|In deinem heutigen Plan sind keine Gebete. Füge sie über + → Gebet hinzu.|Tidak ada salat di jadwal hari ini. Tambahkan dari tombol + → Salat.|آج کے شیڈول میں کوئی نماز شامل نہیں۔ + بٹن سے نماز شامل کریں۔
+صلّيت {0} من {1}.|You prayed {0} of {1}.|Tu as fait {0} prières sur {1}.|Rezaste {0} de {1}.|{1} namazın {0}’ini kıldın.|Du hast {0} von {1} Gebeten verrichtet.|Kamu sudah salat {0} dari {1}.|آپ نے {1} میں سے {0} نمازیں پڑھیں۔
+⏳ لسه: {0}|⏳ Still to do: {0}|⏳ Reste : {0}|⏳ Pendiente: {0}|⏳ Kalan: {0}|⏳ Noch offen: {0}|⏳ Belum: {0}|⏳ باقی: {0}
+ما شاء الله، كلهم تمام 🤍|Wonderful, all done 🤍|Magnifique, tout est fait 🤍|Genial, todo hecho 🤍|Harika, hepsi tamam 🤍|Großartig, alles erledigt 🤍|Luar biasa, semuanya beres 🤍|ماشاءاللہ، سب مکمل 🤍
+ما عندكش شغل بنظام البصمة. ضيفه من زرار + ← شغل ← بصمة حضور وانصراف.|You have no work set up with check-in. Add it from + → Work → Check-in / check-out.|Tu n’as pas de travail avec pointage. Ajoute-le depuis + → Travail → Pointage arrivée / sortie.|No tienes trabajo con registro de entrada. Añádelo desde + → Trabajo → Registro de entrada / salida.|Giriş-çıkış sistemiyle bir işin yok. + → İş → Giriş / çıkış kaydı ile ekle.|Du hast keine Arbeit mit Stempeluhr. Füge sie über + → Arbeit → Ein- / Ausstempeln hinzu.|Kamu belum punya pekerjaan dengan absensi. Tambahkan dari + → Kerja → Absen masuk / pulang.|آپ کا کوئی کام حاضری کے نظام پر نہیں۔ + ← کام ← حاضری / روانگی سے شامل کریں۔
+شهر شغلك (من {0}): {1} ساعة في {2} يوم{3}.|Your work month (from {0}): {1} hours over {2} days{3}.|Ton mois de travail (depuis le {0}) : {1} heures sur {2} jours{3}.|Tu mes laboral (desde el {0}): {1} horas en {2} días{3}.|Çalışma ayın ({0} tarihinden): {2} günde {1} saat{3}.|Dein Arbeitsmonat (ab {0}): {1} Stunden an {2} Tagen{3}.|Bulan kerjamu (sejak {0}): {1} jam dalam {2} hari{3}.|آپ کا کام کا مہینہ ({0} سے): {2} دن میں {1} گھنٹے{3}۔
+، بمتوسط {0} س يوميًا|, averaging {0} h a day|, soit {0} h par jour en moyenne|, con un promedio de {0} h al día|, günde ortalama {0} sa|, im Schnitt {0} Std. pro Tag|, rata-rata {0} jam per hari|، یعنی اوسطاً روزانہ {0} گھنٹے
+النهارده: {0} ساعة{1}.|Today: {0} hours{1}.|Aujourd’hui : {0} heures{1}.|Hoy: {0} horas{1}.|Bugün: {0} saat{1}.|Heute: {0} Stunden{1}.|Hari ini: {0} jam{1}.|آج: {0} گھنٹے{1}۔
+(لسه شغّال من {0})|(still working since {0})|(toujours en cours depuis {0})|(sigues trabajando desde las {0})|({0}’den beri çalışıyor)|(arbeitet seit {0} noch)|(masih bekerja sejak {0})|({0} سے اب تک کام جاری ہے)
+أعلى أوزانك:|Your top weights:|Tes charges maximales :|Tus pesos máximos:|En yüksek ağırlıkların:|Deine Höchstgewichte:|Beban tertinggimu:|آپ کے سب سے زیادہ وزن:
+🏆 {0}: {1} كجم|🏆 {0}: {1} kg|🏆 {0} : {1} kg|🏆 {0}: {1} kg|🏆 {0}: {1} kg|🏆 {0}: {1} kg|🏆 {0}: {1} kg|🏆 {0}: {1} کلو
+لسه ما سجّلتش أوزان.|You haven’t logged any weights yet.|Tu n’as pas encore enregistré de charges.|Aún no registraste pesos.|Henüz ağırlık kaydetmedin.|Du hast noch keine Gewichte eingetragen.|Kamu belum mencatat beban.|آپ نے ابھی کوئی وزن درج نہیں کیا۔
+اتمرنت {0} مرة آخر ٧ أيام|You trained {0} times in the last 7 days|Tu t’es entraîné {0} fois ces 7 derniers jours|Entrenaste {0} veces en los últimos 7 días|Son 7 günde {0} kez antrenman yaptın|Du hast in den letzten 7 Tagen {0}-mal trainiert|Kamu berlatih {0} kali dalam 7 hari terakhir|پچھلے 7 دنوں میں آپ نے {0} بار ورزش کی
+من {0} في خطتك|out of {0} in your plan|sur {0} dans ton plan|de {0} en tu plan|planındaki {0} içinden|von {0} in deinem Plan|dari {0} dalam rencanamu|آپ کے منصوبے کے {0} میں سے
+آخر تمرين: {0}.|Last workout: {0}.|Dernier entraînement : {0}.|Último entrenamiento: {0}.|Son antrenman: {0}.|Letztes Training: {0}.|Latihan terakhir: {0}.|آخری ورزش: {0}۔
+لسه ما عملتش خطة أكل. افتحها من المزيد ← الأكل.|You haven’t made a meal plan yet. Open it from More → Food.|Tu n’as pas encore de plan alimentaire. Ouvre-le depuis Plus → Alimentation.|Aún no hiciste un plan de comidas. Ábrelo desde Más → Comida.|Henüz beslenme planı yapmadın. Daha fazla → Beslenme’den aç.|Du hast noch keinen Ernährungsplan. Öffne ihn über Mehr → Ernährung.|Kamu belum membuat pola makan. Buka dari Lainnya → Makanan.|آپ نے ابھی غذائی منصوبہ نہیں بنایا۔ مزید ← کھانا سے کھولیں۔
+كمّل بيانات خطة الأكل الأول.|Complete your meal plan details first.|Complète d’abord les informations de ton plan alimentaire.|Completa primero los datos de tu plan de comidas.|Önce beslenme planı bilgilerini tamamla.|Vervollständige zuerst die Angaben zu deinem Ernährungsplan.|Lengkapi dulu data pola makanmu.|پہلے غذائی منصوبے کی معلومات مکمل کریں۔
+هدفك {0} سعر في اليوم، وعلّمت {1} سعر لحد دلوقتي.|Your goal is {0} kcal a day, and you’ve marked {1} kcal so far.|Ton objectif est de {0} kcal par jour, et tu en as marqué {1} jusqu’ici.|Tu objetivo es {0} kcal al día y llevas {1} kcal marcadas.|Hedefin günde {0} kcal, şimdiye kadar {1} kcal işaretledin.|Dein Ziel sind {0} kcal pro Tag, bisher hast du {1} kcal abgehakt.|Targetmu {0} kkal per hari, dan sejauh ini kamu menandai {1} kkal.|آپ کا ہدف روزانہ {0} کیلوریز ہے، اور اب تک {1} کیلوریز نشان زد ہیں۔
+مفيش مهام مفتوحة 🎉|No open tasks 🎉|Aucune tâche ouverte 🎉|No hay tareas abiertas 🎉|Açık görev yok 🎉|Keine offenen Aufgaben 🎉|Tidak ada tugas terbuka 🎉|کوئی کھلا کام نہیں 🎉
+عندك {0} مهمة مفتوحة: {1} النهارده و{2} متأخرة.|You have {0} open tasks: {1} today and {2} overdue.|Tu as {0} tâches ouvertes : {1} aujourd’hui et {2} en retard.|Tienes {0} tareas abiertas: {1} hoy y {2} atrasadas.|{0} açık görevin var: bugün {1}, geciken {2}.|Du hast {0} offene Aufgaben: {1} heute und {2} überfällig.|Kamu punya {0} tugas terbuka: {1} hari ini dan {2} terlambat.|آپ کے {0} کام کھلے ہیں: آج {1} اور {2} تاخیر سے۔
+النهارده ركّزت {0} دقيقة في {1} جلسة.|Today you focused for {0} minutes in {1} sessions.|Aujourd’hui, tu t’es concentré {0} minutes en {1} séances.|Hoy te concentraste {0} minutos en {1} sesiones.|Bugün {1} seansta {0} dakika odaklandın.|Heute hast du dich {0} Minuten in {1} Sitzungen konzentriert.|Hari ini kamu fokus {0} menit dalam {1} sesi.|آج آپ نے {1} سیشنز میں {0} منٹ توجہ دی۔
+صرفت الشهر ده {0}|You spent {0} this month|Tu as dépensé {0} ce mois-ci|Gastaste {0} este mes|Bu ay {0} harcadın|Du hast diesen Monat {0} ausgegeben|Pengeluaranmu bulan ini {0}|اس مہینے آپ نے {0} خرچ کیے
+من ميزانية {0} (فاضل {1})|of a {0} budget ({1} left)|sur un budget de {0} ({1} restants)|de un presupuesto de {0} (quedan {1})|{0} bütçeden ({1} kaldı)|von einem Budget von {0} ({1} übrig)|dari anggaran {0} (sisa {1})|{0} کے بجٹ میں سے ({1} باقی)
+اشتراكاتك الشهرية {0}.|Your monthly subscriptions are {0}.|Tes abonnements mensuels : {0}.|Tus suscripciones mensuales: {0}.|Aylık aboneliklerin: {0}.|Deine monatlichen Abos: {0}.|Langgananmu per bulan: {0}.|آپ کی ماہانہ سبسکرپشنز: {0}۔
+أيامك لحد دلوقتي:|Your days so far:|Tes jours jusqu’ici :|Tus días hasta ahora:|Şimdiye kadarki günlerin:|Deine Tage bisher:|Harimu sejauh ini:|اب تک کے آپ کے دن:
+{0} {1}: {2} يوم (أطول فترة {3})|{0} {1}: {2} days (longest streak {3})|{0} {1} : {2} jours (plus longue période {3})|{0} {1}: {2} días (periodo más largo {3})|{0} {1}: {2} gün (en uzun süre {3})|{0} {1}: {2} Tage (längste Phase {3})|{0} {1}: {2} hari (periode terpanjang {3})|{0} {1}: {2} دن (سب سے لمبی مدت {3})
+الانتكاسة مش نهاية الطريق. افتح ☰ المزيد ← 🌱 رحلة الإقلاع، وفيها زرار 🆘 للرغبة، وتسجّل اللي حصل وتبدأ من جديد من غير ما تخسر أطول فترة وصلتلها.|A relapse isn’t the end of the road. Open ☰ More → 🌱 Quit journey, where there’s a 🆘 button for urges; log what happened and start again without losing your longest streak.|Une rechute n’est pas la fin du chemin. Ouvre ☰ Plus → 🌱 Parcours d’arrêt, avec un bouton 🆘 pour les envies ; note ce qui s’est passé et repars sans perdre ta plus longue période.|Una recaída no es el final del camino. Abre ☰ Más → 🌱 Camino para dejarlo, donde hay un botón 🆘 para los impulsos; anota lo ocurrido y empieza de nuevo sin perder tu periodo más largo.|Nüks yolun sonu değil. ☰ Daha fazla → 🌱 Bırakma yolculuğu’nu aç; orada istek anları için 🆘 düğmesi var, olanı kaydet ve en uzun süreni kaybetmeden yeniden başla.|Ein Rückfall ist nicht das Ende des Weges. Öffne ☰ Mehr → 🌱 Weg zum Aufhören, dort gibt es einen 🆘-Knopf für Verlangen; trag ein, was passiert ist, und fang neu an, ohne deine längste Phase zu verlieren.|Kambuh bukan akhir perjalanan. Buka ☰ Lainnya → 🌱 Perjalanan berhenti, di sana ada tombol 🆘 untuk dorongan; catat apa yang terjadi dan mulai lagi tanpa kehilangan periode terpanjangmu.|دوبارہ لغزش راستے کا اختتام نہیں۔ ☰ مزید ← 🌱 چھوڑنے کا سفر کھولیں، وہاں خواہش کے لیے 🆘 بٹن ہے؛ جو ہوا درج کریں اور اپنی سب سے لمبی مدت کھوئے بغیر نئے سرے سے شروع کریں۔
+مفيش جرعات النهارده. ضيف دواءك من ☰ المزيد ← 💊 الأدوية.|No doses today. Add your medication from ☰ More → 💊 Medications.|Aucune dose aujourd’hui. Ajoute ton médicament depuis ☰ Plus → 💊 Médicaments.|No hay dosis hoy. Añade tu medicamento desde ☰ Más → 💊 Medicamentos.|Bugün doz yok. İlacını ☰ Daha fazla → 💊 İlaçlar’dan ekle.|Heute keine Dosen. Füge dein Medikament über ☰ Mehr → 💊 Medikamente hinzu.|Tidak ada dosis hari ini. Tambahkan obatmu dari ☰ Lainnya → 💊 Obat.|آج کوئی خوراک نہیں۔ اپنی دوا ☰ مزید ← 💊 ادویات سے شامل کریں۔
+جرعات النهارده: أخدت {0} من {1}.|Today’s doses: you took {0} of {1}.|Doses d’aujourd’hui : tu en as pris {0} sur {1}.|Dosis de hoy: tomaste {0} de {1}.|Bugünkü dozlar: {1} dozun {0}’ini aldın.|Heutige Dosen: Du hast {0} von {1} genommen.|Dosis hari ini: kamu sudah minum {0} dari {1}.|آج کی خوراکیں: آپ نے {1} میں سے {0} لیں۔
+⚠️ فاتتك: {0}|⚠️ You missed: {0}|⚠️ Tu as manqué : {0}|⚠️ Te perdiste: {0}|⚠️ Kaçırdığın: {0}|⚠️ Verpasst: {0}|⚠️ Terlewat: {0}|⚠️ رہ گئی: {0}
+⏰ الجاية: {0} الساعة {1}|⏰ Next: {0} at {1}|⏰ Prochaine : {0} à {1}|⏰ Siguiente: {0} a las {1}|⏰ Sıradaki: {0}, saat {1}|⏰ Nächste: {0} um {1}|⏰ Berikutnya: {0} pukul {1}|⏰ اگلی: {0} وقت {1}
+آخر وزن سجّلته: {0} كجم ({1}).|Last weight you logged: {0} kg ({1}).|Dernier poids enregistré : {0} kg ({1}).|Último peso que registraste: {0} kg ({1}).|Kaydettiğin son kilo: {0} kg ({1}).|Zuletzt eingetragenes Gewicht: {0} kg ({1}).|Berat terakhir yang kamu catat: {0} kg ({1}).|آخری درج کیا گیا وزن: {0} کلو ({1})۔
+لسه ما سجّلتش وزنك.|You haven’t logged your weight yet.|Tu n’as pas encore enregistré ton poids.|Aún no registraste tu peso.|Henüz kilonu kaydetmedin.|Du hast dein Gewicht noch nicht eingetragen.|Kamu belum mencatat berat badanmu.|آپ نے ابھی اپنا وزن درج نہیں کیا۔
+متوسط نومك آخر ٧ أيام: {0} ساعة.|Your average sleep over the last 7 days: {0} hours.|Ton sommeil moyen ces 7 derniers jours : {0} heures.|Tu sueño promedio de los últimos 7 días: {0} horas.|Son 7 günde ortalama uykun: {0} saat.|Dein durchschnittlicher Schlaf der letzten 7 Tage: {0} Stunden.|Rata-rata tidurmu 7 hari terakhir: {0} jam.|پچھلے 7 دنوں میں آپ کی اوسط نیند: {0} گھنٹے۔
+سلسلتك الحالية {0} يوم متتالي 🔥|Your current streak is {0} days in a row 🔥|Ta série actuelle est de {0} jours d’affilée 🔥|Tu racha actual es de {0} días seguidos 🔥|Mevcut serin art arda {0} gün 🔥|Deine aktuelle Serie: {0} Tage in Folge 🔥|Rentetanmu saat ini {0} hari berturut-turut 🔥|آپ کی موجودہ لڑی {0} دن مسلسل ہے 🔥
+ما عندكش خطوات في ورقة الأسبوع ده.|You have no steps on this week’s sheet.|Tu n’as aucune étape sur la feuille de cette semaine.|No tienes pasos en la hoja de esta semana.|Bu haftanın kâğıdında adım yok.|Auf deinem Wochenblatt stehen keine Schritte.|Tidak ada langkah di lembar minggu ini.|اس ہفتے کی شیٹ میں کوئی مرحلہ نہیں۔
+ورقة الأسبوع: {0} من {1} خلصت.|Weekly sheet: {0} of {1} done.|Feuille de la semaine : {0} sur {1} terminées.|Hoja de la semana: {0} de {1} hechas.|Haftalık kâğıt: {1} içinden {0} tamamlandı.|Wochenblatt: {0} von {1} erledigt.|Lembar mingguan: {0} dari {1} selesai.|ہفتے کی شیٹ: {1} میں سے {0} مکمل۔
+باقي: {0}|Left: {0}|Reste : {0}|Pendiente: {0}|Kalan: {0}|Offen: {0}|Sisa: {0}|باقی: {0}
+أضعف عادة آخر أسبوعين: {0} ({1}%).|Weakest habit in the last two weeks: {0} ({1}%).|Habitude la plus faible ces deux dernières semaines : {0} ({1} %).|Hábito más débil de las últimas dos semanas: {0} ({1} %).|Son iki haftanın en zayıf alışkanlığı: {0} (%{1}).|Schwächste Gewohnheit der letzten zwei Wochen: {0} ({1} %).|Kebiasaan terlemah dua minggu terakhir: {0} ({1}%).|پچھلے دو ہفتوں کی سب سے کمزور عادت: {0} ({1}%)۔
+لسه مفيش بيانات كفاية.|Not enough data yet.|Pas encore assez de données.|Aún no hay datos suficientes.|Henüz yeterli veri yok.|Noch nicht genug Daten.|Belum cukup data.|ابھی کافی ڈیٹا نہیں۔
+خلّصت {0} من {1} النهارده ({2}%).|You finished {0} of {1} today ({2}%).|Tu as terminé {0} sur {1} aujourd’hui ({2} %).|Terminaste {0} de {1} hoy ({2} %).|Bugün {1} içinden {0} tamamladın (%{2}).|Du hast heute {0} von {1} erledigt ({2} %).|Kamu menyelesaikan {0} dari {1} hari ini ({2}%).|آج آپ نے {1} میں سے {0} مکمل کیں ({2}%)۔
+النهارده يوم راحة 🌿|Today is a rest day 🌿|Aujourd’hui, c’est un jour de repos 🌿|Hoy es día de descanso 🌿|Bugün dinlenme günü 🌿|Heute ist Ruhetag 🌿|Hari ini hari istirahat 🌿|آج آرام کا دن ہے 🌿
+مش فاهم السؤال ده. جرّب أحد الأسئلة المقترحة.|I didn’t understand that question. Try one of the suggested questions.|Je n’ai pas compris cette question. Essaie l’une des questions suggérées.|No entendí esa pregunta. Prueba una de las preguntas sugeridas.|Bu soruyu anlamadım. Önerilen sorulardan birini dene.|Diese Frage habe ich nicht verstanden. Probier eine der vorgeschlagenen Fragen.|Aku tidak mengerti pertanyaan itu. Coba salah satu pertanyaan yang disarankan.|میں یہ سوال نہیں سمجھا۔ تجویز کردہ سوالوں میں سے کوئی آزمائیں۔
+جبنة بيضاء|White cheese|Fromage blanc|Queso blanco|Beyaz peynir|Weißkäse|Keju putih|سفید پنیر
+زبادي|Yogurt|Yaourt|Yogur|Yoğurt|Joghurt|Yogurt|دہی
+سلطة|Salad|Salade|Ensalada|Salata|Salat|Salad|سلاد
+موز|Banana|Banane|Plátano|Muz|Banane|Pisang|کیلا
+تفاح|Apple|Pomme|Manzana|Elma|Apfel|Apel|سیب
+برتقال|Orange|Orange|Naranja|Portakal|Orange|Jeruk|سنگترہ
+شوفان بالحليب|Oats with milk|Flocons d’avoine au lait|Avena con leche|Sütlü yulaf|Haferflocken mit Milch|Oat dengan susu|دودھ کے ساتھ جئی
+🥗 الأكل|🥗 Food|🥗 Alimentation|🥗 Comida|🥗 Beslenme|🥗 Ernährung|🥗 Makanan|🥗 کھانا
+مفيش ميزة بالاسم ده.|No feature with that name.|Aucune fonction portant ce nom.|No hay ninguna función con ese nombre.|Bu adda bir özellik yok.|Keine Funktion mit diesem Namen.|Tidak ada fitur dengan nama itu.|اس نام کا کوئی فیچر نہیں۔
+لأنك ذكرت حالة صحية خاصة (مرض مزمن أو حمل/رضاعة)، مش هقدر أحدد لك نظام غذائي مناسب. الأحسن تاخد خطة من دكتور أو أخصائي تغذية.|Because you mentioned a special health condition (chronic illness or pregnancy/breastfeeding), I can’t set a suitable meal plan for you. It’s best to get a plan from a doctor or a nutritionist.|Comme tu as indiqué un problème de santé particulier (maladie chronique ou grossesse/allaitement), je ne peux pas établir un régime adapté. Le mieux est d’obtenir un plan auprès d’un médecin ou d’un nutritionniste.|Como mencionaste una condición de salud especial (enfermedad crónica o embarazo/lactancia), no puedo establecer un plan de comidas adecuado. Lo mejor es obtener un plan de un médico o nutricionista.|Özel bir sağlık durumu belirttiğin için (kronik hastalık ya da hamilelik/emzirme) sana uygun bir beslenme planı belirleyemem. En iyisi bir doktordan veya diyetisyenden plan almak.|Weil du einen besonderen Gesundheitszustand angegeben hast (chronische Krankheit oder Schwangerschaft/Stillzeit), kann ich dir keinen passenden Ernährungsplan erstellen. Am besten holst du dir einen Plan von einem Arzt oder einer Ernährungsberatung.|Karena kamu menyebut kondisi kesehatan khusus (penyakit kronis atau hamil/menyusui), aku tidak bisa menentukan pola makan yang cocok. Sebaiknya minta rencana dari dokter atau ahli gizi.|چونکہ آپ نے صحت کی خاص حالت (دائمی بیماری یا حمل/دودھ پلانا) بتائی ہے، میں آپ کے لیے مناسب غذائی منصوبہ طے نہیں کر سکتا۔ بہتر ہے کہ ڈاکٹر یا ماہرِ غذائیت سے منصوبہ لیں۔
+الأنظمة الغذائية للأقل من 18 سنة لازم تكون بإشراف دكتور أو أخصائي تغذية، عشان الجسم لسه بينمو.|Meal plans for people under 18 must be supervised by a doctor or a nutritionist, because the body is still growing.|Les régimes pour les moins de 18 ans doivent être suivis par un médecin ou un nutritionniste, car le corps est encore en croissance.|Los planes de comidas para menores de 18 años deben estar supervisados por un médico o nutricionista, porque el cuerpo aún está creciendo.|18 yaşından küçükler için beslenme planları, vücut hâlâ büyüdüğü için bir doktor veya diyetisyen gözetiminde olmalıdır.|Ernährungspläne für unter 18-Jährige müssen von einem Arzt oder einer Ernährungsberatung begleitet werden, da der Körper noch wächst.|Pola makan untuk usia di bawah 18 tahun harus diawasi dokter atau ahli gizi karena tubuh masih bertumbuh.|18 سال سے کم عمر کے غذائی منصوبے ڈاکٹر یا ماہرِ غذائیت کی نگرانی میں ہونے چاہییں، کیونکہ جسم ابھی بڑھ رہا ہے۔
+✓ أكلتها|✓ Ate it|✓ Mangé|✓ Comida|✓ Yedim|✓ Gegessen|✓ Sudah dimakan|✓ کھا لیا
+أكلتها؟|Did you eat it?|Tu l’as mangé ?|¿La comiste?|Yedin mi?|Hast du es gegessen?|Sudah dimakan?|کیا کھا لیا؟
+بدائل بنفس القيمة:|Substitutes with the same value:|Alternatives de même valeur :|Alternativas con el mismo valor:|Aynı değerde alternatifler:|Alternativen mit gleichem Wert:|Pengganti dengan nilai yang sama:|اسی قدر کے متبادل:
+الأكل الصحي 🥗|Healthy eating 🥗|Alimentation saine 🥗|Alimentación saludable 🥗|Sağlıklı beslenme 🥗|Gesunde Ernährung 🥗|Makan sehat 🥗|صحت مند کھانا 🥗
+🥗 خطتك لليوم|🥗 Your plan for today|🥗 Ton plan du jour|🥗 Tu plan de hoy|🥗 Bugünkü planın|🥗 Dein Plan für heute|🥗 Rencanamu hari ini|🥗 آج کا آپ کا منصوبہ
+سعر في اليوم|kcal a day|kcal par jour|kcal al día|günde kcal|kcal pro Tag|kkal per hari|روزانہ کیلوریز
+بروتين {0}ج|Protein {0} g|Protéines {0} g|Proteína {0} g|Protein {0} g|Eiweiß {0} g|Protein {0} g|پروٹین {0} گرام
+كارب {0}ج|Carbs {0} g|Glucides {0} g|Carbohidratos {0} g|Karbonhidrat {0} g|Kohlenhydrate {0} g|Karbohidrat {0} g|کاربوہائیڈریٹ {0} گرام
+دهون {0}ج|Fat {0} g|Lipides {0} g|Grasas {0} g|Yağ {0} g|Fett {0} g|Lemak {0} g|چکنائی {0} گرام
+النهارده: {0} من {1} سعر|Today: {0} of {1} kcal|Aujourd’hui : {0} sur {1} kcal|Hoy: {0} de {1} kcal|Bugün: {1} kcal içinden {0}|Heute: {0} von {1} kcal|Hari ini: {0} dari {1} kkal|آج: {1} کیلوریز میں سے {0}
+✏️ بياناتك|✏️ Your details|✏️ Tes informations|✏️ Tus datos|✏️ Bilgilerin|✏️ Deine Daten|✏️ Datamu|✏️ آپ کی معلومات
+➕ ضيفها لجدولي|➕ Add to my schedule|➕ Ajouter à mon planning|➕ Añadir a mi horario|➕ Programıma ekle|➕ Zu meinem Plan hinzufügen|➕ Tambahkan ke jadwalku|➕ میرے شیڈول میں شامل کریں
+اكتب السن والطول والوزن صح|Enter your age, height and weight correctly|Saisis correctement ton âge, ta taille et ton poids|Escribe bien tu edad, altura y peso|Yaşını, boyunu ve kilonu doğru yaz|Gib Alter, Größe und Gewicht richtig ein|Isi usia, tinggi, dan berat badan dengan benar|اپنی عمر، قد اور وزن درست لکھیں
+اتضافت لجدولك ✓|Added to your schedule ✓|Ajouté à ton planning ✓|Añadido a tu horario ✓|Programına eklendi ✓|Zu deinem Plan hinzugefügt ✓|Ditambahkan ke jadwalmu ✓|آپ کے شیڈول میں شامل ہو گیا ✓
+📆 تاريخ تاني|📆 Another date|📆 Autre date|📆 Otra fecha|📆 Başka bir tarih|📆 Anderes Datum|📆 Tanggal lain|📆 دوسری تاریخ
+اكتب المهمة الأول|Write the task first|Écris d’abord la tâche|Escribe primero la tarea|Önce görevi yaz|Schreib zuerst die Aufgabe|Tulis tugasnya dulu|پہلے کام لکھیں
+اتضافت المهمة ✓|Task added ✓|Tâche ajoutée ✓|Tarea añadida ✓|Görev eklendi ✓|Aufgabe hinzugefügt ✓|Tugas ditambahkan ✓|کام شامل ہو گیا ✓
+🕌 عبادة|🕌 Worship|🕌 Pratique religieuse|🕌 Adoración|🕌 İbadet|🕌 Glaubenspraxis|🕌 Ibadah|🕌 عبادت
+💪 صحة|💪 Health|💪 Santé|💪 Salud|💪 Sağlık|💪 Gesundheit|💪 Kesehatan|💪 صحت
+🧠 تطوير|🧠 Growth|🧠 Développement|🧠 Desarrollo|🧠 Gelişim|🧠 Entwicklung|🧠 Pengembangan|🧠 ترقی
+🏠 حياة|🏠 Life|🏠 Vie quotidienne|🏠 Vida diaria|🏠 Günlük yaşam|🏠 Alltag|🏠 Kehidupan|🏠 روزمرہ زندگی
+🌅 صلاة الضحى|🌅 Duha prayer|🌅 Prière du Duha|🌅 Oración del Duha|🌅 Duha namazı|🌅 Duha-Gebet|🌅 Salat Duha|🌅 نمازِ چاشت
+🌙 قيام الليل|🌙 Night prayer (Qiyam)|🌙 Prière de nuit (Qiyam)|🌙 Oración nocturna (Qiyam)|🌙 Gece namazı (Kıyam)|🌙 Nachtgebet (Qiyam)|🌙 Salat malam (Qiyamul lail)|🌙 تہجد
+🕌 السنن الرواتب|🕌 Regular sunnah prayers|🕌 Sunnas régulières|🕌 Sunnas regulares|🕌 Revatip sünnetler|🕌 Regelmäßige Sunna-Gebete|🕌 Salat sunnah rawatib|🕌 سننِ مؤکدہ
+١٢ ركعة|12 rak‘ahs|12 rak‘at|12 rakaat|12 rekât|12 Rak‘a|12 rakaat|12 رکعتیں
+📿 تسبيح|📿 Tasbih|📿 Tasbih|📿 Tasbih|📿 Tesbih|📿 Tasbih|📿 Tasbih|📿 تسبیح
+مرة|times|fois|veces|kez|Mal|kali|بار
+🤲 استغفار|🤲 Istighfar|🤲 Istighfar|🤲 Istighfar|🤲 İstiğfar|🤲 Istighfar|🤲 Istighfar|🤲 استغفار
+💝 صدقة يومية|💝 Daily charity|💝 Charité quotidienne|💝 Caridad diaria|💝 Günlük sadaka|💝 Tägliche Wohltätigkeit|💝 Sedekah harian|💝 روزانہ صدقہ
+🌿 صيام الاثنين والخميس|🌿 Fasting Monday and Thursday|🌿 Jeûne du lundi et du jeudi|🌿 Ayuno del lunes y el jueves|🌿 Pazartesi ve Perşembe orucu|🌿 Fasten am Montag und Donnerstag|🌿 Puasa Senin dan Kamis|🌿 پیر اور جمعرات کا روزہ
+👨‍👩‍👧 اتصال بالوالدين|👨‍👩‍👧 Call your parents|👨‍👩‍👧 Appeler tes parents|👨‍👩‍👧 Llamar a tus padres|👨‍👩‍👧 Ebeveynleri ara|👨‍👩‍👧 Eltern anrufen|👨‍👩‍👧 Telepon orang tua|👨‍👩‍👧 والدین کو فون
+🕋 صلاة الجمعة وسورة الكهف|🕋 Friday prayer and Surat Al-Kahf|🕋 Prière du vendredi et sourate Al-Kahf|🕋 Oración del viernes y sura Al-Kahf|🕋 Cuma namazı ve Kehf suresi|🕋 Freitagsgebet und Sure Al-Kahf|🕋 Salat Jumat dan Surah Al-Kahf|🕋 نمازِ جمعہ اور سورۃ الکہف
+💧 شرب المياه|💧 Drink water|💧 Boire de l’eau|💧 Beber agua|💧 Su iç|💧 Wasser trinken|💧 Minum air|💧 پانی پینا
+كوب|cups|verres|vasos|bardak|Gläser|gelas|گلاس
+🚶 مشي ٣٠ دقيقة|🚶 Walk 30 minutes|🚶 Marcher 30 minutes|🚶 Caminar 30 minutos|🚶 30 dakika yürü|🚶 30 Minuten gehen|🚶 Jalan kaki 30 menit|🚶 30 منٹ پیدل چلنا
+😴 نوم بدري|😴 Sleep early|😴 Dormir tôt|😴 Dormir temprano|😴 Erken uyu|😴 Früh schlafen|😴 Tidur lebih awal|😴 جلدی سونا
+⏰ صحيان بدري|⏰ Wake up early|⏰ Se réveiller tôt|⏰ Despertar temprano|⏰ Erken kalk|⏰ Früh aufstehen|⏰ Bangun lebih awal|⏰ جلدی اٹھنا
+💊 فيتامينات / أدوية|💊 Vitamins / medication|💊 Vitamines / médicaments|💊 Vitaminas / medicamentos|💊 Vitaminler / ilaçlar|💊 Vitamine / Medikamente|💊 Vitamin / obat|💊 وٹامنز / ادویات
+🍬 من غير سكر|🍬 No sugar|🍬 Sans sucre|🍬 Sin azúcar|🍬 Şekersiz|🍬 Ohne Zucker|🍬 Tanpa gula|🍬 بغیر چینی
+🪥 تنظيف الأسنان قبل النوم|🪥 Brush teeth before bed|🪥 Se brosser les dents avant de dormir|🪥 Cepillarse los dientes antes de dormir|🪥 Yatmadan önce diş fırçala|🪥 Vor dem Schlafen Zähne putzen|🪥 Sikat gigi sebelum tidur|🪥 سونے سے پہلے دانت صاف کرنا
+🏃 كارديو ٢٠ دقيقة|🏃 Cardio 20 minutes|🏃 Cardio 20 minutes|🏃 Cardio 20 minutos|🏃 20 dakika kardiyo|🏃 20 Minuten Cardio|🏃 Kardio 20 menit|🏃 20 منٹ کارڈیو
+🥤 مياه بدل المشروبات الغازية|🥤 Water instead of soda|🥤 De l’eau au lieu de soda|🥤 Agua en vez de refrescos|🥤 Gazlı içecek yerine su|🥤 Wasser statt Limonade|🥤 Air putih, bukan minuman bersoda|🥤 سوڈا کی جگہ پانی
+📖 قراءة (صفحات)|📖 Reading (pages)|📖 Lecture (pages)|📖 Lectura (páginas)|📖 Okuma (sayfa)|📖 Lesen (Seiten)|📖 Membaca (halaman)|📖 مطالعہ (صفحات)
+💻 مذاكرة أمن معلومات / برمجة|💻 Studying infosec / programming|💻 Étudier la sécurité informatique / programmation|💻 Estudiar seguridad informática / programación|💻 Bilgi güvenliği / programlama çalışmak|💻 Informationssicherheit / Programmieren lernen|💻 Belajar keamanan informasi / pemrograman|💻 انفارمیشن سیکیورٹی / پروگرامنگ کی پڑھائی
+ساعة|hours|heures|horas|saat|Stunden|jam|گھنٹے
+✍️ يوميات وامتنان|✍️ Journal and gratitude|✍️ Journal et gratitude|✍️ Diario y gratitud|✍️ Günlük ve şükran|✍️ Tagebuch und Dankbarkeit|✍️ Jurnal dan rasa syukur|✍️ ڈائری اور شکرگزاری
+🎧 بودكاست أو كورس|🎧 Podcast or course|🎧 Podcast ou cours|🎧 Podcast o curso|🎧 Podcast veya kurs|🎧 Podcast oder Kurs|🎧 Podcast atau kursus|🎧 پوڈکاسٹ یا کورس
+📵 من غير موبايل قبل النوم بساعة|📵 No phone an hour before bed|📵 Pas de téléphone une heure avant de dormir|📵 Sin móvil una hora antes de dormir|📵 Yatmadan bir saat önce telefon yok|📵 Eine Stunde vor dem Schlafen kein Handy|📵 Tanpa ponsel satu jam sebelum tidur|📵 سونے سے ایک گھنٹہ پہلے موبائل نہیں
+🎯 مراجعة أهداف اليوم|🎯 Review today’s goals|🎯 Revoir les objectifs du jour|🎯 Revisar los objetivos de hoy|🎯 Bugünün hedeflerini gözden geçir|🎯 Heutige Ziele überprüfen|🎯 Tinjau target hari ini|🎯 آج کے اہداف کا جائزہ
+🛏️ ترتيب السرير|🛏️ Make the bed|🛏️ Faire le lit|🛏️ Hacer la cama|🛏️ Yatağı topla|🛏️ Bett machen|🛏️ Merapikan tempat tidur|🛏️ بستر درست کرنا
+🧹 ترتيب البيت|🧹 Tidy the house|🧹 Ranger la maison|🧹 Ordenar la casa|🧹 Evi topla|🧹 Haus aufräumen|🧹 Merapikan rumah|🧹 گھر کی صفائی
+💵 تسجيل المصاريف|💵 Log expenses|💵 Noter les dépenses|💵 Registrar gastos|💵 Harcamaları kaydet|💵 Ausgaben eintragen|💵 Catat pengeluaran|💵 اخراجات درج کرنا
+📞 صلة رحم|📞 Keep family ties|📞 Garder le lien avec la famille|📞 Mantener los lazos familiares|📞 Akraba ziyareti|📞 Familienbande pflegen|📞 Silaturahmi|📞 صلہ رحمی
+🌱 سقي النباتات|🌱 Water the plants|🌱 Arroser les plantes|🌱 Regar las plantas|🌱 Bitkileri sula|🌱 Pflanzen gießen|🌱 Menyiram tanaman|🌱 پودوں کو پانی دینا
+🧺 غسيل وكوي|🧺 Laundry and ironing|🧺 Lessive et repassage|🧺 Lavar y planchar|🧺 Çamaşır ve ütü|🧺 Wäsche und Bügeln|🧺 Mencuci dan menyetrika|🧺 کپڑے دھونا اور استری
+قوالب جاهزة ⚡|Ready-made templates ⚡|Modèles prêts à l’emploi ⚡|Plantillas listas ⚡|Hazır şablonlar ⚡|Fertige Vorlagen ⚡|Templat siap pakai ⚡|تیار سانچے ⚡
+اختار اللي عايزه وضيفهم مرة واحدة.|Pick what you want and add them all at once.|Choisis ce que tu veux et ajoute-les d’un coup.|Elige lo que quieras y añádelos de una vez.|İstediklerini seç ve hepsini birden ekle.|Wähle aus, was du willst, und füge alles auf einmal hinzu.|Pilih yang kamu mau dan tambahkan sekaligus.|جو چاہیں چنیں اور سب ایک ساتھ شامل کریں۔
+ضيف {0}|Add {0}|Ajouter {0}|Añadir {0}|{0} ekle|{0} hinzufügen|Tambah {0}|{0} شامل کریں
+اختار عادة على الأقل|Pick at least one habit|Choisis au moins une habitude|Elige al menos un hábito|En az bir alışkanlık seç|Wähle mindestens eine Gewohnheit|Pilih minimal satu kebiasaan|کم از کم ایک عادت چنیں
+عادة يومية|Daily habit|Habitude quotidienne|Hábito diario|Günlük alışkanlık|Tägliche Gewohnheit|Kebiasaan harian|روزانہ کی عادت
+اتضافت {0} {1} ✓{2}|{0} {1} added ✓{2}|{0} {1} ajouté(es) ✓{2}|{0} {1} añadido(s) ✓{2}|{0} {1} eklendi ✓{2}|{0} {1} hinzugefügt ✓{2}|{0} {1} ditambahkan ✓{2}|{0} {1} شامل ہو گئیں ✓{2}
+عادات|habits|habitudes|hábitos|alışkanlık|Gewohnheiten|kebiasaan|عادتیں
+والتذكيرات 🔔|and reminders 🔔|et rappels 🔔|y recordatorios 🔔|ve hatırlatıcılar 🔔|und Erinnerungen 🔔|dan pengingat 🔔|اور یاد دہانیاں 🔔
+⏹ إلغاء الجلسة|⏹ Cancel session|⏹ Annuler la séance|⏹ Cancelar la sesión|⏹ Seansı iptal et|⏹ Sitzung abbrechen|⏹ Batalkan sesi|⏹ سیشن منسوخ کریں
+أكل|Food|Nourriture|Comida|Yemek|Essen|Makanan|کھانا
+مواصلات|Transport|Transport|Transporte|Ulaşım|Transport|Transportasi|آمدورفت
+فواتير|Bills|Factures|Facturas|Faturalar|Rechnungen|Tagihan|بل
+ترفيه|Entertainment|Loisirs|Ocio|Eğlence|Unterhaltung|Hiburan|تفریح
+تسوق|Shopping|Achats|Compras|Alışveriş|Einkaufen|Belanja|خریداری
+فاضل {0} من {1}|{0} of {1} left|Il reste {0} sur {1}|Quedan {0} de {1}|{1} içinden {0} kaldı|Noch {0} von {1}|Sisa {0} dari {1}|{1} میں سے {0} باقی
+🔁 اشتراكات شهرية: {0}|🔁 Monthly subscriptions: {0}|🔁 Abonnements mensuels : {0}|🔁 Suscripciones mensuales: {0}|🔁 Aylık abonelikler: {0}|🔁 Monatliche Abos: {0}|🔁 Langganan bulanan: {0}|🔁 ماہانہ سبسکرپشنز: {0}
+على إيه صرفت؟|What did you spend on?|Tu as dépensé pour quoi ?|¿En qué gastaste?|Neye harcadın?|Wofür hast du es ausgegeben?|Untuk apa pengeluarannya?|کس چیز پر خرچ کیا؟
+🔁 الاشتراكات|🔁 Subscriptions|🔁 Abonnements|🔁 Suscripciones|🔁 Abonelikler|🔁 Abos|🔁 Langganan|🔁 سبسکرپشنز
+التجديد {0} (يوم {1})|Renews {0} (day {1})|Renouvellement {0} (jour {1})|Renovación {0} (día {1})|Yenileme {0} ({1}. gün)|Verlängerung {0} (Tag {1})|Perpanjangan {0} (hari ke-{1})|تجدید {0} (دن {1})
+بعد {0} يوم|In {0} days|Dans {0} jours|En {0} días|{0} gün sonra|In {0} Tagen|{0} hari lagi|{0} دن بعد
+آخر المصاريف|Latest expenses|Dernières dépenses|Últimos gastos|Son harcamalar|Letzte Ausgaben|Pengeluaran terbaru|حالیہ اخراجات
+مثال: غدا|Example: lunch|Exemple : déjeuner|Ejemplo: almuerzo|Örnek: öğle yemeği|Beispiel: Mittagessen|Contoh: makan siang|مثال: دوپہر کا کھانا
+مصروف جديد 💸|New expense 💸|Nouvelle dépense 💸|Nuevo gasto 💸|Yeni harcama 💸|Neue Ausgabe 💸|Pengeluaran baru 💸|نیا خرچ 💸
+المبلغ (جنيه)|Amount (EGP)|Montant (EGP)|Importe (EGP)|Tutar (EGP)|Betrag (EGP)|Jumlah (EGP)|رقم (مصری پاؤنڈ)
+ملاحظة (اختياري)|Note (optional)|Note (facultatif)|Nota (opcional)|Not (isteğe bağlı)|Notiz (optional)|Catatan (opsional)|نوٹ (اختیاری)
+امتى؟|When?|Quand ?|¿Cuándo?|Ne zaman?|Wann?|Kapan?|کب؟
+إمبارح|Yesterday|Hier|Ayer|Dün|Gestern|Kemarin|کل (گزشتہ)
+مثال: نتفليكس|Example: a streaming service|Exemple : un service de streaming|Ejemplo: un servicio de streaming|Örnek: bir yayın hizmeti|Beispiel: ein Streamingdienst|Contoh: layanan streaming|مثال: اسٹریمنگ سروس
+اشتراك جديد 🔁|New subscription 🔁|Nouvel abonnement 🔁|Nueva suscripción 🔁|Yeni abonelik 🔁|Neues Abo 🔁|Langganan baru 🔁|نئی سبسکرپشن 🔁
+اسم الاشتراك|Subscription name|Nom de l’abonnement|Nombre de la suscripción|Abonelik adı|Name des Abos|Nama langganan|سبسکرپشن کا نام
+المبلغ الشهري (جنيه)|Monthly amount (EGP)|Montant mensuel (EGP)|Importe mensual (EGP)|Aylık tutar (EGP)|Monatlicher Betrag (EGP)|Jumlah per bulan (EGP)|ماہانہ رقم (مصری پاؤنڈ)
+يوم التجديد في الشهر (١-٢٨)|Renewal day of the month (1-28)|Jour de renouvellement du mois (1-28)|Día de renovación del mes (1-28)|Ayın yenileme günü (1-28)|Verlängerungstag im Monat (1-28)|Hari perpanjangan dalam bulan (1-28)|مہینے میں تجدید کا دن (1-28)
+أضف الاشتراك|Add subscription|Ajouter l’abonnement|Añadir suscripción|Aboneliği ekle|Abo hinzufügen|Tambah langganan|سبسکرپشن شامل کریں
+ميزانية الشهر 🎯|Monthly budget 🎯|Budget du mois 🎯|Presupuesto del mes 🎯|Aylık bütçe 🎯|Monatsbudget 🎯|Anggaran bulanan 🎯|ماہانہ بجٹ 🎯
+أقصى مبلغ تصرفه في الشهر (جنيه)|The most you’ll spend in a month (EGP)|Le maximum que tu dépenseras par mois (EGP)|Lo máximo que gastarás al mes (EGP)|Ayda harcayacağın en yüksek tutar (EGP)|Der höchste Betrag, den du pro Monat ausgibst (EGP)|Jumlah maksimum yang kamu belanjakan per bulan (EGP)|مہینے میں زیادہ سے زیادہ جو رقم خرچ کریں گے (مصری پاؤنڈ)
+اكتب المبلغ|Enter the amount|Saisis le montant|Escribe el importe|Tutarı yaz|Gib den Betrag ein|Tulis jumlahnya|رقم لکھیں
+اكتب اسم الاشتراك|Enter the subscription name|Saisis le nom de l’abonnement|Escribe el nombre de la suscripción|Abonelik adını yaz|Gib den Namen des Abos ein|Tulis nama langganan|سبسکرپشن کا نام لکھیں
+اليوم من ١ لـ ٢٨|Day from 1 to 28|Jour de 1 à 28|Día de 1 a 28|1 ile 28 arası gün|Tag von 1 bis 28|Hari dari 1 sampai 28|دن 1 سے 28 تک
+اتضاف ✓|Added ✓|Ajouté ✓|Añadido ✓|Eklendi ✓|Hinzugefügt ✓|Ditambahkan ✓|شامل ہو گیا ✓
+اتحفظت ✓|Saved ✓|Enregistré ✓|Guardado ✓|Kaydedildi ✓|Gespeichert ✓|Tersimpan ✓|محفوظ ہو گیا ✓
+التدخين|Smoking|Tabac|Fumar|Sigara|Rauchen|Merokok|سگریٹ نوشی
+السكر|Sugar|Sucre|Azúcar|Şeker|Zucker|Gula|چینی
+السوشيال ميديا|Social media|Réseaux sociaux|Redes sociales|Sosyal medya|Soziale Medien|Media sosial|سوشل میڈیا
+السهر|Staying up late|Veiller tard|Trasnochar|Geç yatmak|Lange aufbleiben|Begadang|دیر تک جاگنا
+الألعاب بإفراط|Excessive gaming|Jeux vidéo excessifs|Videojuegos en exceso|Aşırı oyun|Übermäßiges Spielen|Bermain game berlebihan|حد سے زیادہ گیمز
+الأكل السريع|Fast food|Restauration rapide|Comida rápida|Fast food|Fast Food|Makanan cepat saji|فاسٹ فوڈ
+عادة تانية (باسم خاص)|Another habit (custom name)|Autre habitude (nom personnalisé)|Otro hábito (nombre propio)|Başka bir alışkanlık (özel ad)|Andere Gewohnheit (eigener Name)|Kebiasaan lain (nama sendiri)|کوئی اور عادت (اپنا نام)
+ملل|Boredom|Ennui|Aburrimiento|Can sıkıntısı|Langeweile|Bosan|اکتاہٹ
+توتر|Stress|Stress|Estrés|Stres|Stress|Stres|تناؤ
+وحدة|Loneliness|Solitude|Soledad|Yalnızlık|Einsamkeit|Kesepian|تنہائی
+تعب|Tiredness|Fatigue|Cansancio|Yorgunluk|Müdigkeit|Lelah|تھکن
+سهر|Late night|Soirée tardive|Noche tardía|Gece geç saat|Später Abend|Larut malam|رات کا دیر وقت
+مكان أو ناس|A place or people|Un lieu ou des personnes|Un lugar o personas|Bir yer ya da insanlar|Ein Ort oder Menschen|Tempat atau orang|کوئی جگہ یا لوگ
+مشاعر صعبة|Difficult feelings|Émotions difficiles|Emociones difíciles|Zor duygular|Schwierige Gefühle|Perasaan sulit|مشکل جذبات
+من غير سبب واضح|No clear reason|Sans raison claire|Sin motivo claro|Belirgin bir sebep yok|Ohne klaren Grund|Tanpa alasan jelas|کوئی واضح وجہ نہیں
+🚶 امشي ١٠ دقايق|🚶 Walk for 10 minutes|🚶 Marche 10 minutes|🚶 Camina 10 minutos|🚶 10 dakika yürü|🚶 Geh 10 Minuten spazieren|🚶 Jalan kaki 10 menit|🚶 10 منٹ پیدل چلیں
+💧 اشرب كوباية مياه|💧 Drink a glass of water|💧 Bois un verre d’eau|💧 Bebe un vaso de agua|💧 Bir bardak su iç|💧 Trink ein Glas Wasser|💧 Minum segelas air|💧 ایک گلاس پانی پئیں
+📿 اذكر الله واستغفر|📿 Remember God and seek forgiveness|📿 Invoque Dieu et demande pardon|📿 Recuerda a Dios y pide perdón|📿 Allah’ı an ve istiğfar et|📿 Gedenke Gottes und bitte um Vergebung|📿 Berzikir dan beristighfar|📿 اللہ کو یاد کریں اور استغفار کریں
+✍️ اكتب اللي جواك|✍️ Write what’s inside you|✍️ Écris ce que tu ressens|✍️ Escribe lo que llevas dentro|✍️ İçinden geçeni yaz|✍️ Schreib auf, was in dir ist|✍️ Tulis apa yang ada di hatimu|✍️ جو دل میں ہے لکھیں
+💪 اعمل ١٠ تمارين ضغط|💪 Do 10 push-ups|💪 Fais 10 pompes|💪 Haz 10 flexiones|💪 10 şınav çek|💪 Mach 10 Liegestütze|💪 Lakukan 10 push-up|💪 10 پش اپس کریں
+أيامك اللي فاتت ما راحتش، هي اللي هتفرق المرة الجاية.|Your past days aren’t lost, they’re what will make the difference next time.|Tes jours passés ne sont pas perdus, ce sont eux qui feront la différence la prochaine fois.|Tus días pasados no se pierden, son los que marcarán la diferencia la próxima vez.|Geçmiş günlerin boşa gitmedi, gelecek sefer fark yaratacak olan onlar.|Deine vergangenen Tage sind nicht verloren, sie machen beim nächsten Mal den Unterschied.|Hari-harimu yang lalu tidak sia-sia, justru itulah yang membuat perbedaan lain kali.|آپ کے گزرے ہوئے دن ضائع نہیں ہوئے، یہی اگلی بار فرق ڈالیں گے۔
+{0} يوم{1}|{0} days{1}|{0} jours{1}|{0} días{1}|{0} gün{1}|{0} Tage{1}|{0} hari{1}|{0} دن{1}
+و{0} ساعة|and {0} hours|et {0} heures|y {0} horas|ve {0} saat|und {0} Stunden|dan {0} jam|اور {0} گھنٹے
+بالليل|at night|la nuit|por la noche|geceleri|nachts|malam hari|رات کو
+الصبح|in the morning|le matin|por la mañana|sabahları|morgens|pagi hari|صبح کو
+بعد الضهر|in the afternoon|l’après-midi|por la tarde|öğleden sonra|nachmittags|siang hari|دوپہر کے بعد
+الهدف الجاي: {0} يوم|Next goal: {0} days|Prochain objectif : {0} jours|Próximo objetivo: {0} días|Sonraki hedef: {0} gün|Nächstes Ziel: {0} Tage|Target berikutnya: {0} hari|اگلا ہدف: {0} دن
+🆘 عندي رغبة دلوقتي|🆘 I have an urge right now|🆘 J’ai une envie maintenant|🆘 Tengo un impulso ahora|🆘 Şu an bir isteğim var|🆘 Ich habe gerade Verlangen|🆘 Aku sedang ingin sekarang|🆘 مجھے ابھی خواہش ہو رہی ہے
+↩️ حصلت انتكاسة|↩️ I had a relapse|↩️ J’ai fait une rechute|↩️ Tuve una recaída|↩️ Nüks yaşadım|↩️ Ich hatte einen Rückfall|↩️ Aku kambuh|↩️ مجھ سے لغزش ہو گئی
+📝 خطتي|📝 My plan|📝 Mon plan|📝 Mi plan|📝 Planım|📝 Mein Plan|📝 Rencanaku|📝 میرا منصوبہ
+📌 خطتي: {0}|📌 My plan: {0}|📌 Mon plan : {0}|📌 Mi plan: {0}|📌 Planım: {0}|📌 Mein Plan: {0}|📌 Rencanaku: {0}|📌 میرا منصوبہ: {0}
+{0} يوم|{0} days|{0} jours|{0} jours|{0} gün|{0} Tage|{0} hari|{0} دن
+أطول فترة {0}|longest streak {0}|plus longue période {0}|periodo más largo {0}|en uzun süre {0}|längste Phase {0}|periode terpanjang {0}|سب سے لمبی مدت {0}
+🌱 امبارح فاتتك «{0}» بعد {1} يوم متتالي|🌱 You missed “{0}” yesterday after {1} days in a row|🌱 Tu as manqué « {0} » hier après {1} jours d’affilée|🌱 Ayer fallaste «{0}» tras {1} días seguidos|🌱 Dün {1} gün üst üste sonra “{0}” kaçtı|🌱 Gestern hast du „{0}“ nach {1} Tagen in Folge verpasst|🌱 Kemarin kamu melewatkan “{0}” setelah {1} hari berturut-turut|🌱 کل آپ سے {1} دن مسلسل کے بعد «{0}» رہ گیا
+تمام، راجع 💪|Okay, I’m back 💪|D’accord, je reviens 💪|Vale, vuelvo 💪|Tamam, geri döndüm 💪|Okay, ich bin zurück 💪|Oke, aku kembali 💪|ٹھیک ہے، واپس آ گیا 💪
+عادة للإقلاع 🌱|A habit to quit 🌱|Une habitude à arrêter 🌱|Un hábito que dejar 🌱|Bırakılacak bir alışkanlık 🌱|Eine Gewohnheit zum Aufhören 🌱|Kebiasaan untuk dihentikan 🌱|چھوڑنے کی ایک عادت 🌱
+اختار اسمها، وأنا هحسبلك أيامك من اللحظة دي.|Choose its name and I’ll count your days from this moment.|Choisis son nom et je compterai tes jours à partir de maintenant.|Elige su nombre y contaré tus días desde este momento.|Adını seç, günlerini şu andan itibaren sayayım.|Wähle den Namen, und ich zähle deine Tage ab jetzt.|Pilih namanya dan aku hitung harimu mulai sekarang.|اس کا نام چنیں، میں اسی لمحے سے آپ کے دن گنوں گا۔
+مثال: عادة X|Example: habit X|Exemple : habitude X|Ejemplo: hábito X|Örnek: X alışkanlığı|Beispiel: Gewohnheit X|Contoh: kebiasaan X|مثال: عادت ایکس
+اكتب اسم تختاره (محدش هيشوفه غيرك)|Write a name of your choice (only you will see it)|Écris le nom que tu veux (toi seul le verras)|Escribe un nombre a tu elección (solo tú lo verás)|İstediğin bir ad yaz (sadece sen görürsün)|Schreib einen Namen deiner Wahl (nur du siehst ihn)|Tulis nama pilihanmu (hanya kamu yang melihatnya)|اپنی پسند کا نام لکھیں (صرف آپ دیکھیں گے)
+دوس ابدأ|Tap Start|Touche Démarrer|Toca Empezar|Başla’ya dokun|Tippe auf Starten|Ketuk Mulai|شروع پر ٹیپ کریں
+إيه اللي هتعمله مختلف؟|What will you do differently?|Que feras-tu différemment ?|¿Qué harás diferente?|Neyi farklı yapacaksın?|Was wirst du anders machen?|Apa yang akan kamu lakukan berbeda?|آپ کیا مختلف کریں گے؟
+ولا يهمك 🤍|No worries 🤍|Pas de souci 🤍|No te preocupes 🤍|Önemli değil 🤍|Kein Problem 🤍|Tidak apa-apa 🤍|کوئی بات نہیں 🤍
+خطتي 📝|My plan 📝|Mon plan 📝|Mi plan 📝|Planım 📝|Mein Plan 📝|Rencanaku 📝|میرا منصوبہ 📝
+جملة واحدة: «لو حصل ... هعمل ...»|One sentence: “If … happens, I will …”|Une phrase : « Si … arrive, je ferai … »|Una frase: «Si pasa …, haré …»|Tek cümle: “… olursa … yapacağım”|Ein Satz: „Wenn … passiert, werde ich …“|Satu kalimat: “Jika … terjadi, aku akan …”|ایک جملہ: «اگر … ہوا تو میں … کروں گا»
+وقت حساس (تنبيه يومي)|Critical time (daily alert)|Moment sensible (alerte quotidienne)|Hora crítica (aviso diario)|Kritik saat (günlük uyarı)|Kritische Zeit (tägliche Warnung)|Waktu rawan (peringatan harian)|نازک وقت (روزانہ انتباہ)
+تمسح العادة دي وكل سجلها؟|Delete this habit and all its history?|Supprimer cette habitude et tout son historique ?|¿Borrar este hábito y todo su historial?|Bu alışkanlık ve tüm geçmişi silinsin mi?|Diese Gewohnheit und ihren gesamten Verlauf löschen?|Hapus kebiasaan ini beserta seluruh riwayatnya?|یہ عادت اور اس کا پورا ریکارڈ مٹا دیں؟
+اكتب الاسم|Enter the name|Saisis le nom|Escribe el nombre|Adı yaz|Gib den Namen ein|Tulis namanya|نام لکھیں
+بالتوفيق! أول يوم النهارده 🌱|Good luck! Day one is today 🌱|Bonne chance ! Premier jour aujourd’hui 🌱|¡Buena suerte! Hoy es el primer día 🌱|Bol şans! İlk gün bugün 🌱|Viel Glück! Heute ist der erste Tag 🌱|Semoga berhasil! Hari pertama adalah hari ini 🌱|اللہ آپ کو کامیاب کرے! آج پہلا دن ہے 🌱
+🌬️ شهيق… ٤ ثواني|🌬️ Breathe in… 4 seconds|🌬️ Inspire… 4 secondes|🌬️ Inhala… 4 segundos|🌬️ Nefes al… 4 saniye|🌬️ Einatmen… 4 Sekunden|🌬️ Tarik napas… 4 detik|🌬️ سانس اندر… 4 سیکنڈ
+😮‍💨 زفير بطيء… ٦ ثواني|😮‍💨 Breathe out slowly… 6 seconds|😮‍💨 Expire lentement… 6 secondes|😮‍💨 Exhala despacio… 6 segundos|😮‍💨 Yavaşça nefes ver… 6 saniye|😮‍💨 Langsam ausatmen… 6 Sekunden|😮‍💨 Hembuskan perlahan… 6 detik|😮‍💨 آہستہ سانس باہر… 6 سیکنڈ
+ضحى|Duha|Duha|Duha|Duha|Duha|Duha|چاشت
+قيام الليل|Night prayer|Prière de nuit|Oración nocturna|Gece namazı|Nachtgebet|Salat malam|تہجد
+استغفار|Istighfar|Istighfar|Istighfar|İstiğfar|Istighfar|Istighfar|استغفار
+صدقة|Charity|Charité|Caridad|Sadaka|Wohltätigkeit|Sedekah|صدقہ
+اتصال بالوالدين|Call parents|Appeler les parents|Llamar a los padres|Ebeveynleri ara|Eltern anrufen|Telepon orang tua|والدین کو فون
+شرب المياه|Water|Eau|Agua|Su|Wasser|Air putih|پانی
+مشي|Walk|Marche|Caminar|Yürüyüş|Gehen|Jalan kaki|پیدل چلنا
+نوم بدري|Early sleep|Coucher tôt|Dormir temprano|Erken uyku|Früh schlafen|Tidur awal|جلدی سونا
+صحيان بدري|Early wake-up|Réveil tôt|Despertar temprano|Erken kalkış|Früh aufstehen|Bangun awal|جلدی اٹھنا
+فيتامينات|Vitamins|Vitamines|Vitaminas|Vitaminler|Vitamine|Vitamin|وٹامنز
+تأمل|Meditation|Méditation|Meditación|Meditasyon|Meditation|Meditasi|غور و فکر
+الأسنان|Teeth|Dents|Dientes|Dişler|Zähne|Gigi|دانت
+كارديو|Cardio|Cardio|Cardio|Kardiyo|Cardio|Kardio|کارڈیو
+لغة|Language|Langue|Idioma|Dil|Sprache|Bahasa|زبان
+يوميات|Journal|Journal|Diario|Günlük|Tagebuch|Jurnal|ڈائری
+بودكاست|Podcast|Podcast|Podcast|Podcast|Podcast|Podcast|پوڈکاسٹ
+من غير موبايل|No phone|Sans téléphone|Sin móvil|Telefonsuz|Ohne Handy|Tanpa ponsel|بغیر موبائل
+مراجعة أهداف|Goal review|Revue des objectifs|Revisión de objetivos|Hedef değerlendirmesi|Zielüberprüfung|Tinjauan target|اہداف کا جائزہ
+ترتيب السرير|Make the bed|Faire le lit|Hacer la cama|Yatağı toplama|Bett machen|Merapikan kasur|بستر درست کرنا
+ترتيب البيت|Tidy the house|Ranger la maison|Ordenar la casa|Evi toplama|Haus aufräumen|Merapikan rumah|گھر کی صفائی
+تسجيل المصاريف|Log expenses|Noter les dépenses|Registrar gastos|Harcama kaydı|Ausgaben eintragen|Catat pengeluaran|اخراجات درج کرنا
+صلة رحم|Family ties|Liens familiaux|Lazos familiares|Akraba ziyareti|Familienbande|Silaturahmi|صلہ رحمی
+سقي النباتات|Water plants|Arroser les plantes|Regar plantas|Bitki sulama|Pflanzen gießen|Siram tanaman|پودوں کو پانی
+غسيل|Laundry|Lessive|Lavado|Çamaşır|Wäsche|Cucian|کپڑے دھونا
+بدون تذكير|No reminder|Sans rappel|Sin recordatorio|Hatırlatıcısız|Ohne Erinnerung|Tanpa pengingat|بغیر یاد دہانی
+الساعة {0}|At {0}|À {0}|A las {0}|Saat {0}|Um {0}|Pukul {0}|وقت {0}
+كل {0} ({1} مرات)|Every {0} ({1} times)|Tous les {0} ({1} fois)|Cada {0} ({1} veces)|Her {0} ({1} kez)|Alle {0} ({1}-mal)|Setiap {0} ({1} kali)|ہر {0} ({1} بار)
+ساعتين|2 hours|2 heures|2 horas|2 saat|2 Stunden|2 jam|2 گھنٹے
+٣ ساعات|3 hours|3 heures|3 horas|3 saat|3 Stunden|3 jam|3 گھنٹے
+🔔 تذكير (اختياري)|🔔 Reminder (optional)|🔔 Rappel (facultatif)|🔔 Recordatorio (opcional)|🔔 Hatırlatıcı (isteğe bağlı)|🔔 Erinnerung (optional)|🔔 Pengingat (opsional)|🔔 یاد دہانی (اختیاری)
+إيه المهمة؟|What’s the task?|Quelle est la tâche ?|¿Cuál es la tarea?|Görev nedir?|Was ist die Aufgabe?|Apa tugasnya?|کام کیا ہے؟
+موعدها|Due date|Échéance|Fecha límite|Son tarih|Fälligkeit|Tenggat|آخری تاریخ
+الأولوية|Priority|Priorité|Prioridad|Öncelik|Priorität|Prioritas|ترجیح
+أضف المهمة|Add task|Ajouter la tâche|Añadir tarea|Görevi ekle|Aufgabe hinzufügen|Tambah tugas|کام شامل کریں
+عادة|Habit|Habitude|Hábito|Alışkanlık|Gewohnheit|Kebiasaan|عادت
+اختار عادة|Choose a habit|Choisis une habitude|Elige un hábito|Bir alışkanlık seç|Wähle eine Gewohnheit|Pilih kebiasaan|عادت چنیں
+🔕 بدون|🔕 None|🔕 Aucun|🔕 Ninguno|🔕 Yok|🔕 Keine|🔕 Tidak ada|🔕 کوئی نہیں
+⏰ مرة في اليوم|⏰ Once a day|⏰ Une fois par jour|⏰ Una vez al día|⏰ Günde bir kez|⏰ Einmal am Tag|⏰ Sekali sehari|⏰ دن میں ایک بار
+💧 كل ساعتين|💧 Every 2 hours|💧 Toutes les 2 heures|💧 Cada 2 horas|💧 Her 2 saatte|💧 Alle 2 Stunden|💧 Setiap 2 jam|💧 ہر 2 گھنٹے
+كل ٣ ساعات|Every 3 hours|Toutes les 3 heures|Cada 3 horas|Her 3 saatte|Alle 3 Stunden|Setiap 3 jam|ہر 3 گھنٹے
+الساعة كام؟|What time?|À quelle heure ?|¿A qué hora?|Saat kaçta?|Um wie viel Uhr?|Jam berapa?|کس وقت؟
+١٠ص ١٢م ٢م ٤م ٦م ٨م|10 AM 12 PM 2 PM 4 PM 6 PM 8 PM|10:00 12:00 14:00 16:00 18:00 20:00|10:00 12:00 14:00 16:00 18:00 20:00|10:00 12:00 14:00 16:00 18:00 20:00|10:00 12:00 14:00 16:00 18:00 20:00|10:00 12:00 14:00 16:00 18:00 20:00|10 صبح 12 دوپہر 2 بجے 4 بجے 6 بجے 8 بجے
+٩ص ١٢م ٣م ٦م ٩م|9 AM 12 PM 3 PM 6 PM 9 PM|09:00 12:00 15:00 18:00 21:00|09:00 12:00 15:00 18:00 21:00|09:00 12:00 15:00 18:00 21:00|09:00 12:00 15:00 18:00 21:00|09:00 12:00 15:00 18:00 21:00|9 صبح 12 دوپہر 3 بجے 6 بجے 9 بجے
+اتقفل التذكير|Reminder turned off|Rappel désactivé|Recordatorio desactivado|Hatırlatıcı kapatıldı|Erinnerung ausgeschaltet|Pengingat dimatikan|یاد دہانی بند ہو گئی
+مع الأكل|With food|Avec un repas|Con comida|Yemekle birlikte|Zum Essen|Bersama makanan|کھانے کے ساتھ
+على الريق|On an empty stomach|À jeun|En ayunas|Aç karnına|Auf nüchternen Magen|Saat perut kosong|نہار منہ
+قبل النوم|Before sleep|Avant de dormir|Antes de dormir|Uyumadan önce|Vor dem Schlafen|Sebelum tidur|سونے سے پہلے
+تلات|Three|Trois|Tres|Üç|Drei|Tiga|تین
+أربع|Four|Quatre|Cuatro|Dört|Vier|Empat|چار
+✓ أخدته {0}|✓ Taken {0}|✓ Pris {0}|✓ Tomado {0}|✓ Alındı {0}|✓ Genommen {0}|✓ Sudah diminum {0}|✓ لے لی {0}
+دلوقتي|Now|Maintenant|Ahora|Şimdi|Jetzt|Sekarang|ابھی
+تخطي|Skip|Passer|Omitir|Atla|Überspringen|Lewati|چھوڑیں
+💊 أدويتك النهارده{0}|💊 Your medications today{0}|💊 Tes médicaments aujourd’hui{0}|💊 Tus medicamentos de hoy{0}|💊 Bugünkü ilaçların{0}|💊 Deine Medikamente heute{0}|💊 Obatmu hari ini{0}|💊 آج کی آپ کی ادویات{0}
+كل الأدوية ›|All medications ›|Tous les médicaments ›|Todos los medicamentos ›|Tüm ilaçlar ›|Alle Medikamente ›|Semua obat ›|تمام ادویات ›
+({0} باقي)|({0} left)|({0} restant)|(quedan {0})|({0} kaldı)|({0} übrig)|(sisa {0})|({0} باقی)
+التزامك آخر ٧ أيام|Your adherence over the last 7 days|Ton assiduité sur les 7 derniers jours|Tu constancia en los últimos 7 días|Son 7 günlük düzenliliğin|Deine Konsequenz der letzten 7 Tage|Konsistensimu 7 hari terakhir|پچھلے 7 دنوں کی آپ کی پابندی
+{0} من {1} جرعة{2}|{0} of {1} doses{2}|{0} sur {1} doses{2}|{0} de {1} dosis{2}|{1} dozun {0}’i{2}|{0} von {1} Dosen{2}|{0} dari {1} dosis{2}|{1} میں سے {0} خوراکیں{2}
+{0} يوم كامل متتالي 🔥|{0} full days in a row 🔥|{0} jours complets d’affilée 🔥|{0} días completos seguidos 🔥|Art arda {0} tam gün 🔥|{0} volle Tage in Folge 🔥|{0} hari penuh berturut-turut 🔥|{0} مکمل دن مسلسل 🔥
+كل يوم|Every day|Tous les jours|Todos los días|Her gün|Jeden Tag|Setiap hari|ہر روز
+خلص العلاج|Treatment finished|Traitement terminé|Tratamiento terminado|Tedavi bitti|Behandlung beendet|Pengobatan selesai|علاج مکمل
+📦 باقي {0} جرعة|📦 {0} doses left|📦 {0} doses restantes|📦 Quedan {0} dosis|📦 {0} doz kaldı|📦 Noch {0} Dosen|📦 Sisa {0} dosis|📦 {0} خوراکیں باقی
+مثال: فيتامين د|Example: vitamin D|Exemple : vitamine D|Ejemplo: vitamina D|Örnek: D vitamini|Beispiel: Vitamin D|Contoh: vitamin D|مثال: وٹامن ڈی
+مثال: قرص واحد / ٥٠٠ مجم / ٥ مل|Example: one tablet / 500 mg / 5 ml|Exemple : un comprimé / 500 mg / 5 ml|Ejemplo: un comprimido / 500 mg / 5 ml|Örnek: bir tablet / 500 mg / 5 ml|Beispiel: eine Tablette / 500 mg / 5 ml|Contoh: satu tablet / 500 mg / 5 ml|مثال: ایک گولی / 500 ملی گرام / 5 ملی لیٹر
+مثال: بعد الغدا|Example: after lunch|Exemple : après le déjeuner|Ejemplo: después del almuerzo|Örnek: öğle yemeğinden sonra|Beispiel: nach dem Mittagessen|Contoh: setelah makan siang|مثال: دوپہر کے کھانے کے بعد
+اسم الدواء|Medication name|Nom du médicament|Nombre del medicamento|İlaç adı|Name des Medikaments|Nama obat|دوا کا نام
+الجرعة (اختياري)|Dose (optional)|Dose (facultatif)|Dosis (opcional)|Doz (isteğe bağlı)|Dosis (optional)|Dosis (opsional)|خوراک (اختیاری)
+كام مرة في اليوم؟|How many times a day?|Combien de fois par jour ?|¿Cuántas veces al día?|Günde kaç kez?|Wie oft am Tag?|Berapa kali sehari?|دن میں کتنی بار؟
+تعليمات|Instructions|Instructions|Instrucciones|Talimatlar|Anweisungen|Petunjuk|ہدایات
+مدة العلاج|Treatment duration|Durée du traitement|Duración del tratamiento|Tedavi süresi|Behandlungsdauer|Durasi pengobatan|علاج کی مدت
+تعديل دواء|Edit medication|Modifier le médicament|Editar medicamento|İlacı düzenle|Medikament bearbeiten|Ubah obat|دوا میں ترمیم
+دواء جديد|New medication|Nouveau médicament|Nuevo medicamento|Yeni ilaç|Neues Medikament|Obat baru|نئی دوا
+مرات|times|fois|veces|kez|Mal|kali|بار
+بدون|None|Aucune|Ninguna|Yok|Keine|Tidak ada|کوئی نہیں
+مستمر|Ongoing|En continu|Continuo|Sürekli|Fortlaufend|Berkelanjutan|مسلسل
+لحد {0} (اختار مدة لتغييرها)|Until {0} (choose a duration to change it)|Jusqu’au {0} (choisis une durée pour la changer)|Hasta el {0} (elige una duración para cambiarla)|{0} tarihine kadar (değiştirmek için bir süre seç)|Bis {0} (wähle eine Dauer, um sie zu ändern)|Sampai {0} (pilih durasi untuk mengubahnya)|{0} تک (بدلنے کے لیے مدت چنیں)
+احفظ التعديل|Save changes|Enregistrer les modifications|Guardar cambios|Değişiklikleri kaydet|Änderungen speichern|Simpan perubahan|تبدیلی محفوظ کریں
+أضف الدواء|Add medication|Ajouter le médicament|Añadir medicamento|İlacı ekle|Medikament hinzufügen|Tambah obat|دوا شامل کریں
+تقرير الالتزام بالأدوية — آخر ٣٠ يوم|Medication adherence report — last 30 days|Rapport d’observance des médicaments — 30 derniers jours|Informe de adherencia a medicamentos — últimos 30 días|İlaç uyum raporu — son 30 gün|Medikamenten-Bericht — letzte 30 Tage|Laporan kepatuhan obat — 30 hari terakhir|ادویات کی پابندی کی رپورٹ — پچھلے 30 دن
+تمسح الدوا ده وسجله؟|Delete this medication and its log?|Supprimer ce médicament et son historique ?|¿Borrar este medicamento y su registro?|Bu ilaç ve kaydı silinsin mi?|Dieses Medikament und sein Protokoll löschen?|Hapus obat ini beserta catatannya?|یہ دوا اور اس کا ریکارڈ مٹا دیں؟
+تقرير الأدوية|Medication report|Rapport des médicaments|Informe de medicamentos|İlaç raporu|Medikamentenbericht|Laporan obat|ادویات کی رپورٹ
+اتنسخ التقرير ✓|Report copied ✓|Rapport copié ✓|Informe copiado ✓|Rapor kopyalandı ✓|Bericht kopiert ✓|Laporan disalin ✓|رپورٹ کاپی ہو گئی ✓
+اكتب اسم الدواء|Enter the medication name|Saisis le nom du médicament|Escribe el nombre del medicamento|İlaç adını yaz|Gib den Namen des Medikaments ein|Tulis nama obat|دوا کا نام لکھیں
+اختار يوم على الأقل|Choose at least one day|Choisis au moins un jour|Elige al menos un día|En az bir gün seç|Wähle mindestens einen Tag|Pilih minimal satu hari|کم از کم ایک دن چنیں
+اتحفظ ✓ والتذكيرات شغالة 🔔|Saved ✓ and reminders are on 🔔|Enregistré ✓ et les rappels sont actifs 🔔|Guardado ✓ y los recordatorios están activos 🔔|Kaydedildi ✓ ve hatırlatıcılar açık 🔔|Gespeichert ✓ und Erinnerungen sind aktiv 🔔|Tersimpan ✓ dan pengingat aktif 🔔|محفوظ ہو گیا ✓ اور یاد دہانیاں چالو ہیں 🔔
+افتح جدولي|Open My Tracker|Ouvrir l’appli|Abrir la app|Uygulamayı aç|App öffnen|Buka aplikasi|ایپ کھولیں
+استخدم الرقم السري|Use PIN|Utiliser le code PIN|Usar PIN|PIN kullan|PIN verwenden|Gunakan PIN|پن استعمال کریں
+البصمة مش متاحة، استخدم الرقم السري|Biometrics unavailable, use the PIN|Biométrie indisponible, utilise le code PIN|Biometría no disponible, usa el PIN|Biyometri kullanılamıyor, PIN kullan|Biometrie nicht verfügbar, verwende die PIN|Biometrik tidak tersedia, gunakan PIN|بایومیٹرک دستیاب نہیں، پن استعمال کریں
+👆 افتح بالبصمة أو الوجه|👆 Unlock with fingerprint or face|👆 Déverrouiller par empreinte ou visage|👆 Desbloquear con huella o rostro|👆 Parmak izi veya yüzle aç|👆 Mit Fingerabdruck oder Gesicht entsperren|👆 Buka dengan sidik jari atau wajah|👆 فنگر پرنٹ یا چہرے سے کھولیں
+مشكلة في الفتح؟|Trouble unlocking?|Problème de déverrouillage ?|¿Problemas para desbloquear?|Açmakta sorun mu var?|Probleme beim Entsperren?|Kesulitan membuka?|کھولنے میں مسئلہ؟
+نسيت الرقم؟|Forgot the PIN?|Code PIN oublié ?|¿Olvidaste el PIN?|PIN’i mi unuttun?|PIN vergessen?|Lupa PIN?|پن بھول گئے؟
+حاول بعد {0} ثانية|Try again in {0} seconds|Réessaie dans {0} secondes|Inténtalo de nuevo en {0} segundos|{0} saniye sonra tekrar dene|Versuche es in {0} Sekunden erneut|Coba lagi dalam {0} detik|{0} سیکنڈ بعد دوبارہ کوشش کریں
+👆 بالبصمة / الوجه|👆 Fingerprint / face|👆 Empreinte / visage|👆 Huella / rostro|👆 Parmak izi / yüz|👆 Fingerabdruck / Gesicht|👆 Sidik jari / wajah|👆 فنگر پرنٹ / چہرہ
+الرقم غلط ({0})|Wrong PIN ({0})|Code PIN incorrect ({0})|PIN incorrecto ({0})|Yanlış PIN ({0})|Falsche PIN ({0})|PIN salah ({0})|پن غلط ہے ({0})
+مسح|Clear|Effacer|Borrar|Sil|Löschen|Hapus|صاف کریں
+اكتب الرقم السري الحالي|Enter the current PIN|Saisis le code PIN actuel|Escribe el PIN actual|Mevcut PIN’i yaz|Gib die aktuelle PIN ein|Masukkan PIN saat ini|موجودہ پن لکھیں
+اكتب رقم سري جديد (٤ لـ ٦ أرقام)|Enter a new PIN (4 to 6 digits)|Saisis un nouveau code PIN (4 à 6 chiffres)|Escribe un nuevo PIN (4 a 6 dígitos)|Yeni bir PIN yaz (4 ila 6 rakam)|Gib eine neue PIN ein (4 bis 6 Ziffern)|Masukkan PIN baru (4 sampai 6 angka)|نیا پن لکھیں (4 سے 6 ہندسے)
+اكتبه تاني للتأكيد|Enter it again to confirm|Saisis-le à nouveau pour confirmer|Escríbelo de nuevo para confirmar|Onaylamak için tekrar yaz|Gib sie zur Bestätigung erneut ein|Masukkan lagi untuk konfirmasi|تصدیق کے لیے دوبارہ لکھیں
+إلغاء القفل|Remove lock|Retirer le verrouillage|Quitar el bloqueo|Kilidi kaldır|Sperre entfernen|Hapus kunci|لاک ہٹائیں
+تغيير الرقم|Change PIN|Changer le code PIN|Cambiar PIN|PIN’i değiştir|PIN ändern|Ubah PIN|پن تبدیل کریں
+تفعيل القفل|Turn on lock|Activer le verrouillage|Activar el bloqueo|Kilidi aç|Sperre aktivieren|Aktifkan kunci|لاک چالو کریں
+اتلغى القفل|Lock removed|Verrouillage retiré|Bloqueo quitado|Kilit kaldırıldı|Sperre entfernt|Kunci dihapus|لاک ہٹا دیا گیا
+٤ أرقام على الأقل|At least 4 digits|Au moins 4 chiffres|Al menos 4 dígitos|En az 4 rakam|Mindestens 4 Ziffern|Minimal 4 angka|کم از کم 4 ہندسے
+الرقمين مش متطابقين|The two PINs don’t match|Les deux codes PIN ne correspondent pas|Los dos PIN no coinciden|İki PIN eşleşmiyor|Die beiden PINs stimmen nicht überein|Kedua PIN tidak cocok|دونوں پن میل نہیں کھاتے
+تأكيد البصمة|Confirm fingerprint|Confirmer l’empreinte|Confirmar huella|Parmak izini onayla|Fingerabdruck bestätigen|Konfirmasi sidik jari|فنگر پرنٹ کی تصدیق
+تأكيد التفعيل|Confirm activation|Confirmer l’activation|Confirmar activación|Etkinleştirmeyi onayla|Aktivierung bestätigen|Konfirmasi pengaktifan|فعال کرنے کی تصدیق
+تأكيد إلغاء القفل|Confirm lock removal|Confirmer le retrait du verrouillage|Confirmar quitar el bloqueo|Kilidin kaldırılmasını onayla|Entfernen der Sperre bestätigen|Konfirmasi penghapusan kunci|لاک ہٹانے کی تصدیق
+اتاخدت نسخة 📸|Backup taken 📸|Sauvegarde effectuée 📸|Copia realizada 📸|Yedek alındı 📸|Backup erstellt 📸|Cadangan dibuat 📸|بیک اپ لے لیا گیا 📸
+اتسترجعت ✓|Restored ✓|Restauré ✓|Restaurado ✓|Geri yüklendi ✓|Wiederhergestellt ✓|Dipulihkan ✓|بحال ہو گیا ✓
+النسخة تالفة|The backup is corrupted|La sauvegarde est corrompue|La copia está dañada|Yedek bozuk|Das Backup ist beschädigt|Cadangan rusak|بیک اپ خراب ہے
+المساحة ممتلئة|Storage is full|Espace de stockage plein|Almacenamiento lleno|Depolama alanı dolu|Speicher voll|Penyimpanan penuh|اسٹوریج بھر گئی ہے
+قفل التطبيق (اختياري): {0}|App lock (optional): {0}|Verrouillage de l’app (facultatif) : {0}|Bloqueo de la app (opcional): {0}|Uygulama kilidi (isteğe bağlı): {0}|App-Sperre (optional): {0}|Kunci aplikasi (opsional): {0}|ایپ لاک (اختیاری): {0}
+التطبيق بيتقفل لما تخرج منه، ومحدش يشوف أدويتك أو مصاريفك أو رحلتك.|The app locks when you leave it, so no one can see your medications, expenses or journey.|L’app se verrouille quand tu la quittes, personne ne peut voir tes médicaments, tes dépenses ou ton parcours.|La app se bloquea al salir, así nadie ve tus medicamentos, gastos ni tu camino.|Uygulama çıktığında kilitlenir, kimse ilaçlarını, harcamalarını veya yolculuğunu göremez.|Die App sperrt sich beim Verlassen, sodass niemand deine Medikamente, Ausgaben oder deinen Weg sehen kann.|Aplikasi terkunci saat kamu keluar, sehingga tak ada yang bisa melihat obat, pengeluaran, atau perjalananmu.|ایپ باہر نکلنے پر لاک ہو جاتی ہے، تاکہ کوئی آپ کی ادویات، اخراجات یا سفر نہ دیکھ سکے۔
+«بالبصمة / الوجه» بيستخدم قفل موبايلك نفسه (بصمة أو وجه أو نمط أو رقم الموبايل)، فمش هتحتاج تحفظ رقم جديد.{0}|“Fingerprint / face” uses your phone’s own lock (fingerprint, face, pattern or phone PIN), so you won’t need to remember a new code.{0}|« Empreinte / visage » utilise le verrouillage de ton téléphone (empreinte, visage, schéma ou code), tu n’auras donc pas de nouveau code à retenir.{0}|«Huella / rostro» usa el bloqueo de tu propio teléfono (huella, rostro, patrón o PIN), así que no tendrás que recordar un código nuevo.{0}|“Parmak izi / yüz”, telefonunun kendi kilidini kullanır (parmak izi, yüz, desen veya PIN), yani yeni bir kod hatırlaman gerekmez.{0}|„Fingerabdruck / Gesicht“ nutzt die Sperre deines Handys (Fingerabdruck, Gesicht, Muster oder PIN), du musst dir also keinen neuen Code merken.{0}|“Sidik jari / wajah” memakai kunci ponselmu sendiri (sidik jari, wajah, pola, atau PIN), jadi kamu tidak perlu mengingat kode baru.{0}|«فنگر پرنٹ / چہرہ» آپ کے فون کا اپنا لاک استعمال کرتا ہے (فنگر پرنٹ، چہرہ، پیٹرن یا پن)، اس لیے آپ کو نیا کوڈ یاد رکھنے کی ضرورت نہیں۔{0}
+👆 فتح بالبصمة / الوجه {0}|👆 Unlock with fingerprint / face {0}|👆 Déverrouillage par empreinte / visage {0}|👆 Desbloqueo con huella / rostro {0}|👆 Parmak izi / yüzle açma {0}|👆 Entsperren per Fingerabdruck / Gesicht {0}|👆 Buka dengan sidik jari / wajah {0}|👆 فنگر پرنٹ / چہرے سے کھولنا {0}
+يتقفل بعد ما تخرج بـ|Locks after you leave by|Se verrouille après ton départ de|Se bloquea tras salir durante|Çıktıktan sonra şu kadar sürede kilitlenir|Sperrt sich nach dem Verlassen nach|Terkunci setelah kamu keluar selama|باہر نکلنے کے اتنی دیر بعد لاک ہوتا ہے
+دقيقة|min|min|min|dk|Min.|menit|منٹ
+{0} كيلو|{0} kg|{0} kg|{0} kg|{0} kg|{0} kg|{0} kg|{0} کلو
+استرجاع|Restore|Restaurer|Restaurar|Geri yükle|Wiederherstellen|Pulihkan|بحال کریں
+تلقائية|Automatic|Automatique|Automática|Otomatik|Automatisch|Otomatis|خودکار
+يدوية|Manual|Manuelle|Manual|Manuel|Manuell|Manual|دستی
+🎉 ما شاء الله، ختمت القرآن!|🎉 Wonderful, you finished the Quran!|🎉 Magnifique, tu as terminé le Coran !|🎉 ¡Genial, terminaste el Corán!|🎉 Harika, Kur’an’ı hatmettin!|🎉 Großartig, du hast den Koran abgeschlossen!|🎉 Luar biasa, kamu khatam Al-Qur’an!|🎉 ماشاءاللہ، آپ نے قرآن ختم کر لیا!
+📖 ختمتي|📖 My Khatma|📖 Ma khatma|📖 Mi jatma|📖 Hatmim|📖 Mein Khatma|📖 Khatamku|📖 میرا ختم
++١|+1|+1|+1|+1|+1|+1|+1
++٥|+5|+5|+5|+5|+5|+5|+5
+−١|−1|−1|−1|−1|−1|−1|−1
+ختمات سابقة: {0}|Previous khatmas: {0}|Khatmas précédentes : {0}|Jatmas anteriores: {0}|Önceki hatimler: {0}|Frühere Khatmas: {0}|Khatam sebelumnya: {0}|پچھلے ختم: {0}
+قرأت {0} من ٦٠٤ صفحة ({1}%)|You read {0} of 604 pages ({1}%)|Tu as lu {0} pages sur 604 ({1} %)|Leíste {0} de 604 páginas ({1} %)|604 sayfanın {0}’ini okudun (%{1})|Du hast {0} von 604 Seiten gelesen ({1} %)|Kamu membaca {0} dari 604 halaman ({1}%)|آپ نے 604 میں سے {0} صفحات پڑھے ({1}%)
+فاضل {0}|{0} left|Il reste {0}|Quedan {0}|{0} kaldı|Noch {0}|Sisa {0}|{0} باقی
+{0} صفحة|{0} pages|{0} pages|{0} páginas|{0} sayfa|{0} Seiten|{0} halaman|{0} صفحات
+🗑 إلغاء الخطة|🗑 Cancel plan|🗑 Annuler le plan|🗑 Cancelar el plan|🗑 Planı iptal et|🗑 Plan abbrechen|🗑 Batalkan rencana|🗑 منصوبہ منسوخ کریں
+النهارده المطلوب|Required today|À faire aujourd’hui|Necesario hoy|Bugün gereken|Heute erforderlich|Diperlukan hari ini|آج درکار
+باقي {0} يوم|{0} days left|{0} jours restants|Quedan {0} días|{0} gün kaldı|Noch {0} Tage|Sisa {0} hari|{0} دن باقی
+ابدأ ختمة جديدة|Start a new khatma|Commencer une nouvelle lecture|Empezar una nueva lectura|Yeni bir hatim başlat|Neue Khatma beginnen|Mulai khatam baru|نیا ختم شروع کریں
+🔔 تذكير يومي الساعة {0}|🔔 Daily reminder at {0}|🔔 Rappel quotidien à {0}|🔔 Recordatorio diario a las {0}|🔔 Günlük hatırlatıcı saat {0}|🔔 Tägliche Erinnerung um {0}|🔔 Pengingat harian pukul {0}|🔔 روزانہ یاد دہانی {0} بجے
+بالتوفيق، ربنا يتقبل 🤍|Good luck, may God accept it 🤍|Bonne chance, que Dieu l’accepte 🤍|Buena suerte, que Dios lo acepte 🤍|Bol şans, Allah kabul etsin 🤍|Viel Glück, möge Gott es annehmen 🤍|Semoga berhasil, semoga Allah menerima 🤍|اللہ قبول فرمائے، کامیابی ہو 🤍
+تلغي خطة الختمة؟|Cancel the khatma plan?|Annuler le plan de lecture ?|¿Cancelar el plan de lectura?|Hatim planı iptal edilsin mi?|Khatma-Plan abbrechen?|Batalkan rencana khatam?|ختم کا منصوبہ منسوخ کریں؟
+السحور/الإمساك|Suhoor/Imsak|Suhoor/Imsak|Suhur/Imsak|Sahur/İmsak|Suhur/Imsak|Sahur/Imsak|سحری/امساک
+إمساك بكرة|Imsak tomorrow|Imsak demain|Imsak mañana|Yarın imsak|Imsak morgen|Imsak besok|کل امساک
+🌙 رمضان{0}|🌙 Ramadan{0}|🌙 Ramadan{0}|🌙 Ramadán{0}|🌙 Ramazan{0}|🌙 Ramadan{0}|🌙 Ramadan{0}|🌙 رمضان{0}
+🌙 رمضان {0}|🌙 Ramadan {0}|🌙 Ramadan {0}|🌙 Ramadán {0}|🌙 Ramazan {0}|🌙 Ramadan {0}|🌙 Ramadan {0}|🌙 رمضان {0}
+{0} بعد {1} س {2} د|{0} in {1} h {2} min|{0} dans {1} h {2} min|{0} en {1} h {2} min|{0} için {1} sa {2} dk|{0} in {1} Std. {2} Min.|{0} dalam {1} jam {2} menit|{0} میں {1} گھنٹے {2} منٹ
+✓ صايم|✓ Fasting|✓ Je jeûne|✓ Ayunando|✓ Oruçlu|✓ Fastend|✓ Berpuasa|✓ روزے سے
+صايم؟|Fasting?|Tu jeûnes ?|¿Ayunando?|Oruçlu musun?|Fastest du?|Berpuasa?|روزے سے ہیں؟
+الإمساك (الفجر)|Imsak (Fajr)|Imsak (Fajr)|Imsak (Fajr)|İmsak (Fecir)|Imsak (Fadschr)|Imsak (Subuh)|امساک (فجر)
+الإفطار (المغرب)|Iftar (Maghrib)|Iftar (Maghrib)|Iftar (Maghrib)|İftar (Akşam)|Iftar (Maghrib)|Berbuka (Maghrib)|افطار (مغرب)
+صيام: {0} يوم|Fasting: {0} days|Jeûne : {0} jours|Ayuno: {0} días|Oruç: {0} gün|Fasten: {0} Tage|Puasa: {0} hari|روزے: {0} دن
+تراويح: {0} ليلة|Taraweeh: {0} nights|Tarawih : {0} nuits|Tarawih: {0} noches|Teravih: {0} gece|Tarawih: {0} Nächte|Tarawih: {0} malam|تراویح: {0} راتیں
+📖 ختمة رمضان|📖 Ramadan khatma|📖 Lecture complète de Ramadan|📖 Lectura completa de Ramadán|📖 Ramazan hatmi|📖 Ramadan-Khatma|📖 Khatam Ramadan|📖 رمضان کا ختم
+🔔 تنبيهات السحور والإفطار|🔔 Suhoor and iftar alerts|🔔 Alertes suhoor et iftar|🔔 Avisos de suhur e iftar|🔔 Sahur ve iftar uyarıları|🔔 Suhur- und Iftar-Hinweise|🔔 Peringatan sahur dan berbuka|🔔 سحری اور افطار کی اطلاعات
+أدعية وأعمال|Supplications and deeds|Invocations et actes|Súplicas y obras|Dualar ve ameller|Bittgebete und gute Taten|Doa dan amalan|دعائیں اور اعمال
+ذكر الله وقراءة القرآن وصلة الرحم والصدقة|Remembering God, reading the Quran, keeping family ties and charity|Invoquer Dieu, lire le Coran, garder les liens familiaux et faire la charité|Recordar a Dios, leer el Corán, mantener los lazos familiares y dar caridad|Allah’ı anmak, Kur’an okumak, akrabayı ziyaret etmek ve sadaka vermek|Gottes gedenken, den Koran lesen, Familienbande pflegen und Wohltätigkeit|Berzikir, membaca Al-Qur’an, menyambung silaturahmi, dan bersedekah|اللہ کا ذکر، تلاوتِ قرآن، صلہ رحمی اور صدقہ
+(تجهيز)|(preparation)|(préparation)|(preparación)|(hazırlık)|(Vorbereitung)|(persiapan)|(تیاری)
+✓ صمت النهارده|✓ I fasted today|✓ J’ai jeûné aujourd’hui|✓ Ayuné hoy|✓ Bugün oruç tuttum|✓ Ich habe heute gefastet|✓ Aku berpuasa hari ini|✓ آج روزہ رکھا
+صمت النهارده؟|Did you fast today?|As-tu jeûné aujourd’hui ?|¿Ayunaste hoy?|Bugün oruç tuttun mu?|Hast du heute gefastet?|Apakah kamu berpuasa hari ini?|کیا آج روزہ رکھا؟
+التراويح؟|Taraweeh?|Tarawih ?|¿Tarawih?|Teravih?|Tarawih?|Tarawih?|تراویح؟
+إيقاف وضع رمضان|Turn off Ramadan mode|Désactiver le mode Ramadan|Desactivar el modo Ramadán|Ramazan modunu kapat|Ramadan-Modus ausschalten|Matikan mode Ramadan|رمضان موڈ بند کریں
+وزن • نوم • مزاج (٣٠ ثانية)|Weight • Sleep • Mood (30 seconds)|Poids • Sommeil • Humeur (30 secondes)|Peso • Sueño • Ánimo (30 segundos)|Kilo • Uyku • Ruh hali (30 saniye)|Gewicht • Schlaf • Stimmung (30 Sekunden)|Berat badan • Tidur • Suasana hati (30 detik)|وزن • نیند • مزاج (30 سیکنڈ)
+📈 يومك|📈 Your day|📈 Ta journée|📈 Tu día|📈 Günün|📈 Dein Tag|📈 Harimu|📈 آپ کا دن
+الوزن (كجم) — اختياري|Weight (kg) — optional|Poids (kg) — facultatif|Peso (kg) — opcional|Kilo (kg) — isteğe bağlı|Gewicht (kg) — optional|Berat (kg) — opsional|وزن (کلو) — اختیاری
+نمت كام ساعة؟|How many hours did you sleep?|Combien d’heures as-tu dormi ?|¿Cuántas horas dormiste?|Kaç saat uyudun?|Wie viele Stunden hast du geschlafen?|Berapa jam kamu tidur?|آپ کتنے گھنٹے سوئے؟
+جودة النوم|Sleep quality|Qualité du sommeil|Calidad del sueño|Uyku kalitesi|Schlafqualität|Kualitas tidur|نیند کا معیار
+مزاجك|Your mood|Ton humeur|Tu ánimo|Ruh halin|Deine Stimmung|Suasana hatimu|آپ کا مزاج
+طاقتك|Your energy|Ton énergie|Tu energía|Enerjin|Deine Energie|Energimu|آپ کی توانائی
+😴 لما بتنام أقل من ٦٫٥ ساعة التزامك {0}% مقابل {1}% لما بتنام ٧ ساعات أو أكتر.|😴 When you sleep less than 6.5 hours your commitment is {0}% versus {1}% when you sleep 7 hours or more.|😴 Quand tu dors moins de 6,5 heures, ton assiduité est de {0} % contre {1} % quand tu dors 7 heures ou plus.|😴 Cuando duermes menos de 6,5 horas tu constancia es del {0} % frente al {1} % cuando duermes 7 horas o más.|😴 6,5 saatten az uyuduğunda düzenliliğin %{0}, 7 saat veya daha fazla uyuduğunda %{1}.|😴 Wenn du weniger als 6,5 Stunden schläfst, liegt deine Konsequenz bei {0} %, bei 7 Stunden oder mehr bei {1} %.|😴 Saat tidurmu kurang dari 6,5 jam, konsistensimu {0}% dibanding {1}% saat tidur 7 jam atau lebih.|😴 جب آپ 6.5 گھنٹے سے کم سوتے ہیں تو پابندی {0}% رہتی ہے، جبکہ 7 گھنٹے یا زیادہ سونے پر {1}%۔
+🙂 في الأيام اللي مزاجك فيها وحش التزامك {0}% مقابل {1}% في الأيام الحلوة.|🙂 On days when your mood is bad your commitment is {0}% versus {1}% on good days.|🙂 Les jours où ton humeur est mauvaise, ton assiduité est de {0} % contre {1} % les bons jours.|🙂 Los días de mal ánimo tu constancia es del {0} % frente al {1} % en los buenos días.|🙂 Ruh halin kötü olan günlerde düzenliliğin %{0}, iyi günlerde %{1}.|🙂 An Tagen mit schlechter Stimmung liegt deine Konsequenz bei {0} %, an guten Tagen bei {1} %.|🙂 Pada hari suasana hatimu buruk, konsistensimu {0}% dibanding {1}% pada hari yang baik.|🙂 جن دنوں مزاج خراب ہو پابندی {0}% رہتی ہے، اچھے دنوں میں {1}%۔
+⚡ لما طاقتك واطية التزامك {0}% مقابل {1}% لما تكون عالية.|⚡ When your energy is low your commitment is {0}% versus {1}% when it’s high.|⚡ Quand ton énergie est basse, ton assiduité est de {0} % contre {1} % quand elle est haute.|⚡ Cuando tu energía es baja tu constancia es del {0} % frente al {1} % cuando es alta.|⚡ Enerjin düşükken düzenliliğin %{0}, yüksekken %{1}.|⚡ Bei niedriger Energie liegt deine Konsequenz bei {0} %, bei hoher bei {1} %.|⚡ Saat energimu rendah, konsistensimu {0}% dibanding {1}% saat tinggi.|⚡ جب توانائی کم ہو پابندی {0}% رہتی ہے، زیادہ ہو تو {1}%۔
+🕌 الفجر بيفوتك أكتر لما بتنام قليل ({0}% مقابل {1}%). نام بدري النهارده.|🕌 You miss Fajr more when you sleep little ({0}% versus {1}%). Sleep early today.|🕌 Tu rates plus souvent Fajr quand tu dors peu ({0} % contre {1} %). Dors tôt aujourd’hui.|🕌 Pierdes más el Fajr cuando duermes poco ({0} % frente a {1} %). Duerme temprano hoy.|🕌 Az uyuduğunda sabah namazını daha çok kaçırıyorsun (%{0} karşı %{1}). Bugün erken uyu.|🕌 Du verpasst Fadschr öfter, wenn du wenig schläfst ({0} % gegenüber {1} %). Schlaf heute früh.|🕌 Kamu lebih sering terlewat Subuh saat tidur sedikit ({0}% dibanding {1}%). Tidurlah lebih awal hari ini.|🕌 کم سونے پر آپ کی فجر زیادہ رہ جاتی ہے ({0}% بمقابلہ {1}%)۔ آج جلدی سوئیں۔
+⚖️ وزنك {0} حوالي {1} كجم في الأسبوع.|⚖️ Your weight is {0} by about {1} kg a week.|⚖️ Ton poids est {0} d’environ {1} kg par semaine.|⚖️ Tu peso está {0} unos {1} kg por semana.|⚖️ Kilon haftada yaklaşık {1} kg {0}.|⚖️ Dein Gewicht {0} um etwa {1} kg pro Woche.|⚖️ Berat badanmu {0} sekitar {1} kg per minggu.|⚖️ آپ کا وزن ہفتے میں تقریباً {1} کلو {0}۔
+بينزل|dropping|en baisse|bajando|düşüyor|sinkt|turun|کم ہو رہا ہے
+بيزيد|rising|en hausse|subiendo|artıyor|steigt|naik|بڑھ رہا ہے
+(النهارده)|(today)|(aujourd’hui)|(hoy)|(bugün)|(heute)|(hari ini)|(آج)
+⚖️ {0} كجم|⚖️ {0} kg|⚖️ {0} kg|⚖️ {0} kg|⚖️ {0} kg|⚖️ {0} kg|⚖️ {0} kg|⚖️ {0} کلو
+😴 {0} س|😴 {0} h|😴 {0} h|😴 {0} h|😴 {0} sa|😴 {0} Std.|😴 {0} jam|😴 {0} گھنٹے
+الوزن مش منطقي|The weight doesn’t look right|Le poids n’est pas plausible|El peso no parece correcto|Kilo mantıklı görünmüyor|Das Gewicht wirkt unplausibel|Berat badan tidak masuk akal|وزن درست نہیں لگتا
+ساعات النوم من ٠ لـ ٢٤|Sleep hours from 0 to 24|Heures de sommeil de 0 à 24|Horas de sueño de 0 a 24|Uyku saati 0 ile 24 arası|Schlafstunden von 0 bis 24|Jam tidur dari 0 sampai 24|نیند کے گھنٹے 0 سے 24 تک
+🕌 الصلوات: {0} من {1}|🕌 Prayers: {0} of {1}|🕌 Prières : {0} sur {1}|🕌 Oraciones: {0} de {1}|🕌 Namazlar: {1} içinden {0}|🕌 Gebete: {0} von {1}|🕌 Salat: {0} dari {1}|🕌 نمازیں: {1} میں سے {0}
+💪 أيام التمرين: {0}|💪 Workout days: {0}|💪 Jours d’entraînement : {0}|💪 Días de entrenamiento: {0}|💪 Antrenman günleri: {0}|💪 Trainingstage: {0}|💪 Hari latihan: {0}|💪 ورزش کے دن: {0}
+⏱ ساعات الشغل: {0} س|⏱ Work hours: {0} h|⏱ Heures de travail : {0} h|⏱ Horas de trabajo: {0} h|⏱ Çalışma saatleri: {0} sa|⏱ Arbeitsstunden: {0} Std.|⏱ Jam kerja: {0} jam|⏱ کام کے گھنٹے: {0} گھنٹے
+🎯 تركيز: {0} دقيقة|🎯 Focus: {0} minutes|🎯 Concentration : {0} minutes|🎯 Enfoque: {0} minutos|🎯 Odak: {0} dakika|🎯 Fokus: {0} Minuten|🎯 Fokus: {0} menit|🎯 توجہ: {0} منٹ
+📖 قرآن: {0} صفحة|📖 Quran: {0} pages|📖 Coran : {0} pages|📖 Corán: {0} páginas|📖 Kur’an: {0} sayfa|📖 Koran: {0} Seiten|📖 Al-Qur’an: {0} halaman|📖 قرآن: {0} صفحات
+💊 الأدوية: {0} من {1} جرعة|💊 Medications: {0} of {1} doses|💊 Médicaments : {0} sur {1} doses|💊 Medicamentos: {0} de {1} dosis|💊 İlaçlar: {1} dozun {0}’i|💊 Medikamente: {0} von {1} Dosen|💊 Obat: {0} dari {1} dosis|💊 ادویات: {1} میں سے {0} خوراکیں
+💰 المصاريف: {0}|💰 Expenses: {0}|💰 Dépenses : {0}|💰 Gastos: {0}|💰 Harcamalar: {0}|💰 Ausgaben: {0}|💰 Pengeluaran: {0}|💰 اخراجات: {0}
+😴 متوسط النوم: {0} ساعة|😴 Average sleep: {0} hours|😴 Sommeil moyen : {0} heures|😴 Sueño promedio: {0} horas|😴 Ortalama uyku: {0} saat|😴 Durchschnittlicher Schlaf: {0} Stunden|😴 Rata-rata tidur: {0} jam|😴 اوسط نیند: {0} گھنٹے
+📊 مراجعة أسبوعي ({0} – {1})|📊 My weekly review ({0} – {1})|📊 Mon bilan de la semaine ({0} – {1})|📊 Mi resumen semanal ({0} – {1})|📊 Haftalık değerlendirmem ({0} – {1})|📊 Meine Wochenrückschau ({0} – {1})|📊 Ulasan mingguanku ({0} – {1})|📊 میرا ہفتہ وار جائزہ ({0} – {1})
+الالتزام: {0}%|Commitment: {0}%|Assiduité : {0} %|Constancia: {0} %|Düzenlilik: %{0}|Konsequenz: {0} %|Konsistensi: {0}%|پابندی: {0}%
+أول خطوة|First step|Premier pas|Primer paso|İlk adım|Erster Schritt|Langkah pertama|پہلا قدم
+٣ أيام متتالية|3 days in a row|3 jours d’affilée|3 días seguidos|Art arda 3 gün|3 Tage in Folge|3 hari berturut-turut|مسلسل 3 دن
+سلسلة ٣ أيام|3-day streak|Série de 3 jours|Racha de 3 días|3 günlük seri|3-Tage-Serie|Rentetan 3 hari|3 دن کی لڑی
+أسبوع كامل|A full week|Une semaine complète|Una semana completa|Tam bir hafta|Eine ganze Woche|Satu minggu penuh|پورا ہفتہ
+سلسلة ٧ أيام|7-day streak|Série de 7 jours|Racha de 7 días|7 günlük seri|7-Tage-Serie|Rentetan 7 hari|7 دن کی لڑی
+شهر التزام|A month of commitment|Un mois d’assiduité|Un mes de constancia|Bir ay düzenlilik|Ein Monat Konsequenz|Sebulan konsisten|ایک ماہ کی پابندی
+سلسلة ٣٠ يوم|30-day streak|Série de 30 jours|Racha de 30 días|30 günlük seri|30-Tage-Serie|Rentetan 30 hari|30 دن کی لڑی
+يوم مثالي|Perfect day|Journée parfaite|Día perfecto|Mükemmel gün|Perfekter Tag|Hari sempurna|بہترین دن
+١٠٠ صلاة|100 prayers|100 prières|100 oraciones|100 namaz|100 Gebete|100 salat|100 نمازیں
+فجر ×١٠|Fajr ×10|Fajr ×10|Fajr ×10|Sabah namazı ×10|Fadschr ×10|Subuh ×10|فجر ×10
+١٠ تمارين|10 workouts|10 entraînements|10 entrenamientos|10 antrenman|10 Trainings|10 latihan|10 ورزشیں
+١٠ أيام تمرين|10 workout days|10 jours d’entraînement|10 días de entrenamiento|10 antrenman günü|10 Trainingstage|10 hari latihan|10 دن ورزش
+رقم قياسي|Personal record|Record personnel|Récord personal|Kişisel rekor|Persönlicher Rekord|Rekor pribadi|ذاتی ریکارڈ
+اكسر رقمك في تمرين|Beat your record in a workout|Bats ton record à l’entraînement|Supera tu marca en un entrenamiento|Bir antrenmanda rekorunu kır|Brich deinen Rekord im Training|Pecahkan rekormu dalam latihan|کسی ورزش میں اپنا ریکارڈ توڑیں
+٥٠ صفحة قرآن|50 Quran pages|50 pages de Coran|50 páginas del Corán|50 Kur’an sayfası|50 Koranseiten|50 halaman Al-Qur’an|قرآن کے 50 صفحات
+اقرأ ٥٠ صفحة في الختمة|Read 50 pages of the khatma|Lis 50 pages de la lecture complète|Lee 50 páginas de la lectura completa|Hatimde 50 sayfa oku|Lies 50 Seiten der Khatma|Baca 50 halaman khatam|ختم میں 50 صفحات پڑھیں
+١٠ ساعات تركيز|10 hours of focus|10 heures de concentration|10 horas de enfoque|10 saat odak|10 Stunden Fokus|10 jam fokus|10 گھنٹے توجہ
+٦٠٠ دقيقة تركيز|600 minutes of focus|600 minutes de concentration|600 minutos de enfoque|600 dakika odak|600 Minuten Fokus|600 menit fokus|600 منٹ توجہ
+٢٠ مهمة|20 tasks|20 tâches|20 tareas|20 görev|20 Aufgaben|20 tugas|20 کام
+٧ أيام مياه|7 days of water|7 jours d’eau|7 días de agua|7 gün su|7 Tage Wasser|7 hari minum air|7 دن پانی
+التزام دوائي|Medication adherence|Observance des médicaments|Adherencia a medicamentos|İlaç uyumu|Medikamenten-Treue|Kepatuhan obat|ادویات کی پابندی
+٧ أيام كاملة في الأدوية|7 full days of medication|7 jours complets de médicaments|7 días completos de medicación|7 tam gün ilaç|7 volle Tage Medikamente|7 hari penuh minum obat|ادویات کے 7 مکمل دن
+٤٠ ساعة شغل|40 work hours|40 heures de travail|40 horas de trabajo|40 çalışma saati|40 Arbeitsstunden|40 jam kerja|40 کام کے گھنٹے
+٧ تسجيلات وزن|7 weight entries|7 pesées enregistrées|7 registros de peso|7 kilo kaydı|7 Gewichtseinträge|7 catatan berat badan|وزن کے 7 اندراجات
+نوم كويس|Good sleep|Bon sommeil|Buen sueño|İyi uyku|Guter Schlaf|Tidur nyenyak|اچھی نیند
+٥ أيام نوم ٧ ساعات أو أكتر|5 days of 7+ hours of sleep|5 jours de 7 heures de sommeil ou plus|5 días de 7 horas o más de sueño|5 gün 7 saat veya daha fazla uyku|5 Tage mit 7 Stunden Schlaf oder mehr|5 hari tidur 7 jam atau lebih|5 دن 7 گھنٹے یا زیادہ نیند
+١٠ أيام صيام|10 fasting days|10 jours de jeûne|10 días de ayuno|10 gün oruç|10 Fastentage|10 hari puasa|10 دن کے روزے
+🏆 شارة جديدة: {0}|🏆 New badge: {0}|🏆 Nouveau badge : {0}|🏆 Nueva insignia: {0}|🏆 Yeni rozet: {0}|🏆 Neues Abzeichen: {0}|🏆 Lencana baru: {0}|🏆 نیا بیج: {0}
+التزامك الأسبوع اللي فات {0}%|Your commitment last week was {0}%|Ton assiduité la semaine dernière : {0} %|Tu constancia la semana pasada fue del {0} %|Geçen haftaki düzenliliğin %{0}|Deine Konsequenz letzte Woche: {0} %|Konsistensimu minggu lalu {0}%|پچھلے ہفتے آپ کی پابندی {0}% رہی
+⭐ الأقوى: {0} ({1}%)|⭐ Strongest: {0} ({1}%)|⭐ Le plus fort : {0} ({1} %)|⭐ La más fuerte: {0} ({1} %)|⭐ En güçlü: {0} (%{1})|⭐ Am stärksten: {0} ({1} %)|⭐ Terkuat: {0} ({1}%)|⭐ سب سے مضبوط: {0} ({1}%)
+📉 الأضعف: {0} ({1}%)|📉 Weakest: {0} ({1}%)|📉 Le plus faible : {0} ({1} %)|📉 La más débil: {0} ({1} %)|📉 En zayıf: {0} (%{1})|📉 Am schwächsten: {0} ({1} %)|📉 Terlemah: {0} ({1}%)|📉 سب سے کمزور: {0} ({1}%)
+مستواك|Your level|Ton niveau|Tu nivel|Seviyen|Dein Level|Levelmu|آپ کا درجہ
+{0} نقطة|{0} points|{0} points|{0} puntos|{0} puan|{0} Punkte|{0} poin|{0} پوائنٹس
+الجاي عند {0}|next at {0}|prochain à {0}|siguiente en {0}|sonraki: {0}|nächstes bei {0}|berikutnya di {0}|اگلا {0} پر
+شارات: {0} من {1}|badges: {0} of {1}|badges : {0} sur {1}|insignias: {0} de {1}|rozetler: {1} içinden {0}|Abzeichen: {0} von {1}|lencana: {0} dari {1}|بیجز: {1} میں سے {0}
+مراجعة أسبوعي|My weekly review|Mon bilan de la semaine|Mi resumen semanal|Haftalık değerlendirmem|Meine Wochenrückschau|Ulasan mingguanku|میرا ہفتہ وار جائزہ
+قوالب عادات|Habit templates|Modèles d’habitudes|Plantillas de hábitos|Alışkanlık şablonları|Gewohnheitsvorlagen|Templat kebiasaan|عادتوں کے سانچے
+إضافة سريعة ⚡|Quick add ⚡|Ajout rapide ⚡|Añadir rápido ⚡|Hızlı ekle ⚡|Schnell hinzufügen ⚡|Tambah cepat ⚡|فوری اضافہ ⚡
+اختار اللي عايز تضيفه.|Choose what you want to add.|Choisis ce que tu veux ajouter.|Elige lo que quieras añadir.|Eklemek istediğini seç.|Wähle, was du hinzufügen möchtest.|Pilih yang ingin kamu tambahkan.|جو شامل کرنا چاہتے ہیں وہ چنیں۔
+هتلاقيها في الصفحة الرئيسية|You’ll find it on the home page|Tu la trouveras sur la page d’accueil|La encontrarás en la página principal|Ana sayfada bulacaksın|Du findest es auf der Startseite|Kamu akan menemukannya di beranda|آپ اسے ہوم پیج پر پائیں گے
+ضيف ٣ عادات على الأقل|Add at least 3 habits|Ajoute au moins 3 habitudes|Añade al menos 3 hábitos|En az 3 alışkanlık ekle|Füge mindestens 3 Gewohnheiten hinzu|Tambahkan minimal 3 kebiasaan|کم از کم 3 عادتیں شامل کریں
+ضيف أول مهمة|Add your first task|Ajoute ta première tâche|Añade tu primera tarea|İlk görevini ekle|Füge deine erste Aufgabe hinzu|Tambahkan tugas pertamamu|اپنا پہلا کام شامل کریں
+استكشف «المزيد»|Explore “More”|Explore « Plus »|Explora «Más»|“Daha fazla”yı keşfet|Entdecke „Mehr“|Jelajahi “Lainnya”|«مزید» دریافت کریں
+🧭 ابدأ هنا ({0} من {1})|🧭 Start here ({0} of {1})|🧭 Commence ici ({0} sur {1})|🧭 Empieza aquí ({0} de {1})|🧭 Buradan başla ({1} içinden {0})|🧭 Hier starten ({0} von {1})|🧭 Mulai dari sini ({0} dari {1})|🧭 یہاں سے شروع کریں ({1} میں سے {0})
+⏱ ساعات الشغل|⏱ Work hours|⏱ Heures de travail|⏱ Horas de trabajo|⏱ Çalışma saatleri|⏱ Arbeitsstunden|⏱ Jam kerja|⏱ کام کے گھنٹے
+عاجل ومهم|Urgent and important|Urgent et important|Urgente e importante|Acil ve önemli|Dringend und wichtig|Mendesak dan penting|فوری اور اہم
+من غير تاريخ|No date|Sans date|Sin fecha|Tarihsiz|Ohne Datum|Tanpa tanggal|بغیر تاریخ
+متأخرة {0} يوم|{0} day overdue|{0} jour de retard|{0} día de retraso|{0} gün gecikmiş|{0} Tag überfällig|Terlambat {0} hari|{0} دن تاخیر
+متأخرة {0} أيام|{0} days overdue|{0} jours de retard|{0} días de retraso|{0} gün gecikmiş|{0} Tage überfällig|Terlambat {0} hari|{0} دن تاخیر
+بكرة|Tomorrow|Demain|Mañana|Yarın|Morgen|Besok|کل (آئندہ)
+تمت|Done|Fait|Hecho|Tamamlandı|Erledigt|Selesai|مکمل
+✅ مهامك|✅ Your tasks|✅ Tes tâches|✅ Tus tareas|✅ Görevlerin|✅ Deine Aufgaben|✅ Tugasmu|✅ آپ کے کام
+➕ مهمة|➕ Task|➕ Tâche|➕ Tarea|➕ Görev|➕ Aufgabe|➕ Tugas|➕ کام
+كل المهام ›|All tasks ›|Toutes les tâches ›|Todas las tareas ›|Tüm görevler ›|Alle Aufgaben ›|Semua tugas ›|تمام کام ›
++{0} كمان|+{0} more|+{0} de plus|+{0} más|+{0} daha|+{0} weitere|+{0} lagi|+{0} مزید
+⚠️ متأخرة|⚠️ Overdue|⚠️ En retard|⚠️ Atrasadas|⚠️ Geciken|⚠️ Überfällig|⚠️ Terlambat|⚠️ تاخیر شدہ
+📅 النهارده|📅 Today|📅 Aujourd’hui|📅 Hoy|📅 Bugün|📅 Heute|📅 Hari ini|📅 آج
+🌤️ بكرة|🌤️ Tomorrow|🌤️ Demain|🌤️ Mañana|🌤️ Yarın|🌤️ Morgen|🌤️ Besok|🌤️ کل
+🗓️ الأسبوع ده|🗓️ This week|🗓️ Cette semaine|🗓️ Esta semana|🗓️ Bu hafta|🗓️ Diese Woche|🗓️ Minggu ini|🗓️ اس ہفتے
+⏭️ بعدين|⏭️ Later|⏭️ Plus tard|⏭️ Más tarde|⏭️ Sonra|⏭️ Später|⏭️ Nanti|⏭️ بعد میں
+📥 من غير تاريخ|📥 No date|📥 Sans date|📥 Sin fecha|📥 Tarihsiz|📥 Ohne Datum|📥 Tanpa tanggal|📥 بغیر تاریخ
+مهمة جديدة ✅|New task ✅|Nouvelle tâche ✅|Nueva tarea ✅|Yeni görev ✅|Neue Aufgabe ✅|Tugas baru ✅|نیا کام ✅
+تعليم|Education|Éducation|Educación|Eğitim|Bildung|Pendidikan|تعلیم
+أخرى|Other|Autre|Otro|Diğer|Sonstiges|Lainnya|دیگر
+احفظ|Save|Enregistrer|Guardar|Kaydet|Speichern|Simpan|محفوظ کریں
+ابدأ|Start|Démarrer|Empezar|Başla|Starten|Mulai|شروع کریں
+🔔 تذكير|🔔 Reminder|🔔 Rappel|🔔 Recordatorio|🔔 Hatırlatıcı|🔔 Erinnerung|🔔 Pengingat|🔔 یاد دہانی
+✓ أخدته|✓ Taken|✓ Pris|✓ Tomado|✓ Alındı|✓ Genommen|✓ Sudah diminum|✓ لے لی
+لحد {0}|Until {0}|Jusqu’au {0}|Hasta el {0}|{0} tarihine kadar|Bis {0}|Sampai {0}|{0} تک
+اكتب الرقم السري|Enter the PIN|Saisis le code PIN|Escribe el PIN|PIN’i yaz|Gib die PIN ein|Masukkan PIN|پن لکھیں
+الإفطار|Iftar|Iftar|Iftar|İftar|Iftar|Berbuka|افطار
+اضغط رجوع تاني للخروج|Press back again to exit|Appuie encore sur retour pour quitter|Pulsa atrás otra vez para salir|Çıkmak için tekrar geri tuşuna bas|Drücke erneut Zurück, um zu beenden|Tekan kembali sekali lagi untuk keluar|باہر نکلنے کے لیے دوبارہ واپس دبائیں
+فاتت|Missed|Manquée|Perdida|Kaçırıldı|Verpasst|Terlewat|رہ گئی
+كل {0} أيام|Every {0} days|Tous les {0} jours|Cada {0} días|Her {0} günde|Alle {0} Tage|Setiap {0} hari|ہر {0} دن
+⚠️ متأخرة ({0})|⚠️ Overdue ({0})|⚠️ En retard ({0})|⚠️ Atrasadas ({0})|⚠️ Geciken ({0})|⚠️ Überfällig ({0})|⚠️ Terlambat ({0})|⚠️ تاخیر شدہ ({0})
+📅 النهارده ({0})|📅 Today ({0})|📅 Aujourd’hui ({0})|📅 Hoy ({0})|📅 Bugün ({0})|📅 Heute ({0})|📅 Hari ini ({0})|📅 آج ({0})
+🌤️ بكرة ({0})|🌤️ Tomorrow ({0})|🌤️ Demain ({0})|🌤️ Mañana ({0})|🌤️ Yarın ({0})|🌤️ Morgen ({0})|🌤️ Besok ({0})|🌤️ کل ({0})
+🗓️ الأسبوع ده ({0})|🗓️ This week ({0})|🗓️ Cette semaine ({0})|🗓️ Esta semana ({0})|🗓️ Bu hafta ({0})|🗓️ Diese Woche ({0})|🗓️ Minggu ini ({0})|🗓️ اس ہفتے ({0})
+⏭️ بعدين ({0})|⏭️ Later ({0})|⏭️ Plus tard ({0})|⏭️ Más tarde ({0})|⏭️ Sonra ({0})|⏭️ Später ({0})|⏭️ Nanti ({0})|⏭️ بعد میں ({0})
+📥 من غير تاريخ ({0})|📥 No date ({0})|📥 Sans date ({0})|📥 Sin fecha ({0})|📥 Tarihsiz ({0})|📥 Ohne Datum ({0})|📥 Tanpa tanggal ({0})|📥 بغیر تاریخ ({0})
+💊 أدويتك النهارده|💊 Your medications today|💊 Tes médicaments aujourd’hui|💊 Tus medicamentos de hoy|💊 Bugünkü ilaçların|💊 Deine Medikamente heute|💊 Obatmu hari ini|💊 آج کی آپ کی ادویات
+{0} من {1} جرعة|{0} of {1} doses|{0} sur {1} doses|{0} de {1} dosis|{1} dozun {0}’i|{0} von {1} Dosen|{0} dari {1} dosis|{1} میں سے {0} خوراکیں
+صفحة|pages|pages|páginas|sayfa|Seiten|halaman|صفحات
+قرأت {0} من {1} صفحة ({2}%)|You read {0} of {1} pages ({2}%)|Tu as lu {0} pages sur {1} ({2} %)|Leíste {0} de {1} páginas ({2} %)|{1} sayfanın {0}’ini okudun (%{2})|Du hast {0} von {1} Seiten gelesen ({2} %)|Kamu membaca {0} dari {1} halaman ({2}%)|آپ نے {1} میں سے {0} صفحات پڑھے ({2}%)
+{0} (النهارده)|{0} (today)|{0} (aujourd’hui)|{0} (hoy)|{0} (bugün)|{0} (heute)|{0} (hari ini)|{0} (آج)
+{0} يوم و{1} ساعة|{0} days and {1} hours|{0} jours et {1} heures|{0} días y {1} horas|{0} gün {1} saat|{0} Tage und {1} Stunden|{0} hari {1} jam|{0} دن اور {1} گھنٹے
+• {0} سعر|• {0} kcal|• {0} kcal|• {0} kcal|• {0} kcal|• {0} kcal|• {0} kkal|• {0} کیلوریز
