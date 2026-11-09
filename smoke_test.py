@@ -15,6 +15,7 @@ def check(name, cond, extra=""):
 async def run(browser, locale, width):
     print(f"\n== locale={locale} width={width}")
     ctx = await browser.new_context(viewport={"width": width, "height": 780}, locale=locale)
+    await ctx.add_init_script("try{localStorage.setItem('hb_lang','ar')}catch(e){}")   # the flow assertions below are written in Arabic; run_english() checks the English UI
     pg = await ctx.new_page()
     errs = []
     pg.on("pageerror", lambda e: errs.append(str(e)))
@@ -496,12 +497,36 @@ async def run_native_mock(browser):
     check("no page errors", not errs, "; ".join(errs[:3]))
     await ctx.close()
 
+async def run_english(browser):
+    """In English no screen may show Arabic letters (the language names in the picker are the only exception)."""
+    import re
+    print("\n== English UI has no Arabic text")
+    ctx = await browser.new_context(viewport={"width": 390, "height": 780}, locale="en-US")
+    await ctx.add_init_script("try{localStorage.setItem('hb_lang','en')}catch(e){}")
+    pg = await ctx.new_page()
+    errs = []
+    pg.on("pageerror", lambda e: errs.append(str(e)))
+    await pg.goto(URL)
+    await pg.wait_for_timeout(700)
+    await pg.click('[data-ob="next"]'); await pg.fill("#obn", "Ahmed")
+    await pg.click('[data-ob="next"]'); await pg.click('[data-ob="done"]')
+    for name in ("today", "table", "paper", "gym", "more", "stats", "food", "pray", "assist", "tasks", "focus", "money", "quit", "meds", "lock", "khatma", "ramadan", "health", "review", "custom"):
+        await pg.evaluate(f"page='{name}';render()")
+        await pg.wait_for_timeout(120)
+        txt = await pg.evaluate("document.body.innerText")
+        txt = txt.replace("العربية", "").replace("اردو", "")
+        left = re.findall(r"[\u0600-\u06FF]+", txt)
+        check(f"English UI has no Arabic on the {name} page", not left, " ".join(left[:6]))
+    check("no page errors", not errs, "; ".join(errs[:3]))
+    await ctx.close()
+
 async def main():
     async with async_playwright() as p:
         b = await p.chromium.launch()
         for locale in ("ar-EG", "en-US"):
             for width in (360, 412):
                 await run(b, locale, width)
+        await run_english(b)
         await run_native_mock(b)
         await b.close()
     if failures:
