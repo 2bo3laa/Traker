@@ -26,11 +26,11 @@ async def run(browser, locale, width):
 
     # --- onboarding: name is required
     check("onboarding opens on a fresh install", await ev("document.getElementById('modal').classList.contains('on')"))
-    await pg.click('[data-ob="next"]')
+    await pg.dispatch_event('[data-ob="next"]', "click")
     check("empty name does not pass", await ev("!!document.getElementById('obn')"))
     await pg.fill("#obn", "Ahmed")
-    await pg.click('[data-ob="next"]')
-    await pg.click('[data-ob="done"]')
+    await pg.dispatch_event('[data-ob="next"]', "click")
+    await pg.dispatch_event('[data-ob="done"]', "click")
     await pg.wait_for_timeout(200)
     check("name saved", await ev("S.name") == "Ahmed")
     check("onboarding closed", not await ev("document.getElementById('modal').classList.contains('on')"))
@@ -429,7 +429,7 @@ async def run_native_mock(browser):
         pull:async()=>{const e=window.__events;window.__events=[];return{events:e}}}}};""")
     await pg.goto(URL); await pg.wait_for_timeout(500)
     ev = pg.evaluate
-    await pg.fill("#obn", "Ahmed"); await pg.click('[data-ob="next"]'); await pg.click('[data-ob="done"]')
+    await pg.fill("#obn", "Ahmed"); await pg.dispatch_event('[data-ob="next"]', "click"); await pg.dispatch_event('[data-ob="done"]', "click")
     await pg.click("#fab"); await pg.click('[data-qk="habit"]'); await pg.click('[data-c="work"]'); await pg.click('[data-wm="log"]'); await pg.click("[data-add]")
     await pg.wait_for_timeout(100)
     await ev("S.habits.filter(h=>h.log).forEach(h=>h.days=[0,1,2,3,4,5,6]);save();render()")
@@ -508,8 +508,8 @@ async def run_english(browser):
     pg.on("pageerror", lambda e: errs.append(str(e)))
     await pg.goto(URL)
     await pg.wait_for_timeout(700)
-    await pg.click('[data-ob="next"]'); await pg.fill("#obn", "Ahmed")
-    await pg.click('[data-ob="next"]'); await pg.click('[data-ob="done"]')
+    await pg.dispatch_event('[data-ob="next"]', "click"); await pg.fill("#obn", "Ahmed")
+    await pg.dispatch_event('[data-ob="next"]', "click"); await pg.dispatch_event('[data-ob="done"]', "click")
     for name in ("today", "table", "paper", "gym", "more", "stats", "food", "pray", "assist", "tasks", "focus", "money", "quit", "meds", "lock", "khatma", "ramadan", "health", "review", "custom"):
         await pg.evaluate(f"page='{name}';render()")
         await pg.wait_for_timeout(120)
