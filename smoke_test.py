@@ -95,12 +95,12 @@ async def run(browser, locale, width):
     for tab in ("table", "paper", "gym", "more", "today"):
         await pg.click(f'#bar [data-pg="{tab}"]')
     for sub in ("stats", "deen", "pray"):
-        await pg.click('#bar [data-pg="more"]'); await pg.click(f'#main [data-pg="{sub}"]')
+        await pg.click('#bar [data-pg="more"]'); await pg.dispatch_event(f'#main [data-pg="{sub}"]', "click")
         check(f"more > {sub} opens and keeps 'More' highlighted", await ev("document.querySelector('#bar button.on').dataset.pg") == "more")
     await pg.click('#bar [data-pg="today"]')
 
     # --- nutrition planner
-    await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="food"]')
+    await pg.click('#bar [data-pg="more"]'); await pg.dispatch_event('#main [data-pg="food"]', "click")
     await pg.click('[data-nu="goal:lose"]'); await pg.click('[data-nu="bud:low"]'); await pg.click('[data-nu="fp:liver"]'); await pg.click('[data-nu="fp:liver"]')
     await pg.fill('[data-nu-in="age"]', "28"); await pg.fill('[data-nu-in="h"]', "175"); await pg.fill('[data-nu-in="w"]', "85"); await pg.fill('[data-nu-in="tw"]', "75")
     await pg.click('[data-nu="make"]')
@@ -166,7 +166,7 @@ async def run(browser, locale, width):
     await pg.click("#edit")
 
     # --- medication reminders
-    await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="meds"]')
+    await pg.click('#bar [data-pg="more"]'); await pg.dispatch_event('#main [data-pg="meds"]', "click")
     await pg.click('[data-md="new"]'); await pg.fill("#mdn", "Vitamin D"); await pg.fill("#mdd", "1 tablet")
     await pg.click('[data-md="n:2"]'); await pg.click('[data-md="i:2"]'); await pg.click('[data-md="u:7"]'); await pg.fill("#mds", "6"); await pg.click('[data-md="save"]')
     m0 = await ev("S.md.meds[0]")
@@ -181,7 +181,7 @@ async def run(browser, locale, width):
     check("a dose can be skipped", await ev("Object.values(S.md.log).filter(x=>x.s==='s').length") == 1)
     await pg.click('[data-md^="u|"]')
     check("taking back a dose restores the stock", await ev("S.md.meds[0].st.n") == 6 and await ev("Object.values(S.md.log).length") == 1)
-    await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="meds"]')
+    await pg.click('#bar [data-pg="more"]'); await pg.dispatch_event('#main [data-pg="meds"]', "click")
     check("adherence card is shown", "التزامك" in await ev("document.getElementById('main').innerText"))
     await pg.click('[data-md^="e|"]'); await pg.fill("#mdn", "Vitamin D3"); await pg.click('[data-md="save"]')
     check("medicine can be edited", await ev("S.md.meds[0].n") == "Vitamin D3")
@@ -200,7 +200,7 @@ async def run(browser, locale, width):
     check("overdue task is still shown and marked late", "متأخرة" in await ev("document.getElementById('main').innerText"))
     await pg.click('[data-tk="t:old1"]')
     check("ticking a task completes it", await ev("S.tk.find(x=>x.id==='old1').done>0"))
-    await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="tasks"]')
+    await pg.click('#bar [data-pg="more"]'); await pg.dispatch_event('#main [data-pg="tasks"]', "click")
     check("tasks page lists the open task", "Pay the internet bill" in await ev("document.getElementById('main').innerText"))
     await pg.click('[data-tk="new"]'); await pg.click('[data-tk="d:none"]'); await pg.fill("#tkt", "Someday task"); await pg.click('[data-tk="add"]')
     check("undated task goes to its own group", "من غير تاريخ" in await ev("document.getElementById('main').innerText"))
@@ -209,14 +209,14 @@ async def run(browser, locale, width):
     await pg.click('#bar [data-pg="today"]')
 
     # --- focus timer
-    await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="focus"]')
+    await pg.click('#bar [data-pg="more"]'); await pg.dispatch_event('#main [data-pg="focus"]', "click")
     await pg.click('[data-fc="d:15"]'); await pg.click('[data-fc="start"]')
     check("focus session starts", await ev("S.fc.end>Date.now()") and await ev("S.fc.dur") == 15)
     await ev("S.fc.end=Date.now()-1000;save()"); await pg.wait_for_timeout(900)
     check("finished session is logged", await ev("(S.fl[iso(today0())]||{}).min") == 15)
 
     # --- money: expenses, budget, subscriptions
-    await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="money"]')
+    await pg.click('#bar [data-pg="more"]'); await pg.dispatch_event('#main [data-pg="money"]', "click")
     await pg.click('[data-mn="new:ex"]'); await pg.fill("#mna", "150"); await pg.click('[data-mn="c:مواصلات"]'); await pg.click('[data-mn="add:ex"]')
     await pg.click('[data-mn="new:bud"]'); await pg.fill("#mna", "1000"); await pg.click('[data-mn="add:bud"]')
     await pg.click('[data-mn="new:sub"]'); await pg.fill("#mnn", "Netflix"); await pg.fill("#mna", "200"); await pg.fill("#mnd", "10"); await pg.click('[data-mn="add:sub"]')
@@ -231,7 +231,7 @@ async def run(browser, locale, width):
     await pg.click("#fab"); await pg.click('[data-qk="habit"]'); await pg.click('[data-c="quit"]'); await pg.click('[data-qt="t:0"]'); await pg.click('[data-qt="save"]')
     check("quit habit created", await ev("S.qt.length") == 1)
     check("Today shows the comeback section", "رحلة الإقلاع" in await ev("document.getElementById('main').innerText"))
-    await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="quit"]')
+    await pg.click('#bar [data-pg="more"]'); await pg.dispatch_event('#main [data-pg="quit"]', "click")
     await pg.click('[data-qt^="urge:"]'); await pg.click('[data-qt="start"]')
     check("urge timer runs for ten minutes", 590000 < await ev("W.ue-Date.now()") <= 600000)
     await pg.click('[data-qt="won"]')
@@ -254,7 +254,7 @@ async def run(browser, locale, width):
     await ev("S.habits=S.habits.filter(h=>h.id!=='rb1');save();render()")
 
     # --- offline assistant
-    await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="assist"]')
+    await pg.click('#bar [data-pg="more"]'); await pg.dispatch_event('#main [data-pg="assist"]', "click")
     await pg.click('[data-as="q:0"]')
     check("the advice chip works", "مش فاهم" not in await ev("document.getElementById('aschat').innerText"))
     await pg.click('[data-as="q:1"]')
@@ -290,13 +290,23 @@ async def run(browser, locale, width):
     check("settings sheet opens", await ev("document.getElementById('modal').classList.contains('on')"))
     await ev("closeW()")
 
+    # --- worship tab: its own hub, keeps the tab highlighted, worship leads the More page
+    await pg.click('#bar [data-pg="worship"]')
+    check("worship tab opens its hub", await ev("document.querySelectorAll('#main .cat').length") == 4 and await ev("document.querySelector('#bar button.on').dataset.pg") == "worship")
+    await pg.dispatch_event('#main [data-pg="khatma"]', "click")
+    check("a worship page keeps the Worship tab highlighted", await ev("document.querySelector('#bar button.on').dataset.pg") == "worship")
+    await ev("uxBack()")
+    check("back returns to the Worship hub", await ev("page") == "worship")
+    await pg.click('#bar [data-pg="more"]')
+    check("worship is the first section in More", "عبادة" in await ev("document.querySelector('#mgrid .sec').innerText"))
+
     # --- data survives a reload
-    await pg.reload(); await pg.wait_for_timeout(500)
+    await pg.reload(); await pg.wait_for_function("typeof S!=='undefined' && !!document.getElementById('main')"); await pg.wait_for_timeout(300)
     check("data persists after reload", await ev("S.habits.length") == 10 and await ev("S.name") == "Ahmed")
     check("no onboarding after reload", not await ev("document.getElementById('modal').classList.contains('on')"))
 
     # --- health log: weight, sleep, mood and patterns
-    await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="health"]')
+    await pg.click('#bar [data-pg="more"]'); await pg.dispatch_event('#main [data-pg="health"]', "click")
     await pg.click('[data-hl="new"]'); await pg.fill("#hlw", "80"); await pg.fill("#hlsh", "5.5"); await pg.click('[data-hl="m:2"]'); await pg.click('[data-hl="e:2"]'); await pg.click('[data-hl="save"]')
     e0 = await ev("S.hl[iso(today0())]")
     check("daily health entry saved", e0["w"] == 80 and e0["sh"] == 5.5 and e0["m"] == 2 and e0["en"] == 2, str(e0))
@@ -313,7 +323,7 @@ async def run(browser, locale, width):
     await pg.click('#bar [data-pg="today"]')
 
     # --- weekly review and achievements
-    await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="review"]')
+    await pg.click('#bar [data-pg="more"]'); await pg.dispatch_event('#main [data-pg="review"]', "click")
     check("review page shows a score", "التزامك" in await ev("document.getElementById('main').innerText"))
     check("share text is built", "مراجعة أسبوعي" in await ev("rvText(-1)"))
     await pg.click('[data-rv="tab:badges"]')
@@ -323,7 +333,7 @@ async def run(browser, locale, width):
     await pg.click('#bar [data-pg="today"]')
 
     # --- Quran khatma plan
-    await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="khatma"]')
+    await pg.click('#bar [data-pg="more"]'); await pg.dispatch_event('#main [data-pg="khatma"]', "click")
     await pg.click('[data-kh="d:30"]'); await pg.click('[data-kh="start"]')
     check("khatma plan targets about 21 pages a day for 30 days", await ev("khPlan().target") == 21, str(await ev("khPlan().target")))
     await pg.click('[data-kh="add:10"]'); await pg.click('[data-kh="add:5"]')
@@ -334,7 +344,7 @@ async def run(browser, locale, width):
     check("a new khatma can be started", await ev("khPlan()") is None)
 
     # --- Ramadan mode
-    await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="ramadan"]')
+    await pg.click('#bar [data-pg="more"]'); await pg.dispatch_event('#main [data-pg="ramadan"]', "click")
     check("hijri date is available", await ev("!!hij(new Date())"))
     if not await ev("rdActive()"):
         await pg.click('[data-rd="force"]')
@@ -368,14 +378,14 @@ async def run(browser, locale, width):
     check("the More page has a search", "الأدوية" in await ev("document.getElementById('mgrid').innerText") and "المصاريف" not in await ev("document.getElementById('mgrid').innerText"))
     await pg.fill("#mrs", "")
     check("More is grouped in sections", await ev("document.querySelectorAll('#mgrid .sec').length") >= 4)
-    await pg.click('#main [data-pg="custom"]')
+    await pg.dispatch_event('#main [data-pg="custom"]', "click")
     await pg.click('[data-cu="t:money"]')
     await pg.click('#bar [data-pg="more"]')
     check("a hidden feature disappears from More", "المصاريف" not in await ev("document.getElementById('mgrid').innerText"))
-    await pg.click('#main [data-pg="custom"]'); await pg.click('[data-cu="t:money"]'); await pg.click('[data-cu="fs:1.12"]'); await pg.click('[data-cu="compact"]')
+    await pg.dispatch_event('#main [data-pg="custom"]', "click"); await pg.click('[data-cu="t:money"]'); await pg.click('[data-cu="fs:1.12"]'); await pg.click('[data-cu="compact"]')
     check("font size and compact mode are applied", await ev("document.body.style.zoom") in ("1.12", "112%") and await ev("document.documentElement.classList.contains('compact')"))
     await pg.click('[data-cu="fs:1"]'); await pg.click('[data-cu="compact"]')
-    await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="tasks"]')
+    await pg.click('#bar [data-pg="more"]'); await pg.dispatch_event('#main [data-pg="tasks"]', "click")
     await ev("uxBack()")
     check("back from a feature page returns to More", await ev("page") == "more")
     await ev("uxBack()")
@@ -384,7 +394,7 @@ async def run(browser, locale, width):
     check("back closes an open sheet first", not await ev("document.getElementById('modal').classList.contains('on')") and await ev("page") == "today")
 
     # --- app lock and snapshots
-    await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="lock"]')
+    await pg.click('#bar [data-pg="more"]'); await pg.dispatch_event('#main [data-pg="lock"]', "click")
     await pg.click('[data-lk="set"]')
     for d in "1234": await pg.click(f'[data-lk="sk:{d}"]')
     await pg.click('[data-lk="sk:ok"]')
@@ -399,7 +409,7 @@ async def run(browser, locale, width):
     for d in "1234": await pg.click(f'[data-lk="uk:{d}"]')
     await pg.wait_for_timeout(250)
     check("right PIN unlocks", not await ev("lkLocked()") and not await ev("!!document.getElementById('lockscr')"))
-    await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="lock"]')
+    await pg.click('#bar [data-pg="more"]'); await pg.dispatch_event('#main [data-pg="lock"]', "click")
     await pg.click('[data-lk="snap"]')
     check("snapshot taken and restorable", await ev("snList().length") >= 1)
     await pg.click('[data-lk="off"]')
@@ -466,7 +476,7 @@ async def run_native_mock(browser):
     after = await ev("window.__sched.filter(n=>/Antibiotic/.test(n.body)).length")
     check("taking the dose cancels today's follow-ups", after == len(ms) - 3, f"{after} vs {len(ms)}")
     # --- biometric / device-lock unlock (native plugin mocked)
-    await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="lock"]')
+    await pg.click('#bar [data-pg="more"]'); await pg.dispatch_event('#main [data-pg="lock"]', "click")
     check("the lock is optional: off by default", not await ev("!!localStorage.getItem('hb_lock')"))
     await pg.click('[data-lk="dev"]'); await pg.wait_for_timeout(200)
     check("device lock (fingerprint/face) enabled without any PIN", await ev("JSON.parse(localStorage.getItem('hb_lock')).mode") == "device")
@@ -476,14 +486,14 @@ async def run_native_mock(browser):
     check("failed biometric keeps the app locked", await ev("lkLocked()"))
     await ev("window.__bioOk=true"); await pg.click('[data-lk="ubio"]'); await pg.wait_for_timeout(500)
     check("retry button unlocks after a good scan", not await ev("lkLocked()"))
-    await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="lock"]'); await pg.click('[data-lk="off"]'); await pg.wait_for_timeout(300)
+    await pg.click('#bar [data-pg="more"]'); await pg.dispatch_event('#main [data-pg="lock"]', "click"); await pg.click('[data-lk="off"]'); await pg.wait_for_timeout(300)
     check("device lock can be removed", not await ev("!!localStorage.getItem('hb_lock')"))
     await pg.click('[data-lk="set"]')
     for d in "2468": await pg.click(f'[data-lk="sk:{d}"]')
     await pg.click('[data-lk="sk:ok"]')
     for d in "2468": await pg.click(f'[data-lk="sk:{d}"]')
     await pg.click('[data-lk="sk:ok"]'); await pg.wait_for_timeout(300)
-    await pg.click('#bar [data-pg="more"]'); await pg.click('#main [data-pg="lock"]'); await pg.click('[data-lk="bio"]'); await pg.wait_for_timeout(300)
+    await pg.click('#bar [data-pg="more"]'); await pg.dispatch_event('#main [data-pg="lock"]', "click"); await pg.click('[data-lk="bio"]'); await pg.wait_for_timeout(300)
     check("fingerprint shortcut can be added to the PIN", await ev("JSON.parse(localStorage.getItem('hb_lock')).bio") == 1)
     await ev("lkShow()"); await pg.wait_for_timeout(700)
     check("PIN mode unlocks with the fingerprint shortcut", not await ev("lkLocked()"))
