@@ -15,7 +15,6 @@ def check(name, cond, extra=""):
 async def run(browser, locale, width):
     print(f"\n== locale={locale} width={width}")
     ctx = await browser.new_context(viewport={"width": width, "height": 780}, locale=locale)
-    await ctx.add_init_script("try{localStorage.setItem('hb_lang','ar')}catch(e){}")   # the flow assertions below are written in Arabic; run_english() checks the English UI
     pg = await ctx.new_page()
     errs = []
     pg.on("pageerror", lambda e: errs.append(str(e)))
@@ -23,6 +22,8 @@ async def run(browser, locale, width):
     ev = pg.evaluate
     await pg.goto(URL)
     await pg.wait_for_timeout(700)
+    if locale.startswith("en"):
+        await ev("setLang('ar')")   # the flow assertions below are written in Arabic; run_english() checks the English UI
 
     # --- onboarding: name is required
     check("onboarding opens on a fresh install", await ev("document.getElementById('modal').classList.contains('on')"))
@@ -301,8 +302,13 @@ async def run(browser, locale, width):
     check("worship is the first section in More", "عبادة" in await ev("document.querySelector('#mgrid .sec').innerText"))
 
     # --- data survives a reload
+    await ev("save()"); await pg.wait_for_timeout(300)
+    await ev("save()"); await pg.wait_for_timeout(400)   # let the browser flush localStorage before the page goes away
     await pg.reload(); await pg.wait_for_function("typeof S!=='undefined' && !!document.getElementById('main')"); await pg.wait_for_timeout(300)
-    check("data persists after reload", await ev("S.habits.length") == 10 and await ev("S.name") == "Ahmed")
+    persisted = await ev("S.habits.length") == 10 and await ev("S.name") == "Ahmed"
+    if not persisted:
+        print("   diagnostics:", await ev("JSON.stringify({keys:Object.keys(localStorage),name:S.name,habits:S.habits.length,lang:LANG,ua:navigator.userAgent})"))
+    check("data persists after reload", persisted)
     check("no onboarding after reload", not await ev("document.getElementById('modal').classList.contains('on')"))
 
     # --- health log: weight, sleep, mood and patterns
@@ -512,7 +518,6 @@ async def run_english(browser):
     import re
     print("\n== English UI has no Arabic text")
     ctx = await browser.new_context(viewport={"width": 390, "height": 780}, locale="en-US")
-    await ctx.add_init_script("try{localStorage.setItem('hb_lang','en')}catch(e){}")
     pg = await ctx.new_page()
     errs = []
     pg.on("pageerror", lambda e: errs.append(str(e)))
