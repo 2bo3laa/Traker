@@ -999,3 +999,6 @@ V-ups|V-ups|Relevés en V|Elevaciones en V|V şeklinde mekik|Taschenmesser-Crunc
 ألوان داكنة|Dark colors|Couleurs sombres|Colores oscuros|Koyu renkler|Dunkle Farben|Warna gelap|گہرے رنگ
 ألوان فاتحة|Light colors|Couleurs claires|Colores claros|Açık renkler|Helle Farben|Warna terang|ہلکے رنگ
 خلفيات|Backgrounds|Arrière-plans|Fondos|Arka planlar|Hintergründe|Latar belakang|پس منظر
+الألوان والشكل|Colors and appearance|Couleurs et apparence|Colores y apariencia|Renkler ve görünüm|Farben und Darstellung|Warna dan tampilan|رنگ اور ظاہری شکل
+الإشعارات والتنبيهات|Notifications and alerts|Notifications et alertes|Notificaciones y avisos|Bildirimler ve uyarılar|Benachrichtigungen und Hinweise|Notifikasi dan peringatan|اطلاعات اور انتباہات
+ملفي الشخصي|My profile|Mon profil|Mi perfil|Profilim|Mein Profil|Profilku|میرا پروفائل
